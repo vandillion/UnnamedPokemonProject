@@ -2390,6 +2390,8 @@ bool8 ScrCmd_returnqueststate(struct ScriptContext *ctx)
         gSpecialVar_Result = FLAG_GET_COMPLETED;
         return FALSE;
     }
+
+    return TRUE;
 }
 
 bool8 ScrCmd_subquestmenu(struct ScriptContext *ctx)

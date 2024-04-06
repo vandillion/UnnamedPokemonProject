@@ -105,7 +105,7 @@ static bool8 IsSubquestMode(void);
 static bool8 IsNotFilteredMode(void);
 static bool8 IsAlphaMode(void);
 
-static u16 BuildMenuTemplate(void);
+static void BuildMenuTemplate(void);
 static u8 GetModeAndGenerateList();
 static u8 CountNumberListRows();
 static u8 *DefineQuestOrder();
@@ -125,7 +125,7 @@ static void PrependQuestNumber(u8 countQuest);
 static void SetFavoriteQuest(u8 countQuest);
 static void PopulateQuestName(u8 countQuest);
 static void PopulateSubquestName(u8 parentQuest, u8 countQuest);
-static u8 PopulateListRowNameAndId(u8 row, u8 countQuest);
+static void PopulateListRowNameAndId(u8 row, u8 countQuest);
 static bool8 DoesQuestHaveChildrenAndNotInactive(u16 itemId);
 static void AddSubQuestButton(u8 countQuest);
 
@@ -170,7 +170,7 @@ static void PrintMenuContext(void);
 static void PrintTypeFilterButton(void);
 
 static void Task_Main(u8 taskId);
-static u8 ManageFavorites(u8 index);
+static void ManageFavorites(u8 index);
 static void Task_QuestMenuCleanUp(u8 taskId);
 static void RestoreSavedScrollAndRow(s16 *data);
 static void ResetCursorToTop(s16 *data);
@@ -1463,7 +1463,7 @@ static bool8 IsAlphaMode(void)
 	}
 }
 
-static u16 BuildMenuTemplate(void)
+static void BuildMenuTemplate(void)
 {
 	u8 lastRow = GetModeAndGenerateList();
 
@@ -1523,13 +1523,14 @@ static u8 CountNumberListRows()
 		case SORT_DONE:
 			return CountCompletedQuests() + 1;
 	}
-
+	
+	return 1;
 }
 
 u8 *DefineQuestOrder()
 {
 	static u8 sortedList[QUEST_COUNT];
-	u8 a, c, d, e;
+	u8 a, c, d;
 	u8 placeholderVariable;
 
 	for (a = 0; a < QUEST_COUNT; a++)
@@ -1560,7 +1561,6 @@ u8 *DefineQuestOrder()
 u8 GenerateSubquestList()
 {
 	u8 parentQuest = sStateDataPtr->parentQuest;
-	u8 mode = sStateDataPtr->filterMode % 10;
 	u8 lastRow = 0, numRow = 0, countQuest = 0;
 
 	for (numRow = 0; numRow < sSideQuests[parentQuest].numSubquests; numRow++)
@@ -1578,7 +1578,7 @@ u8 GenerateSubquestList()
 u8 GenerateList(bool8 isFiltered)
 {
 	u8 mode = sStateDataPtr-> filterMode % 10;
-	u8 lastRow = 0, numRow = 0, offset = 0, newRow = 0, countQuest = 0,
+	u8 numRow = 0, offset = 0, newRow = 0, countQuest = 0,
 	   selectedQuestId = 0;
 	u8 *sortedQuestList;
 
@@ -1914,7 +1914,7 @@ void PopulateSubquestName(u8 parentQuest, u8 countQuest)
 	}
 }
 
-u8 PopulateListRowNameAndId(u8 row, u8 countQuest)
+void PopulateListRowNameAndId(u8 row, u8 countQuest)
 {
 	sListMenuItems[row].name = questNameArray[countQuest];
 	sListMenuItems[row].id = countQuest;
@@ -2128,7 +2128,7 @@ bool8 IsQuestCompletedState(s32 questId)
 	}
 }
 
-bool8 IsQuestUnlocked(s32 questId)
+bool8 UNUSED IsQuestUnlocked(s32 questId)
 {
 	if (QuestMenu_GetSetQuestState(questId, FLAG_GET_UNLOCKED))
 	{
@@ -2172,10 +2172,7 @@ void DetermineSpriteType(s32 questId)
 static void QuestMenu_CreateSprite(u16 itemId, u8 idx, u8 spriteType)
 {
 	u8 *ptr = &sItemMenuIconSpriteIds[10];
-	u8 spriteId;
-	struct SpriteSheet spriteSheet;
-	struct CompressedSpritePalette spritePalette;
-	struct SpriteTemplate *spriteTemplate;
+	u8 spriteId = 0xFF;
 
 	if (ptr[idx] == 0xFF)
 	{
@@ -2303,6 +2300,8 @@ u8 GenerateQuestState(u8 questId)
 	{
 		StringCopy(gStringVar4, sText_Empty);
 	}
+
+	return 0;
 }
 
 void PrintQuestState(u8 windowId, u8 y, u8 colorIndex)
@@ -2484,7 +2483,7 @@ static void Task_Main(u8 taskId)
 	}
 }
 
-u8 ManageFavorites(u8 selectedQuestId)
+void ManageFavorites(u8 selectedQuestId)
 {
 	if (QuestMenu_GetSetQuestState(selectedQuestId, FLAG_GET_FAVORITE))
 	{
