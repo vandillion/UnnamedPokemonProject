@@ -1,0 +1,90 @@
+raw `
+.set LOCALID_ORION, 1
+`
+
+mapscripts WoodridgeTown_MapScripts {
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		 VAR_NEWGAME_START, 2 {
+			call(OrionIntro)
+			end
+		}
+    ]
+}
+
+//General town scripts
+
+script WoodridgeTownSign {
+	lock
+	msgbox("Woodridge Town", MSGBOX_SIGN)
+	release
+	end
+}
+
+script PlayersHouseSign {
+	lock
+	msgbox("The Oak-Watson Residence", MSGBOX_SIGN)
+	release
+	end
+}
+
+script OrionsHouseSign {
+	lock
+	msgbox("The Fields Residence", MSGBOX_SIGN)
+	release
+	end
+}
+
+//Story scripts
+
+script OrionIntro {
+    lockall
+	applymovement(1, OrionWalkHomeFromWoods)
+	waitmovement(0)
+	playse(SE_PIN)
+	applymovement(1, LookrightExclam)
+	waitmovement(0)
+	applymovement(1, ContinueWalkFromWoods)
+	waitmovement(0)
+	msgbox(format("Who are you?\p...\n...\pSo you're {PLAYER}\nNice to meet you!\lMay name's Orion.\pI heard you're new around here.\nMeet me near the south of town to go on a walk.\pLet your parents know first!"))
+	closemessage
+	applymovement(1, MoveUp)
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerMoveOutWay)
+	waitmovement(0)
+	opendoor(19, 10)
+	waitdooranim
+	applymovement(1, MoveUp)
+	waitmovement(0)
+	removeobject(1)
+	closedoor(19, 10)
+	waitdooranim
+	setflag(FLAG_UNUSED_0x020)
+	clearflag(FLAG_UNUSED_0x021)
+	setvar(VAR_NEWGAME_START, 3)
+	releaseall
+	end
+}
+
+movement OrionWalkHomeFromWoods {walk_up * 5}
+
+movement LookrightExclam {
+	walk_in_place_right
+	emote_exclamation_mark
+	delay_16 * 3
+}
+
+movement ContinueWalkFromWoods {
+	walk_right * 5
+	face_up	
+}
+
+movement PlayerMoveOutWay {
+	lock_facing_direction
+	walk_left
+	unlock_facing_direction
+	face_right
+}
+	
+
+movement MoveUp{
+    walk_up
+}

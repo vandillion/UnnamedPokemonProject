@@ -1,0 +1,24 @@
+raw `
+.set LOCALID_ORION, 1
+`
+
+mapscripts WoodridgeTown_OrionsHouse2F_MapScripts {}
+
+
+script OrionText {
+	lock
+    faceplayer
+    msgbox(format("Hey {PLAYER}!\nHow's it going?"))
+    call_if_eq(VAR_NEWGAME_START, 3, MessageTalkToParents)
+    closemessage
+    applymovement(1, OrionWIPU)
+    waitmovement(0)
+    release
+    end
+}
+
+script MessageTalkToParents {
+    msgbox("Still wanting to go on that walk, huh?\pGo talk to your parents first!")
+}
+
+movement OrionWIPU {walk_in_place_up}

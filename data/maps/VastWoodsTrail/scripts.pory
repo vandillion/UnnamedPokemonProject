@@ -1,0 +1,434 @@
+raw `
+.set LOCALID_ORION, 1
+.set LOCALID_GRASSSTARTER, 2
+.set LOCALID_FIRESTARTER, 3
+.set LOCALID_WATERSTARTER, 4
+.set LOCALID_LEON, 5
+.set LOCALID_GRUNT, 6
+.set LOCALID_HARLEY, 7
+`
+
+mapscripts VastWoodsTrail_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        call_if_eq(VAR_NEWGAME_START, 4, UpdateOrionForWalk)
+		end
+    }
+}
+
+script UpdateOrionForWalk {
+    setobjectmovementtype(LOCALID_ORION, MOVEMENT_TYPE_INVISIBLE)
+    setobjectmovementtype(LOCALID_LEON, MOVEMENT_TYPE_INVISIBLE)
+    setobjectmovementtype(LOCALID_GRUNT, MOVEMENT_TYPE_INVISIBLE)
+    setobjectmovementtype(LOCALID_HARLEY, MOVEMENT_TYPE_INVISIBLE)
+    }
+
+script StartWalkTrigger0 {
+	setvar(VAR_TEMP_0, 0)
+	goto(StartWalk)
+}
+script StartWalkTrigger1 {
+	setvar(VAR_TEMP_0, 1)
+	goto(StartWalk)
+}
+
+script StartWalk {
+	lock
+	setobjectxy(LOCALID_ORION, 4, 1)
+	setflag(FLAG_UNUSED_0x021)
+	setvar(VAR_NEWGAME_START, 5)
+	msgbox("Hey!\n{PLAYER}!")
+	closemessage
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
+    if (var(VAR_TEMP_0) == 1) {
+		applymovement(LOCALID_ORION, OrionWalkFromTown1)
+		waitmovement(0)
+		turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+	} else {
+		applymovement(LOCALID_ORION, OrionWalkFromTown0)
+		waitmovement(0)
+		turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
+	}
+	msgbox(format("You ready for our walk?"))
+	closemessage
+    if (var(VAR_TEMP_0) == 0) {
+		applymovement(LOCALID_ORION, OrionWalk0)
+        applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalk0)
+	} else {
+        applymovement(LOCALID_ORION, OrionWalk1)
+        applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalk1)
+	}
+    waitmovement(0)
+    turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+    turnobject(LOCALID_ORION, DIR_NORTH)
+    msgbox("Fat Weiner!")
+    closemessage
+    playbgm(MUS_NONE, FALSE)
+    playmoncry(SPECIES_BULBASAUR, CRY_MODE_ENCOUNTER)
+    delay(30)
+    playmoncry(SPECIES_CHARMANDER, CRY_MODE_ENCOUNTER)
+    delay(30)
+    playmoncry(SPECIES_SQUIRTLE, CRY_MODE_ENCOUNTER)
+    delay(30)
+    applymovement(LOCALID_ORION, LookrightExclam)
+    applymovement(OBJ_EVENT_ID_PLAYER, LookrightExclam)
+    waitmovement(0)
+    msgbox("What the hell was that!?")
+    applymovement(LOCALID_ORION, OrionLookUp)
+    applymovement(OBJ_EVENT_ID_PLAYER, PlayerLookDown)
+    waitmovement(0)
+    msgbox(format("{PLAYER}, we have to go check what those noises were!"))
+    closemessage
+    applymovement(LOCALID_ORION, RunToChickens0)
+    applymovement(OBJ_EVENT_ID_PLAYER, RunToChickens1)
+    waitmovement(0)
+    turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
+    msgbox("Hold on!\nSomething's coming towards us!")
+    closemessage
+    playmoncry(SPECIES_BULBASAUR, CRY_MODE_NORMAL)
+    applymovement(LOCALID_GRASSSTARTER, RunToPlayerGrass)
+    waitmovement(0)
+    turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+    turnobject(LOCALID_ORION, DIR_NORTH)
+    msgbox("Huh?\nWho's this Pokemon?")
+    applymovement(LOCALID_ORION, mWIPR)
+    waitmovement(0)
+    msgbox(format("There's more coming from the forest!"))
+    applymovement(OBJ_EVENT_ID_PLAYER, mWIPR)
+    closemessage
+    playmoncry(SPECIES_CHARMANDER, CRY_MODE_NORMAL)
+    applymovement(LOCALID_FIRESTARTER, RunToPlayerFire)
+    delay(45)
+    playmoncry(SPECIES_SQUIRTLE, CRY_MODE_NORMAL)
+    applymovement(LOCALID_WATERSTARTER, RunToPlayerWater)
+    waitmovement(0)
+    applymovement(LOCALID_ORION, mWIPL)
+    applymovement(OBJ_EVENT_ID_PLAYER, mWIPL)
+    waitmovement(0)
+    msgbox(format("I've never seen any of these Pokemon before!\pAnd they don't look native to the Vast Woods.\pWhere could they have came from?"))
+    msgbox("???: You two!\nDon't move!")
+    closemessage
+    showobjectat(LOCALID_LEON, MAP_VAST_WOODS_TRAIL)
+    showobjectat(LOCALID_GRUNT, MAP_VAST_WOODS_TRAIL)
+    showobjectat(LOCALID_HARLEY, MAP_VAST_WOODS_TRAIL)
+    setobjectxy(LOCALID_LEON, 44, 11)
+    setobjectxy(LOCALID_GRUNT, 44, 10)
+    setobjectxy(LOCALID_HARLEY, 45, 11)
+    playbgm(MUS_HELP, TRUE)
+    turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
+    turnobject(LOCALID_ORION, DIR_EAST)
+    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
+    applymovement(LOCALID_ORION, Common_Movement_ExclamationMark)
+    applymovement(LOCALID_LEON, GoonsWalkTowardsPlayer)
+    applymovement(LOCALID_GRUNT, GoonsWalkTowardsPlayer)
+    applymovement(LOCALID_HARLEY, GoonsWalkTowardsPlayer)
+    waitmovement(0)
+    delay(30)
+    applymovement(LOCALID_ORION, mWIPR)
+    waitmovement(0)
+    msgbox("And who might you three be?")
+    waitmovement(0)
+    applymovement(LOCALID_LEON, mWIPL)
+    waitmovement(0)
+    msgbox("That doesn't matter.\nThose Pokemon are ours!\pReturn them to us immediately!")
+    applymovement(LOCALID_ORION, mWIPL)
+    delay(60)
+    applymovement(LOCALID_ORION, mWIPR)
+    waitmovement(0)
+    msgbox(format("Why would we do that when not only were these Pokemon running away from you, but you look like you're dressed for the Winter Olympics?\p"
+                  "I'll ask again.\nWho EXACTLY are you?"))
+    turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+    fadescreen(FADE_TO_BLACK)
+    special(ChooseStarter)
+    waitstate
+    setflag(FLAG_SYS_POKEMON_GET)
+    switch (var(VAR_STARTER_MON)) {
+        case 0:
+            call(ContinueGrass)
+        case 1:
+            call(ContinueFire)
+        case 2:
+            call(ContinueWater)
+    }
+    switch (var(VAR_RESULT)) {
+        case 1:
+            goto(wonFirstBattle)
+    }
+    goto(lostFirstBattle)
+}
+
+movement HarleyWalkLeft {
+    emote_exclamation_mark
+    delay_16 * 3
+    walk_left * 2
+}
+
+movement RunBackHome0 {
+    walk_fast_left * 8
+}
+
+movement PlayerRunHome {
+    player_run_left * 8
+}
+
+movement RunBackHome1 {
+    walk_fast_right
+    walk_fast_left * 8
+}
+
+
+movement RunBackHome2 {
+    walk_fast_right * 2
+    walk_fast_left * 8
+}
+
+movement WalkLeftTurn {
+    walk_left * 2
+    walk_in_place_right
+}
+
+script lostFirstBattle {
+    applymovement(LOCALID_LEON, mWIPL)
+    waitmovement(0)
+    msgbox(format("You lost the battle.\nNow give us the Pokemon!"))
+    applymovement(LOCALID_ORION, mWIPR)
+    waitmovement(0)
+    msgbox(format("Still not happening!"))
+    applymovement(LOCALID_ORION, OrionLookUp)
+    applymovement(OBJ_EVENT_ID_PLAYER, PlayerLookDown)
+    waitmovement(0)
+    msgbox(format("{PLAYER}, whether we won or not doesn't matter right now.\pLet's just head back home with the Pokemon!"))
+    call(PlayerRivalRunBackHome)
+    clearflag(FLAG_HIDE_MAP_NAME_POPUP)
+    special(RemoveCameraObject)
+    warpsilent(MAP_WOODRIDGE_TOWN, 17, 20)
+    waitstate
+	release
+	end
+}
+
+script wonFirstBattle {
+    applymovement(LOCALID_ORION, OrionLookUp)
+    applymovement(OBJ_EVENT_ID_PLAYER, PlayerLookDown)
+    waitmovement(0)
+    msgbox(format("Alright, {PLAYER}!\nWe won our first battle!"))
+    applymovement(LOCALID_ORION, mWIPR)
+    applymovement(OBJ_EVENT_ID_PLAYER, mWIPR)
+    waitmovement(0)
+    applymovement(LOCALID_LEON, mWIPL)
+    waitmovement(0)
+    msgbox("Fine!\nTake the Pokemon!\pWe didn't need them anyway!")
+    applymovement(LOCALID_ORION, mWIPR)
+    waitmovement(0)
+    msgbox("Will do.\nBye!")
+    applymovement(LOCALID_ORION, OrionLookUp)
+    applymovement(OBJ_EVENT_ID_PLAYER, PlayerLookDown)
+    waitmovement(0)
+    msgbox(format("{PLAYER}, let's head back home with the Pokemon!"))
+    call(PlayerRivalRunBackHome)
+    applymovement(OBJ_EVENT_ID_CAMERA, MoveCamToGoons)
+    delay(1)
+    setobjectxy(LOCALID_GRASSSTARTER, 4, 20)
+    setobjectxy(LOCALID_FIRESTARTER, 5, 20)
+    setobjectxy(LOCALID_WATERSTARTER, 6, 20)
+    waitmovement(0)
+    applymovement(LOCALID_LEON, WalkLeftTurn)
+    waitmovement(0)
+    msgbox(format("What the hell was that?!\pHarley, we could've beaten them if you helped!"))
+    applymovement(LOCALID_HARLEY, HarleyWalkLeft)
+    waitmovement(0)
+    msgbox(format("Excuse me!?\nThat battle had absolutely nothing to do with me!\p"
+                  "Besides, have you forgotten exactly why we joined this group in the first place?"))
+    applymovement(LOCALID_LEON, mWIPR)
+    waitmovement(0)
+    msgbox(format("Listen, you brought me into this mess and I started diggin' it.\p"
+                   "Besides, you know the consequences are if they find out you're trying to take this group down!"))
+    closemessage
+    clearflag(FLAG_HIDE_MAP_NAME_POPUP)
+    special(RemoveCameraObject)
+    warpsilent(MAP_WOODRIDGE_TOWN, 17, 20)
+    waitstate
+	release
+	end
+}
+
+script PlayerRivalRunBackHome {    
+closemessage
+    special(SpawnCameraObject)
+    playse(SE_FLEE)
+    applymovement(LOCALID_ORION, RunBackHome0)
+    applymovement(OBJ_EVENT_ID_PLAYER, PlayerRunHome)
+    applymovement(LOCALID_GRASSSTARTER, RunBackHome1)
+    applymovement(LOCALID_FIRESTARTER, RunBackHome1)
+    applymovement(LOCALID_WATERSTARTER, RunBackHome2)
+    delay(120)
+}
+
+script ContinueAfterStarterSelection {
+    delay(20)
+    applymovement(LOCALID_ORION, mWIPR)
+    applymovement(OBJ_EVENT_ID_PLAYER, mWIPR)
+    waitmovement(0)
+    applymovement(LOCALID_LEON, mWIPR)
+    waitmovement(0)
+    msgbox("Harley, help me fight these guys!")
+    applymovement(LOCALID_HARLEY, HarleyMoveAway)
+    waitmovement(0)
+    msgbox("Absolutely not!")
+    applymovement(LOCALID_LEON, mWIPR)
+    waitmovement(0)
+    msgbox("Fine!")
+    applymovement(LOCALID_LEON, mWIPL)
+    applymovement(LOCALID_GRUNT, mWIPL)
+    waitmovement(0)
+    msgbox("Us two will take you down!")
+    call(BattleSetup1)
+}
+
+script BattleSetup1 {
+    fadescreen(FADE_TO_BLACK)
+    special(ChooseHalfPartyForBattle)
+	waitstate
+    call_if_eq(VAR_RESULT, 0, BattleSetup1)
+}
+
+script ContinueGrass {
+    removeobject(LOCALID_GRASSSTARTER)
+    delay(20)
+    applymovement(LOCALID_ORION, mWIPL)
+    waitmovement(0)
+    msgbox(OrionIllTakeThisOne)
+    removeobject(LOCALID_FIRESTARTER)
+    call(ContinueAfterStarterSelection)
+    multi_2_vs_2(TRAINER_MAXIE_MOSSDEEP, LeonDefeatText, TRAINER_TABITHA_MOSSDEEP, GruntDefeatText, PARTNER_ORION_FIRE)
+}
+
+script ContinueFire {
+    removeobject(LOCALID_FIRESTARTER)
+    delay(20)
+    applymovement(LOCALID_ORION, mWIPL)
+    waitmovement(0)
+    msgbox(OrionIllTakeThisOne)
+    removeobject(LOCALID_WATERSTARTER)
+    call(ContinueAfterStarterSelection)
+    multi_2_vs_2(TRAINER_MAXIE_MOSSDEEP, LeonDefeatText, TRAINER_TABITHA_MOSSDEEP, GruntDefeatText, PARTNER_ORION_WATER)
+}
+
+script ContinueWater {
+    removeobject(LOCALID_WATERSTARTER)
+    delay(20)
+    applymovement(LOCALID_ORION, mWIPL)
+    waitmovement(0)
+    msgbox(OrionIllTakeThisOne)
+    removeobject(LOCALID_GRASSSTARTER)
+    call(ContinueAfterStarterSelection)
+    multi_2_vs_2(TRAINER_MAXIE_MOSSDEEP, LeonDefeatText, TRAINER_TABITHA_MOSSDEEP, GruntDefeatText, PARTNER_ORION_GRASS)
+}
+
+
+text OrionIllTakeThisOne {format("...{PAUSE 50}\nAlright, then I'll use this one!")}
+
+text LeonDefeatText {"This is rediculous!"}
+
+text GruntDefeatText {"Wiped out!"}
+
+
+movement HarleyMoveAway {
+    emote_exclamation_mark
+    delay_16
+    delay_16
+    delay_16
+    lock_facing_direction
+    walk_right}
+
+movement mWIPL {walk_in_place_left}
+
+movement GoonsWalkTowardsPlayer {walk_left * 5}
+
+movement MoveCamToGoons {walk_right * 2}
+
+movement RunToPlayerGrass {
+    walk_fast_left * 7
+    walk_fast_up
+    walk_fast_left * 2
+    walk_fast_down
+    walk_in_place_fast_right
+}
+movement RunToPlayerFire {
+    walk_fast_left * 7
+    walk_fast_down
+    walk_fast_left * 2
+    walk_fast_up
+    walk_in_place_fast_right
+}
+movement RunToPlayerWater {
+    walk_fast_left * 8
+    walk_fast_up
+    walk_fast_left * 3
+    walk_fast_down
+    walk_in_place_fast_right
+}
+
+movement RunToChickens0 {walk_fast_right * 12}
+
+movement RunToChickens1 {player_run_right * 12}
+
+movement OrionWalkFromTown0 {
+    set_visible
+    walk_down * 6
+    walk_in_place_left
+}
+
+movement OrionWalkFromTown1 {
+    set_visible
+    walk_down * 3
+    walk_left
+    walk_down * 3
+    walk_in_place_right
+}
+
+movement PlayerWalk0 {
+    walk_right
+    walk_down * 2
+    walk_right
+    walk_down
+    walk_right
+    walk_down
+    walk_right * 17
+    walk_up
+    walk_right
+}
+
+movement PlayerWalk1 {
+    walk_left
+    walk_down * 2
+    walk_right
+    walk_down
+    walk_right
+    walk_down
+    walk_right * 18
+    walk_up
+    walk_right
+}
+
+movement OrionWalk0 {
+    walk_down * 2
+    walk_right
+    walk_down
+    walk_right
+    walk_down
+    walk_right * 18
+}
+
+
+movement OrionWalk1 {
+    walk_down * 2
+    walk_right
+    walk_down
+    walk_right
+    walk_down
+    walk_right * 19
+}
+
+movement OrionLookUp {walk_in_place_fast_up}
+
+movement PlayerLookDown {walk_in_place_fast_down}

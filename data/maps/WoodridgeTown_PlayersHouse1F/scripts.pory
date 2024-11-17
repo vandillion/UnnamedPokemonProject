@@ -1,0 +1,90 @@
+raw `
+.set LOCALID_MOM, 1
+.set LOCALID_DAD, 2
+`
+// State descriptions for VAR_NEWGAME_START:
+// 1: Set after you walk downstairs the first time.
+// 2: Set after you walked into Orion's house.
+// 3: Set when you first meet Orion.
+// 4: Set when you talk to your parents before heading out to the woods.
+// 5: Set when you start the walk with Orion.
+
+mapscripts WoodridgeTown_PlayersHouse1F_MapScripts {
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		 VAR_NEWGAME_START, 0 {
+			lock
+			call(IntroDialogue)
+			release
+			end
+		}
+        VAR_NEWGAME_START, 3 {
+			lock
+			call(TalkToParents)
+			release
+			end
+		}
+	]
+}
+
+script TalkToParents {
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalkToTableFromDoor)
+	waitmovement(0)
+	applymovement(1, mWIPR)
+	waitmovement(0)
+	msgbox(format("So you've found a friend! That's nice.\pJust make sure to stay safe."))
+	applymovement(2, mWIPR)
+	waitmovement(0)
+	msgbox(format("Yeah, honey.\nRemember we just moved here, so anything could attack you n shi\ptake these too, it'll come in handy later"))
+	setflag(FLAG_RECEIVED_RUNNING_SHOES)
+	setflag(FLAG_SYS_B_DASH)
+	setvar(VAR_NEWGAME_START, 3)
+	playfanfare(MUS_OBTAIN_ITEM)
+	msgbox(format("{PLAYER} received the Running Shoes!"))
+	waitfanfare
+	applymovement(1, mWIPR)
+	waitmovement(0)
+	msgbox(format("It makes me so happy seeing you grow up so fast.\pIt reminds me of your uncle Blue, haha!"))
+	applymovement(2, mWIPR)
+	waitmovement(0)
+	msgbox(format("If anything happens you have our numbers\pjust give us a ring on the pokenav"))
+	applymovement(1, mWIPR)
+	waitmovement(0)
+	msgbox(format("You also have the option to change clothes upstairs.\pOne of your boxes has all of clothes in it."))
+	closemessage
+	setvar(VAR_NEWGAME_START, 4)
+}
+
+movement PlayerWalkToTableFromDoor {
+	walk_left * 3
+	walk_up
+	face_left
+}
+
+movement mWIPR {walk_in_place_right}
+
+
+script IntroDialogue{
+	setflag(FLAG_HIDE_MAP_NAME_POPUP)
+	msgbox(format("Mom: Oh! {PLAYER}!\n You're awake!"))
+	closemessage
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalkToTableFromStairs)
+	waitmovement(0)
+	msgbox(format("Blah blah blah you finally made it though so go find someone to talk to."))
+	playfanfare(MUS_OBTAIN_ITEM)
+	msgbox(format("{PLAYER} received the PokeNav!"))
+	waitfanfare
+	setflag(FLAG_SYS_POKENAV_GET)
+	setflag(FLAG_RECEIVED_POKENAV)
+	setflag(FLAG_UNUSED_0x020)
+	setflag(FLAG_UNUSED_0x021)
+	setvar(VAR_NEWGAME_START, 1)
+	closemessage
+}
+
+movement PlayerWalkToTableFromStairs {
+	walk_left * 2
+	walk_down * 2
+	walk_left
+	walk_down
+	walk_in_place_left
+}

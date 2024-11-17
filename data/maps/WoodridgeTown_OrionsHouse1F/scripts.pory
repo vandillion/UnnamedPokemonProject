@@ -1,0 +1,56 @@
+raw `
+.set LOCALID_ORIONS_MOM, 1
+`
+mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+		call_if_eq(VAR_NEWGAME_START, 1, MoveMom)
+		end
+	}
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		 VAR_NEWGAME_START, 1 {
+			lock
+			call(OrionMomIntro)
+			release
+			end
+		}
+    ]
+}
+
+script MoveMom {
+	setobjectxyperm(1, 4, 5)
+    setobjectmovementtype(1, MOVEMENT_TYPE_FACE_DOWN)
+}
+
+
+script OrionMomIntro {
+    turnobject(1, DIR_SOUTH)
+    playse(SE_PIN)
+    applymovement(1, Common_Movement_ExclamationMarkDelay)
+	waitmovement(0)
+    applymovement(1, OrionMomWalkToDoor)
+    waitmovement(0)
+    msgbox(format("We weren't expecting guests today.\nWho are you?"))
+    closemessage
+    delay(45)
+    msgbox(format("...\pSo you're our new neighbor?\nNice to meet you, {PLAYER}.\pIf you're looking for someone to talk to, we have a son who's about your age.\p"
+                  "I'm sure he'd like to meet you, but he's not here right now.\pHe's on one of his nature strolls in the woods south of here."))
+    closemessage
+    setvar(VAR_NEWGAME_START, 2)
+    applymovement(1, MoveMomToTable)
+    waitmovement(0)
+    setobjectxyperm(1, 8, 6)
+    clearflag(FLAG_UNUSED_0x020)
+}
+
+movement MoveMomToTable {
+    walk_up * 2
+    walk_right * 6
+    walk_down
+    face_left
+}
+
+movement OrionMomWalkToDoor {
+    walk_left * 2
+    walk_down * 2
+    
+}

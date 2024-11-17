@@ -4410,6 +4410,66 @@
       "secondary_tileset": "gTileset_MysteryEventsHouse",
       "border_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/border.bin",
       "blockdata_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/map.bin"
+    },
+    {
+      "id": "LAYOUT_WOODRIDGE_TOWN",
+      "name": "WoodridgeTown_Layout",
+      "width": 28,
+      "height": 28,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/WoodridgeTown/border.bin",
+      "blockdata_filepath": "data/layouts/WoodridgeTown/map.bin"
+    },
+    {
+      "id": "LAYOUT_VAST_WOODS_TRAIL",
+      "name": "VastWoodsTrail_Layout",
+      "width": 50,
+      "height": 24,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/VastWoodsTrail/border.bin",
+      "blockdata_filepath": "data/layouts/VastWoodsTrail/map.bin"
+    },
+    {
+      "id": "LAYOUT_WOODRIDGE_TOWN_PLAYERS_HOUSE1F",
+      "name": "WoodridgeTown_PlayersHouse1F_Layout",
+      "width": 11,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BrendansMaysHouse",
+      "border_filepath": "data/layouts/WoodridgeTown_PlayersHouse1F/border.bin",
+      "blockdata_filepath": "data/layouts/WoodridgeTown_PlayersHouse1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_WOODRIDGE_TOWN_PLAYERS_HOUSE2F",
+      "name": "WoodridgeTown_PlayersHouse2F_Layout",
+      "width": 9,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BrendansMaysHouse",
+      "border_filepath": "data/layouts/WoodridgeTown_PlayersHouse2F/border.bin",
+      "blockdata_filepath": "data/layouts/WoodridgeTown_PlayersHouse2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_WOODRIDGE_TOWN_ORIONS_HOUSE1F",
+      "name": "WoodridgeTown_OrionsHouse1F_Layout",
+      "width": 11,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BrendansMaysHouse",
+      "border_filepath": "data/layouts/WoodridgeTown_OrionsHouse1F/border.bin",
+      "blockdata_filepath": "data/layouts/WoodridgeTown_OrionsHouse1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_WOODRIDGE_TOWN_ORIONS_HOUSE2F",
+      "name": "WoodridgeTown_OrionsHouse2F_Layout",
+      "width": 9,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BrendansMaysHouse",
+      "border_filepath": "data/layouts/WoodridgeTown_OrionsHouse2F/border.bin",
+      "blockdata_filepath": "data/layouts/WoodridgeTown_OrionsHouse2F/map.bin"
     }
   ]
 }
