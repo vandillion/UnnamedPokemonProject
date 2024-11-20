@@ -65,18 +65,15 @@ movement mWIPR {walk_in_place_right}
 
 script IntroDialogue{
 	setflag(FLAG_HIDE_MAP_NAME_POPUP)
+	delay(32)
 	msgbox(format("Mom: Oh! {PLAYER}!\n You're awake!"))
 	closemessage
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalkToTableFromStairs)
 	waitmovement(0)
 	msgbox(format("Blah blah blah you finally made it though so go find someone to talk to."))
-	playfanfare(MUS_OBTAIN_ITEM)
-	msgbox(format("{PLAYER} received the PokeNav!"))
-	waitfanfare
-	setflag(FLAG_SYS_POKENAV_GET)
-	setflag(FLAG_RECEIVED_POKENAV)
 	setflag(FLAG_UNUSED_0x020)
 	setflag(FLAG_UNUSED_0x021)
+	setflag(FLAG_UNUSED_0x022)
 	setvar(VAR_NEWGAME_START, 1)
 	closemessage
 }

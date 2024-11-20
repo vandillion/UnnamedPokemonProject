@@ -9374,6 +9374,7 @@ AI: Check Bad Move / Try To Faint / Check Viability
 Snorunt
 Level: 4
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Astonish
 
 === TRAINER_EDWIN_2 ===
 Name: EDWIN
@@ -13530,6 +13531,7 @@ AI: Check Bad Move / Try To Faint / Check Viability
 Snorunt
 Level: 4
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Astonish
 
 === TRAINER_PETE ===
 Name: PETE

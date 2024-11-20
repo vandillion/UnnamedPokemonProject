@@ -34,7 +34,9 @@ script StartWalkTrigger1 {
 script StartWalk {
 	lock
 	setobjectxy(LOCALID_ORION, 4, 1)
+    clearflag(FLAG_UNUSED_0x020)
 	setflag(FLAG_UNUSED_0x021)
+    clearflag(FLAG_UNUSED_0x022)
 	setvar(VAR_NEWGAME_START, 5)
 	msgbox("Hey!\n{PLAYER}!")
 	closemessage
@@ -85,7 +87,7 @@ script StartWalk {
     msgbox("Hold on!\nSomething's coming towards us!")
     closemessage
     playmoncry(SPECIES_BULBASAUR, CRY_MODE_NORMAL)
-    applymovement(LOCALID_GRASSSTARTER, RunToPlayerGrass)
+    applymovement(LOCALID_GRASSSTARTER, RunToPlayer0)
     waitmovement(0)
     turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
     turnobject(LOCALID_ORION, DIR_NORTH)
@@ -95,11 +97,12 @@ script StartWalk {
     msgbox(format("There's more coming from the forest!"))
     applymovement(OBJ_EVENT_ID_PLAYER, mWIPR)
     closemessage
+    setobjectxy(LOCALID_WATERSTARTER, 45, 10)
     playmoncry(SPECIES_CHARMANDER, CRY_MODE_NORMAL)
-    applymovement(LOCALID_FIRESTARTER, RunToPlayerFire)
+    applymovement(LOCALID_FIRESTARTER, RunToPlayer1)
     delay(45)
     playmoncry(SPECIES_SQUIRTLE, CRY_MODE_NORMAL)
-    applymovement(LOCALID_WATERSTARTER, RunToPlayerWater)
+    applymovement(LOCALID_WATERSTARTER, RunToPlayer2)
     waitmovement(0)
     applymovement(LOCALID_ORION, mWIPL)
     applymovement(OBJ_EVENT_ID_PLAYER, mWIPL)
@@ -156,6 +159,12 @@ script StartWalk {
     goto(lostFirstBattle)
 }
 
+movement LookrightExclam {
+	walk_in_place_right
+	emote_exclamation_mark
+	delay_16 * 3
+}
+
 movement HarleyWalkLeft {
     emote_exclamation_mark
     delay_16 * 3
@@ -172,13 +181,13 @@ movement PlayerRunHome {
 
 movement RunBackHome1 {
     walk_fast_right
-    walk_fast_left * 8
+    walk_fast_left * 9
 }
 
 
 movement RunBackHome2 {
     walk_fast_right * 2
-    walk_fast_left * 8
+    walk_fast_left * 9
 }
 
 movement WalkLeftTurn {
@@ -198,9 +207,8 @@ script lostFirstBattle {
     waitmovement(0)
     msgbox(format("{PLAYER}, whether we won or not doesn't matter right now.\pLet's just head back home with the Pokemon!"))
     call(PlayerRivalRunBackHome)
-    clearflag(FLAG_HIDE_MAP_NAME_POPUP)
     special(RemoveCameraObject)
-    warpsilent(MAP_WOODRIDGE_TOWN, 17, 20)
+    warpsilent(MAP_WOODRIDGE_TOWN, 14, 20)
     waitstate
 	release
 	end
@@ -243,16 +251,15 @@ script wonFirstBattle {
     msgbox(format("Listen, you brought me into this mess and I started diggin' it.\p"
                    "Besides, you know the consequences are if they find out you're trying to take this group down!"))
     closemessage
-    clearflag(FLAG_HIDE_MAP_NAME_POPUP)
     special(RemoveCameraObject)
-    warpsilent(MAP_WOODRIDGE_TOWN, 17, 20)
+    warpsilent(MAP_WOODRIDGE_TOWN, 14, 20)
     waitstate
 	release
 	end
 }
 
 script PlayerRivalRunBackHome {    
-closemessage
+    closemessage
     special(SpawnCameraObject)
     playse(SE_FLEE)
     applymovement(LOCALID_ORION, RunBackHome0)
@@ -274,13 +281,10 @@ script ContinueAfterStarterSelection {
     applymovement(LOCALID_HARLEY, HarleyMoveAway)
     waitmovement(0)
     msgbox("Absolutely not!")
-    applymovement(LOCALID_LEON, mWIPR)
-    waitmovement(0)
-    msgbox("Fine!")
     applymovement(LOCALID_LEON, mWIPL)
     applymovement(LOCALID_GRUNT, mWIPL)
     waitmovement(0)
-    msgbox("Us two will take you down!")
+    msgbox("Fine!\nUs two will take you down!")
     call(BattleSetup1)
 }
 
@@ -346,21 +350,22 @@ movement GoonsWalkTowardsPlayer {walk_left * 5}
 
 movement MoveCamToGoons {walk_right * 2}
 
-movement RunToPlayerGrass {
-    walk_fast_left * 7
+movement RunToPlayer0 {
+    walk_fast_left * 8
     walk_fast_up
     walk_fast_left * 2
     walk_fast_down
     walk_in_place_fast_right
 }
-movement RunToPlayerFire {
-    walk_fast_left * 7
+movement RunToPlayer1 {
+    walk_fast_left * 8
     walk_fast_down
     walk_fast_left * 2
     walk_fast_up
     walk_in_place_fast_right
 }
-movement RunToPlayerWater {
+
+movement RunToPlayer2 {
     walk_fast_left * 8
     walk_fast_up
     walk_fast_left * 3

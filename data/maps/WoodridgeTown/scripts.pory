@@ -1,15 +1,41 @@
 raw `
 .set LOCALID_ORION, 1
+.set LOCALID_GS, 2
+.set LOCALID_FS, 3
+.set LOCALID_WS, 4
 `
 
 mapscripts WoodridgeTown_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		call_if_eq(VAR_NEWGAME_START, 5, UpdateObjects)
+	}
+	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+		 VAR_NEWGAME_START, 5 : UpdatePlayer
+    ]
 	MAP_SCRIPT_ON_FRAME_TABLE [
-		 VAR_NEWGAME_START, 2 {
-			call(OrionIntro)
-			end
-		}
+		 VAR_NEWGAME_START, 2 : OrionIntro
+		 VAR_NEWGAME_START, 5 : CutsceneAfterFirstBattle
     ]
 }
+
+script UpdatePlayer {
+	hideobjectat(OBJ_EVENT_ID_PLAYER, MAP_WOODRIDGE_TOWN)
+}
+
+script UpdateObjects {
+	setobjectxyperm(LOCALID_ORION, 13, 26)
+	setobjectxyperm(LOCALID_GS, 13, 27)
+	setobjectxyperm(LOCALID_FS, 14, 27)
+	setobjectxyperm(LOCALID_WS, 15, 27)
+	switch (var(VAR_STARTER_MON)) {
+        case 0:
+			setobjectmovementtype(LOCALID_WS, MOVEMENT_TYPE_INVISIBLE)
+        case 1:
+            setobjectmovementtype(LOCALID_GS, MOVEMENT_TYPE_INVISIBLE)
+        case 2:
+			setobjectmovementtype(LOCALID_FS, MOVEMENT_TYPE_INVISIBLE)
+    }
+	}
 
 //General town scripts
 
@@ -37,44 +63,46 @@ script OrionsHouseSign {
 //Story scripts
 
 script OrionIntro {
-    lockall
-	applymovement(1, OrionWalkHomeFromWoods)
+    lock
+	applymovement(LOCALID_ORION, OrionWalkHomeFromWoods)
 	waitmovement(0)
+	applymovement(LOCALID_ORION, Common_Movement_ExclamationMarkDelay)
 	playse(SE_PIN)
-	applymovement(1, LookrightExclam)
-	waitmovement(0)
-	applymovement(1, ContinueWalkFromWoods)
-	waitmovement(0)
+	delay(15)
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+	waitmovement(LOCALID_ORION)
+	applymovement(LOCALID_ORION, ContinueWalkFromWoods)
+	delay(48)
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+	waitmovement(LOCALID_ORION)
 	msgbox(format("Who are you?\p...\n...\pSo you're {PLAYER}\nNice to meet you!\lMay name's Orion.\pI heard you're new around here.\nMeet me near the south of town to go on a walk.\pLet your parents know first!"))
 	closemessage
-	applymovement(1, MoveUp)
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerMoveOutWay)
+	delay(16)
+	applymovement(LOCALID_ORION, MoveUp)
 	waitmovement(0)
-	opendoor(19, 10)
+	opendoor(19, 11)
 	waitdooranim
-	applymovement(1, MoveUp)
+	applymovement(LOCALID_ORION, MoveUp)
 	waitmovement(0)
-	removeobject(1)
-	closedoor(19, 10)
+	removeobject(LOCALID_ORION)
+	closedoor(19, 11)
 	waitdooranim
 	setflag(FLAG_UNUSED_0x020)
 	clearflag(FLAG_UNUSED_0x021)
 	setvar(VAR_NEWGAME_START, 3)
-	releaseall
-	end
+	release
 }
 
-movement OrionWalkHomeFromWoods {walk_up * 5}
 
-movement LookrightExclam {
-	walk_in_place_right
-	emote_exclamation_mark
-	delay_16 * 3
-}
+movement OrionWalkHomeFromWoods {
+	walk_up * 5
+	face_right}
+
 
 movement ContinueWalkFromWoods {
 	walk_right * 5
-	face_up	
+	walk_in_place_up	
 }
 
 movement PlayerMoveOutWay {
@@ -87,4 +115,95 @@ movement PlayerMoveOutWay {
 
 movement MoveUp{
     walk_up
+}
+
+
+//---------------------------------------------------------------------------------
+
+script CutsceneAfterFirstBattle {
+	lock
+	special(SpawnCameraObject)
+	setobjectxy(OBJ_EVENT_ID_PLAYER, 14, 26)
+	applymovement(OBJ_EVENT_ID_PLAYER, RunHome0)
+	applymovement(LOCALID_ORION, RunHome1)
+	applymovement(LOCALID_GS, RunHome2)
+	applymovement(LOCALID_FS, RunHome2)
+	applymovement(LOCALID_WS, RunHome3)
+	waitmovement(LOCALID_ORION)
+	special(RemoveCameraObject)
+	msgbox(format("Okay, it looks like we weren't followed.\pLet's just hope those turds don't plan on heading here."))
+	closemessage
+	delay(48)
+	applymovement(LOCALID_ORION, Common_Movement_ExclamationMarkDelay)
+	waitmovement(0)
+	msgbox(format("What?\nOne of the Pokemon is missing!\pOh, well!\nWe already have 2 of them, and it's getting really late.\p"
+                  "{PLAYER}, you should head home.\nTell your parents to meet at my house in the morning.\p"
+				  "In the mean time, these two will reside at the pond for the night."))
+	closemessage
+	applymovement(LOCALID_ORION, WalkPrepare)
+	waitmovement(0)
+	applymovement(LOCALID_ORION, WalkMons0)
+	applymovement(LOCALID_GS, WalkMons1)
+	applymovement(LOCALID_FS, WalkMons2)
+	applymovement(LOCALID_WS, WalkMons3)
+	waitmovement(0)
+	delay(30)
+	setflag(FLAG_UNUSED_0x020)
+	setflag(FLAG_UNUSED_0x022)
+	setvar(VAR_NEWGAME_START, 6)
+	warpsilent(MAP_WOODRIDGE_TOWN_PLAYERS_HOUSE2F, 1, 4)
+	waitstate
+	release
+}
+
+movement RunHome0 {
+	set_visible
+	player_run_up * 3
+	walk_up * 3
+}
+
+movement RunHome1 {
+	walk_fast_up * 3
+	walk_up * 4
+	walk_in_place_down
+}
+
+movement RunHome2 {
+	walk_fast_up * 3
+	walk_up * 3
+}
+
+movement RunHome3 {
+	walk_fast_left
+	walk_fast_up * 2
+	walk_up * 3
+}
+
+movement WalkPrepare {
+	walk_in_place_down
+	delay_16 * 2
+	walk_in_place_up
+}
+
+movement WalkMons0 {
+	walk_up * 6
+}
+
+movement WalkMons1 {
+	walk_up * 7
+}
+
+movement WalkMons2 {
+	walk_left
+	walk_up * 7
+}
+
+movement WalkMons3 {
+	walk_up
+	walk_left
+	walk_up * 7
+}
+
+movement mWIPD {
+	walk_in_place_down
 }
