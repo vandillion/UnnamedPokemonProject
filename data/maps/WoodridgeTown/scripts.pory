@@ -126,19 +126,29 @@ script CutsceneAfterFirstBattle {
 	setobjectxy(OBJ_EVENT_ID_PLAYER, 14, 26)
 	applymovement(OBJ_EVENT_ID_PLAYER, RunHome0)
 	applymovement(LOCALID_ORION, RunHome1)
-	applymovement(LOCALID_GS, RunHome2)
-	applymovement(LOCALID_FS, RunHome2)
-	applymovement(LOCALID_WS, RunHome3)
-	waitmovement(LOCALID_ORION)
+	applymovement(LOCALID_GS, RunHome1)
+	applymovement(LOCALID_FS, RunHome1)
+	applymovement(LOCALID_WS, RunHome2)
+	applymovement(OBJ_EVENT_ID_CAMERA, RunHome3)
+	waitmovement(0)
+	delay(16)
 	special(RemoveCameraObject)
-	msgbox(format("Okay, it looks like we weren't followed.\pLet's just hope those turds don't plan on heading here."))
+	applymovement(LOCALID_ORION, mWIPD)
+	applymovement(OBJ_EVENT_ID_PLAYER, mWIPD)
+	waitmovement(0)
+	delay(30)
+	msgbox(format("Okay, it looks like we weren't followed."))
 	closemessage
-	delay(48)
+	applymovement(LOCALID_ORION, LookForMon)
+	waitmovement(0)
 	applymovement(LOCALID_ORION, Common_Movement_ExclamationMarkDelay)
 	waitmovement(0)
-	msgbox(format("What?\nOne of the Pokemon is missing!\pOh, well!\nWe already have 2 of them, and it's getting really late.\p"
-                  "{PLAYER}, you should head home.\nTell your parents to meet at my house in the morning.\p"
-				  "In the mean time, these two will reside at the pond for the night."))
+	msgbox(format("What?\nOne of the Pokemon is missing!\pOh, well!\nWe already have 2 of them, and it's getting really late."))
+	applymovement(LOCALID_ORION, mWIPR)
+	applymovement(OBJ_EVENT_ID_PLAYER, mWIPL)
+	waitmovement(0)
+	msgbox(format("{PLAYER}, you should head home.\nTell your parents to meet at my house in the morning.\p"
+				  "In the mean time, these two will reside at the pond for the night.\pLet's just hope those turds don't plan on entering our town."))
 	closemessage
 	applymovement(LOCALID_ORION, WalkPrepare)
 	waitmovement(0)
@@ -156,26 +166,34 @@ script CutsceneAfterFirstBattle {
 	release
 }
 
+movement RunHome3 {
+	delay_16 * 4
+	walk_up
+}
+
+movement LookForMon {
+	walk_in_place_fast_left
+	delay_16 * 2
+	walk_in_place_fast_right
+	delay_16 * 2
+	walk_in_place_fast_down
+	delay_16
+}
+
 movement RunHome0 {
 	set_visible
-	player_run_up * 3
+	player_run_up * 4
 	walk_up * 3
 }
 
 movement RunHome1 {
-	walk_fast_up * 3
-	walk_up * 4
-	walk_in_place_down
-}
-
-movement RunHome2 {
-	walk_fast_up * 3
+	walk_fast_up * 4
 	walk_up * 3
 }
 
-movement RunHome3 {
+movement RunHome2 {
 	walk_fast_left
-	walk_fast_up * 2
+	walk_fast_up * 3
 	walk_up * 3
 }
 
