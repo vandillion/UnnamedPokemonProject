@@ -11,22 +11,13 @@ raw `
 
 mapscripts WoodridgeTown_PlayersHouse1F_MapScripts {
 	MAP_SCRIPT_ON_FRAME_TABLE [
-		 VAR_NEWGAME_START, 0 {
-			lock
-			call(IntroDialogue)
-			release
-			end
-		}
-        VAR_NEWGAME_START, 3 {
-			lock
-			call(TalkToParents)
-			release
-			end
-		}
-	]
+		 VAR_NEWGAME_START, 0 : IntroDialogue
+		 VAR_NEWGAME_START, 3 : TalkToParents
+    ]
 }
 
 script TalkToParents {
+	lock
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalkToTableFromDoor)
 	waitmovement(0)
 	applymovement(1, mWIPR)
@@ -52,6 +43,7 @@ script TalkToParents {
 	msgbox(format("You also have the option to change clothes upstairs.\pOne of your boxes has all of clothes in it."))
 	closemessage
 	setvar(VAR_NEWGAME_START, 4)
+	release
 }
 
 movement PlayerWalkToTableFromDoor {
@@ -64,18 +56,23 @@ movement mWIPR {walk_in_place_right}
 
 
 script IntroDialogue{
+	lock
 	setflag(FLAG_HIDE_MAP_NAME_POPUP)
-	delay(32)
+	delay(25)
 	msgbox(format("Mom: Oh! {PLAYER}!\n You're awake!"))
 	closemessage
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalkToTableFromStairs)
 	waitmovement(0)
-	msgbox(format("Blah blah blah you finally made it though so go find someone to talk to."))
+	msgbox(format("Wow, sleepyhead!\nWas the flight that tiring? Haha!\p"
+				  "Blah blah blah we finally made it though so go find someone to talk to."))
 	setflag(FLAG_UNUSED_0x020)
 	setflag(FLAG_UNUSED_0x021)
 	setflag(FLAG_UNUSED_0x022)
+	setflag(FLAG_UNUSED_0x023)
+	setflag(FLAG_UNUSED_0x024)
 	setvar(VAR_NEWGAME_START, 1)
 	closemessage
+	release
 }
 
 movement PlayerWalkToTableFromStairs {

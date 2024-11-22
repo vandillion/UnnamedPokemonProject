@@ -46,9 +46,9 @@
 #define FLAG_UNUSED_0x020    0x20 // Hides Orion's sprite in Woodridge Town
 #define FLAG_UNUSED_0x021    0x21 // Hides Orion's sprite in his room
 #define FLAG_UNUSED_0x022    0x22 // Hides the mons in Woodridge Town
-#define FLAG_UNUSED_0x023    0x23 // Unused Flag
-#define FLAG_UNUSED_0x024    0x24 // Unused Flag
-#define FLAG_UNUSED_0x025    0x25 // Unused Flag
+#define FLAG_UNUSED_0x023    0x23 // Hides Orion and the player's parents in Orion's house
+#define FLAG_UNUSED_0x024    0x24 // Hides Orion's stepdad in his house
+#define FLAG_UNUSED_0x025    0x25 // Hides Player's parents in player's house
 #define FLAG_UNUSED_0x026    0x26 // Unused Flag
 #define FLAG_UNUSED_0x027    0x27 // Unused Flag
 #define FLAG_UNUSED_0x028    0x28 // Unused Flag

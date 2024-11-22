@@ -1,19 +1,40 @@
 raw `
 .set LOCALID_ORIONS_MOM, 1
+.set LOCALID_ORION, 3
+.set LOCALID_DAISY, 4
+.set LOCALID_SAM, 5
+.set LOCALID_GS, 6
+.set LOCALID_FS, 7
+.set LOCALID_WS, 8
+.set LOCALID_ORIONS_STEPDAD, 2
 `
 mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
 		call_if_eq(VAR_NEWGAME_START, 1, MoveMom)
+        call_if_eq(VAR_NEWGAME_START, 6, MoveMon)
 		end
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
-		 VAR_NEWGAME_START, 1 {
-			lock
-			call(OrionMomIntro)
-			release
-			end
-		}
+		 VAR_NEWGAME_START, 1 : OrionMomIntro
+		 VAR_NEWGAME_START, 6 : TownMeeting
     ]
+}
+
+script MoveMon {
+	switch (var(VAR_STARTER_MON)) {
+        case 0:
+            setobjectxyperm(LOCALID_GS, 7, 4)
+            setobjectxyperm(LOCALID_FS, 8, 4)
+			setobjectmovementtype(LOCALID_WS, MOVEMENT_TYPE_INVISIBLE)
+        case 1:
+            setobjectxyperm(LOCALID_FS, 7, 4)
+            setobjectxyperm(LOCALID_WS, 8, 4)
+			setobjectmovementtype(LOCALID_GS, MOVEMENT_TYPE_INVISIBLE)
+        case 2:
+			setobjectxyperm(LOCALID_WS, 7, 4)
+            setobjectxyperm(LOCALID_GS, 8, 4)
+			setobjectmovementtype(LOCALID_FS, MOVEMENT_TYPE_INVISIBLE)
+    }
 }
 
 script MoveMom {
@@ -23,6 +44,7 @@ script MoveMom {
 
 
 script OrionMomIntro {
+    lock
     turnobject(1, DIR_SOUTH)
     playse(SE_PIN)
     applymovement(1, Common_Movement_ExclamationMarkDelay)
@@ -40,6 +62,166 @@ script OrionMomIntro {
     waitmovement(0)
     setobjectxyperm(1, 8, 6)
     clearflag(FLAG_UNUSED_0x020)
+    release
+}
+script TownMeeting {
+    lock
+    applymovement(LOCALID_DAISY, TownMeetingNoticePlayer)
+    applymovement(LOCALID_SAM, TownMeetingNoticePlayer)
+    applymovement(LOCALID_ORION, TownMeetingNoticePlayer)
+    applymovement(LOCALID_ORIONS_MOM, TownMeetingNoticePlayer)
+    delay(8)
+    playse(SE_PIN)
+    waitmovement(0)
+    msgbox(format("{PLAYER}!\nAbout time you woke up!"))
+    closemessage
+    applymovement(OBJ_EVENT_ID_PLAYER, MeetingPlayerWalkFromDoorToTable)
+    delay(96)
+    applymovement(LOCALID_DAISY, mWIPU)
+    turnobject(LOCALID_ORION, DIR_SOUTH)
+    turnobject(LOCALID_SAM, DIR_EAST)
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+    msgbox(format("Your friend already told us about what happened last night.\pI'm glad both of you are okay."))
+    applymovement(LOCALID_ORIONS_MOM, mWIPL)
+    waitmovement(0)
+    turnobject(LOCALID_DAISY, DIR_EAST)
+    turnobject(LOCALID_ORION, DIR_EAST)
+    turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
+    msgbox(format("As for the shady kids he told us about, we can't really make a decision on them since we don't know if they were intentionally causing trouble.\p"
+                  "But, if you happen to get any more information on them, let both us and authorities know."))
+    applymovement(LOCALID_SAM, mWIPU)
+    waitmovement(0)
+    turnobject(LOCALID_ORION, DIR_SOUTH)
+    turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+    msgbox(format("Which leads to my next point.\p{PLAYER} and Orion, since this is your first time “owning” a Pokémon, we want you to pay a visit to the Professor's Lab in Animora City.\p"
+                  "What happens next is entirely up to him. Give us a call once you've both made it.\p"
+                  "You can take Route 1, which is directly west of here, to get to Animora."))
+    applymovement(LOCALID_ORION, mWIPD)
+    waitmovement(0)
+    msgbox("Will do, Mr. Watson!")
+    turnobject(LOCALID_SAM, DIR_EAST)
+    applymovement(LOCALID_DAISY, mWIPR)
+    waitmovement(0)
+    msgbox("Alright, us two are gonna get going.")
+    applymovement(LOCALID_DAISY, mWIPU)
+    waitmovement(0)
+    msgbox(format("Before you head out of town, {PLAYER}, there's a box with your wardrobe in it in your room.\pYou can change clothes before you leave if you'd like."))
+    applymovement(LOCALID_DAISY, mWIPR)
+    waitmovement(0)
+    msgbox(format("Thank you for having us over, Mrs. Fields."))
+    applymovement(LOCALID_ORIONS_MOM, mWIPL)
+    waitmovement(0)
+    msgbox(format("Anytime!"))
+    closemessage
+    applymovement(LOCALID_SAM, SamLeaveHouse)
+    applymovement(LOCALID_DAISY, DaisyLeaveHouse)
+    delay(96)
+    playse(SE_EXIT)
+    delay(48)
+    playse(SE_EXIT)
+    waitse
+    applymovement(LOCALID_ORION, mWIPL)
+    applymovement(OBJ_EVENT_ID_PLAYER, mWIPR)
+    waitmovement(0)
+    msgbox(format("Alright, {PLAYER}.\nI'm gonna get ready to head out.\pI'll catch you later!"))
+    closemessage
+    applymovement(LOCALID_ORION, OrionWalkUpstairs)
+    delay(32)
+    switch (var(VAR_STARTER_MON)) {
+        case 0:
+			removeobject(LOCALID_FS)
+        case 1:
+			removeobject(LOCALID_WS)
+        case 2:
+			removeobject(LOCALID_GS)
+    }
+    waitmovement(0)
+    removeobject(LOCALID_ORION)
+    playse(SE_EXIT)
+    waitse
+    special(LoadPlayerParty)
+    setflag(FLAG_SYS_POKEMON_GET)
+    bufferleadmonspeciesname(STR_VAR_1)
+    applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalkToMon)
+    waitmovement(0)
+    switch (var(VAR_STARTER_MON)) {
+        case 0:
+			applymovement(LOCALID_GS, MonHappy)
+        case 1:
+			applymovement(LOCALID_FS, MonHappy)
+        case 2:
+			applymovement(LOCALID_WS, MonHappy)
+    }
+    waitmovement(0)
+    msgbox(format("{STR_VAR_1} is very happy to see you again!"))
+    closemessage
+    delay(10)
+    removeobject(LOCALID_DAISY)
+    removeobject(LOCALID_SAM)
+    removeobject(LOCALID_ORION)
+    removeobject(LOCALID_GS)
+    removeobject(LOCALID_FS)
+    removeobject(LOCALID_WS)
+    setflag(FLAG_UNUSED_0x023)
+    setvar(VAR_NEWGAME_START, 7)
+    clearflag(FLAG_UNUSED_0x020)
+    clearflag(FLAG_UNUSED_0x021)
+    clearflag(FLAG_UNUSED_0x025)
+    delay(20)
+    release
+}
+
+movement MonHappy {
+    face_down
+    jump_in_place_down * 2
+    }
+
+movement PlayerWalkToMon {
+    walk_right
+    walk_in_place_up
+}
+
+movement OrionWalkUpstairs {
+    walk_right
+    walk_in_place_up
+    delay_16 * 2
+    walk_right
+    walk_up * 2
+    walk_left * 7
+    walk_up * 1
+}
+
+movement DaisyLeaveHouse {
+    walk_down * 2
+    walk_left * 2
+    delay_16 * 2
+    walk_left
+    walk_in_place_down
+    delay_16
+    set_invisible
+}
+
+movement SamLeaveHouse {
+    walk_down
+    walk_left * 3
+    walk_in_place_down
+    delay_16
+    set_invisible
+}
+
+movement mWIPU {walk_in_place_up}
+
+movement MeetingPlayerWalkFromDoorToTable {
+    walk_up * 3
+    walk_right * 4
+    walk_in_place_down
+}
+
+movement TownMeetingNoticePlayer {
+    face_player
+    delay_8
+    emote_exclamation_mark
+    delay_16 * 3
 }
 
 movement MoveMomToTable {

@@ -143,6 +143,7 @@ script StartWalk {
     fadescreen(FADE_TO_BLACK)
     special(ChooseStarter)
     waitstate
+    special(SavePlayerParty)
     setflag(FLAG_SYS_POKEMON_GET)
     switch (var(VAR_STARTER_MON)) {
         case 0:
@@ -227,7 +228,7 @@ script wonFirstBattle {
     msgbox("Fine!\nTake the Pokemon!\pWe didn't need them anyway!")
     applymovement(LOCALID_ORION, mWIPR)
     waitmovement(0)
-    msgbox("Will do.\nBye!")
+    msgbox(format("I know you're bluffing, but we'll leave anyway.\pBye!"))
     applymovement(LOCALID_ORION, OrionLookUp)
     applymovement(OBJ_EVENT_ID_PLAYER, PlayerLookDown)
     waitmovement(0)

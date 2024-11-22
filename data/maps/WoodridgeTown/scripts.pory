@@ -160,7 +160,11 @@ script CutsceneAfterFirstBattle {
 	delay(30)
 	setflag(FLAG_UNUSED_0x020)
 	setflag(FLAG_UNUSED_0x022)
+	clearflag(FLAG_UNUSED_0x023)
+	setflag(FLAG_UNUSED_0x025)
 	setvar(VAR_NEWGAME_START, 6)
+	special(ClearPlayerParty)
+	clearflag(FLAG_SYS_POKEMON_GET)
 	warpsilent(MAP_WOODRIDGE_TOWN_PLAYERS_HOUSE2F, 1, 4)
 	waitstate
 	release
