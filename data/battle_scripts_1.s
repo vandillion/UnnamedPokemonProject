@@ -5434,7 +5434,8 @@ BattleScript_FaintAttacker::
 	tryillusionoff BS_ATTACKER
 	tryactivategulpmissile
 	playfaintcry BS_ATTACKER
-	pause B_WAIT_TIME_LONG
+	waitcry BS_ATTACKER
+	pause 20
 	dofaintanimation BS_ATTACKER
 	printstring STRINGID_ATTACKERFAINTED
 	cleareffectsonfaint BS_ATTACKER
@@ -5448,7 +5449,8 @@ BattleScript_FaintTarget::
 	tryactivategulpmissile
 	tryupdateleaderscresttracker
 	playfaintcry BS_TARGET
-	pause B_WAIT_TIME_LONG
+	waitcry BS_TARGET
+	pause 20
 	dofaintanimation BS_TARGET
 	printstring STRINGID_TARGETFAINTED
 	cleareffectsonfaint BS_TARGET

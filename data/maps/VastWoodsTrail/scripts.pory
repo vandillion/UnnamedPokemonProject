@@ -11,8 +11,16 @@ raw `
 mapscripts VastWoodsTrail_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         call_if_eq(VAR_NEWGAME_START, 4, UpdateOrionForWalk)
-		end
     }
+    MAP_SCRIPT_ON_RESUME {
+        call_if_eq(VAR_NEWGAME_START, 5, ShowMons)
+	}
+}
+
+script ShowMons {
+		showobjectat(LOCALID_GRASSSTARTER, MAP_VAST_WOODS_TRAIL)
+        showobjectat(LOCALID_FIRESTARTER, MAP_VAST_WOODS_TRAIL)
+        showobjectat(LOCALID_WATERSTARTER, MAP_VAST_WOODS_TRAIL)
 }
 
 script UpdateOrionForWalk {
@@ -34,9 +42,9 @@ script StartWalkTrigger1 {
 script StartWalk {
 	lock
 	setobjectxy(LOCALID_ORION, 4, 1)
-    clearflag(FLAG_UNUSED_0x020)
-	setflag(FLAG_UNUSED_0x021)
-    clearflag(FLAG_UNUSED_0x022)
+    clearflag(FLAG_HIDE_ORION_WOODRIDGE_TOWN)
+	setflag(FLAG_HIDE_ORION_ORIONS_ROOM)
+    clearflag(FLAG_HIDE_POKEMON_WOODRIDGE_TOWN)
 	setvar(VAR_NEWGAME_START, 5)
 	msgbox("Hey!\n{PLAYER}!")
 	closemessage
@@ -92,10 +100,10 @@ script StartWalk {
     turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
     turnobject(LOCALID_ORION, DIR_NORTH)
     msgbox("Huh?\nWho's this Pokemon?")
-    applymovement(LOCALID_ORION, mWIPR)
+    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
     waitmovement(0)
     msgbox(format("There's more coming from the forest!"))
-    applymovement(OBJ_EVENT_ID_PLAYER, mWIPR)
+    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
     closemessage
     setobjectxy(LOCALID_WATERSTARTER, 45, 10)
     playmoncry(SPECIES_CHARMANDER, CRY_MODE_NORMAL)
@@ -104,8 +112,8 @@ script StartWalk {
     playmoncry(SPECIES_SQUIRTLE, CRY_MODE_NORMAL)
     applymovement(LOCALID_WATERSTARTER, RunToPlayer2)
     waitmovement(0)
-    applymovement(LOCALID_ORION, mWIPL)
-    applymovement(OBJ_EVENT_ID_PLAYER, mWIPL)
+    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
+    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
     msgbox(format("I've never seen any of these Pokemon before!\pAnd they don't look native to the Vast Woods.\pWhere could they have came from?"))
     msgbox("???: You two!\nDon't move!")
@@ -126,16 +134,16 @@ script StartWalk {
     applymovement(LOCALID_HARLEY, GoonsWalkTowardsPlayer)
     waitmovement(0)
     delay(30)
-    applymovement(LOCALID_ORION, mWIPR)
+    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
     waitmovement(0)
     msgbox("And who might you three be?")
     waitmovement(0)
-    applymovement(LOCALID_LEON, mWIPL)
+    applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
     msgbox("That doesn't matter.\nThose Pokemon are ours!\pReturn them to us immediately!")
-    applymovement(LOCALID_ORION, mWIPL)
+    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
     delay(60)
-    applymovement(LOCALID_ORION, mWIPR)
+    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
     waitmovement(0)
     msgbox(format("Why would we do that when not only were these Pokemon running away from you, but you look like you're dressed for the Winter Olympics?\p"
                   "I'll ask again.\nWho EXACTLY are you?"))
@@ -143,7 +151,6 @@ script StartWalk {
     fadescreen(FADE_TO_BLACK)
     special(ChooseStarter)
     waitstate
-    special(SavePlayerParty)
     setflag(FLAG_SYS_POKEMON_GET)
     switch (var(VAR_STARTER_MON)) {
         case 0:
@@ -155,8 +162,10 @@ script StartWalk {
     }
     switch (var(VAR_RESULT)) {
         case 1:
+            special(HealPlayerParty)
             goto(wonFirstBattle)
     }
+    special(HealPlayerParty)
     goto(lostFirstBattle)
 }
 
@@ -197,10 +206,11 @@ movement WalkLeftTurn {
 }
 
 script lostFirstBattle {
-    applymovement(LOCALID_LEON, mWIPL)
+    setflag(FLAG_LOST_FIRST_BATTLE)
+    applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
     msgbox(format("You lost the battle.\nNow give us the Pokemon!"))
-    applymovement(LOCALID_ORION, mWIPR)
+    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
     waitmovement(0)
     msgbox(format("Still not happening!"))
     applymovement(LOCALID_ORION, OrionLookUp)
@@ -220,13 +230,13 @@ script wonFirstBattle {
     applymovement(OBJ_EVENT_ID_PLAYER, PlayerLookDown)
     waitmovement(0)
     msgbox(format("Alright, {PLAYER}!\nWe won our first battle!"))
-    applymovement(LOCALID_ORION, mWIPR)
-    applymovement(OBJ_EVENT_ID_PLAYER, mWIPR)
+    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
+    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
     waitmovement(0)
-    applymovement(LOCALID_LEON, mWIPL)
+    applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
     msgbox("Fine!\nTake the Pokemon!\pWe didn't need them anyway!")
-    applymovement(LOCALID_ORION, mWIPR)
+    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
     waitmovement(0)
     msgbox(format("I know you're bluffing, but we'll leave anyway.\pBye!"))
     applymovement(LOCALID_ORION, OrionLookUp)
@@ -247,7 +257,7 @@ script wonFirstBattle {
     waitmovement(0)
     msgbox(format("Excuse me!?\nThat battle had absolutely nothing to do with me!\p"
                   "Besides, have you forgotten exactly why we joined this group in the first place?"))
-    applymovement(LOCALID_LEON, mWIPR)
+    applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceRight)
     waitmovement(0)
     msgbox(format("Listen, you brought me into this mess and I started diggin' it.\p"
                    "Besides, you know the consequences are if they find out you're trying to take this group down!"))
@@ -273,17 +283,17 @@ script PlayerRivalRunBackHome {
 
 script ContinueAfterStarterSelection {
     delay(20)
-    applymovement(LOCALID_ORION, mWIPR)
-    applymovement(OBJ_EVENT_ID_PLAYER, mWIPR)
+    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
+    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
     waitmovement(0)
-    applymovement(LOCALID_LEON, mWIPR)
+    applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceRight)
     waitmovement(0)
     msgbox("Harley, help me fight these guys!")
     applymovement(LOCALID_HARLEY, HarleyMoveAway)
     waitmovement(0)
     msgbox("Absolutely not!")
-    applymovement(LOCALID_LEON, mWIPL)
-    applymovement(LOCALID_GRUNT, mWIPL)
+    applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceLeft)
+    applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
     msgbox("Fine!\nUs two will take you down!")
     call(BattleSetup1)
@@ -297,34 +307,34 @@ script BattleSetup1 {
 }
 
 script ContinueGrass {
-    removeobject(LOCALID_GRASSSTARTER)
+    hideobjectat(LOCALID_GRASSSTARTER, MAP_VAST_WOODS_TRAIL)
     delay(20)
-    applymovement(LOCALID_ORION, mWIPL)
+    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
     msgbox(OrionIllTakeThisOne)
-    removeobject(LOCALID_FIRESTARTER)
+    hideobjectat(LOCALID_FIRESTARTER, MAP_VAST_WOODS_TRAIL)
     call(ContinueAfterStarterSelection)
     multi_2_vs_2(TRAINER_MAXIE_MOSSDEEP, LeonDefeatText, TRAINER_TABITHA_MOSSDEEP, GruntDefeatText, PARTNER_ORION_FIRE)
 }
 
 script ContinueFire {
-    removeobject(LOCALID_FIRESTARTER)
+    hideobjectat(LOCALID_FIRESTARTER, MAP_VAST_WOODS_TRAIL)
     delay(20)
-    applymovement(LOCALID_ORION, mWIPL)
+    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
     msgbox(OrionIllTakeThisOne)
-    removeobject(LOCALID_WATERSTARTER)
+    hideobjectat(LOCALID_WATERSTARTER, MAP_VAST_WOODS_TRAIL)
     call(ContinueAfterStarterSelection)
     multi_2_vs_2(TRAINER_MAXIE_MOSSDEEP, LeonDefeatText, TRAINER_TABITHA_MOSSDEEP, GruntDefeatText, PARTNER_ORION_WATER)
 }
 
 script ContinueWater {
-    removeobject(LOCALID_WATERSTARTER)
+    hideobjectat(LOCALID_WATERSTARTER, MAP_VAST_WOODS_TRAIL)
     delay(20)
-    applymovement(LOCALID_ORION, mWIPL)
+    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
     msgbox(OrionIllTakeThisOne)
-    removeobject(LOCALID_GRASSSTARTER)
+    hideobjectat(LOCALID_GRASSSTARTER, MAP_VAST_WOODS_TRAIL)
     call(ContinueAfterStarterSelection)
     multi_2_vs_2(TRAINER_MAXIE_MOSSDEEP, LeonDefeatText, TRAINER_TABITHA_MOSSDEEP, GruntDefeatText, PARTNER_ORION_GRASS)
 }
@@ -345,7 +355,6 @@ movement HarleyMoveAway {
     lock_facing_direction
     walk_right}
 
-movement mWIPL {walk_in_place_left}
 
 movement GoonsWalkTowardsPlayer {walk_left * 5}
 

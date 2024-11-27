@@ -17,6 +17,11 @@
       "map": "MAP_VAST_WOODS_TRAIL",
       "offset": 10,
       "direction": "down"
+    },
+    {
+      "map": "MAP_ROUTE101",
+      "offset": 4,
+      "direction": "left"
     }
   ],
   "object_events": [
@@ -31,7 +36,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_UNUSED_0x020"
+      "flag": "FLAG_HIDE_ORION_WOODRIDGE_TOWN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(BULBASAUR)",
@@ -44,7 +49,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_UNUSED_0x022"
+      "flag": "FLAG_HIDE_POKEMON_WOODRIDGE_TOWN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHARMANDER)",
@@ -57,7 +62,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_UNUSED_0x022"
+      "flag": "FLAG_HIDE_POKEMON_WOODRIDGE_TOWN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(SQUIRTLE)",
@@ -70,7 +75,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_UNUSED_0x022"
+      "flag": "FLAG_HIDE_POKEMON_WOODRIDGE_TOWN"
     }
   ],
   "warp_events": [
@@ -90,7 +95,114 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 12,
+      "elevation": 0,
+      "var": "VAR_NEWGAME_START",
+      "var_value": "6",
+      "script": "WoodridgeBattleTrigger0"
+    },
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_NEWGAME_START",
+      "var_value": "6",
+      "script": "WoodridgeBattleTrigger1"
+    },
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 14,
+      "elevation": 0,
+      "var": "VAR_NEWGAME_START",
+      "var_value": "6",
+      "script": "WoodridgeBattleTrigger2"
+    },
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_NEWGAME_START",
+      "var_value": "6",
+      "script": "WoodridgeBattleTrigger3"
+    },
+    {
+      "type": "trigger",
+      "x": 1,
+      "y": 12,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "BlockProgressionW"
+    },
+    {
+      "type": "trigger",
+      "x": 1,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "BlockProgressionW"
+    },
+    {
+      "type": "trigger",
+      "x": 1,
+      "y": 14,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "BlockProgressionW"
+    },
+    {
+      "type": "trigger",
+      "x": 1,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "BlockProgressionW"
+    },
+    {
+      "type": "trigger",
+      "x": 12,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "BlockProgressionS"
+    },
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "BlockProgressionS"
+    },
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "BlockProgressionS"
+    },
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "BlockProgressionS"
+    }
   ],
   "bg_events": [
     {

@@ -38,7 +38,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_UNUSED_0x024"
+      "flag": "FLAG_HIDE_ORIONS_STEPDAD_ORIONS_HOUSE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ANABEL",
@@ -51,7 +51,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_UNUSED_0x023"
+      "flag": "FLAG_HIDE_CUTSCENE_NPCS_ORIONS_HOUSE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MOM",
@@ -64,7 +64,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_UNUSED_0x023"
+      "flag": "FLAG_HIDE_CUTSCENE_NPCS_ORIONS_HOUSE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
@@ -77,7 +77,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_UNUSED_0x023"
+      "flag": "FLAG_HIDE_CUTSCENE_NPCS_ORIONS_HOUSE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(BULBASAUR)",
@@ -90,7 +90,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_UNUSED_0x023"
+      "flag": "FLAG_HIDE_CUTSCENE_NPCS_ORIONS_HOUSE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHARMANDER)",
@@ -103,7 +103,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_UNUSED_0x023"
+      "flag": "FLAG_HIDE_CUTSCENE_NPCS_ORIONS_HOUSE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(SQUIRTLE)",
@@ -116,7 +116,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_UNUSED_0x023"
+      "flag": "FLAG_HIDE_CUTSCENE_NPCS_ORIONS_HOUSE"
     }
   ],
   "warp_events": [

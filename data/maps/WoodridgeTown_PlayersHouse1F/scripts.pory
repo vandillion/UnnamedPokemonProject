@@ -20,10 +20,10 @@ script TalkToParents {
 	lock
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalkToTableFromDoor)
 	waitmovement(0)
-	applymovement(1, mWIPR)
+	applymovement(1, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	msgbox(format("So you've found a friend! That's nice.\pJust make sure to stay safe."))
-	applymovement(2, mWIPR)
+	applymovement(2, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	msgbox(format("Yeah, honey.\nRemember we just moved here, so anything could attack you n shi\ptake these too, it'll come in handy later"))
 	setflag(FLAG_RECEIVED_RUNNING_SHOES)
@@ -32,13 +32,13 @@ script TalkToParents {
 	playfanfare(MUS_OBTAIN_ITEM)
 	msgbox(format("{PLAYER} received the Running Shoes!"))
 	waitfanfare
-	applymovement(1, mWIPR)
+	applymovement(1, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	msgbox(format("It makes me so happy seeing you grow up so fast.\pIt reminds me of your uncle Blue, haha!"))
-	applymovement(2, mWIPR)
+	applymovement(2, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	msgbox(format("If anything happens you have our numbers\pjust give us a ring on the pokenav"))
-	applymovement(1, mWIPR)
+	applymovement(1, Common_Movement_WalkInPlaceRight)
 	waitmovement(0)
 	msgbox(format("You also have the option to change clothes upstairs.\pOne of your boxes has all of clothes in it."))
 	closemessage
@@ -52,9 +52,6 @@ movement PlayerWalkToTableFromDoor {
 	face_left
 }
 
-movement mWIPR {walk_in_place_right}
-
-
 script IntroDialogue{
 	lock
 	setflag(FLAG_HIDE_MAP_NAME_POPUP)
@@ -65,12 +62,14 @@ script IntroDialogue{
 	waitmovement(0)
 	msgbox(format("Wow, sleepyhead!\nWas the flight that tiring? Haha!\p"
 				  "Blah blah blah we finally made it though so go find someone to talk to."))
-	setflag(FLAG_UNUSED_0x020)
-	setflag(FLAG_UNUSED_0x021)
-	setflag(FLAG_UNUSED_0x022)
-	setflag(FLAG_UNUSED_0x023)
-	setflag(FLAG_UNUSED_0x024)
+	setflag(FLAG_HIDE_ORION_WOODRIDGE_TOWN)
+	setflag(FLAG_HIDE_ORION_ORIONS_ROOM)
+	setflag(FLAG_HIDE_POKEMON_WOODRIDGE_TOWN)
+	setflag(FLAG_HIDE_CUTSCENE_NPCS_ORIONS_HOUSE)
+	setflag(FLAG_HIDE_ORIONS_STEPDAD_ORIONS_HOUSE)
+	setflag(FLAG_VISITED_WOODRIDGE_TOWN)
 	setvar(VAR_NEWGAME_START, 1)
+	setrespawn(HEAL_LOCATION_WOODRIDGE_TOWN_PLAYERS_HOUSE_2F)
 	closemessage
 	release
 }

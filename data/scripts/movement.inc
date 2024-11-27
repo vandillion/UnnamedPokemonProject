@@ -66,6 +66,10 @@ Common_Movement_FaceUp:
 	face_up
 	step_end
 
+Common_Movement_WalkInPlaceUp::
+	walk_in_place_up
+	step_end
+
 Common_Movement_WalkInPlaceDown:
 	walk_in_place_down
 	step_end
@@ -107,8 +111,3 @@ Common_Movement_WalkUp:
 	walk_up
 	step_end
 
-@ Unused
-Common_Movement_WalkUp2::
-	walk_up
-	walk_up
-	step_end

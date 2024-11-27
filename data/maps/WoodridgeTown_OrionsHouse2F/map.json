@@ -25,7 +25,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "OrionText",
-      "flag": "FLAG_UNUSED_0x021"
+      "flag": "FLAG_HIDE_ORION_ORIONS_ROOM"
     }
   ],
   "warp_events": [

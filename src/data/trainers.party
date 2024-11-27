@@ -5941,7 +5941,7 @@ Level: 39
 IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
 
 === TRAINER_CALVIN_1 ===
-Name: CALVIN
+Name: Jimmy
 Class: Youngster
 Pic: Youngster
 Gender: Male
@@ -5949,9 +5949,8 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move
 
-Poochyena
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Lechonk
+Level: 4  
 
 === TRAINER_BILLY ===
 Name: BILLY
@@ -9371,9 +9370,8 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Snorunt
+Snorunt (M)
 Level: 4
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Astonish
 
 === TRAINER_EDWIN_2 ===
@@ -9495,7 +9493,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Future Sight
 
 === TRAINER_BRENDAN_ROUTE_103_MUDKIP ===
-Name: BRENDAN
+Name: Orion
 Class: Rival
 Pic: Brendan
 Gender: Male
@@ -9503,12 +9501,14 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Treecko
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+??? (Bulbasaur) (M)
+Level: 6
+Timid Nature
+- Tackle
+- Growl
 
 === TRAINER_BRENDAN_ROUTE_110_MUDKIP ===
-Name: BRENDAN
+Name: Orion
 Class: Rival
 Pic: Brendan
 Gender: Male
@@ -9516,17 +9516,11 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Slugma
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Wingull
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Grovyle
-Level: 20
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Sugarglide (Bulbasaur) (M)
+Level: 5
+Timid Nature
+- Tackle
+- Growl
 
 === TRAINER_BRENDAN_ROUTE_119_MUDKIP ===
 Name: BRENDAN
@@ -9550,7 +9544,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_BRENDAN_ROUTE_103_TREECKO ===
-Name: BRENDAN
+Name: Orion
 Class: Rival
 Pic: Brendan
 Gender: Male
@@ -9558,30 +9552,26 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Setup First Turn
 
-Torchic
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Parmi (Charmander) (M)
+Level: 6
+Adamant Nature
+- Scratch
+- Tail Whip
 
 === TRAINER_BRENDAN_ROUTE_110_TREECKO ===
-Name: BRENDAN
+Name: Orion
 Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Setup First Turn
 
-Wingull
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Lombre
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Combusken
-Level: 20
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Parmi (Charmander) (M)
+Level: 5
+Adamant Nature
+- Scratch
+- Tail Whip
 
 === TRAINER_BRENDAN_ROUTE_119_TREECKO ===
 Name: BRENDAN
@@ -9605,7 +9595,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_BRENDAN_ROUTE_103_TORCHIC ===
-Name: BRENDAN
+Name: Orion
 Class: Rival
 Pic: Brendan
 Gender: Male
@@ -9613,12 +9603,14 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Mudkip
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Radpole (Squirtle) (M)
+Level: 6
+Modest Nature
+- Pound
+- Leer
 
 === TRAINER_BRENDAN_ROUTE_110_TORCHIC ===
-Name: BRENDAN
+Name: Orion
 Class: Rival
 Pic: Brendan
 Gender: Male
@@ -9626,17 +9618,11 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Lombre
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Slugma
-Level: 18
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Marshtomp
-Level: 20
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Radpole (Squirtle) (M)
+Level: 5
+Modest Nature
+- Pound
+- Leer
 
 === TRAINER_BRENDAN_ROUTE_119_TORCHIC ===
 Name: BRENDAN
@@ -13528,9 +13514,8 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Snorunt
+Snorunt (M)
 Level: 4
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Astonish
 
 === TRAINER_PETE ===
