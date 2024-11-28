@@ -49,7 +49,7 @@
 #define FLAG_HIDE_CUTSCENE_NPCS_ORIONS_HOUSE    0x23
 #define FLAG_HIDE_ORIONS_STEPDAD_ORIONS_HOUSE   0x24
 #define FLAG_LOST_FIRST_BATTLE                  0x25
-#define FLAG_UNUSED_0x026    0x26 // Unused Flag
+#define FLAG_HIDE_HARLEY_ROUTE_1                0x26
 #define FLAG_UNUSED_0x027    0x27 // Unused Flag
 #define FLAG_UNUSED_0x028    0x28 // Unused Flag
 #define FLAG_UNUSED_0x029    0x29 // Unused Flag
@@ -1089,7 +1089,7 @@
 #define FLAG_ITEM_ROUTE_132_RARE_CANDY                              0x40C
 #define FLAG_ITEM_ROUTE_133_BIG_PEARL                               0x40D
 #define FLAG_ITEM_ROUTE_133_STAR_PIECE                              0x40E
-#define FLAG_ITEM_PETALBURG_CITY_MAX_REVIVE                         0x40F
+#define FLAG_ITEM_ROUTE_1_POTION                                    0x40F
 #define FLAG_ITEM_PETALBURG_CITY_ETHER                              0x410
 #define FLAG_ITEM_RUSTBORO_CITY_X_DEFEND                            0x411
 #define FLAG_ITEM_LILYCOVE_CITY_MAX_REPEL                           0x412

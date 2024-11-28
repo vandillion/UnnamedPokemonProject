@@ -108,7 +108,7 @@ script WoodridgeFirstBattle {
     }
 	waitmovement(LOCALID_ORION)
 	msgbox(format("Since we're about to start our adventures as trainers, it's right we have a proper battle!\pNo holding back, {PLAYER}!"))
-	goto_if_set(FLAG_LOST_FIRST_BATTLE, ContinueLostFirstBattle)
+	goto_if_set(FLAG_LOST_FIRST_BATTLE, ContinueLostFirstBattleOrion)
 	switch (var(VAR_STARTER_MON)) {
         case 0:
 			trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_103_TREECKO, OrionDefeat)
@@ -117,10 +117,10 @@ script WoodridgeFirstBattle {
         case 2:
 			trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_103_MUDKIP, OrionDefeat)
     }
-	goto(PostFirstBattle)
+	goto(PostBattleOrion1)
 }
 
-script ContinueLostFirstBattle {
+script ContinueLostFirstBattleOrion {
 	switch (var(VAR_STARTER_MON)) {
         case 0:
 			trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_110_TREECKO, OrionDefeat)
@@ -129,10 +129,10 @@ script ContinueLostFirstBattle {
         case 2:
 			trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_110_MUDKIP, OrionDefeat)
 	}
-	goto(PostFirstBattle)
+	goto(PostBattleOrion1)
 }
 
-script PostFirstBattle {
+script PostBattleOrion1 {
 	msgbox("Alright, I'm headin out\nSee ya later, {PLAYER}!")
 	closemessage
 	switch (var(VAR_TEMP_1)) {
