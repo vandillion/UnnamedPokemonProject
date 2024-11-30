@@ -40,85 +40,85 @@
         {
             {
 #line 15
-            .species = SPECIES_BULBASAUR,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 18
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+            .species = SPECIES_SUGARGLIDE,
+#line 15
+            .gender = TRAINER_MON_MALE,
 #line 17
-            .lvl = 5,
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 16
-            .nature = NATURE_TIMID,
+            .lvl = 5,
+            .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 19
+#line 17
                 MOVE_TACKLE,
                 MOVE_GROWL,
             },
             },
         },
     },
-#line 22
+#line 20
     [PARTNER_ORION_FIRE] =
     {
-#line 23
+#line 21
         .trainerName = _("Orion"),
-#line 24
+#line 22
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 25
+#line 23
         .trainerPic = TRAINER_BACK_PIC_BRENDAN,
         .encounterMusic_gender = 
-#line 27
+#line 25
             TRAINER_ENCOUNTER_MUSIC_MALE,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
+#line 27
+            .species = SPECIES_PARMI,
+#line 27
+            .gender = TRAINER_MON_MALE,
 #line 29
-            .species = SPECIES_CHARMANDER,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 32
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 31
+#line 28
             .lvl = 5,
-#line 30
-            .nature = NATURE_ADAMANT,
+            .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 33
+#line 29
                 MOVE_SCRATCH,
                 MOVE_TAIL_WHIP,
             },
             },
         },
     },
-#line 36
+#line 32
     [PARTNER_ORION_WATER] =
     {
-#line 37
+#line 33
         .trainerName = _("Orion"),
-#line 38
+#line 34
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 39
+#line 35
         .trainerPic = TRAINER_BACK_PIC_BRENDAN,
         .encounterMusic_gender = 
-#line 41
+#line 37
             TRAINER_ENCOUNTER_MUSIC_MALE,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 43
-            .species = SPECIES_SQUIRTLE,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 46
+#line 39
+            .species = SPECIES_RADPOLE,
+#line 39
+            .gender = TRAINER_MON_MALE,
+#line 41
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 45
+#line 40
             .lvl = 5,
-#line 44
-            .nature = NATURE_MODEST,
+            .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 47
+#line 41
                 MOVE_POUND,
                 MOVE_LEER,
             },

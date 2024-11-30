@@ -19,6 +19,8 @@
 #define P_GEN_8_POKEMON                  TRUE // Generation 8 Pokémon (SwSh, BDSP, LA)
 #define P_GEN_9_POKEMON                  TRUE // Generation 9 Pokémon (SV)
 
+#define P_GEN_N_POKEMON                  TRUE // New Gen
+
 // Setting this to TRUE will add the new evolutions to the Regional Dex.
 #define P_NEW_EVOS_IN_REGIONAL_DEX       TRUE
 
@@ -603,5 +605,9 @@
 #define P_FAMILY_IRON_CROWN              P_GEN_9_POKEMON
 #define P_FAMILY_TERAPAGOS               P_GEN_9_POKEMON
 #define P_FAMILY_PECHARUNT               P_GEN_9_POKEMON
+
+#define P_FAMILY_SUGARGLIDE              P_GEN_N_POKEMON
+#define P_FAMILY_PARMI                   P_GEN_N_POKEMON
+#define P_FAMILY_RADPOLE                 P_GEN_N_POKEMON
 
 #endif // GUARD_CONFIG_SPECIES_ENABLED_H

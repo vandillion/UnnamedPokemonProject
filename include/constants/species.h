@@ -1629,7 +1629,13 @@
 #define SPECIES_URSHIFU_RAPID_STRIKE_STYLE_GIGANTAMAX   1522
 #define SPECIES_MIMIKYU_TOTEM_BUSTED                    1523
 
-#define SPECIES_EGG (SPECIES_MIMIKYU_TOTEM_BUSTED + 1)
+
+#define SPECIES_SUGARGLIDE                              1524
+#define SPECIES_PARMI                                   1525
+#define SPECIES_RADPOLE                                 1526
+
+
+#define SPECIES_EGG (SPECIES_RADPOLE + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 
