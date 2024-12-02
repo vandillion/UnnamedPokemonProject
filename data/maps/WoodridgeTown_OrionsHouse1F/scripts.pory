@@ -90,8 +90,7 @@ script TownMeeting {
     delay(32)
     playse(SE_PIN)
     waitmovement(0)
-    msgbox(format("Mom: {PLAYER}!\nAbout time you woke up!"))
-    closemessage
+    msgbox(format("Mom: {PLAYER}!\nAbout time you woke up!"), MSGBOX_AUTOCLOSE)
     applymovement(OBJ_EVENT_ID_PLAYER, MeetingPlayerWalkFromDoorToTable)
     delay(96)
     applymovement(LOCALID_DAISY, Common_Movement_WalkInPlaceUp)
@@ -128,8 +127,7 @@ script TownMeeting {
     msgbox(format("Mom: Alright, us two are gonna get going.\pThank you for having us over, Mrs. Fields."))
     applymovement(LOCALID_ORIONS_MOM, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
-    msgbox(format("Anytime!"))
-    closemessage
+    msgbox(format("Anytime!"), MSGBOX_AUTOCLOSE)
     applymovement(LOCALID_SAM, SamLeaveHouse)
     applymovement(LOCALID_DAISY, DaisyLeaveHouse)
     delay(96)
@@ -140,8 +138,7 @@ script TownMeeting {
     applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
     applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
     waitmovement(0)
-    msgbox(format("Alright, {PLAYER}.\nI'm gonna get ready to head out.\pI'll catch you later!"))
-    closemessage
+    msgbox(format("Alright, {PLAYER}.\nI'm gonna get ready to head out.\pI'll catch you later!"), MSGBOX_AUTOCLOSE)
     applymovement(LOCALID_ORION, OrionWalkUpstairs)
     delay(32)
     switch (var(VAR_STARTER_MON)) {
@@ -167,8 +164,7 @@ script TownMeeting {
 			applymovement(LOCALID_WS, MonHappy)
     }
     waitmovement(0)
-    msgbox(format("Looks like {STR_VAR_1} is happy to see you again!"))
-    closemessage
+    msgbox(format("Looks like {STR_VAR_1} is happy to see you again!"), MSGBOX_AUTOCLOSE)
     delay(10)
     removeobject(LOCALID_DAISY)
     removeobject(LOCALID_SAM)
@@ -178,8 +174,10 @@ script TownMeeting {
     removeobject(LOCALID_WS)
     setflag(FLAG_HIDE_CUTSCENE_NPCS_ORIONS_HOUSE)
     setvar(VAR_NEWGAME_START, 6)
+    setvar(VAR_BLOCK_PROGRESSION_SOUTH, 1)
     clearflag(FLAG_HIDE_ORION_WOODRIDGE_TOWN)
     clearflag(FLAG_HIDE_ORION_ORIONS_ROOM)
+    setvar(VAR_BLOCK_PROGRESSION_WEST, 0)
     release
 }
 

@@ -7,6 +7,7 @@ raw `
 
 mapscripts WoodridgeTown_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
+        setrespawn(HEAL_LOCATION_WOODRIDGE_TOWN)
 		call_if_eq(VAR_NEWGAME_START, 5, UpdateObjects)
 		call_if_eq(VAR_NEWGAME_START, 6, UpdateOrionForBattle)
 	}
@@ -86,7 +87,7 @@ script WoodridgeBattleTrigger3 {
 
 script WoodridgeFirstBattle {
 	lock
-	setobjectxy(LOCALID_ORION, 10, 14)
+	setobjectxy(LOCALID_ORION, 9, 14)
 	msgbox("Wait up, {PLAYER}!")
 	closemessage
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
@@ -107,7 +108,8 @@ script WoodridgeFirstBattle {
 			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
     }
 	waitmovement(LOCALID_ORION)
-	msgbox(format("Since we're about to start our adventures as trainers, it's right we have a proper battle!\pNo holding back, {PLAYER}!"))
+	msgbox(format("Since we're about to start our adventures as trainers, it's right we have a proper battle!\pAlright!\nNo holding back, {PLAYER}!"))
+	setrespawn(HEAL_LOCATION_WOODRIDGE_TOWN_PLAYERS_HOUSE_2F)
 	goto_if_set(FLAG_LOST_FIRST_BATTLE, ContinueLostFirstBattleOrion)
 	switch (var(VAR_STARTER_MON)) {
         case 0:
@@ -133,8 +135,7 @@ script ContinueLostFirstBattleOrion {
 }
 
 script PostBattleOrion1 {
-	msgbox("Alright, I'm headin out\nSee ya later, {PLAYER}!")
-	closemessage
+	msgbox("Alright, I'm headin out\nSee ya later, {PLAYER}!", MSGBOX_AUTOCLOSE)					
 	switch (var(VAR_TEMP_1)) {
         case 2:
 			applymovement(LOCALID_ORION, OrionLeave2)
@@ -168,7 +169,9 @@ movement OrionLeave {
 
 movement OrionLeave2 {
 	walk_up
-	walk_left * 7
+	walk_left * 5
+	walk_down
+	walk_left
 	walk_down
 	walk_left
 	walk_down
@@ -203,38 +206,6 @@ movement OrionBattleMovement3 {
 	walk_left * 8
 	walk_in_place_down
 }
-
-script BlockProgressionW {
-	lock
-	call_if_lt(VAR_NEWGAME_START, 7, pensiw)
-	release
-}
-
-script pensiw {
-	msgbox(BlockProg)
-	closemessage
-	applymovement(OBJ_EVENT_ID_PLAYER, BlockProgW)
-	waitmovement(0)
-}
-
-script BlockProgressionS {
-	lock
-	call_if_lt(VAR_NEWGAME_START, 4, pensis)
-	release
-}
-
-script pensis {
-	msgbox(BlockProg)
-	closemessage
-	applymovement(OBJ_EVENT_ID_PLAYER, BlockProgS)
-	waitmovement(0)
-}
-
-text BlockProg {"You can't leave yet!"}
-movement BlockProgN {walk_down}
-movement BlockProgE {walk_left}
-movement BlockProgS {walk_up}
-movement BlockProgW {walk_right}
 
 //Story scripts
 
@@ -397,3 +368,47 @@ movement WalkMons3 {
 	walk_left
 	walk_up * 7
 }
+
+//==========================================================================================================
+
+script BlockProgressionN {
+	lock
+	msgbox(BlockProg)
+	closemessage
+	applymovement(OBJ_EVENT_ID_PLAYER, BlockProgN)
+	waitmovement(0)
+	release
+}
+
+script BlockProgressionE {
+	lock
+	msgbox(BlockProg)
+	closemessage
+	applymovement(OBJ_EVENT_ID_PLAYER, BlockProgE)
+	waitmovement(0)
+	release
+}
+
+script BlockProgressionS {
+	lock
+	msgbox(BlockProg)
+	closemessage
+	applymovement(OBJ_EVENT_ID_PLAYER, BlockProgS)
+	waitmovement(0)
+	release
+}
+
+script BlockProgressionW {
+	lock
+	msgbox(BlockProg)
+	closemessage
+	applymovement(OBJ_EVENT_ID_PLAYER, BlockProgW)
+	waitmovement(0)
+	release
+}
+
+text BlockProg {format("You can't go this way yet.")}
+movement BlockProgN {walk_down}
+movement BlockProgE {walk_left}
+movement BlockProgS {walk_up}
+movement BlockProgW {walk_right}

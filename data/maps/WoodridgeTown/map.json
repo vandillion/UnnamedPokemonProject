@@ -97,7 +97,7 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 2,
+      "x": 1,
       "y": 12,
       "elevation": 0,
       "var": "VAR_NEWGAME_START",
@@ -106,7 +106,7 @@
     },
     {
       "type": "trigger",
-      "x": 2,
+      "x": 1,
       "y": 13,
       "elevation": 0,
       "var": "VAR_NEWGAME_START",
@@ -115,7 +115,7 @@
     },
     {
       "type": "trigger",
-      "x": 2,
+      "x": 1,
       "y": 14,
       "elevation": 0,
       "var": "VAR_NEWGAME_START",
@@ -124,7 +124,7 @@
     },
     {
       "type": "trigger",
-      "x": 2,
+      "x": 1,
       "y": 15,
       "elevation": 0,
       "var": "VAR_NEWGAME_START",
@@ -136,8 +136,8 @@
       "x": 1,
       "y": 12,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
+      "var": "VAR_BLOCK_PROGRESSION_WEST",
+      "var_value": "1",
       "script": "BlockProgressionW"
     },
     {
@@ -145,8 +145,8 @@
       "x": 1,
       "y": 13,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
+      "var": "VAR_BLOCK_PROGRESSION_WEST",
+      "var_value": "1",
       "script": "BlockProgressionW"
     },
     {
@@ -154,8 +154,8 @@
       "x": 1,
       "y": 14,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
+      "var": "VAR_BLOCK_PROGRESSION_WEST",
+      "var_value": "1",
       "script": "BlockProgressionW"
     },
     {
@@ -163,8 +163,8 @@
       "x": 1,
       "y": 15,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
+      "var": "VAR_BLOCK_PROGRESSION_WEST",
+      "var_value": "1",
       "script": "BlockProgressionW"
     },
     {
@@ -172,8 +172,8 @@
       "x": 12,
       "y": 26,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
+      "var": "VAR_BLOCK_PROGRESSION_SOUTH",
+      "var_value": "1",
       "script": "BlockProgressionS"
     },
     {
@@ -181,8 +181,8 @@
       "x": 13,
       "y": 26,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
+      "var": "VAR_BLOCK_PROGRESSION_SOUTH",
+      "var_value": "1",
       "script": "BlockProgressionS"
     },
     {
@@ -190,8 +190,8 @@
       "x": 14,
       "y": 26,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
+      "var": "VAR_BLOCK_PROGRESSION_SOUTH",
+      "var_value": "1",
       "script": "BlockProgressionS"
     },
     {
@@ -199,8 +199,8 @@
       "x": 15,
       "y": 26,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
+      "var": "VAR_BLOCK_PROGRESSION_SOUTH",
+      "var_value": "1",
       "script": "BlockProgressionS"
     }
   ],

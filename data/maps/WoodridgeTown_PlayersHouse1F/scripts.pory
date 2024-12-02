@@ -43,6 +43,7 @@ script TalkToParents {
 	msgbox(format("You also have the option to change clothes upstairs.\pOne of your boxes has all of clothes in it."))
 	closemessage
 	setvar(VAR_NEWGAME_START, 4)
+	setvar(VAR_BLOCK_PROGRESSION_SOUTH, 0)
 	release
 }
 
@@ -69,7 +70,8 @@ script IntroDialogue{
 	setflag(FLAG_HIDE_ORIONS_STEPDAD_ORIONS_HOUSE)
 	setflag(FLAG_VISITED_WOODRIDGE_TOWN)
 	setvar(VAR_NEWGAME_START, 1)
-	setrespawn(HEAL_LOCATION_WOODRIDGE_TOWN_PLAYERS_HOUSE_2F)
+	setvar(VAR_BLOCK_PROGRESSION_SOUTH, 1)
+	setvar(VAR_BLOCK_PROGRESSION_WEST, 1)
 	closemessage
 	release
 }

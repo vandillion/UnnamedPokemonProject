@@ -115,7 +115,8 @@ script StartWalk {
     applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
     applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
-    msgbox(format("I've never seen any of these Pokemon before!\pAnd they don't look native to the Vast Woods.\pWhere could they have came from?"))
+    message(format("I've never seen any of these Pokemon before!\pAnd they don't look native to the Vast Woods.\pWhere could they ha-"))
+    waitmessage
     msgbox("???: You two!\nDon't move!")
     closemessage
     showobjectat(LOCALID_LEON, MAP_VAST_WOODS_TRAIL)
@@ -151,7 +152,6 @@ script StartWalk {
     fadescreen(FADE_TO_BLACK)
     special(ChooseStarter)
     waitstate
-    setflag(FLAG_SYS_POKEMON_GET)
     switch (var(VAR_STARTER_MON)) {
         case 0:
             call(ContinueGrass)
@@ -238,7 +238,7 @@ script wonFirstBattle {
     msgbox("Fine!\nTake the Pokemon!\pWe didn't need them anyway!")
     applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
     waitmovement(0)
-    msgbox(format("I know you're bluffing, but we'll leave anyway.\pBye!"))
+    msgbox(format("I know you're bluffing, but we'll leave anyway.\lBye!"))
     applymovement(LOCALID_ORION, OrionLookUp)
     applymovement(OBJ_EVENT_ID_PLAYER, PlayerLookDown)
     waitmovement(0)
@@ -252,7 +252,8 @@ script wonFirstBattle {
     waitmovement(0)
     applymovement(LOCALID_LEON, WalkLeftTurn)
     waitmovement(0)
-    msgbox(format("What the hell was that?!\pHarley, we could've beaten them if you helped!"))
+    message(format("What the hell was that?!\pHarley, we could've beaten them if you helped!"))
+    waitmessage
     applymovement(LOCALID_HARLEY, HarleyWalkLeft)
     waitmovement(0)
     msgbox(format("Excuse me!?\nThat battle had absolutely nothing to do with me!\p"
