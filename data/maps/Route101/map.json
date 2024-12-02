@@ -27,10 +27,10 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
-      "x": 22,
-      "y": 15,
+      "x": 25,
+      "y": 17,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
@@ -40,7 +40,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 4,
+      "x": 22,
       "y": 8,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -52,7 +52,7 @@
       "flag": "FLAG_ITEM_ROUTE_1_POTION"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_FLANNERY",
+      "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
       "x": 10,
       "y": 8,
       "elevation": 0,

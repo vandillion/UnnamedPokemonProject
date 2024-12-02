@@ -55,6 +55,9 @@ script HarleyBattle {
 	closemessage
 	playbgm(MUS_RG_ENCOUNTER_GYM_LEADER, FALSE)
 	applymovement(OBJ_EVENT_ID_PLAYER, WalkInPlaceDownExclam)
+	delay(16)
+	playse(SE_PIN)
+	delay(20)
 	switch (var(VAR_TEMP_0)) {
         case 0:
 			applymovement(LOCALID_HARLEY, HarleyWalkTowardsPlayer0)
@@ -63,10 +66,8 @@ script HarleyBattle {
         case 2:
 			applymovement(LOCALID_HARLEY, HarleyWalkTowardsPlayer2)
     }
-	delay(16)
-	playse(SE_PIN)
 	waitmovement(0)
-	delay(45)
+	delay(30)
 	msgbox("Battle me!\nNow!")
 	goto_if_set(FLAG_LOST_FIRST_BATTLE, ContinueLostFirstBattleHarley)
 	switch (var(VAR_STARTER_MON)) {
@@ -99,6 +100,7 @@ text HarleyDefeat {
 script PostBattleHarley1 {
 	msgbox("...\n...\pWe'll meet again...")
 	closemessage
+	playse(SE_FLEE)
 	switch (var(VAR_TEMP_0)) {
         case 0:
 			applymovement(LOCALID_HARLEY, Route1HarleyLeave0)
@@ -118,6 +120,7 @@ script PostBattleHarley1 {
 	removeobject(LOCALID_HARLEY)
 	setflag(FLAG_HIDE_HARLEY_ROUTE_1)
 	setvar(VAR_ROUTE1_STATE, 1)
+	setvar(VAR_BLOCK_PROGRESSION_NORTH, 1)
 	release
 }
 
@@ -138,26 +141,26 @@ movement WalkInPlaceDownExclam {
 
 movement HarleyWalkTowardsPlayer0 {
 	set_visible
-	walk_up  * 3
-	walk_right
-	walk_up * 2
+	walk_fast_up  * 3
+	walk_fast_right
+	walk_fast_up * 2
 }
 
 movement HarleyWalkTowardsPlayer1 {
 	set_visible
-	walk_up
-	walk_right
-	walk_up  * 2
-	walk_right
-	walk_up * 2
+	walk_fast_up  * 2
+	walk_fast_right
+	walk_fast_up
+	walk_fast_right
+	walk_fast_up * 2
 }
 
 movement HarleyWalkTowardsPlayer2 {
 	set_visible
-	walk_up
-	walk_right
-	walk_up * 2
-	walk_right * 2
-	walk_up * 2
+	walk_fast_up * 2
+	walk_fast_right * 2
+	walk_fast_up
+	walk_fast_right
+	walk_fast_up * 2
 }
 
