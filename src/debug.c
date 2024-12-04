@@ -1281,7 +1281,7 @@ static u8 Debug_CheckToggleFlags(u8 id)
                 FlagGet(FLAG_VISITED_FALLARBOR_TOWN) &&
                 FlagGet(FLAG_VISITED_VERDANTURF_TOWN) &&
                 FlagGet(FLAG_VISITED_PACIFIDLOG_TOWN) &&
-                FlagGet(FLAG_VISITED_PETALBURG_CITY) &&
+                FlagGet(FLAG_VISITED_ANIMORA_CITY) &&
                 FlagGet(FLAG_VISITED_SLATEPORT_CITY) &&
                 FlagGet(FLAG_VISITED_MAUVILLE_CITY) &&
                 FlagGet(FLAG_VISITED_RUSTBORO_CITY) &&
@@ -2788,7 +2788,7 @@ static void DebugAction_FlagsVars_ToggleFlyFlags(u8 taskId)
         FlagClear(FLAG_VISITED_FALLARBOR_TOWN);
         FlagClear(FLAG_VISITED_VERDANTURF_TOWN);
         FlagClear(FLAG_VISITED_PACIFIDLOG_TOWN);
-        FlagClear(FLAG_VISITED_PETALBURG_CITY);
+        FlagClear(FLAG_VISITED_ANIMORA_CITY);
         FlagClear(FLAG_VISITED_SLATEPORT_CITY);
         FlagClear(FLAG_VISITED_MAUVILLE_CITY);
         FlagClear(FLAG_VISITED_RUSTBORO_CITY);
@@ -2810,7 +2810,7 @@ static void DebugAction_FlagsVars_ToggleFlyFlags(u8 taskId)
         FlagSet(FLAG_VISITED_FALLARBOR_TOWN);
         FlagSet(FLAG_VISITED_VERDANTURF_TOWN);
         FlagSet(FLAG_VISITED_PACIFIDLOG_TOWN);
-        FlagSet(FLAG_VISITED_PETALBURG_CITY);
+        FlagSet(FLAG_VISITED_ANIMORA_CITY);
         FlagSet(FLAG_VISITED_SLATEPORT_CITY);
         FlagSet(FLAG_VISITED_MAUVILLE_CITY);
         FlagSet(FLAG_VISITED_RUSTBORO_CITY);
