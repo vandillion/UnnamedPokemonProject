@@ -554,3 +554,4 @@ gSpecials::
 	def_special Script_GetChosenMonOffensiveIVs
 	def_special Script_GetChosenMonDefensiveIVs
 	def_special ClearPlayerParty
+	def_special UseBlankMessageToCancelPokemonPic
