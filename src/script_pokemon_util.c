@@ -561,9 +561,3 @@ void Script_SetStatus1(struct ScriptContext *ctx)
         SetMonData(&gPlayerParty[slot], MON_DATA_STATUS, &status1);
     }
 }
-
-void ClearPlayerParty(void)
-{
-    ZeroPlayerPartyMons();
-    gPlayerPartyCount = 0;
-}

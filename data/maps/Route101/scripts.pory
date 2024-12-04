@@ -1,5 +1,5 @@
 raw `
-.set LOCALID_HARLEY, 3
+.set LOCALID_HARLEY, 2
 `
 
 mapscripts Route101_MapScripts {
