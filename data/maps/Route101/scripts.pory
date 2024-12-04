@@ -119,8 +119,8 @@ script PostBattleHarley1 {
 	fadedefaultbgm
 	removeobject(LOCALID_HARLEY)
 	setflag(FLAG_HIDE_HARLEY_ROUTE_1)
+	setflag(FLAG_HIDE_AIDE_ANIMORA_CITY)
 	setvar(VAR_ROUTE1_STATE, 1)
-	setvar(VAR_BLOCK_PROGRESSION_NORTH, 1)
 	release
 }
 

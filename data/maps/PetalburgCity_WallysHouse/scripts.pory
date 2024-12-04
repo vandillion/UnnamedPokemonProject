@@ -1,139 +1,225 @@
 raw `
-.set LOCALID_WALLYS_DAD, 1
-
-PetalburgCity_WallysHouse_MapScripts::
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, PetalburgCity_WallysHouse_OnFrame
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, PetalburgCity_WallysHouse_OnWarp
-	.byte 0
-
-PetalburgCity_WallysHouse_OnWarp:
-	map_script_2 VAR_ANIMORA_CITY_STATE, 4, PetalburgCity_WallysHouse_EventScript_PlayerWallysDadFaceEachOther
-	.2byte 0
-
-PetalburgCity_WallysHouse_EventScript_PlayerWallysDadFaceEachOther::
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
-	turnobject LOCALID_WALLYS_DAD, DIR_WEST
-	end
-
-PetalburgCity_WallysHouse_OnFrame:
-	map_script_2 VAR_ANIMORA_CITY_STATE, 4, PetalburgCity_WallysHouse_EventScript_GiveHMSurf
-	.2byte 0
-
-PetalburgCity_WallysHouse_EventScript_GiveHMSurf::
-	lockall
-	msgbox PetalburgCity_WallysHouse_Text_PleaseExcuseUs, MSGBOX_DEFAULT
-	giveitem ITEM_HM_SURF
-	setflag FLAG_RECEIVED_HM_SURF
-	msgbox PetalburgCity_WallysHouse_Text_SurfGoAllSortsOfPlaces, MSGBOX_DEFAULT
-	setvar VAR_ANIMORA_CITY_STATE, 5
-	releaseall
-	end
-
-PetalburgCity_WallysHouse_EventScript_WallysDad::
-	lock
-	faceplayer
-	goto_if_set FLAG_DEFEATED_WALLY_VICTORY_ROAD, PetalburgCity_WallysHouse_EventScript_DefeatedWallyInVictoryRoad
-	goto_if_set FLAG_RECEIVED_HM_SURF, PetalburgCity_WallysHouse_EventScript_ReceievedHMSurf
-	goto_if_set FLAG_THANKED_FOR_PLAYING_WITH_WALLY, PetalburgCity_WallysHouse_EventScript_PlayedWithWally
-	msgbox PetalburgCity_WallysHouse_Text_ThanksForPlayingWithWally, MSGBOX_DEFAULT
-	setflag FLAG_THANKED_FOR_PLAYING_WITH_WALLY
-	release
-	end
-
-PetalburgCity_WallysHouse_EventScript_ReceievedHMSurf::
-	msgbox PetalburgCity_WallysHouse_Text_WallyIsComingHomeSoon, MSGBOX_DEFAULT
-	release
-	end
-
-PetalburgCity_WallysHouse_EventScript_DefeatedWallyInVictoryRoad::
-	msgbox PetalburgCity_WallysHouse_Text_YouMetWallyInEverGrandeCity, MSGBOX_DEFAULT
-	release
-	end
-
-PetalburgCity_WallysHouse_EventScript_PlayedWithWally::
-	msgbox PetalburgCity_WallysHouse_Text_WonderHowWallyIsDoing, MSGBOX_DEFAULT
-	release
-	end
-
-PetalburgCity_WallysHouse_EventScript_WallysMom::
-	lock
-	faceplayer
-	goto_if_set FLAG_RECEIVED_HM_SURF, PetalburgCity_WallysHouse_EventScript_ReceivedHMSurf
-	msgbox PetalburgCity_WallysHouse_Text_WallyWasReallyHappy, MSGBOX_DEFAULT
-	release
-	end
-
-PetalburgCity_WallysHouse_EventScript_ReceivedHMSurf::
-	msgbox PetalburgCity_WallysHouse_Text_WallyLeftWithoutTelling, MSGBOX_DEFAULT
-	release
-	end
-
-PetalburgCity_WallysHouse_Text_ThanksForPlayingWithWally:
-	.string "You're…\n"
-	.string "Ah, you must be {PLAYER}{KUN}, right?\p"
-	.string "Thank you for playing with WALLY a\n"
-	.string "little while ago.\p"
-	.string "He's been frail and sickly ever\n"
-	.string "since he was a baby.\p"
-	.string "We've sent him to stay with my relatives\n"
-	.string "in VERDANTURF TOWN for a while.\p"
-	.string "The air is a lot cleaner there\n"
-	.string "than it is here.\p"
-	.string "What's that? Where's WALLY?\n"
-	.string "He's already left, our WALLY.\p"
-	.string "I wonder where he could have\n"
-	.string "gotten by now?$"
-
-PetalburgCity_WallysHouse_Text_WonderHowWallyIsDoing:
-	.string "I wonder how our WALLY is doing?$"
-
-PetalburgCity_WallysHouse_Text_PleaseExcuseUs:
-	.string "{PLAYER}{KUN}! Please excuse us for\n"
-	.string "dragging you here this way.\p"
-	.string "But our WALLY's become very healthy\n"
-	.string "since he went to VERDANTURF TOWN.\p"
-	.string "We owe it all to you!\p"
-	.string "When WALLY left town, you helped\n"
-	.string "him catch a POKéMON, right?\p"
-	.string "I think that made WALLY really\n"
-	.string "happy.\p"
-	.string "Actually, not just WALLY.\n"
-	.string "It made me, his father, happy too.\p"
-	.string "Happy that he's gained such a great\n"
-	.string "friend as you.\p"
-	.string "This isn't a bribe or anything, but\n"
-	.string "I'd really like you to have this.$"
-
-PetalburgCity_WallysHouse_Text_SurfGoAllSortsOfPlaces:
-	.string "If your POKéMON can SURF, you'll be\n"
-	.string "able to go to all sorts of places.$"
-
-PetalburgCity_WallysHouse_Text_WallyIsComingHomeSoon:
-	.string "WALLY's coming home soon.\n"
-	.string "I'm looking forward to that.$"
-
-PetalburgCity_WallysHouse_Text_YouMetWallyInEverGrandeCity:
-	.string "Oh? You met WALLY in\n"
-	.string "EVER GRANDE CITY?\p"
-	.string "Oh, {PLAYER}{KUN}, don't be silly.\p"
-	.string "He may have gotten healthy, but he\n"
-	.string "can't go somewhere far away like\l"
-	.string "that all by himself.$"
-
-PetalburgCity_WallysHouse_Text_WallyWasReallyHappy:
-	.string "WALLY was really happy when he told\n"
-	.string "us that he caught a POKéMON.\p"
-	.string "It's been ages since I've seen him\n"
-	.string "smile like that.$"
-
-PetalburgCity_WallysHouse_Text_WallyLeftWithoutTelling:
-	.string "I want you to keep this a secret\n"
-	.string "from my husband…\p"
-	.string "But our WALLY left VERDANTURF TOWN\n"
-	.string "without telling anyone.\p"
-	.string "You know, WALLY is frail, but\n"
-	.string "he's surprisingly strong-willed.\p"
-	.string "I'm sure that he'll come back safe\n"
-	.string "and sound one day!$"
-
+.set LOCALID_PROF, 1
+.set LOCALID_AIDE, 2
+.set LOCALID_ORION, 3
 `
+
+mapscripts PetalburgCity_WallysHouse_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		call_if_eq(VAR_ANIMORA_CITY_STATE, 0, ProfLabUpdateObjects)
+		}
+	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+		 VAR_ANIMORA_CITY_STATE, 0 : ChangeLabBgm
+		 VAR_ANIMORA_CITY_STATE, 1 : ChangeLabBgm
+    ]
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		 VAR_ANIMORA_CITY_STATE, 0 : ProfIntro0
+		 VAR_ANIMORA_CITY_STATE, 1 : ProfIntro1
+    ]
+}
+
+script ProfLabUpdateObjects {
+	setobjectxyperm(LOCALID_AIDE, 3, 10)
+	setobjectmovementtype(LOCALID_ORION, MOVEMENT_TYPE_FACE_LEFT)
+	setobjectmovementtype(LOCALID_ORION, MOVEMENT_TYPE_INVISIBLE)
+}
+
+script ChangeLabBgm {
+	playbgm(MUS_RG_OAK, TRUE)
+}
+
+script ProfIntro0 {
+	lock
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalkToProf)
+	waitmovement(0)
+	delay(20)
+	applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
+	waitmovement(0)
+	msgbox(format("Ah! You finally made it, {PLAYER}!"))
+	closemessage
+	playse(SE_DOOR)
+	waitse
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+	applymovement(LOCALID_ORION, ProfLabOrionEnter)
+	waitmovement(0)
+	goto(ProfIntroContinue)
+}
+
+movement ProfLabOrionEnter {
+	set_visible
+	walk_up * 6
+}
+
+
+script ProfIntro1 {
+	lock
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalkToProf)
+	applymovement(LOCALID_ORION, PlayerWalkToProf)
+	waitmovement(0)
+	delay(20)
+	applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
+	waitmovement(0)
+	msgbox(format("Ah! You two!\nI've been expecting you!\pBut you already knew that, haha!"))
+	goto(ProfIntroContinue)
+}
+
+script ProfIntroContinue {
+	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
+	waitmovement(0)
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
+	msgbox(format("It's a pleasure to finally meet you, Prof. Watson!\pI've heard a lot about you on TV!"))
+	applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
+	waitmovement(0)
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
+	msgbox(format("Nice to meet you too, Orion!\pSo, you two were in quite a pickle last night, huh?"))
+	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
+	waitmovement(0)
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
+	msgbox(format("Yes, sir!\nWe even managed to save three Pokémon from a group of goofy-looking teens!\p"
+				  "Though this morning, one of the Pokémon we saved went missing..."))
+	applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
+	waitmovement(0)
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
+	msgbox(format("Ah, cheer up, kid!\nJust hope for the best for the litte thing.\pWhich reminds me, may I see the Pokémon you have?"))
+	closemessage
+	applymovement(LOCALID_PROF, ProfCheckMons)
+	waitmovement(0)
+	msgbox(format("Well! Both of your Pokémon seem to be happy with you two.\p"
+				  "Now if I'm not mistaken, this your first ever Pokémon, right Orion?\p{PLAYER}, I already know this is your first Pokémon because we're family!"))
+	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
+	waitmovement(0)
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
+	msgbox("It is, sir!")
+	applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
+	waitmovement(0)
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
+	msgbox(format("Well then, I've got great news for both of you!\p{PLAYER} and Orion, today is the day you two become Pokémon Trainers!\psomething something first partner Pokémon!"))
+	playfanfare(MUS_EVOLVED)
+	bufferleadmonspeciesname(STR_VAR_1)
+	message(format("{PLAYER} officialy received {STR_VAR_1} as their Pokémon!"))
+	waitfanfare
+	setflag(FLAG_SYS_POKEMON_GET)
+	applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
+	waitmovement(0)
+	msgbox(format("Since you two have just become trainers, I suggest taking a visit to Centra City's Trainer University.\p"
+				  "They have a 2-day program there that gives you all the basics of being a Pokémon Trainer.\p"
+				  "Once you've completed the program, you two should challenge the Pokémon Gym located in this city.\pI would say more but I can't think of shit too say so chyeah\p"
+				  "Before you head out on your very first adventure as Pokémon Trainers, I have somthing rather importatnt to give to you.\pA device used by Trainers all around the world, it automatically records data for Pokémon you've seen or caught.\p"
+				  "The best part is it was developed by your very own great-grandfather, {PLAYER}!"))
+	closemessage
+	delay(45)
+	msgbox("Lemme go grab em.")
+	closemessage
+	applymovement(LOCALID_PROF, ProfGetPokedex)
+	waitmovement(0)
+	playfanfare(MUS_RG_OBTAIN_KEY_ITEM)
+	message(format("{PLAYER} received the Pokedex!"))
+	waitfanfare
+	closemessage
+	setflag(FLAG_RECEIVED_POKEDEX_FROM_BIRCH)
+	setflag(FLAG_SYS_POKEDEX_GET)
+	applymovement(LOCALID_PROF, ContinueGiveDex)
+	waitmovement(0)
+	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
+	waitmovement(0)
+	applymovement(LOCALID_PROF, EndGiveDex)
+	waitmovement(0)
+	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
+    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
+    waitmovement(0)
+	msgbox(format("Wow! I would've never guessed you're a descendant of the developer of the Pokedex, {PLAYER}!"))
+	applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
+	delay(8)
+	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
+	waitmovement(0)
+	msgbox(format("By the way, would either of you like to give a nickname to your Pokémon?"), MSGBOX_YESNO)
+	switch (var(VAR_RESULT)) {
+        case 1:
+		setvar(VAR_0x8004, 0)
+		call(Common_EventScript_NameReceivedPartyMon)
+		default:
+		nop
+    }
+	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
+	waitmovement(0)
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
+	switch (var(VAR_STARTER_MON)) {
+		case 0:
+	    	bufferstring(STR_VAR_2, "Parmi")
+        case 1:
+			bufferstring(STR_VAR_2, "Radpole")
+		case 2:
+			bufferstring(STR_VAR_2, "SHITTYSEX")
+    }
+	msgbox(format("I think “{STR_VAR_2}” is already a pretty cool name, so I'll pass on a nickname!"))
+	applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
+	waitmovement(0)
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
+	msgbox(format("Then it's settled!\nYour next desination is Centra City.\p"
+				  "Centra City is a large city, so blah blah blah."))
+	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
+	waitmovement(0)
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
+	msgbox("raring to go\nbye!", MSGBOX_AUTOCLOSE)
+	applymovement(LOCALID_ORION, OrionLeaveLab)
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+	waitmovement(0)
+	playse(SE_EXIT)
+	waitse
+	delay(30)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
+	waitmovement(0)
+	msgbox(format("{PLAYER}, if you ever need your Pokedex evaluated, call or visit me.\pI would've told that to Orion, but he can't do that unless programmed to because he's an NPC."), MSGBOX_AUTOCLOSE)
+	fadedefaultbgm
+	removeobject(LOCALID_ORION)
+	setflag(FLAG_HIDE_ORION_ANIMORA_CITY)
+	clearflag(FLAG_HIDE_AIDE_ANIMORA_CITY)
+	setvar(VAR_ANIMORA_CITY_STATE, 2)
+	release
+}
+
+movement OrionLeaveLab {
+	walk_down * 6
+	set_invisible
+}
+
+movement ProfGetPokedex {
+	walk_down
+	walk_right * 8
+	delay_16 * 7
+	delay_8
+	walk_left * 8
+	walk_in_place_down
+}
+
+movement ContinueGiveDex {
+	walk_right
+	walk_in_place_down
+}
+
+movement EndGiveDex {
+	walk_up
+	walk_left
+	walk_in_place_down
+}
+
+movement ProfCheckMons {
+	delay_16
+	walk_right
+	walk_down
+	walk_in_place_fast_down
+	delay_16 * 3
+	walk_left
+	walk_in_place_fast_down
+	lock_facing_direction
+	delay_16 * 3
+	walk_up
+	unlock_facing_direction
+	delay_16 * 2
+	walk_in_place_down
+}
+
+movement PlayerWalkToProf {
+	walk_up	* 6
+}

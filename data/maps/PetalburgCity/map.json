@@ -31,20 +31,20 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_HIDE_ORION_ANIMORA_CITY"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
-      "x": 35,
-      "y": 6,
+      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+      "x": 5,
+      "y": 20,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_ORION_ANIMORA_CITY"
+      "flag": "FLAG_HIDE_AIDE_ANIMORA_CITY"
     }
   ],
   "warp_events": [
@@ -56,8 +56,8 @@
       "dest_warp_id": "0"
     },
     {
-      "x": 18,
-      "y": 17,
+      "x": 8,
+      "y": 18,
       "elevation": 0,
       "dest_map": "MAP_PETALBURG_CITY_WALLYS_HOUSE",
       "dest_warp_id": "0"
@@ -84,8 +84,8 @@
       "dest_warp_id": "0"
     },
     {
-      "x": 8,
-      "y": 18,
+      "x": 18,
+      "y": 17,
       "elevation": 0,
       "dest_map": "MAP_PETALBURG_CITY_MART",
       "dest_warp_id": "0"
@@ -99,7 +99,7 @@
       "elevation": 0,
       "var": "VAR_ANIMORA_CITY_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "AnimoraProfCutsceneTrigger0"
     },
     {
       "type": "trigger",
@@ -108,25 +108,34 @@
       "elevation": 0,
       "var": "VAR_ANIMORA_CITY_STATE",
       "var_value": "0",
-      "script": "NULL"
+      "script": "AnimoraProfCutsceneTrigger1"
     },
     {
       "type": "trigger",
-      "x": 36,
-      "y": 13,
+      "x": 12,
+      "y": 20,
       "elevation": 0,
-      "var": "VAR_BLOCK_PROGRESSION_NORTH",
-      "var_value": "1",
-      "script": "NULL"
+      "var": "VAR_ANIMORA_CITY_STATE",
+      "var_value": "2",
+      "script": "AnimoraAideTrigger0"
     },
     {
       "type": "trigger",
-      "x": 37,
-      "y": 13,
+      "x": 12,
+      "y": 21,
       "elevation": 0,
-      "var": "VAR_BLOCK_PROGRESSION_NORTH",
-      "var_value": "1",
-      "script": "NULL"
+      "var": "VAR_ANIMORA_CITY_STATE",
+      "var_value": "2",
+      "script": "AnimoraAideTrigger1"
+    },
+    {
+      "type": "trigger",
+      "x": 3,
+      "y": 19,
+      "elevation": 0,
+      "var": "VAR_ANIMORA_CITY_STATE",
+      "var_value": "2",
+      "script": "AnimoraAideTrigger2"
     }
   ],
   "bg_events": [
