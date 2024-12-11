@@ -191,7 +191,7 @@ script AnimoraAideScript {
 	waitmovement(0)
 	switch (var(VAR_TEMP_0)) {
         case 2:
-            applymovement(LOCALID_AIDE, Common_Movement_WalkInPlaceLeft)
+            applymovement(LOCALID_AIDE, AideLookForPlayer)
 		default:
 			applymovement(LOCALID_AIDE, Common_Movement_WalkInPlaceRight)
     }
@@ -238,6 +238,13 @@ script AnimoraAideScript {
 	setflag(FLAG_HIDE_AIDE_ANIMORA_CITY)
 	setvar(VAR_ANIMORA_CITY_STATE, 3)
 	release
+}
+
+movement AideLookForPlayer {
+	walk_in_place_right
+	delay_8
+	walk_in_place_left
+	
 }
 
 movement AideWalkBackToLab0 {
