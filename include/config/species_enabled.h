@@ -21,9 +21,6 @@
 
 #define P_GEN_N_POKEMON                  TRUE // New Gen
 
-// Setting this to TRUE will add the new evolutions to the Regional Dex.
-#define P_NEW_EVOS_IN_REGIONAL_DEX       TRUE
-
 // Battle gimmick specific Forms.
 #define P_MEGA_EVOLUTIONS                FALSE
 #define P_PRIMAL_REVERSIONS              FALSE // Groudon and Kyogre only.
