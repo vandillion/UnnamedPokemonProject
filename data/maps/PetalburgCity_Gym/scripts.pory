@@ -1596,14 +1596,14 @@ PetalburgCity_Gym_Text_NormanRematchNeedTwoMons:
 
 `
 
-script AnimoraGymIzzy {
-	trainerbattle_single(TRAINER_ROXANNE_1, format("Izzy Intro Text"), format("Izzy Defeat Text"), IzzyContinue, NO_MUSIC)	
+script AnimoraGymIzzie {
+	trainerbattle_single(TRAINER_ROXANNE_1, format("Izzie Intro Text"), format("Izzie Defeat Text"), IzzieContinue, NO_MUSIC)	
 }
 
-script IzzyContinue {
+script IzzieContinue {
 	setflag(FLAG_DEFEATED_ANIMORA_GYM)
 	playfanfare(MUS_OBTAIN_BADGE)
-	message(format("{PLAYER} received the ??? Badge from Izzy!"))
+	message(format("{PLAYER} received the ??? Badge from Izzie!"))
 	waitfanfare
 	closemessage
 	setflag(FLAG_BADGE01_GET)
@@ -1611,6 +1611,8 @@ script IzzyContinue {
 	//giveitem(ITEM_TM_AERIAL_ACE)
 	//goto_if_eq(VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull)
 	//setflag(FLAG_RECEIVED_TM_AERIAL_ACE)
+	msgbox(format("Leader Izzie is based on a real person.\pYou can find her on most social platforms as “(at)flatwavelength”."))
+	closemessage
 	cleartrainerflag(TRAINER_ROXANNE_1)
 	end
 }
