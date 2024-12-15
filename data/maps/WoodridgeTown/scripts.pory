@@ -25,7 +25,7 @@ script WoodridgeTownHidePlayer {
 }
 
 script UpdateOrionForBattle {
-	setobjectxyperm(LOCALID_ORION, 1, 12)
+	setobjectxyperm(LOCALID_ORION, 1, 11)
 	setobjectmovementtype(LOCALID_ORION, MOVEMENT_TYPE_INVISIBLE)
 	}
 
@@ -160,7 +160,9 @@ script PostBattleOrion1 {
 }
 
 movement OrionLeave {
-	walk_left * 6
+	walk_left * 5
+	walk_down
+	walk_left
 	walk_down
 	walk_left
 	walk_down

@@ -24,7 +24,10 @@ script PetalburgCity_PokemonCenter_1F_EventScript_Nurse {
 }
 
 script PetalburgCity_PokemonCenter_1F_EventScript_Youngster {
-	msgbox(format("When my Pokémon ate an Oran Berry, it regained HP!"), MSGBOX_NPC)
+	msgbox(format("Wanna hear a secret?\p"
+				  "This city's Gym leader primarily uses Flying-type Pokémon.\p"
+				  "But, one of her Pokémon is half Steel-type, so you'll struggle if you don't already have a Fire-type."), MSGBOX_NPC)
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	end
 }
 

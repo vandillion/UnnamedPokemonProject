@@ -24,12 +24,6 @@ script Route1Sign2 {
 	end
 }
 
-script Route1Jimmy {
-	trainerbattle_single(TRAINER_CALVIN_1, format("You plus me equals a battle! Let's go!"), "Dang it.")
-	msgbox(format("I love Pokemon battles, but I always lose..."), MSGBOX_NPC)
-	end
-}
-
 //====================Harley====================
 
 script HarleyBattleTrigger0 {
