@@ -103,8 +103,8 @@ static const u8 sHyperspaceHoleDescription[] = _(
     "Can't be evaded.");
 
 static const u8 sSuckerPunchDescription[] = _(
-    "Strikes first if the foe\n"
-    "is preparing an attack.");
+    "Power halved if the foe\n"
+    "isn't preparing an attack.");
 
 static const u8 sFeintDescription[] = _(
     "An attack that hits foes\n"
@@ -9775,7 +9775,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .power = B_UPDATED_MOVE_DATA >= GEN_7 ? 70 : 80,
         .type = TYPE_DARK,
         .accuracy = 100,
-        .pp = 5,
+        .pp = 10,
         .target = MOVE_TARGET_SELECTED,
         .priority = 1,
         .category = DAMAGE_CATEGORY_PHYSICAL,

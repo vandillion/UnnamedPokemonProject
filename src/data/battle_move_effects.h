@@ -1387,7 +1387,7 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
 
     [EFFECT_SUCKER_PUNCH] =
     {
-        .battleScript = BattleScript_EffectSuckerPunch,
+        .battleScript = BattleScript_EffectHit,
         .battleTvScore = 0, // TODO: Assign points
     },
 
