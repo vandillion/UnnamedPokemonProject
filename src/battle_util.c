@@ -1901,23 +1901,23 @@ u8 DoFieldEndTurnEffects(void)
                     {
                         gBattleWeather &= ~B_WEATHER_RAIN_TEMPORARY;
                         gBattleWeather &= ~B_WEATHER_RAIN_DOWNPOUR;
-                        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_RAIN_STOPPED;
+                        gBattlescriptCurrInstr = BattleScript_RainEnds;
                     }
                     else if (gBattleWeather & B_WEATHER_RAIN_DOWNPOUR)
-                        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_DOWNPOUR_CONTINUES;
+                        gBattlescriptCurrInstr = BattleScript_RainContinues;
                     else
-                        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_RAIN_CONTINUES;
+                        gBattlescriptCurrInstr = BattleScript_RainContinues;
                 }
                 else if (gBattleWeather & B_WEATHER_RAIN_DOWNPOUR)
                 {
-                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_DOWNPOUR_CONTINUES;
+                    gBattlescriptCurrInstr = BattleScript_RainContinues;
                 }
                 else
                 {
-                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_RAIN_CONTINUES;
+                    gBattlescriptCurrInstr = BattleScript_RainContinues;
                 }
 
-                BattleScriptExecute(BattleScript_RainContinuesOrEnds);
+                BattleScriptExecute(gBattlescriptCurrInstr);
                 effect++;
             }
             gBattleStruct->turnCountersTracker++;
