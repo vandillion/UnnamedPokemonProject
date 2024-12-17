@@ -606,5 +606,6 @@
 #define P_FAMILY_SUGARGLIDE              P_GEN_N_POKEMON
 #define P_FAMILY_PARMI                   P_GEN_N_POKEMON
 #define P_FAMILY_RADPOLE                 P_GEN_N_POKEMON
+#define P_FAMILY_BELLANCO                P_GEN_N_POKEMON
 
 #endif // GUARD_CONFIG_SPECIES_ENABLED_H

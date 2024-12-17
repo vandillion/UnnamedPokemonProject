@@ -22368,3 +22368,12 @@ static const struct LevelUpMove sRadpoleLevelUpLearnset[] = {
     LEVEL_UP_END
 };
 #endif //P_FAMILY_RADPOLE
+
+#if P_FAMILY_BELLANCO
+static const struct LevelUpMove sBellancoLevelUpLearnset[] = {
+    LEVEL_UP_MOVE( 1, MOVE_GUST),
+    LEVEL_UP_MOVE( 1, MOVE_METAL_SOUND),
+    LEVEL_UP_MOVE( 7, MOVE_ECHOED_VOICE),
+    LEVEL_UP_END
+};
+#endif //P_FAMILY_RADPOLE

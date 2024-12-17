@@ -73,11 +73,11 @@ script StartWalk {
     msgbox("Fat Weiner!")
     closemessage
     playbgm(MUS_NONE, FALSE)
-    playmoncry(SPECIES_BULBASAUR, CRY_MODE_ENCOUNTER)
+    playmoncry(SPECIES_SUGARGLIDE, CRY_MODE_ENCOUNTER)
     delay(30)
-    playmoncry(SPECIES_CHARMANDER, CRY_MODE_ENCOUNTER)
+    playmoncry(SPECIES_PARMI, CRY_MODE_ENCOUNTER)
     delay(30)
-    playmoncry(SPECIES_SQUIRTLE, CRY_MODE_ENCOUNTER)
+    playmoncry(SPECIES_RADPOLE, CRY_MODE_ENCOUNTER)
     delay(30)
     applymovement(LOCALID_ORION, LookrightExclam)
     applymovement(OBJ_EVENT_ID_PLAYER, LookrightExclam)
@@ -94,7 +94,7 @@ script StartWalk {
     turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
     msgbox("Hold on!\nSomething's coming towards us!")
     closemessage
-    playmoncry(SPECIES_BULBASAUR, CRY_MODE_NORMAL)
+    playmoncry(SPECIES_SUGARGLIDE, CRY_MODE_NORMAL)
     applymovement(LOCALID_GRASSSTARTER, RunToPlayer0)
     waitmovement(0)
     turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
@@ -106,10 +106,10 @@ script StartWalk {
     applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
     closemessage
     setobjectxy(LOCALID_WATERSTARTER, 45, 10)
-    playmoncry(SPECIES_CHARMANDER, CRY_MODE_NORMAL)
+    playmoncry(SPECIES_PARMI, CRY_MODE_NORMAL)
     applymovement(LOCALID_FIRESTARTER, RunToPlayer1)
-    delay(45)
-    playmoncry(SPECIES_SQUIRTLE, CRY_MODE_NORMAL)
+    delay(30)
+    playmoncry(SPECIES_PARMI, CRY_MODE_NORMAL)
     applymovement(LOCALID_WATERSTARTER, RunToPlayer2)
     waitmovement(0)
     applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
@@ -343,9 +343,9 @@ script ContinueWater {
 
 text OrionIllTakeThisOne {format("...{PAUSE 50}\nAlright, then I'll use this one!")}
 
-text LeonDefeatText {"This is rediculous!"}
+text LeonDefeatText {"What?!\nYou used our Pokemon against us and won!\pIs that even fair!"}
 
-text GruntDefeatText {"Wiped out!"}
+text GruntDefeatText {"Boss ain't gonna be happy to hear this..."}
 
 
 movement HarleyMoveAway {

@@ -1641,8 +1641,9 @@
 #define SPECIES_SUGARGLIDE                              1524
 #define SPECIES_PARMI                                   1525
 #define SPECIES_RADPOLE                                 1526
+#define SPECIES_BELLANCO                                1527
 
-#define SPECIES_EGG                                     (SPECIES_RADPOLE + 1)
+#define SPECIES_EGG                                     (SPECIES_BELLANCO + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 

@@ -4798,18 +4798,19 @@ Items: Potion / Potion
 Double Battle: No
 AI: Gym Leader
 
-Wattrel @ Oran Berry  
-Ability: Wind Power  
+Kedle (Pidove) (F)
 Level: 11
-- Thunder Shock  
-- Quick Attack  
-- Pluck
 
-Pidove
+Wattrel  
 Level: 12
+Ability: Wind Power  
+- Thunder Shock
+- Pluck
+- Quick Attack
 
-Skarmory
+Bellanco
 Level: 14
+Modest Nature
 
 === TRAINER_BRAWLY_1 ===
 Name: BRAWLY

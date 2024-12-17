@@ -128,6 +128,7 @@ static const u16 sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
     HOENN_TO_NATIONAL(FROSLASS),
     HOENN_TO_NATIONAL(TANDEMAUS),
     HOENN_TO_NATIONAL(MAUSHOLD),
+    HOENN_TO_NATIONAL(BELLANCO),
 };
 
 const struct SpindaSpot gSpindaSpotGraphics[] =
