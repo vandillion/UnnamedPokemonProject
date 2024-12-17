@@ -3262,11 +3262,8 @@ WoodHammerImpact:
 
 gBattleAnimMove_AquaJet::
 	loadspritegfx ANIM_TAG_SPARKLE_6
-	loadspritegfx ANIM_TAG_ROUND_SHADOW
 	loadspritegfx ANIM_TAG_SPLASH
-	playsewithpan SE_M_HEADBUTT, SOUND_PAN_ATTACKER
-	createsprite gDiveBallSpriteTemplate, 2, 4, 0, 0, 13, 336
-	waitforvisualfinish
+	invisible ANIM_ATTACKER
 	playsewithpan SE_M_DIVE, SOUND_PAN_ATTACKER
 	createsprite gDiveWaterSplashSpriteTemplate, 3, 1, 0
 	call DiveSetUpWaterDroplets
@@ -3276,6 +3273,7 @@ gBattleAnimMove_AquaJet::
 	call DiveSetUpWaterDroplets
 	loadspritegfx ANIM_TAG_WATER_IMPACT
 	loadspritegfx ANIM_TAG_SMALL_BUBBLES
+	waitforvisualfinish
 	monbg ANIM_DEF_PARTNER
 	setalpha 12, 8
 	playsewithpan SE_M_EXPLOSION, SOUND_PAN_TARGET
