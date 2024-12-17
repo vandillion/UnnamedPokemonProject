@@ -230,6 +230,8 @@ extern const u8 BattleScript_WhiteHerbEnd2[];
 extern const u8 BattleScript_WhiteHerbRet[];
 extern const u8 BattleScript_ItemHealHP_RemoveItemRet[];
 extern const u8 BattleScript_ItemHealHP_RemoveItemEnd2[];
+extern const u8 BattleScript_BerryHealHP_Ret[];
+extern const u8 BattleScript_BerryHealHP_End2[];
 extern const u8 BattleScript_BerryPPHealEnd2[];
 extern const u8 BattleScript_BerryPPHealRet[];
 extern const u8 BattleScript_ItemHealHP_End2[];

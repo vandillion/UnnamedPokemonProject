@@ -7072,13 +7072,19 @@ static u32 ItemHealHp(u32 battler, u32 itemId, enum ItemEffect caseID, bool32 pe
 
         gBattlerAbility = battler;    // in SWSH, berry juice shows ability pop up but has no effect. This is mimicked here
         if (caseID == ITEMEFFECT_ON_SWITCH_IN_FIRST_TURN || caseID == ITEMEFFECT_NORMAL)
-        {
-            BattleScriptExecute(BattleScript_ItemHealHP_RemoveItemEnd2);
+        {   
+            if (ItemId_GetPocket(itemId) == POCKET_BERRIES)
+                BattleScriptExecute(BattleScript_BerryHealHP_End2);
+            else
+                BattleScriptExecute(BattleScript_ItemHealHP_RemoveItemEnd2);
         }
         else
         {
             BattleScriptPushCursor();
-            gBattlescriptCurrInstr = BattleScript_ItemHealHP_RemoveItemRet;
+            if (ItemId_GetPocket(itemId) == POCKET_BERRIES)
+                gBattlescriptCurrInstr = BattleScript_BerryHealHP_Ret;
+            else
+                gBattlescriptCurrInstr = BattleScript_ItemHealHP_RemoveItemRet;
         }
         if (gBattleResources->flags->flags[battler] & RESOURCE_FLAG_EMERGENCY_EXIT
          && GetNonDynamaxHP(battler) >= GetNonDynamaxMaxHP(battler)  / 2)
