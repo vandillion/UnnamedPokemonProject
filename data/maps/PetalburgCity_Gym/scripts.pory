@@ -1611,7 +1611,7 @@ script IzzieContinue {
 	//giveitem(ITEM_TM_AERIAL_ACE)
 	//goto_if_eq(VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull)
 	//setflag(FLAG_RECEIVED_TM_AERIAL_ACE)
-	msgbox(format("Leader Izzie is based on a real person.\pYou can find her on most social platforms as “(at)flatwavelength”."))
+	msgbox(format("Leader Izzie is based on a real person.\pYou can find her on most social platforms (at)flatwavelength."))
 	closemessage
 	cleartrainerflag(TRAINER_ROXANNE_1)
 	end

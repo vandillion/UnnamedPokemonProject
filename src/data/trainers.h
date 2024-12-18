@@ -11883,6 +11883,8 @@ F_TRAINER_FEMALE |
             .species = SPECIES_PIDOVE,
 #line 4801
             .gender = TRAINER_MON_FEMALE,
+#line 4801
+            .heldItem = ITEM_EVIOLITE,
 #line 4803
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 4802
