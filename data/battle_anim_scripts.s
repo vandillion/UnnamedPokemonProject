@@ -3262,6 +3262,7 @@ WoodHammerImpact:
 
 gBattleAnimMove_AquaJet::
 	loadspritegfx ANIM_TAG_SPARKLE_6
+	loadspritegfx ANIM_TAG_SWEAT_BEAD
 	loadspritegfx ANIM_TAG_SPLASH
 	invisible ANIM_ATTACKER
 	playsewithpan SE_M_DIVE, SOUND_PAN_ATTACKER
