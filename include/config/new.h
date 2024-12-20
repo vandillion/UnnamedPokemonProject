@@ -1,0 +1,6 @@
+#ifndef GUARD_CONFIG_NEW_H
+#define GUARD_CONFIG_NEW_H
+
+#define N_MUTE_BATTLE_BGM       FALSE
+
+#endif // GUARD_CONFIG_BATTLE_H

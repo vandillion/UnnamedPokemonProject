@@ -60,6 +60,7 @@
 #include "constants/union_room.h"
 #include "constants/weather.h"
 #include "wild_encounter.h"
+#include "config/new.h"
 
 #define FRIENDSHIP_EVO_THRESHOLD ((P_FRIENDSHIP_EVO_THRESHOLD >= GEN_8) ? 160 : 220)
 
@@ -115,20 +116,16 @@ static const struct CombinedMove sCombinedMoves[2] =
 static const u16 sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
 {
     HOENN_TO_NATIONAL(SUGARGLIDE),
-    //HOENN_TO_NATIONAL(CANOKITE),
-    //HOENN_TO_NATIONAL(BRYVERN),
     HOENN_TO_NATIONAL(PARMI),
-    //HOENN_TO_NATIONAL(PANDARO),
-    //HOENN_TO_NATIONAL(PYRANDEM),
     HOENN_TO_NATIONAL(RADPOLE),
-    //HOENN_TO_NATIONAL(FROGIDOKI),
-    //HOENN_TO_NATIONAL(AMPHORIA),
+    HOENN_TO_NATIONAL(RACCAT),
+    HOENN_TO_NATIONAL(LUEL),
+    HOENN_TO_NATIONAL(BANDITOOK),
+    HOENN_TO_NATIONAL(BABARK),
+    HOENN_TO_NATIONAL(BELLANCO),
     HOENN_TO_NATIONAL(SNORUNT),
     HOENN_TO_NATIONAL(GLALIE),
     HOENN_TO_NATIONAL(FROSLASS),
-    HOENN_TO_NATIONAL(TANDEMAUS),
-    HOENN_TO_NATIONAL(MAUSHOLD),
-    HOENN_TO_NATIONAL(BELLANCO),
 };
 
 const struct SpindaSpot gSpindaSpotGraphics[] =
@@ -5480,6 +5477,9 @@ bool32 IsSpeciesInHoennDex(u16 species)
 
 u16 GetBattleBGM(void)
 {
+    if (N_MUTE_BATTLE_BGM)
+        return MUS_NONE;
+
     if (gBattleTypeFlags & BATTLE_TYPE_LEGENDARY)
     {
         switch (GetMonData(&gEnemyParty[0], MON_DATA_SPECIES, NULL))

@@ -9,9 +9,12 @@ Debug_ShowFieldMessageStringVar4::
 	goto Debug_MessageEnd
 
 Debug_CheatStart::
-	givemon SPECIES_RADPOLE, 13, ITEM_NONE
-	givemon SPECIES_PARMI, 13, ITEM_NONE
-	givemon SPECIES_SUGARGLIDE, 13, ITEM_NONE
+	givemon SPECIES_RACCAT, 14, ITEM_NONE
+	givemon SPECIES_LUEL, 14, ITEM_NONE
+	givemon SPECIES_BANDITOOK, 14, ITEM_NONE
+	givemon SPECIES_SUGARGLIDE, 14, ITEM_NONE
+	givemon SPECIES_RADPOLE, 14, ITEM_NONE
+	givemon SPECIES_PARMI, 14, ITEM_NONE
 	additem ITEM_POTION, 4
 	setflag FLAG_BADGE02_GET
 	call AnimoraGymIzzie

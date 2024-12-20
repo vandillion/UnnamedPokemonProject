@@ -61,8 +61,8 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
             gShinyOverworldPalette_Sprigatito
         )
         .levelUpLearnset = sSugarglideLevelUpLearnset,
-        .teachableLearnset = sSprigatitoTeachableLearnset,
-        .eggMoveLearnset = sSprigatitoEggMoveLearnset,
+        .teachableLearnset = sNoneTeachableLearnset,
+        .eggMoveLearnset = sNoneEggMoveLearnset,
         //.evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_CANOKITE}),
     },
 #endif //P_FAMILY_SUGARGLIDE
@@ -125,8 +125,8 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
             gShinyOverworldPalette_Fuecoco
         )
         .levelUpLearnset = sParmiLevelUpLearnset,
-        .teachableLearnset = sFuecocoTeachableLearnset,
-        .eggMoveLearnset = sFuecocoEggMoveLearnset,
+        .teachableLearnset = sNoneTeachableLearnset,
+        .eggMoveLearnset = sNoneEggMoveLearnset,
         //.evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_PANDARO}),
     },
 #endif //P_FAMILY_PARMI
@@ -189,11 +189,260 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
             gShinyOverworldPalette_Quaxly
         )
         .levelUpLearnset = sRadpoleLevelUpLearnset,
-        .teachableLearnset = sQuaxlyTeachableLearnset,
-        .eggMoveLearnset = sQuaxlyEggMoveLearnset,
+        .teachableLearnset = sNoneTeachableLearnset,
+        .eggMoveLearnset = sNoneEggMoveLearnset,
         //.evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_FROGIDOKI}),
     },
 #endif //P_FAMILY_RADPOLE
+
+#if P_FAMILY_RACCAT
+    [SPECIES_RACCAT] =
+    {
+        .baseHP        = 50,
+        .baseAttack    = 50,
+        .baseDefense   = 50,
+        .baseSpeed     = 50,
+        .baseSpAttack  = 50,
+        .baseSpDefense = 50,
+        .types = MON_TYPES(TYPE_NORMAL),
+        .catchRate = 255,
+        .expYield = 56,
+        .evYield_Speed = 1,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 15,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_FAST,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
+        .abilities = { ABILITY_RUN_AWAY, ABILITY_QUICK_FEET, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_GRAY,
+        .speciesName = _("Raccat"),
+        .cryId = CRY_BULBASAUR,
+        .natDexNum = NATIONAL_DEX_RACCAT,
+        .categoryName = _("????????????"),
+        .height = 4,
+        .weight = 175,
+        .description = COMPOUND_STRING(
+            "A Pokémon that has a body and wings of\n"
+            "steel. People in the past used feathers\n"
+            "fallen from Skarmory to make swords and\n"
+            "knives."),
+        .pokemonScale = 256,
+        .pokemonOffset = 0,
+        .trainerScale = 271,
+        .trainerOffset = 0,.frontPic = gMonFrontPic_CircledQuestionMark,
+        .frontPicSize = MON_COORDS_SIZE(40, 40),
+        .frontPicYOffset = 7,
+        .frontAnimFrames = sAnims_Quaxly,
+        .frontAnimId = ANIM_H_SLIDE,
+        .backPic = gMonBackPic_CircledQuestionMark,
+        .backPicSize = MON_COORDS_SIZE(40, 40),
+        .backPicYOffset = 0,
+        .backAnimId = BACK_ANIM_CONCAVE_ARC_SMALL,
+        .palette = gMonPalette_CircledQuestionMark,
+        .shinyPalette = gMonShinyPalette_CircledQuestionMark,
+        .iconSprite = gMonIcon_QuestionMark,
+        .iconPalIndex = 0,
+        FOOTPRINT(QuestionMark)
+                OVERWORLD(
+            sPicTable_Quaxly,
+            SIZE_32x32,
+            SHADOW_SIZE_S,
+            TRACKS_FOOT,
+            gOverworldPalette_Quaxly,
+            gShinyOverworldPalette_Quaxly
+        )
+        .levelUpLearnset = sRaccatLevelUpLearnset,
+        .teachableLearnset = sNoneTeachableLearnset,
+        .eggMoveLearnset = sNoneEggMoveLearnset,
+    },
+#endif //P_FAMILY_RACCAT
+
+#if P_FAMILY_LUEL
+    [SPECIES_LUEL] =
+    {
+        .baseHP        = 50,
+        .baseAttack    = 50,
+        .baseDefense   = 50,
+        .baseSpeed     = 50,
+        .baseSpAttack  = 50,
+        .baseSpDefense = 50,
+        .types = MON_TYPES(TYPE_NORMAL, TYPE_FLYING),
+        .catchRate = 255,
+        .expYield = 56,
+        .evYield_SpAttack = 1,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_FAST,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING),
+        .abilities = { ABILITY_BIG_PECKS, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_BLACK,
+        .speciesName = _("Luel"),
+        .cryId = CRY_BULBASAUR,
+        .natDexNum = NATIONAL_DEX_LUEL,
+        .categoryName = _("??????????"),
+        .height = 7,
+        .weight = 19,
+        .description = COMPOUND_STRING(
+            "A Pokémon that has a body and wings of\n"
+            "steel. People in the past used feathers\n"
+            "fallen from Skarmory to make swords and\n"
+            "knives."),
+        .pokemonScale = 256,
+        .pokemonOffset = 0,
+        .trainerScale = 271,
+        .trainerOffset = 0,.frontPic = gMonFrontPic_CircledQuestionMark,
+        .frontPicSize = MON_COORDS_SIZE(40, 40),
+        .frontPicYOffset = 7,
+        .frontAnimFrames = sAnims_Quaxly,
+        .frontAnimId = ANIM_V_STRETCH,
+        .backPic = gMonBackPic_CircledQuestionMark,
+        .backPicSize = MON_COORDS_SIZE(40, 40),
+        .backPicYOffset = 0,
+        .backAnimId = BACK_ANIM_H_SLIDE,
+        .palette = gMonPalette_CircledQuestionMark,
+        .shinyPalette = gMonShinyPalette_CircledQuestionMark,
+        .iconSprite = gMonIcon_QuestionMark,
+        .iconPalIndex = 0,
+        FOOTPRINT(QuestionMark)
+                OVERWORLD(
+            sPicTable_Quaxly,
+            SIZE_32x32,
+            SHADOW_SIZE_S,
+            TRACKS_FOOT,
+            gOverworldPalette_Quaxly,
+            gShinyOverworldPalette_Quaxly
+        )
+        .levelUpLearnset = sLuelLevelUpLearnset,
+        .teachableLearnset = sNoneTeachableLearnset,
+        .eggMoveLearnset = sNoneEggMoveLearnset,
+    },
+#endif //P_FAMILY_LUEL
+
+#if P_FAMILY_BANDITOOK
+    [SPECIES_BANDITOOK] =
+    {
+        .baseHP        = 50,
+        .baseAttack    = 50,
+        .baseDefense   = 50,
+        .baseSpeed     = 50,
+        .baseSpAttack  = 50,
+        .baseSpDefense = 50,
+        .types = MON_TYPES(TYPE_NORMAL, TYPE_DARK),
+        .catchRate = 190,
+        .expYield = 66,
+        .evYield_Speed = 1,
+        .genderRatio = PERCENT_FEMALE(25),
+        .eggCycles = 25,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
+        .abilities = { ABILITY_PICKPOCKET, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_WHITE,
+        .speciesName = _("Banditook"),
+        .cryId = CRY_BULBASAUR,
+        .natDexNum = NATIONAL_DEX_BANDITOOK,
+        .categoryName = _("Banditook"),
+        .height = 0,
+        .weight = 0,
+        .description = COMPOUND_STRING(
+            "A Pokémon that has a body and wings of\n"
+            "steel. People in the past used feathers\n"
+            "fallen from Skarmory to make swords and\n"
+            "knives."),
+        .pokemonScale = 256,
+        .pokemonOffset = 0,
+        .trainerScale = 271,
+        .trainerOffset = 0,.frontPic = gMonFrontPic_CircledQuestionMark,
+        .frontPicSize = MON_COORDS_SIZE(40, 40),
+        .frontPicYOffset = 9,
+        .frontAnimFrames = sAnims_Quaxly,
+        .frontAnimId = ANIM_H_SLIDE,
+        .enemyMonElevation = 12,
+        .backPic = gMonBackPic_CircledQuestionMark,
+        .backPicSize = MON_COORDS_SIZE(40, 40),
+        .backPicYOffset = 7,
+        .backAnimId = BACK_ANIM_H_SLIDE,
+        .palette = gMonPalette_CircledQuestionMark,
+        .shinyPalette = gMonShinyPalette_CircledQuestionMark,
+        .iconSprite = gMonIcon_QuestionMark,
+        .iconPalIndex = 0,
+        FOOTPRINT(QuestionMark)
+                OVERWORLD(
+            sPicTable_Quaxly,
+            SIZE_32x32,
+            SHADOW_SIZE_S,
+            TRACKS_FOOT,
+            gOverworldPalette_Quaxly,
+            gShinyOverworldPalette_Quaxly
+        )
+        .levelUpLearnset = sBanditookLevelUpLearnset,
+        .teachableLearnset = sNoneTeachableLearnset,
+        .eggMoveLearnset = sNoneEggMoveLearnset,
+    },
+#endif //P_FAMILY_BANDITOOK
+
+#if P_FAMILY_BABARK
+    [SPECIES_BABARK] =
+    {
+        .baseHP        = 50,
+        .baseAttack    = 50,
+        .baseDefense   = 50,
+        .baseSpeed     = 50,
+        .baseSpAttack  = 50,
+        .baseSpDefense = 50,
+        .types = MON_TYPES(TYPE_NORMAL),
+        .catchRate = 20,
+        .expYield = 51,
+        .evYield_Defense = 1,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_GRASS, EGG_GROUP_FIELD),
+        .abilities = { ABILITY_CHLOROPHYLL, ABILITY_RUN_AWAY, ABILITY_LEAF_GUARD },
+        .bodyColor = BODY_COLOR_WHITE,
+        .speciesName = _("Babark"),
+        .cryId = CRY_BULBASAUR,
+        .natDexNum = NATIONAL_DEX_BABARK,
+        .categoryName = _("Bush Dog"),
+        .height = 3,
+        .weight = 135,
+        .description = COMPOUND_STRING(
+            "A Pokémon that has a body and wings of\n"
+            "steel. People in the past used feathers\n"
+            "fallen from Skarmory to make swords and\n"
+            "knives."),
+        .pokemonScale = 256,
+        .pokemonOffset = 0,
+        .trainerScale = 271,
+        .trainerOffset = 0,.frontPic = gMonFrontPic_CircledQuestionMark,
+        .frontPicSize = MON_COORDS_SIZE(40, 40),
+        .frontPicYOffset = 7,
+        .frontAnimFrames = sAnims_Quaxly,
+        .frontAnimId = ANIM_V_STRETCH,
+        .backPic = gMonBackPic_CircledQuestionMark,
+        .backPicSize = MON_COORDS_SIZE(40, 40),
+        .backPicYOffset = 0,
+        .backAnimId = BACK_ANIM_CONCAVE_ARC_SMALL,
+        .palette = gMonPalette_CircledQuestionMark,
+        .shinyPalette = gMonShinyPalette_CircledQuestionMark,
+        .iconSprite = gMonIcon_QuestionMark,
+        .iconPalIndex = 0,
+        FOOTPRINT(QuestionMark)
+                OVERWORLD(
+            sPicTable_Quaxly,
+            SIZE_32x32,
+            SHADOW_SIZE_S,
+            TRACKS_FOOT,
+            gOverworldPalette_Quaxly,
+            gShinyOverworldPalette_Quaxly
+        )
+        .levelUpLearnset = sBabarkLevelUpLearnset,
+        .teachableLearnset = sNoneTeachableLearnset,
+        .eggMoveLearnset = sNoneEggMoveLearnset,
+    },
+#endif //P_FAMILY_BABARK
 
 #if P_FAMILY_BELLANCO
     [SPECIES_BELLANCO] =
