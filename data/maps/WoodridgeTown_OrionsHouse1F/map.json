@@ -81,8 +81,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(SUGARGLIDE)",
-      "x": 7,
-      "y": 3,
+      "x": 4,
+      "y": 2,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
       "movement_range_x": 0,
@@ -94,8 +94,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(PARMI)",
-      "x": 8,
-      "y": 3,
+      "x": 5,
+      "y": 2,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
       "movement_range_x": 0,
@@ -107,8 +107,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(RADPOLE)",
-      "x": 9,
-      "y": 3,
+      "x": 6,
+      "y": 2,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
       "movement_range_x": 0,

@@ -343,9 +343,9 @@ script ContinueWater {
 
 text OrionIllTakeThisOne {format("...{PAUSE 50}\nAlright, then I'll use this one!")}
 
-text LeonDefeatText {"What?!\nYou used our Pokemon against us and won!\pIs that even fair!"}
+text LeonDefeatText {format("What?! You used our Pokemon against us and won!\pIs that even fair?!")}
 
-text GruntDefeatText {"Boss ain't gonna be happy to hear this..."}
+text GruntDefeatText {format("Boss ain't gonna be happy to hear this...")}
 
 
 movement HarleyMoveAway {
