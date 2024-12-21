@@ -29,6 +29,7 @@ script AnimoraProfCutsceneTrigger1 {
 script OrionProfIntro {
 	lock
 	playse(SE_SLIDING_DOOR)
+	delay(32)
 	switch (var(VAR_TEMP_0)) {
         case 0:
 		applymovement(LOCALID_ORION, OrionLeaveAnimoraPokecenter0)
@@ -41,9 +42,9 @@ script OrionProfIntro {
 	waitmovement(0)
 	applymovement(LOCALID_ORION, ContinueExitPC)
 	waitmovement(0)
-	msgbox(format("Oh, hey {PLAYER}!\nI was just checking out the Pokemon Center's mart before I headed to the Professor's Lab.\p"
-				  "Though they aren't selling a whole lot right now...\p"
-				  "Anyway, I was just on my way to the lab! We should walk together!"))
+	msgbox(format("Oh, hey {PLAYER}!\nI was just checking out the Pokemon Center before I headed to the Professor's Lab.\p"
+				  "The mart isn't selling a whole lot right now, though...\p"
+				  "Anyway, since we're both on our way to the lab, we may as well walk together!"))
 	closemessage
 	switch (var(VAR_TEMP_0)) {
         case 0:
@@ -196,8 +197,7 @@ script AnimoraAideScript {
 			applymovement(LOCALID_AIDE, Common_Movement_WalkInPlaceRight)
     }
 	waitmovement(0)
-	msgbox("{PLAYER}!\nWait!")
-	closemessage
+	msgbox("{PLAYER}!\nWait!", MSGBOX_AUTOCLOSE)
 	switch (var(VAR_TEMP_0)) {
         case 0:
             applymovement(LOCALID_AIDE, AideWalkToPlayer0)
