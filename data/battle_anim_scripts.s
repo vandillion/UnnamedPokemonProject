@@ -14880,7 +14880,7 @@ gBattleAnimMove_Snowscape::
 	createvisualtask AnimTask_CreateSnowflakes, 2, 0, 3, 120
 	createvisualtask AnimTask_CreateSnowflakes, 2, 0, 3, 120
 	createvisualtask AnimTask_CreateSnowflakes, 2, 0, 3, 120
-	delay 120
+	delay 60
 	playsewithpan SE_M_GUST2, SOUND_PAN_ATTACKER
 	delay 30
 	waitforvisualfinish
@@ -19698,6 +19698,7 @@ gBattleAnimMove_Whirlwind::
 	createvisualtask AnimTask_TranslateMonEllipticalRespectSide, 2, ANIM_TARGET, 12, 6, 1, 5
 	delay 7
 	playsewithpan SE_M_STRING_SHOT, SOUND_PAN_TARGET
+gBattleAnimGeneral_SwitchOut::
 	createvisualtask AnimTask_SlideOffScreen, 5, ANIM_TARGET, 8
 	waitforvisualfinish
 	end

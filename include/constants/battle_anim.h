@@ -585,8 +585,9 @@
 #define B_ANIM_TERA_ACTIVATE            51
 #define B_ANIM_SIMPLE_HEAL              52
 #define B_ANIM_BERRY_EAT                53
+#define B_ANIM_SWITCH_OUT               54
 
-#define NUM_B_ANIMS_GENERAL             54
+#define NUM_B_ANIMS_GENERAL             55
 
 // special animations table (sBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0

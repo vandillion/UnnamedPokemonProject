@@ -1832,6 +1832,7 @@ BattleScript_EffectHitSwitchTarget::
 	jumpifstatus3 BS_TARGET, STATUS3_ROOTED, BattleScript_PrintMonIsRooted
 	jumpiftargetdynamaxed BattleScript_HitSwitchTargetDynamaxed
 	tryhitswitchtarget BattleScript_MoveEnd
+	playanimation BS_TARGET, B_ANIM_SWITCH_OUT
 	forcerandomswitch BattleScript_HitSwitchTargetForceRandomSwitchFailed
 	goto BattleScript_MoveEnd
 
