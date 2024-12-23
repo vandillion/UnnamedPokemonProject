@@ -421,3 +421,23 @@ MauvilleCity_Gym_Text_WattsonRematchNeedTwoMons:
 	.string "POKéMON, all right?$"
 
 `
+
+script OlsternGymLeader {
+	trainerbattle_single(TRAINER_WATTSON_1, format("Intro"), format("Defeat"), OlsternLeaderContinue, NO_MUSIC)
+}
+
+script OlsternLeaderContinue {
+	setflag(FLAG_DEFEATED_OLSTERN_GYM)
+	playfanfare(MUS_OBTAIN_BADGE)
+	message(format("{PLAYER} received the ??? Badge from ???!"))
+	waitfanfare
+	setflag(FLAG_BADGE03_GET)
+	//msgbox("Take this too.")
+	//giveitem(ITEM_TM_???)
+	//goto_if_eq(VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull)
+	//setflag(FLAG_RECEIVED_TM_???)
+	//msgbox(format("Tm something does this\puse it wisely"), MSGBOX_AUTOCLOSE)
+	closemessage
+	setvar(VAR_OLSTERN_CITY_STATE, 1)
+	end
+}

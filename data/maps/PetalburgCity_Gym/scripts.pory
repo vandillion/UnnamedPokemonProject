@@ -1613,6 +1613,6 @@ script IzzieContinue {
 	//setflag(FLAG_RECEIVED_TM_AERIAL_ACE)
 	msgbox(format("Leader Izzie is based on a real person.\pYou can find her on most social platforms (at)flatwavelength."))
 	closemessage
-	cleartrainerflag(TRAINER_ROXANNE_1)
+	setflag(FLAG_HIDE_ORION_OLSTERN_CITY)
 	end
 }

@@ -52,7 +52,7 @@
 #define FLAG_HIDE_HARLEY_ROUTE_1                0x26
 #define FLAG_HIDE_ORION_ANIMORA_CITY            0x27
 #define FLAG_HIDE_AIDE_ANIMORA_CITY             0x28
-#define FLAG_UNUSED_0x029    0x29 // Unused Flag
+#define FLAG_HIDE_ORION_OLSTERN_CITY            0x29
 #define FLAG_UNUSED_0x02A    0x2A // Unused Flag
 #define FLAG_UNUSED_0x02B    0x2B // Unused Flag
 #define FLAG_UNUSED_0x02C    0x2C // Unused Flag
@@ -1376,7 +1376,7 @@
 #define FLAG_VISITED_PACIFIDLOG_TOWN                (SYSTEM_FLAGS + 0x15)
 #define FLAG_VISITED_ANIMORA_CITY                   (SYSTEM_FLAGS + 0x16)
 #define FLAG_VISITED_SLATEPORT_CITY                 (SYSTEM_FLAGS + 0x17)
-#define FLAG_VISITED_MAUVILLE_CITY                  (SYSTEM_FLAGS + 0x18)
+#define FLAG_VISITED_OLSTERN_CITY                   (SYSTEM_FLAGS + 0x18)
 #define FLAG_VISITED_RUSTBORO_CITY                  (SYSTEM_FLAGS + 0x19)
 #define FLAG_VISITED_FORTREE_CITY                   (SYSTEM_FLAGS + 0x1A)
 #define FLAG_VISITED_LILYCOVE_CITY                  (SYSTEM_FLAGS + 0x1B)

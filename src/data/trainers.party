@@ -10803,38 +10803,46 @@ Level: 36
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BRENDAN_RUSTBORO_TREECKO ===
-Name: BRENDAN
+Name: Orion
 Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer | HP Aware | Smart Switching
 
-Lotad
-Level: 13
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Wooloo
+Level: 21
 
-Torchic
-Level: 15
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Lombre
+Level: 21
+
+Luel
+Level: 22
+
+Parmi (M)
+Level: 24
 
 === TRAINER_BRENDAN_RUSTBORO_MUDKIP ===
-Name: BRENDAN
+Name: Orion
 Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer | HP Aware | Smart Switching
 
-Wingull
-Level: 13
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Wooloo
+Level: 21
 
-Treecko
-Level: 15
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Lombre
+Level: 21
+
+Luel
+Level: 22
+
+Sugarglide (M)
+Level: 24
 
 === TRAINER_PAXTON ===
 Name: PAXTON
@@ -10927,21 +10935,25 @@ Level: 33
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BRENDAN_RUSTBORO_TORCHIC ===
-Name: BRENDAN
+Name: Orion
 Class: Rival
 Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Basic Trainer
+AI: Basic Trainer | HP Aware | Smart Switching
 
-Slugma
-Level: 13
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Wooloo
+Level: 21
 
-Mudkip
-Level: 15
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Lombre
+Level: 21
+
+Luel
+Level: 22
+
+Radpole (M)
+Level: 24
 
 === TRAINER_MAY_RUSTBORO_MUDKIP ===
 Name: MAY

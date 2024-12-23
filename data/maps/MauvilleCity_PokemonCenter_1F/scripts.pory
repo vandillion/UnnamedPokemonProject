@@ -7,21 +7,12 @@ MauvilleCity_PokemonCenter_1F_MapScripts::
 	.byte 0
 
 MauvilleCity_PokemonCenter_1F_OnTransition:
-	setrespawn HEAL_LOCATION_MAUVILLE_CITY
 	call Common_EventScript_UpdateBrineyLocation
 	goto MauvilleCity_PokemonCenter_1F_EventScript_SetMauvilleOldManGfx
 	end
 
 MauvilleCity_PokemonCenter_1F_EventScript_SetMauvilleOldManGfx::
 	special SetMauvilleOldManObjEventGfx
-	end
-
-MauvilleCity_PokemonCenter_1F_EventScript_Nurse::
-	setvar VAR_0x800B, LOCALID_NURSE
-	call Common_EventScript_PkmnCenterNurse
-	waitmessage
-	waitbuttonpress
-	release
 	end
 
 MauvilleCity_PokemonCenter_1F_EventScript_Woman1::
@@ -56,3 +47,14 @@ MauvilleCity_PokemonCenter_1F_Text_RecordCornerSoundsFun:
 	.string "sounds fun. I'll go check it out!$"
 
 `
+script MauvilleCity_PokemonCenter_1F_EventScript_Nurse {
+	setvar(VAR_0x800B, LOCALID_NURSE)
+	call(Common_EventScript_PkmnCenterNurse)
+	waitmessage
+	waitbuttonpress
+	if (var(VAR_OLSTERN_CITY_STATE) == 1) {
+		setvar(VAR_OLSTERN_CITY_STATE, 2)
+	}
+	release
+	end
+}
