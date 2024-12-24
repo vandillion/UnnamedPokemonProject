@@ -35,14 +35,14 @@ script OlsternCityOrion {
         case 2:
 			trainerbattle_no_intro(TRAINER_BRENDAN_RUSTBORO_MUDKIP, OrionDefeat2)
     }
-	message("{PLAYER}, our next stop from here is West Centra.\p"
+	message(format("{PLAYER}, our next stop from here is West Centra.\p"
 		   "I've also been thinking about those Subzero goons.\p"
 		   "What do you think they've been up to since our encounter?\pAnd what do you think they could be up to now?\p"
-		   "Aight I'm done moping.\nI'll catch-")
+		   "Aight I'm done moping.\nI'll catch-"))
 	waitmessage
 	delay(10)
 	msgbox("???: Um, Excuse me!\nYou two!", MSGBOX_AUTOCLOSE)
-	applymovement(OBJ_EVENT_ID_ORION, Common_Movement_WalkInPlaceDown)
+	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceDown)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
 	delay(16)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
@@ -50,19 +50,120 @@ script OlsternCityOrion {
 	playse(SE_PIN)
 	applymovement(LOCALID_WEIRDO, WeirdManWalkToPlayer)
 	delay(80)
-	applymovement(OBJ_EVENT_ID_ORION, Common_Movement_WalkInPlaceLeft)
+	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
 	waitmovement(LOCALID_WEIRDO)
-	msgbox(format("come with me rq"))
+	msgbox(format("You two must be Orion and {PLAYER}, yes?\pWould you two follow me, please?"))
+	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
+	waitmovement(0)
+	msgbox(format("I'm sorry.\nWho are you and for what reason should we follow you?"))
+	applymovement(LOCALID_WEIRDO, Common_Movement_WalkInPlaceRight)
+	waitmovement(0)
+	msgbox(format("I'm uh.{PAUSE 10}.{PAUSE 10}.{PAUSE 30} I uhm.{PAUSE 10}.{PAUSE 10}.{PAUSE 30}\nOh, yes!\p"
+				  "I have affiliation with Professor Watson!"))
+	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
+	waitmovement(0)
+	msgbox(format("Bullshit!\nWhy were you just heistating?"))
+	applymovement(LOCALID_WEIRDO, Common_Movement_ExclamationMark)
+	playse(SE_PIN)
+	delay(48)
+	applymovement(LOCALID_WEIRDO, Common_Movement_WalkInPlaceRight)
+	waitmovement(0)
+	msgbox(format("Jesus Christ! Why so agressive?!\p"
+				  "Look I'm really sorry if what I was trying to say didn't come through as quickly as you wanted it to.\p"
+				  "To be honest, I'm one of the Professor's newest aides, and I honestly don't know what I'm doing.\p"
+				  "But I know I'm here specifically to seek you two.\p"
+				  "So, on behalf of the Professor, whould you so kindly follow me, please?"))
+	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
+	waitmovement(0)
+	msgbox(format("{PLAYER}, this could probably be important! We should follow this guy!"))
+	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
+	applymovement(LOCALID_WEIRDO, Common_Movement_WalkInPlaceLeft)
+	waitmovement(0)
+	msgbox("Alright!\nFollow me!", MSGBOX_AUTOCLOSE)
+	applymovement(LOCALID_WEIRDO, OlsternCityWalkToShadyHouse0)
+	applymovement(LOCALID_ORION, OlsternCityWalkToShadyHouse1)
+	applymovement(OBJ_EVENT_ID_PLAYER, OlsternCityWalkToShadyHouse2)
+	delay(384)
+	opendoor(11, 7)
+	waitmovement(LOCALID_WEIRDO)
+	msgbox("After you.", MSGBOX_AUTOCLOSE)
+	delay(10)
+	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
+	delay(60)
+	applymovement(LOCALID_ORION, OrionWalkIntoShadyHouse)
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalkIntoShadyHouse)
+	applymovement(LOCALID_WEIRDO, WeirdoWalkIntoShadyHouse)
+	delay(64)
+	special(SpawnCameraObject)
+	waitmovement(0)
+	closedoor(11, 7)
+	waitdooranim
+	delay(60)
 	setvar(VAR_OLSTERN_CITY_STATE, 3)
 	warpsilent(MAP_MAUVILLE_CITY_HOUSE2, 0)
 	waitstate
 	end
 }
 
+movement PlayerWalkIntoShadyHouse {
+	delay_16 * 3
+	walk_left
+	walk_up
+	set_invisible
+}
+
+movement OrionWalkIntoShadyHouse {
+	walk_in_place_up
+	delay_16 * 2
+	walk_up
+	set_invisible
+}
+
+movement WeirdoWalkIntoShadyHouse {
+	delay_16 * 6
+	walk_right
+	walk_in_place_faster_down
+	walk_in_place_down
+	delay_16 * 2
+	delay_8
+	delay_4
+	delay_1
+	walk_in_place_up
+	walk_up
+	set_invisible
+}
+
+movement OlsternCityWalkToShadyHouse0 {
+	walk_left * 2
+	walk_up * 14
+	walk_left * 6
+	walk_up
+	walk_left * 2
+	walk_in_place_fast_right
+}
+
+movement OlsternCityWalkToShadyHouse1 {
+	walk_left * 3
+	walk_up * 14
+	walk_left * 6
+	walk_up
+	walk_left
+}
+
+movement OlsternCityWalkToShadyHouse2 {
+	walk_left * 4
+	walk_up * 14
+	walk_left * 6
+	walk_up
+	walk_in_place_left
+}
+
+
 movement WeirdManWalkToPlayer {
 	walk_up * 6
-	walk_in_place_right
+	walk_right * 2
 }
 
 text OrionDefeat2 {
@@ -74,5 +175,5 @@ movement OlsternCityOrionWalkToPokecenter {
 	walk_in_place_right
 	emote_exclamation_mark
 	delay_16 * 3
-
+	walk_right * 3
 }

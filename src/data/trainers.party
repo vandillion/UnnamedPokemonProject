@@ -4846,14 +4846,14 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Bulk Up
 
 === TRAINER_WATTSON_1 ===
-Name: WATTSON
+Name: Wattson
 Class: Leader
 Pic: Leader Wattson
 Gender: Male
 Music: Male
 Items: Super Potion / Super Potion
 Double Battle: No
-AI: Basic Trainer
+AI: Gym Leader
 
 Voltorb
 Level: 20
@@ -10809,7 +10809,7 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Basic Trainer | HP Aware | Smart Switching
+AI: Basic Trainer / HP Aware / Smart Switching
 
 Wooloo
 Level: 21
@@ -10830,7 +10830,7 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Basic Trainer | HP Aware | Smart Switching
+AI: Basic Trainer / HP Aware / Smart Switching
 
 Wooloo
 Level: 21
@@ -10941,7 +10941,7 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Basic Trainer | HP Aware | Smart Switching
+AI: Basic Trainer / HP Aware / Smart Switching
 
 Wooloo
 Level: 21
