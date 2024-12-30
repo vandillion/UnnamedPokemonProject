@@ -21,7 +21,6 @@ mapscripts PetalburgCity_WallysHouse_MapScripts {
 script ProfLabUpdateObjects {
 	setobjectxyperm(LOCALID_AIDE, 3, 10)
 	setobjectmovementtype(LOCALID_ORION, MOVEMENT_TYPE_FACE_LEFT)
-	setobjectmovementtype(LOCALID_ORION, MOVEMENT_TYPE_INVISIBLE)
 }
 
 script ChangeLabBgm {
@@ -35,13 +34,14 @@ script ProfIntro0 {
 	delay(20)
 	applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
-	msgbox(format("Ah! You finally made it, {PLAYER}!"))
-	closemessage
+	msgbox(format("Ah! You finally made it, {PLAYER}!"), MSGBOX_AUTOCLOSE)
+	setobjectxy(LOCALID_ORION, 9, 12)
 	playse(SE_DOOR)
 	waitse
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
 	applymovement(LOCALID_ORION, ProfLabOrionEnter)
 	waitmovement(0)
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
 	goto(ProfIntroContinue)
 }
 
@@ -53,6 +53,9 @@ movement ProfLabOrionEnter {
 
 script ProfIntro1 {
 	lock
+	setobjectxy(LOCALID_ORION, 9, 12)
+	playse(SE_DOOR)
+	waitse
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalkToProf)
 	applymovement(LOCALID_ORION, PlayerWalkToProf)
 	waitmovement(0)
@@ -66,7 +69,6 @@ script ProfIntro1 {
 script ProfIntroContinue {
 	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
-	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
 	msgbox(format("It's a pleasure to finally meet you, Prof. Watson!\pI've heard a lot about you on TV!"))
 	applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
@@ -74,30 +76,26 @@ script ProfIntroContinue {
 	msgbox(format("Nice to meet you too, Orion!\pSo, you two were in quite a pickle last night, huh?"))
 	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
-	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
 	msgbox(format("Yes, sir!\nWe even managed to save three Pokémon from a group of goofy-looking teens!\p"
 				  "Though this morning, one of the Pokémon we saved went missing..."))
 	applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
-	turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
-	msgbox(format("Ah, cheer up, kid!\nJust hope for the best for the litte thing.\pWhich reminds me, may I see the Pokémon you have?"))
-	closemessage
+	msgbox(format("Ah, cheer up, kid!\nJust hope for the best for the litte thing.\pWhich reminds me, may I see the Pokémon you have?"), MSGBOX_AUTOCLOSE)
 	applymovement(LOCALID_PROF, ProfCheckMons)
 	waitmovement(0)
 	msgbox(format("Well! Both of your Pokémon seem to be happy with you two.\p"
 				  "Now if I'm not mistaken, this your first ever Pokémon, right Orion?\p{PLAYER}, I already know this is your first Pokémon because we're family!"))
 	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
-	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
 	msgbox("It is, sir!")
 	applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
-	turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
 	msgbox(format("Well then, I've got great news for both of you!\p{PLAYER} and Orion, today is the day you two become Pokémon Trainers!\psomething something first partner Pokémon!"))
 	playfanfare(MUS_EVOLVED)
 	bufferleadmonspeciesname(STR_VAR_1)
 	message(format("{PLAYER} officialy received {STR_VAR_1} as their Pokémon!"))
 	waitfanfare
+	playbgm(MUS_BIRCH_LAB, TRUE)
 	setflag(FLAG_SYS_POKEMON_GET)
 	applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
@@ -143,24 +141,21 @@ script ProfIntroContinue {
     }
 	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
-	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
 	switch (var(VAR_STARTER_MON)) {
 		case 0:
 	    	bufferstring(STR_VAR_2, "Parmi")
         case 1:
 			bufferstring(STR_VAR_2, "Radpole")
 		case 2:
-			bufferstring(STR_VAR_2, "SHITTYSEX")
+			bufferstring(STR_VAR_2, "Sugarglide")
     }
 	msgbox(format("I think “{STR_VAR_2}” is already a pretty cool name, so I'll pass on a nickname!"))
 	applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
-	turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
 	msgbox(format("Then it's settled!\nYour next desination is Centra City.\p"
 				  "Centra City is a large city, so blah blah blah."))
 	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
-	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
 	msgbox("raring to go\nbye!", MSGBOX_AUTOCLOSE)
 	applymovement(LOCALID_ORION, OrionLeaveLab)
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
@@ -171,7 +166,6 @@ script ProfIntroContinue {
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
 	msgbox(format("{PLAYER}, if you ever need your Pokedex evaluated, call or visit me.\pI would've told that to Orion, but he can't do that unless programmed to because he's an NPC."), MSGBOX_AUTOCLOSE)
-	fadedefaultbgm
 	removeobject(LOCALID_ORION)
 	setflag(FLAG_HIDE_ORION_ANIMORA_CITY)
 	clearflag(FLAG_HIDE_AIDE_ANIMORA_CITY)

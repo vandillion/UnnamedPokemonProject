@@ -6,6 +6,7 @@ raw `
 mapscripts PetalburgCity_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setflag(FLAG_VISITED_ANIMORA_CITY)
+		setrespawn(HEAL_LOCATION_PETALBURG_CITY)
 		call_if_eq(VAR_ANIMORA_CITY_STATE, 2, AnimoraCityUpdateObjects0)
 		end
 	}

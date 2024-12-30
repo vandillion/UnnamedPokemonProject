@@ -293,7 +293,7 @@ script CutsceneAfterFirstBattle {
 	applymovement(LOCALID_WS, WalkMons3)
 	delay(16)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
-	waitmovement(0)
+	waitmovement(LOCALID_WS)
 	setflag(FLAG_HIDE_ORION_WOODRIDGE_TOWN)
 	setflag(FLAG_HIDE_POKEMON_WOODRIDGE_TOWN)
 	clearflag(FLAG_HIDE_CUTSCENE_NPCS_ORIONS_HOUSE)

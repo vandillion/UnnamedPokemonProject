@@ -1,3 +1,9 @@
+/*
+    Ability descriptions 
+    Max lines: 2
+    Use as guide: Powers up Grass moves when
+*/
+
 const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
 {
     [ABILITY_NONE] =
@@ -934,7 +940,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_PICKPOCKET] =
     {
         .name = _("Pickpocket"),
-        .description = COMPOUND_STRING("Steals the foe's held item."),
+        .description = COMPOUND_STRING("Steals an item from a foe\nthat made direct contact."),
         .aiRating = 3,
     },
 

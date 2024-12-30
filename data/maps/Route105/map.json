@@ -3,7 +3,7 @@
   "name": "Route105",
   "layout": "LAYOUT_ROUTE105",
   "music": "MUS_ROUTE104",
-  "region_map_section": "MAPSEC_ROUTE_105",
+  "region_map_section": "MAPSEC_ROUTE_106",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
   "map_type": "MAP_TYPE_ROUTE",
@@ -14,19 +14,14 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "map": "MAP_ROUTE104",
-      "offset": 0,
-      "direction": "up"
-    },
-    {
-      "map": "MAP_ROUTE106",
-      "offset": 0,
-      "direction": "down"
-    },
-    {
       "map": "MAP_UNDERWATER_ROUTE105",
       "offset": 0,
       "direction": "dive"
+    },
+    {
+      "map": "MAP_ROUTE106",
+      "offset": -44,
+      "direction": "left"
     }
   ],
   "object_events": [
@@ -144,7 +139,9 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+
+  ],
   "bg_events": [
     {
       "type": "hidden_item",

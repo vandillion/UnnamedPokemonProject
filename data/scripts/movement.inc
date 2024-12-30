@@ -82,6 +82,14 @@ Common_Movement_WalkInPlaceRight:
 	walk_in_place_right
 	step_end
 
+Common_Movement_EnterBall:
+	enter_pokeball
+	step_end
+
+Common_Movement_ExitBall:
+	exit_pokeball
+	step_end
+
 @ End of follower-safe movements
 Common_Movement_FollowerSafeEnd::
 	step_end
