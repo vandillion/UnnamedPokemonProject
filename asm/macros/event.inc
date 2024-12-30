@@ -436,6 +436,15 @@
 	formatwarp \map, \a, \b, \c
 	.endm
 
+	@ Warps the player to the specified map without playing a sound effect.
+	@ Warp commands can be given either the id of which warp location to go to on the destination map
+	@ or a pair of x/y coordinates to go to directly on the destination map.
+	@ Skips the fade to black before warping.
+	.macro warpnofade map:req, a, b, c
+	.byte 0xe5
+	formatwarp \map, \a, \b, \c
+	.endm
+
 	@ Warps the player to the specified map and plays a door opening animation before stepping upwards into it.
 	@ Warp commands can be given either the id of which warp location to go to on the destination map
 	@ or a pair of x/y coordinates to go to directly on the destination map.
