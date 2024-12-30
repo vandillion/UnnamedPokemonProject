@@ -509,6 +509,15 @@ void DoWarp(void)
     CreateTask(Task_WarpAndLoadMap, 10);
 }
 
+void DoWarpNoFade(void)
+{
+    LockPlayerFieldControls();
+    TryFadeOutOldMapMusic();
+    PlayRainStoppingSoundEffect();
+    gFieldCallback = FieldCB_DefaultWarpExit;
+    CreateTask(Task_WarpAndLoadMap, 10);
+}
+
 void DoDiveWarp(void)
 {
     LockPlayerFieldControls();

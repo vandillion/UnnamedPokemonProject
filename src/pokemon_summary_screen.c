@@ -593,7 +593,7 @@ static const struct WindowTemplate sPageInfoTemplate[] =
         .paletteNum = 6,
         .baseBlock = 489,
     },
-    [PSS_DATA_WINDOW_INFO_ABILITY] = {
+    [PSS_DATA_WINDOW_INFO_MEMO] = {
         .bg = 0,
         .tilemapLeft = 11,
         .tilemapTop = 9,
@@ -602,7 +602,7 @@ static const struct WindowTemplate sPageInfoTemplate[] =
         .paletteNum = 6,
         .baseBlock = 503,
     },
-    [PSS_DATA_WINDOW_INFO_MEMO] = {
+    [PSS_DATA_WINDOW_INFO_ABILITY] = {
         .bg = 0,
         .tilemapLeft = 11,
         .tilemapTop = 14,
@@ -704,7 +704,8 @@ static const u8 sTextColors[][3] =
     {0, 1, 2},
     {0, 3, 4},
     {0, 5, 6},
-    {0, 7, 8}
+    {0, 7, 8},
+    {0, 6, 10}
 };
 
 static const u8 sButtons_Gfx[][4 * TILE_SIZE_4BPP] = {
@@ -728,7 +729,6 @@ static void (*const sTextPrinterTasks[])(u8 taskId) =
     [PSS_PAGE_CONTEST_MOVES] = Task_PrintContestMoves
 };
 
-static const u8 sMemoNatureTextColor[] = _("{COLOR LIGHT_RED}{SHADOW GREEN}");
 static const u8 sMemoMiscTextColor[] = _("{COLOR WHITE}{SHADOW DARK_GRAY}"); // This is also affected by palettes, apparently
 static const u8 sStatsLeftColumnLayout[] = _("{DYNAMIC 0}/{DYNAMIC 1}\n{DYNAMIC 2}\n{DYNAMIC 3}");
 static const u8 sStatsRightColumnLayout[] = _("{DYNAMIC 0}\n{DYNAMIC 1}\n{DYNAMIC 2}");
@@ -3273,13 +3273,20 @@ static void PrintMonOTID(void)
 static void PrintMonAbilityName(void)
 {
     u16 ability = GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum);
-    PrintTextOnWindow(AddWindowFromTemplateList(sPageInfoTemplate, PSS_DATA_WINDOW_INFO_MEMO), gAbilitiesInfo[ability].name, 0, 1, 0, 1);
+    if (sMonSummaryScreen->summary.abilityNum >= NUM_NORMAL_ABILITY_SLOTS)
+    {
+        PrintTextOnWindow(AddWindowFromTemplateList(sPageInfoTemplate, PSS_DATA_WINDOW_INFO_ABILITY), gAbilitiesInfo[ability].name, 0, 1, 0, 13);
+    }
+    else
+    {
+        PrintTextOnWindow(AddWindowFromTemplateList(sPageInfoTemplate, PSS_DATA_WINDOW_INFO_ABILITY), gAbilitiesInfo[ability].name, 0, 1, 0, 1);
+    }
 }
 
 static void PrintMonAbilityDescription(void)
 {
     u16 ability = GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum);
-    PrintTextOnWindow(AddWindowFromTemplateList(sPageInfoTemplate, PSS_DATA_WINDOW_INFO_MEMO), gAbilitiesInfo[ability].description, 0, 17, 0, 0);
+    PrintTextOnWindow(AddWindowFromTemplateList(sPageInfoTemplate, PSS_DATA_WINDOW_INFO_ABILITY), gAbilitiesInfo[ability].description, 0, 17, 0, 0);
 }
 
 static void BufferMonTrainerMemo(void)
@@ -3287,9 +3294,6 @@ static void BufferMonTrainerMemo(void)
     struct PokeSummary *sum = &sMonSummaryScreen->summary;
     const u8 *text;
 
-    DynamicPlaceholderTextUtil_Reset();
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, sMemoNatureTextColor);
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(1, sMemoMiscTextColor);
     BufferNatureString();
 
     if (InBattleFactory() == TRUE || InSlateportBattleTent() == TRUE || IsInGamePartnerMon() == TRUE)
@@ -3336,7 +3340,7 @@ static void BufferMonTrainerMemo(void)
 
 static void PrintMonTrainerMemo(void)
 {
-    PrintTextOnWindow(AddWindowFromTemplateList(sPageInfoTemplate, PSS_DATA_WINDOW_INFO_ABILITY), gStringVar4, 0, 1, 0, 0);
+    PrintTextOnWindow(AddWindowFromTemplateList(sPageInfoTemplate, PSS_DATA_WINDOW_INFO_MEMO), gStringVar4, 0, 1, 0, 0);
 }
 
 static void BufferNatureString(void)
@@ -3464,7 +3468,7 @@ static void PrintEggMemo(void)
         text = gText_OddEggFoundByCouple;
     }
 
-    PrintTextOnWindow(AddWindowFromTemplateList(sPageInfoTemplate, PSS_DATA_WINDOW_INFO_ABILITY), text, 0, 1, 0, 0);
+    PrintTextOnWindow(AddWindowFromTemplateList(sPageInfoTemplate, PSS_DATA_WINDOW_INFO_MEMO), text, 0, 1, 0, 0);
 }
 
 static void PrintSkillsPageText(void)
