@@ -4,17 +4,17 @@ mapscripts Route102_MapScripts {
 // Signs
 
 script Route2Sign {
-	msgbox("Route 2\p{UP_ARROW} Centra City (South)\n{DOWN_ARROW} Animora City", MSGBOX_SIGN)
+	msgbox("Route 2\p{UP_ARROW} Centra City\n{DOWN_ARROW} Animora City", MSGBOX_SIGN)
+	end
+}
+
+script UnnamedCaveSignWest {
+	msgbox("???????????? Cave\n"
+		   "West Entrance", MSGBOX_SIGN)
 	end
 }
 
 // NPCs
-
-script Route2LittleBoy {
-	msgbox(format("I'm…not very tall, so I sink right into tall grass.\p"
-				  "The grass goes up my nose and…\nFwafwafwafwafwa…\pFwatchoo!"), MSGBOX_NPC)
-	end	
-}
 
 script Route2Boy {
 	msgbox(format("I was walking along this route the other day, and a rodent-like Pokemon took my Pokemon's Berry!\pAnd I never got it back..."), MSGBOX_NPC)
@@ -47,20 +47,8 @@ script Route2Shawn {
 	end
 }
 
-raw `
-Route102_Text_WatchMeCatchPokemon:
-	.string "WALLY: {PLAYER}…\n"
-	.string "POKéMON hide in tall grass like this,\l"
-	.string "don't they?\p"
-	.string "Please watch me and see if I can\n"
-	.string "catch one properly.\p"
-	.string "…Whoa!$"
-
-Route102_Text_WallyIDidIt:
-	.string "WALLY: I did it… It's my…\n"
-	.string "My POKéMON!$"
-
-Route102_Text_LetsGoBack:
-	.string "{PLAYER}, thank you!\n"
-	.string "Let's go back to the GYM!$"
-`
+script Route2Luca {
+	trainerbattle_single(TRAINER_JERRY_1, format("You can't possibly beat me in a Pokemon battle!\pI passed all of my exams at the Trainer School!"), "Cheater!")
+	msgbox(format("Don't make me get my buddy Kyle! He's dealt with Herobrine before!"), MSGBOX_NPC)
+	end
+}

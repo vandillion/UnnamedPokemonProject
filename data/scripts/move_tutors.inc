@@ -24,13 +24,10 @@ MoveTutor_EventScript_SwaggerTaught::
 	release
 	end
 
-MauvilleCity_EventScript_RolloutTutor::
+Route2_EventScript_RolloutTutor::
 	lock
 	faceplayer
-	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_ROLLOUT, MoveTutor_EventScript_RolloutTaught
 	msgbox MoveTutor_Text_RolloutTeach, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, MoveTutor_EventScript_RolloutDeclined
-	call MoveTutor_EventScript_CanOnlyBeLearnedOnce
 	goto_if_eq VAR_RESULT, NO, MoveTutor_EventScript_RolloutDeclined
 	msgbox MoveTutor_Text_RolloutWhichMon, MSGBOX_DEFAULT
 	setvar VAR_0x8005, MOVE_ROLLOUT
