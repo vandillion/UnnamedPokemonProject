@@ -561,7 +561,17 @@ static void DoBattlePyramidTrainerHillBattle(void)
 // Initiates battle where Wally catches Ralts
 void StartWallyTutorialBattle(void)
 {
-    CreateMaleMon(&gEnemyParty[0], SPECIES_RALTS, 5);
+    u16 monData;
+    CreateMaleMon(&gEnemyParty[0], SPECIES_RACCAT, 5);
+    monData = TRUE;
+    SetMonData(&gEnemyParty[0], MON_DATA_ABILITY_NUM, &monData);
+    monData = MOVE_SCRATCH;
+    SetMonData(&gEnemyParty[0], MON_DATA_MOVE1, &monData);
+    monData = FALSE;
+    SetMonData(&gEnemyParty[0], MON_DATA_IS_SHINY, &monData);
+    SetMonData(&gEnemyParty[0], MON_DATA_MOVE2, &monData);
+    SetMonData(&gEnemyParty[0], MON_DATA_MOVE3, &monData);
+    SetMonData(&gEnemyParty[0], MON_DATA_MOVE4, &monData);
     LockPlayerFieldControls();
     gMain.savedCallback = CB2_ReturnToFieldContinueScriptPlayMapMusic;
     gBattleTypeFlags = BATTLE_TYPE_WALLY_TUTORIAL;

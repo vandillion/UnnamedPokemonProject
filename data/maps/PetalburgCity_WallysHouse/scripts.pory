@@ -10,11 +10,9 @@ mapscripts PetalburgCity_WallysHouse_MapScripts {
 		}
 	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
 		 VAR_ANIMORA_CITY_STATE, 0 : ChangeLabBgm
-		 VAR_ANIMORA_CITY_STATE, 1 : ChangeLabBgm
     ]
 	MAP_SCRIPT_ON_FRAME_TABLE [
 		 VAR_ANIMORA_CITY_STATE, 0 : ProfIntro0
-		 VAR_ANIMORA_CITY_STATE, 1 : ProfIntro1
     ]
 }
 
@@ -42,31 +40,6 @@ script ProfIntro0 {
 	applymovement(LOCALID_ORION, ProfLabOrionEnter)
 	waitmovement(0)
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
-	goto(ProfIntroContinue)
-}
-
-movement ProfLabOrionEnter {
-	set_visible
-	walk_up * 6
-}
-
-
-script ProfIntro1 {
-	lock
-	setobjectxy(LOCALID_ORION, 9, 12)
-	playse(SE_DOOR)
-	waitse
-	applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalkToProf)
-	applymovement(LOCALID_ORION, PlayerWalkToProf)
-	waitmovement(0)
-	delay(20)
-	applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
-	waitmovement(0)
-	msgbox(format("Ah! You two!\nI've been expecting you!\pBut you already knew that, haha!"))
-	goto(ProfIntroContinue)
-}
-
-script ProfIntroContinue {
 	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
 	msgbox(format("It's a pleasure to finally meet you, Prof. Watson!\pI've heard a lot about you on TV!"))
@@ -90,32 +63,47 @@ script ProfIntroContinue {
 	msgbox("It is, sir!")
 	applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
-	msgbox(format("Well then, I've got great news for both of you!\p{PLAYER} and Orion, today is the day you two become Pokémon Trainers!\psomething something first partner Pokémon!"))
+	switch (var(VAR_STARTER_MON)) {
+		case 0:
+			bufferstring(STR_VAR_1, "Sugarglide")
+	    	bufferstring(STR_VAR_2, "Parmi")
+        case 1:
+			bufferstring(STR_VAR_1, "Parmi")
+			bufferstring(STR_VAR_2, "Radpole")
+		case 2:
+			bufferstring(STR_VAR_1, "Radpole")
+			bufferstring(STR_VAR_2, "Sugarglide")
+    }
+	msgbox(format("Well then, I've got great news for both of you!\p{PLAYER} and Orion, today is the day you two become Pokémon Trainers!\pSince you already have them, you'll receive {STR_VAR_1} and {STR_VAR_2} as your first partner Pokémon!"))
 	playfanfare(MUS_EVOLVED)
-	bufferleadmonspeciesname(STR_VAR_1)
 	message(format("{PLAYER} officialy received {STR_VAR_1} as their Pokémon!"))
 	waitfanfare
-	playbgm(MUS_BIRCH_LAB, TRUE)
+	fadedefaultbgm
 	setflag(FLAG_SYS_POKEMON_GET)
 	applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
-	msgbox(format("Since you two have just become trainers, I suggest taking a visit to Centra City's Trainer University.\p"
-				  "They have a 2-day program there that gives you all the basics of being a Pokémon Trainer.\p"
-				  "Once you've completed the program, you two should challenge the Pokémon Gym located in this city.\pI would say more but I can't think of shit too say so chyeah\p"
-				  "Before you head out on your very first adventure as Pokémon Trainers, I have somthing rather importatnt to give to you.\pA device used by Trainers all around the world, it automatically records data for Pokémon you've seen or caught.\p"
-				  "The best part is it was developed by your very own great-grandfather, {PLAYER}!"))
+	msgbox(format("Before you head out on your very first adventure as Pokémon Trainers, I have something rather important to give you two.\p"
+				  "A device used by Trainers all around the world, it automatically records data for Pokémon you've seen or caught.\p"
+				  "The best part is that it was developed by your very own great-grandfather, {PLAYER}!"))
 	closemessage
 	delay(45)
-	msgbox("Lemme go grab em.")
+	msgbox("Let me go grab 'em.")
 	closemessage
 	applymovement(LOCALID_PROF, ProfGetPokedex)
-	waitmovement(0)
+	delay(100)
+	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
+    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
+	delay(276)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
+	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
+	waitmovement(LOCALID_PROF)
 	playfanfare(MUS_RG_OBTAIN_KEY_ITEM)
-	message(format("{PLAYER} received the Pokedex!"))
+	message(format("Obtained the Pokédex!"))
 	waitfanfare
 	closemessage
 	setflag(FLAG_RECEIVED_POKEDEX_FROM_BIRCH)
 	setflag(FLAG_SYS_POKEDEX_GET)
+	setvar(VAR_ANIMORA_CITY_STATE, 1)
 	applymovement(LOCALID_PROF, ContinueGiveDex)
 	waitmovement(0)
 	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
@@ -130,7 +118,7 @@ script ProfIntroContinue {
 	delay(8)
 	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
-	waitmovement(0)
+	waitmovement(LOCALID_PROF)
 	msgbox(format("By the way, would either of you like to give a nickname to your Pokémon?"), MSGBOX_YESNO)
 	switch (var(VAR_RESULT)) {
         case 1:
@@ -141,15 +129,7 @@ script ProfIntroContinue {
     }
 	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
-	switch (var(VAR_STARTER_MON)) {
-		case 0:
-	    	bufferstring(STR_VAR_2, "Parmi")
-        case 1:
-			bufferstring(STR_VAR_2, "Radpole")
-		case 2:
-			bufferstring(STR_VAR_2, "Sugarglide")
-    }
-	msgbox(format("I think “{STR_VAR_2}” is already a pretty cool name, so I'll pass on a nickname!"))
+	msgbox(format("I think “{STR_VAR_2}” is already a pretty cool name, so I'll pass!"))
 	applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	msgbox(format("Then it's settled!\nYour next desination is Centra City.\p"
@@ -165,12 +145,16 @@ script ProfIntroContinue {
 	delay(30)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
-	msgbox(format("{PLAYER}, if you ever need your Pokedex evaluated, call or visit me.\pI would've told that to Orion, but he can't do that unless programmed to because he's an NPC."), MSGBOX_AUTOCLOSE)
+	msgbox(format("{PLAYER}, if you ever need your Pokédex evaluated, call or visit me.\pI would've told that to Orion, but he can't do that unless programmed to because he's an NPC."), MSGBOX_AUTOCLOSE)
 	removeobject(LOCALID_ORION)
-	setflag(FLAG_HIDE_ORION_ANIMORA_CITY)
-	clearflag(FLAG_HIDE_AIDE_ANIMORA_CITY)
-	setvar(VAR_ANIMORA_CITY_STATE, 2)
+	setflag(FLAG_HIDE_ORION_PROF_LAB)
+	setvar(VAR_BLOCK_PROGRESSION_WEST, 0)
 	release
+}
+
+movement ProfLabOrionEnter {
+	set_visible
+	walk_up * 6
 }
 
 movement OrionLeaveLab {

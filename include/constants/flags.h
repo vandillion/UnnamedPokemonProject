@@ -49,13 +49,13 @@
 #define FLAG_HIDE_CUTSCENE_NPCS_ORIONS_HOUSE    0x23
 #define FLAG_HIDE_ORIONS_STEPDAD_ORIONS_HOUSE   0x24
 #define FLAG_LOST_FIRST_BATTLE                  0x25
-#define FLAG_HIDE_HARLEY_ROUTE_1                0x26
-#define FLAG_HIDE_ORION_ANIMORA_CITY            0x27
-#define FLAG_HIDE_AIDE_ANIMORA_CITY             0x28
-#define FLAG_HIDE_ORION_OLSTERN_CITY            0x29
-#define FLAG_UNUSED_0x02A    0x2A // Unused Flag
-#define FLAG_UNUSED_0x02B    0x2B // Unused Flag
-#define FLAG_UNUSED_0x02C    0x2C // Unused Flag
+#define FLAG_HIDE_HARLEY_ANIMORA_CITY           0x26
+#define FLAG_HIDE_GYM_GUIDE_ANIMORA_CITY        0x27
+#define FLAG_HIDE_ORION_OLSTERN_CITY            0x28
+#define FLAG_HIDE_CUTSCENE_NPCS_OLSTERN_CITY_1  0x29
+#define FLAG_HIDE_CUTSCENE_NPCS_OLSTERN_CITY_2  0x2A
+#define FLAG_HIDE_BOAT_GUARDS_OLSTERN_CITY      0x2B
+#define FLAG_HIDE_ORION_PROF_LAB                0x2C
 #define FLAG_UNUSED_0x02D    0x2D // Unused Flag
 #define FLAG_UNUSED_0x02E    0x2E // Unused Flag
 #define FLAG_UNUSED_0x02F    0x2F // Unused Flag
@@ -829,7 +829,7 @@
 #define FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_3                          0x30A
 #define FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_4                          0x30B
 #define FLAG_HIDE_LILYCOVE_MUSEUM_TOURISTS                          0x30C
-#define FLAG_HIDE_PETALBURG_GYM_GREETER                             0x30D
+#define FLAG_HIDE_ROUTE_2_CATCH_TUTORIAL                            0x30D
 #define FLAG_HIDE_MARINE_CAVE_KYOGRE                                0x30E
 #define FLAG_HIDE_TERRA_CAVE_GROUDON                                0x30F
 #define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_MOM          0x310

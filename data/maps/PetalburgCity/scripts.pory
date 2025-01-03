@@ -1,287 +1,81 @@
-raw `
-.set LOCALID_ORION, 1
-.set LOCALID_AIDE, 2
-`
-
 mapscripts PetalburgCity_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setflag(FLAG_VISITED_ANIMORA_CITY)
 		setrespawn(HEAL_LOCATION_PETALBURG_CITY)
-		call_if_eq(VAR_ANIMORA_CITY_STATE, 2, AnimoraCityUpdateObjects0)
 		end
 	}
 }
 
-script AnimoraCityUpdateObjects0 {
-	setobjectxyperm(LOCALID_AIDE, 8, 17)
-	setobjectmovementtype(LOCALID_AIDE, MOVEMENT_TYPE_INVISIBLE)
-}
-
-script AnimoraProfCutsceneTrigger0 {
-	setvar(VAR_TEMP_0, 0)
-	goto(OrionProfIntro)
-}
-
-script AnimoraProfCutsceneTrigger1 {
-	setvar(VAR_TEMP_0, 1)
-	goto(OrionProfIntro)
-}
-
-script OrionProfIntro {
-	lock
-	playse(SE_SLIDING_DOOR)
-	delay(32)
-	switch (var(VAR_TEMP_0)) {
-        case 0:
-		applymovement(LOCALID_ORION, OrionLeaveAnimoraPokecenter0)
-		delay(64)
-		case 1:
-		applymovement(LOCALID_ORION, OrionLeaveAnimoraPokecenter1)
-		delay(80)
-    }
-	playse(SE_PIN)
-	waitmovement(0)
-	applymovement(LOCALID_ORION, ContinueExitPC)
-	waitmovement(0)
-	msgbox(format("Oh, hey {PLAYER}!\nI was just checking out the Pokemon Center before I headed to the Professor's Lab.\p"
-				  "The mart isn't selling a whole lot right now, though...\p"
-				  "Anyway, since we're both on our way to the lab, we may as well walk together!"))
-	closemessage
-	switch (var(VAR_TEMP_0)) {
-        case 0:
-		applymovement(LOCALID_ORION, OrionWalkToLab0)
-		applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalkToLab0)
-		case 1:
-		applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalkToLab1)
-		applymovement(LOCALID_ORION, OrionWalkToLab1)
-    }
-	waitmovement(0)
-	msgbox("We're here!\nAfter you, {PLAYER}!", MSGBOX_AUTOCLOSE)
-	closemessage
-	switch (var(VAR_TEMP_0)) {
-        case 0:
-		applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalkIntoLab0)
-		applymovement(LOCALID_ORION, OrionWalkIntoLab0)
-		case 1:
-		applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalkIntoLab1)
-		applymovement(LOCALID_ORION, OrionWalkIntoLab1)
-    }
-	waitmovement(0)
-	opendoor(8, 18)
-	waitdooranim
-	applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalkIntoLab2)
-	applymovement(LOCALID_ORION, OrionWalkIntoLab2)
-	waitmovement(0)
-	closedoor(8, 18)
-	waitdooranim
-	setvar(VAR_ANIMORA_CITY_STATE, 1)
-	warpsilent(MAP_PETALBURG_CITY_WALLYS_HOUSE, 0)
-	waitstate
-	release
-}
-
-movement PlayerWalkIntoLab0 {
-	walk_up
-}
-
-movement OrionWalkIntoLab0 {
-	walk_left
-	face_up
-}
-
-movement PlayerWalkIntoLab1 {
-	walk_left
-	walk_up
-}
-
-movement OrionWalkIntoLab1 {
-	walk_left
-	walk_right
-	face_up
-}
-
-movement PlayerWalkIntoLab2 {
-	walk_up
-	set_invisible
-}
-
-movement OrionWalkIntoLab2 {
-	walk_up * 2
-	set_invisible
+script AnimoraCityGymGuideOutside {
+	msgbox(format("Hey, Trainer! I bet you're lookin' to challenge the Gym leader, huh?\p"
+				  "Well sorry to say, but she's not here at this moment.\p"
+				  "She's at the Trainer's School instructing a lesson about Flying-type Pokemon!"), MSGBOX_NPC)
 }
 
 
-movement PlayerWalkToLab0 {
-	delay_16
-	walk_in_place_right
-	walk_down * 7
-	walk_left * 22
-	walk_down
-	walk_left * 6
-	walk_in_place_right
-}
-
-
-movement OrionWalkToLab0 {
-	walk_right
-	walk_down * 9
-	walk_left * 28
-}
-
-movement PlayerWalkToLab1 {
-	delay_16
-	walk_in_place_left
-	walk_down * 8
-	walk_left * 28
-}
-
-
-movement OrionWalkToLab1 {
-	walk_left
-	walk_down * 8
-	walk_left * 22
-	walk_down
-	walk_left * 6
-	walk_in_place_right
-}
-
-movement ContinueExitPC {
-	walk_down * 2
-}
-
-movement OrionLeaveAnimoraPokecenter0 {
-	set_visible
-	walk_down
-	walk_right
-	walk_down * 2
-	emote_exclamation_mark
-	delay_16 * 3
-}
-
-movement OrionLeaveAnimoraPokecenter1 {
-	set_visible
-	walk_down
-	walk_right * 2
-	walk_down * 2
-	emote_exclamation_mark
-	delay_16 * 3
-}
 
 // =========================================================================================================================================
+raw `
+.set LOCALID_GIRL, 1
+`
 
-script AnimoraAideTrigger0 {
+script AnimoraCityHoodedGirlBattleTrigger0 {
 	setvar(VAR_TEMP_0, 0)
-	goto(AnimoraAideScript)
+	goto(AnimoraCityHoodedGirlBattle)
 }
 
-script AnimoraAideTrigger1 {
+script AnimoraCityHoodedGirlBattleTrigger1 {
 	setvar(VAR_TEMP_0, 1)
-	goto(AnimoraAideScript)
+	goto(AnimoraCityHoodedGirlBattle)
 }
 
-script AnimoraAideTrigger2 {
-	setvar(VAR_TEMP_0, 2)
-	goto(AnimoraAideScript)
-}
-
-script AnimoraAideScript {
+script AnimoraCityHoodedGirlBattle {
 	lock
-	opendoor(8, 18)
-	waitdooranim
-	setobjectxy(LOCALID_AIDE, 8, 18)
-	applymovement(LOCALID_AIDE, AideExitLab)
-	waitmovement(0)
-	switch (var(VAR_TEMP_0)) {
-        case 2:
-            applymovement(LOCALID_AIDE, AideLookForPlayer)
-		default:
-			applymovement(LOCALID_AIDE, Common_Movement_WalkInPlaceRight)
-    }
-	waitmovement(0)
-	msgbox("{PLAYER}!\nWait!", MSGBOX_AUTOCLOSE)
-	switch (var(VAR_TEMP_0)) {
-        case 0:
-            applymovement(LOCALID_AIDE, AideWalkToPlayer0)
-        case 1:
-            applymovement(LOCALID_AIDE, AideWalkToPlayer1)
-        case 2:
-            applymovement(LOCALID_AIDE, AideWalkToPlayer2)
-    }
-	switch (var(VAR_TEMP_0)) {
-        case 2:
-            applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
-		default:
-			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
-    }
-	waitmovement(0)
+	setobjectxy(LOCALID_GIRL, 35, 7)
+	playbgm(MUS_NONE, TRUE)
+	msgbox("???: YOU!", MSGBOX_AUTOCLOSE)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
+	delay(16)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
-	playse(SE_PIN)
-	waitmovement(LOCALID_AIDE)
-	msgbox(format("Glad I caught up to you.\nThe Professor wanted you to have these."))
-	playfanfare(MUS_OBTAIN_ITEM)
-	message("{PLAYER} received 5 Poke Balls!")
-	waitfanfare
-	additem(ITEM_POKE_BALL, 5)
-	msgbox(format("Pokeballs are used for catching Pokemon.\pYou can buy more at any Pokemon Center in the mart section.\p"
-			      "Both the Professor and I wish you good luck on your journey!"), MSGBOX_AUTOCLOSE)
-	switch (var(VAR_TEMP_0)) {
+	playbgm(MUS_RG_ENCOUNTER_RIVAL, FALSE)
+	delay(112)
+	goto_if_set(FLAG_LOST_FIRST_BATTLE, ContinueLostFirstBattleHarley)
+	switch (var(VAR_STARTER_MON)) {
         case 0:
-            applymovement(LOCALID_AIDE, AideWalkBackToLab0)
+			trainerbattle_no_intro(TRAINER_MAY_ROUTE_103_TREECKO, HarleyDefeat)
         case 1:
-            applymovement(LOCALID_AIDE, AideWalkBackToLab1)
+			trainerbattle_no_intro(TRAINER_MAY_ROUTE_103_TORCHIC, HarleyDefeat)
         case 2:
-            applymovement(LOCALID_AIDE, AideWalkBackToLab2)
+			trainerbattle_no_intro(TRAINER_MAY_ROUTE_103_MUDKIP, HarleyDefeat)
     }
-	waitmovement(0)
-	removeobject(LOCALID_AIDE)
-	closedoor(8, 18)
-	waitdooranim
-	setflag(FLAG_HIDE_AIDE_ANIMORA_CITY)
-	setvar(VAR_ANIMORA_CITY_STATE, 3)
+	goto(PostBattleHarley1)
+}
+
+script ContinueLostFirstBattleHarley {
+	switch (var(VAR_STARTER_MON)) {
+        case 0:
+			trainerbattle_no_intro(TRAINER_MAY_ROUTE_110_TREECKO, HarleyDefeat)
+        case 1:
+			trainerbattle_no_intro(TRAINER_MAY_ROUTE_110_TORCHIC, HarleyDefeat)
+        case 2:
+			trainerbattle_no_intro(TRAINER_MAY_ROUTE_110_MUDKIP, HarleyDefeat)
+	}
+	goto(PostBattleHarley1)
+}
+
+text HarleyDefeat {
+	"..."
+}
+
+script PostBattleHarley1 {
+	msgbox("...\n...\pWe'll meet again...")
+	closemessage
+	playse(SE_FLEE)
+	waitse
+	fadedefaultbgm
+	removeobject(LOCALID_HARLEY)
+	setflag(FLAG_HIDE_HARLEY_ANIMORA_CITY)
+	setflag(FLAG_HIDE_GYM_GUIDE_ANIMORA_CITY)
+	setvar(VAR_ANIMORA_CITY_STATE, 2)
 	release
-}
-
-movement AideLookForPlayer {
-	walk_in_place_right
-	delay_8
-	walk_in_place_left
-	
-}
-
-movement AideWalkBackToLab0 {
-	walk_left * 3
-	walk_up * 2
-}
-
-movement AideWalkBackToLab1 {
-	walk_left
-	walk_up
-	walk_left * 2
-	walk_up * 2
-}
-
-movement AideWalkBackToLab2 {
-	walk_right * 4
-	walk_up
-}
-
-movement AideWalkToPlayer0 {
-	walk_down
-	walk_right * 3
-}
-
-movement AideWalkToPlayer1 {
-	walk_down
-	walk_right * 2
-	walk_down
-	walk_right
-}
-
-movement AideWalkToPlayer2 {
-	walk_left * 4
-}
-
-movement AideExitLab {
-	set_visible
-	walk_down
 }

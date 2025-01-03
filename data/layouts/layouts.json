@@ -4,8 +4,8 @@
     {
       "id": "LAYOUT_PETALBURG_CITY",
       "name": "PetalburgCity_Layout",
-      "width": 42,
-      "height": 24,
+      "width": 64,
+      "height": 32,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/PetalburgCity/border.bin",
@@ -17,7 +17,7 @@
       "width": 40,
       "height": 60,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Slateport",
+      "secondary_tileset": "gTileset_Rustboro",
       "border_filepath": "data/layouts/SlateportCity/border.bin",
       "blockdata_filepath": "data/layouts/SlateportCity/map.bin"
     },
@@ -164,8 +164,8 @@
     {
       "id": "LAYOUT_ROUTE101",
       "name": "Route101_Layout",
-      "width": 50,
-      "height": 28,
+      "width": 64,
+      "height": 32,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route101/border.bin",
@@ -174,8 +174,8 @@
     {
       "id": "LAYOUT_ROUTE102",
       "name": "Route102_Layout",
-      "width": 30,
-      "height": 60,
+      "width": 52,
+      "height": 64,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Route102/border.bin",
@@ -784,10 +784,10 @@
     {
       "id": "LAYOUT_PETALBURG_CITY_GYM",
       "name": "PetalburgCity_Gym_Layout",
-      "width": 9,
-      "height": 112,
+      "width": 20,
+      "height": 18,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_PetalburgGym",
+      "secondary_tileset": "gTileset_RustboroGym",
       "border_filepath": "data/layouts/PetalburgCity_Gym/border.bin",
       "blockdata_filepath": "data/layouts/PetalburgCity_Gym/map.bin"
     },

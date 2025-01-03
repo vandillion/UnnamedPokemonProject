@@ -4798,17 +4798,14 @@ Double Battle: No
 AI: Gym Leader
 
 Kedle (Pidove) (F) @ Eviolite
-Level: 11
+Level: 12
 
 Wattrel (F)
-Level: 12
-Ability: Wind Power  
-- Thunder Shock
-- Pluck
-- Quick Attack
+Level: 13
+Ability: Wind Power
 
 Bellanco (F)
-Level: 14
+Level: 15
 Modest Nature
 
 === TRAINER_BRAWLY_1 ===
@@ -5961,35 +5958,31 @@ Level: 7
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_JOSH ===
-Name: JOSH
-Class: Youngster
+Name: Darren
+Class: Cooltrainer 2
 Pic: Youngster
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Geodude
+Starly
 Level: 10
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Tackle
 
 === TRAINER_TOMMY ===
-Name: TOMMY
-Class: Youngster
-Pic: Youngster
-Gender: Male
-Music: Male
+Name: Emily
+Class: Cooltrainer 2
+Pic: Picnicker
+Gender: Female
+Music: Girl
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Geodude
-Level: 8
-IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
+Luel
+Level: 10
 
-Geodude
-Level: 8
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
+Luel
+Level: 11
 
 === TRAINER_JOEY ===
 Name: JOEY
@@ -9171,7 +9164,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_JAZMYN ===
 Name: JAZMYN
-Class: Cooltrainer 2
+Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
@@ -9628,8 +9621,8 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_MAY_ROUTE_103_MUDKIP ===
-Name: Harley
-Class: PkMn Trainer 1
+Name: Girl
+Class: PkMn Trainer 2
 Pic: May
 Gender: Female
 Music: Female
@@ -9637,16 +9630,14 @@ Double Battle: No
 AI: Basic Trainer
 
 Tandemaus (F)
-Level: 4
+Level: 5
 
 Parmi (F)
 Level: 6
-- Tackle
-- Growl
 
 === TRAINER_MAY_ROUTE_110_MUDKIP ===
-Name: Harley
-Class: PkMn Trainer 1
+Name: Girl
+Class: PkMn Trainer 2
 Pic: May
 Gender: Female
 Music: Female
@@ -9654,12 +9645,10 @@ Double Battle: No
 AI: Basic Trainer
 
 Tandemaus (F)
-Level: 4
+Level: 5
 
 Parmi (F)
 Level: 5
-- Tackle
-- Growl
 
 === TRAINER_MAY_ROUTE_119_MUDKIP ===
 Name: MAY
@@ -9683,8 +9672,8 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_MAY_ROUTE_103_TREECKO ===
-Name: Harley
-Class: PkMn Trainer 1
+Name: Girl
+Class: PkMn Trainer 2
 Pic: May
 Gender: Female
 Music: Female
@@ -9692,16 +9681,14 @@ Double Battle: No
 AI: Basic Trainer
 
 Tandemaus (F)
-Level: 4
+Level: 5
 
 Radpole (F)
 Level: 6
-- Pound
-- Leer
 
 === TRAINER_MAY_ROUTE_110_TREECKO ===
-Name: Harley
-Class: PkMn Trainer 1
+Name: Girl
+Class: PkMn Trainer 2
 Pic: May
 Gender: Female
 Music: Female
@@ -9709,12 +9696,10 @@ Double Battle: No
 AI: Basic Trainer
 
 Tandemaus (F)
-Level: 4
+Level: 5
 
 Radpole (F)
 Level: 5
-- Pound
-- Leer
 
 === TRAINER_MAY_ROUTE_119_TREECKO ===
 Name: MAY
@@ -9738,8 +9723,8 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_MAY_ROUTE_103_TORCHIC ===
-Name: Harley
-Class: PkMn Trainer 1
+Name: Girl
+Class: PkMn Trainer 2
 Pic: May
 Gender: Female
 Music: Female
@@ -9747,16 +9732,14 @@ Double Battle: No
 AI: Basic Trainer
 
 Tandemaus (F)
-Level: 4
+Level: 5
 
 Sugarglide (F)
 Level: 6
-- Tackle
-- Growl
 
 === TRAINER_MAY_ROUTE_110_TORCHIC ===
-Name: Harley
-Class: PkMn Trainer 1
+Name: Girl
+Class: PkMn Trainer 2
 Pic: May
 Gender: Female
 Music: Female
@@ -9764,12 +9747,10 @@ Double Battle: No
 AI: Basic Trainer
 
 Tandemaus (F)
-Level: 4
+Level: 5
 
 Sugarglide (F)
 Level: 5
-- Tackle
-- Growl
 
 === TRAINER_MAY_ROUTE_119_TORCHIC ===
 Name: MAY
@@ -10513,21 +10494,19 @@ Level: 22
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_MARC ===
-Name: MARC
-Class: Hiker
-Pic: Hiker
+Name: Mary
+Class: Cooltrainer 2
+Pic: Lass
 Gender: Male
-Music: Hiker
+Music: Female
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Geodude
-Level: 8
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
+Fletchling
+Level: 10
 
-Geodude
-Level: 8
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Pikipek
+Level: 11
 
 === TRAINER_BRENDEN ===
 Name: BRENDEN

@@ -2353,13 +2353,14 @@ static void RestoreBagAfterWallyTutorial(void)
 void DoWallyTutorialBagMenu(void)
 {
     PrepareBagForWallyTutorial();
-    AddBagItem(ITEM_POTION, 1);
-    AddBagItem(ITEM_POKE_BALL, 1);
+    AddBagItem(ITEM_SUPER_POTION, 1);
+    AddBagItem(ITEM_POKE_BALL, 692);
     GoToBagMenu(ITEMMENULOCATION_WALLY, ITEMS_POCKET, CB2_SetUpReshowBattleScreenAfterMenu2);
 }
 
 #define tTimer data[8]
 #define WALLY_BAG_DELAY 102 // The number of frames between each action Wally takes in the bag
+#define WALLY_BAG_DELAY2 ((WALLY_BAG_DELAY * 15)/ 10)
 
 static void Task_WallyTutorialBagMenu(u8 taskId)
 {
@@ -2374,14 +2375,14 @@ static void Task_WallyTutorialBagMenu(u8 taskId)
             SwitchBagPocket(taskId, MENU_CURSOR_DELTA_RIGHT, FALSE);
             tTimer++;
             break;
-        case WALLY_BAG_DELAY * 2:
+        case WALLY_BAG_DELAY2:
             PlaySE(SE_SELECT);
             BagMenu_PrintCursor(tListTaskId, COLORID_GRAY_CURSOR);
             gSpecialVar_ItemId = ITEM_POKE_BALL;
             OpenContextMenu(taskId);
             tTimer++;
             break;
-        case WALLY_BAG_DELAY * 3:
+        case WALLY_BAG_DELAY * 2:
             PlaySE(SE_SELECT);
             RemoveContextWindow();
             DestroyListMenuTask(tListTaskId, 0, 0);

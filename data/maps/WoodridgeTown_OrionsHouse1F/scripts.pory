@@ -147,13 +147,11 @@ script TownMeeting {
     msgbox(format("When I went to go check on the Pokemon this morning, one of them was missing!\p"
                   "I looked all around the Town, but I couldn't find anything..."))
     closemessage
-    delay(20)
+    delay(35)
     bufferleadmonspeciesname(STR_VAR_1)
     msgbox(format("Oh yeah! {PLAYER}, I want you to have this.\pYou can give it to {STR_VAR_1}!"))
-    playfanfare(MUS_OBTAIN_ITEM)
-	message(format("{PLAYER} received an Oran Berry!"))
-    waitfanfare
-    additem(ITEM_ORAN_BERRY)
+    giveitem(ITEM_ORAN_BERRY)
+	call_if_eq(VAR_RESULT, FALSE, Common_EventScript_BagIsFull)
     applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
     waitmovement(0)
     msgbox(format("k see ya later"), MSGBOX_AUTOCLOSE)

@@ -186,67 +186,67 @@
     },
     {
       "map_section": "MAPSEC_ROUTE_108",
-      "name": "ROUTE 108",
-      "x": 6,
-      "y": 14,
+      "name": "Route 7",
+      "x": 14,
+      "y": 8,
       "width": 2,
       "height": 1
     },
     {
       "map_section": "MAPSEC_ROUTE_109",
-      "name": "ROUTE 109",
-      "x": 8,
-      "y": 12,
-      "width": 1,
-      "height": 3
+      "name": "Route 8",
+      "x": 15,
+      "y": 7,
+      "width": 2,
+      "height": 1
     },
     {
       "map_section": "MAPSEC_ROUTE_110",
-      "name": "ROUTE 110",
-      "x": 8,
-      "y": 7,
+      "name": "Route 9",
+      "x": 20,
+      "y": 6,
+      "width": 2,
+      "height": 2
+    },
+    {
+      "map_section": "MAPSEC_ROUTE_111",
+      "name": "Route 10",
+      "x": 21,
+      "y": 8,
+      "width": 2,
+      "height": 1
+    },
+    {
+      "map_section": "MAPSEC_ROUTE_112",
+      "name": "Route 11",
+      "x": 23,
+      "y": 5,
+      "width": 2,
+      "height": 2
+    },
+    {
+      "map_section": "MAPSEC_ROUTE_113",
+      "name": "Route 12",
+      "x": 22,
+      "y": 3,
       "width": 1,
       "height": 3
     },
     {
-      "map_section": "MAPSEC_ROUTE_111",
-      "name": "ROUTE 111",
-      "x": 8,
-      "y": 0,
-      "width": 1,
-      "height": 6
-    },
-    {
-      "map_section": "MAPSEC_ROUTE_112",
-      "name": "ROUTE 112",
-      "x": 6,
+      "map_section": "MAPSEC_ROUTE_114",
+      "name": "Route 13",
+      "x": 20,
       "y": 3,
       "width": 2,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ROUTE_113",
-      "name": "ROUTE 113",
-      "x": 4,
-      "y": 0,
-      "width": 4,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_ROUTE_114",
-      "name": "ROUTE 114",
-      "x": 1,
-      "y": 0,
-      "width": 2,
-      "height": 3
-    },
-    {
       "map_section": "MAPSEC_ROUTE_115",
-      "name": "ROUTE 115",
-      "x": 0,
-      "y": 2,
-      "width": 1,
-      "height": 3
+      "name": "Route 14",
+      "x": 19,
+      "y": 4,
+      "width": 2,
+      "height": 1
     },
     {
       "map_section": "MAPSEC_ROUTE_116",

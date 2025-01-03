@@ -114,7 +114,7 @@
 #define VAR_SOOTOPOLIS_CITY_STATE                        0x405E
 #define VAR_EVER_GRANDE_CITY_STATE                       0x405F // Unused Var
 #define VAR_ROUTE1_STATE                                 0x4060
-#define VAR_ROUTE102_STATE                               0x4061 // Unused Var
+#define VAR_ROUTE2_STATE                                 0x4061
 #define VAR_ROUTE103_STATE                               0x4062 // Unused Var
 #define VAR_ROUTE104_STATE                               0x4063
 #define VAR_ROUTE105_STATE                               0x4064 // Unused Var
@@ -150,7 +150,7 @@
 #define VAR_LITTLEROOT_HOUSES_STATE_MAY                  0x4082
 #define VAR_NEWGAME_START                                0x4083
 #define VAR_BIRCH_LAB_STATE                              0x4084
-#define VAR_PETALBURG_GYM_STATE                          0x4085 // 0-1: Wally tutorial, 2-6: 0-4 badges, 7: Defeated Norman, 8: Rematch Norman
+#define VAR_ANIMORA_GYM_STATE                            0x4085
 #define VAR_CONTEST_HALL_STATE                           0x4086
 #define VAR_CABLE_CLUB_STATE                             0x4087
 #define VAR_CONTEST_TYPE                                 0x4088
@@ -265,7 +265,6 @@
 #define VAR_SCOTT_BF_CALL_STEP_COUNTER                   0x40F5
 #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER             0x40F6
 
-//The next 4 vars are set to 1 if corresponding triggers should block the player from progressing
 #define VAR_BLOCK_PROGRESSION_NORTH                      0x40F7
 #define VAR_BLOCK_PROGRESSION_EAST                       0x40F8
 #define VAR_BLOCK_PROGRESSION_SOUTH                      0x40F9

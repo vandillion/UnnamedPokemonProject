@@ -3,6 +3,7 @@ Common_EventScript_MartClerk::
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
+	goto_if_unset FLAG_SYS_POKEDEX_GET, CommonMartNoDex
 	goto_if_set FLAG_BADGE08_GET, CommonMartAllBadges
 	goto_if_set FLAG_BADGE07_GET, CommonMart7Badges
 	goto_if_set FLAG_BADGE05_GET, CommonMart5Badges
@@ -10,6 +11,11 @@ Common_EventScript_MartClerk::
 	goto_if_set FLAG_BADGE03_GET, CommonMart3Badges
 	goto_if_set FLAG_BADGE01_GET, CommonMart1Badge
 	pokemart PokemartNoBadges
+	msgbox gText_PleaseComeAgain, MSGBOX_AUTOCLOSE
+	end
+
+CommonMartNoDex:
+	pokemart PokemartNoDex
 	msgbox gText_PleaseComeAgain, MSGBOX_AUTOCLOSE
 	end
 
@@ -59,6 +65,11 @@ gText_PleaseComeAgain::
 gText_PlayerWhatCanIDoForYou::
 	.string "{PLAYER}{STRING 5}, welcome!\n"
 	.string "What can I do for you?$"
+
+	.align 2
+PokemartNoDex:
+	.2byte ITEM_POTION
+	.2byte ITEM_NONE
 	
 	.align 2
 PokemartNoBadges:

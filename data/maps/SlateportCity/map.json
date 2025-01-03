@@ -14,19 +14,9 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "map": "MAP_ROUTE110",
-      "offset": 0,
-      "direction": "up"
-    },
-    {
-      "map": "MAP_ROUTE109",
-      "offset": 0,
+      "map": "MAP_ROUTE102",
+      "offset": -1,
       "direction": "down"
-    },
-    {
-      "map": "MAP_ROUTE134",
-      "offset": 0,
-      "direction": "right"
     }
   ],
   "object_events": [
@@ -488,8 +478,8 @@
   ],
   "warp_events": [
     {
-      "x": 19,
-      "y": 19,
+      "x": 34,
+      "y": 13,
       "elevation": 0,
       "dest_map": "MAP_SLATEPORT_CITY_POKEMON_CENTER_1F",
       "dest_warp_id": "0"

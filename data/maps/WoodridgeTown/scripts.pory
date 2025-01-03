@@ -7,6 +7,7 @@ raw `
 
 mapscripts WoodridgeTown_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
+		setflag(FLAG_VISITED_WOODRIDGE_TOWN)
         setrespawn(HEAL_LOCATION_WOODRIDGE_TOWN)
 		call_if_eq(VAR_NEWGAME_START, 5, UpdateObjects)
 		call_if_eq(VAR_NEWGAME_START, 6, UpdateOrionForBattle)
@@ -50,6 +51,18 @@ script PlayersHouseSign {
 
 script OrionsHouseSign {
 	msgbox("The Fields Residence", MSGBOX_SIGN)
+	end
+}
+
+script WoodridgeTown3rdHouseScript {
+	goto_if_ge(VAR_ANIMORA_CITY_STATE, 2, WoodrigeHouseIsLocked)
+	goto_if_lt(VAR_NEWGAME_START, 6, WoodrigeHouseIsLocked)
+	msgbox(format("The door feels like it's barricaded shut.\pYou can hear faint snoring coming from inside."), MSGBOX_SIGN)
+	end
+}
+
+script WoodrigeHouseIsLocked {
+	msgbox(format("This door is locked."), MSGBOX_SIGN)
 	end
 }
 
@@ -129,47 +142,39 @@ script ContinueLostFirstBattleOrion {
 script PostBattleOrion1 {
 	msgbox("Alright, I'm headin out\nSee ya later, {PLAYER}!", MSGBOX_AUTOCLOSE)					
 	switch (var(VAR_TEMP_1)) {
+        case 0:
+		case 1:
+			applymovement(LOCALID_ORION, OrionLeave)
+			delay(16)
+			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
         case 2:
+		case 3:
 			applymovement(LOCALID_ORION, OrionLeave2)
 			delay(16)
 			turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
-			delay(32)
-			turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
-        default:
-			applymovement(LOCALID_ORION, OrionLeave)
-			delay(16)
-			turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
 			
     }
+	delay(32)
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
 	waitmovement(0)
 	removeobject(LOCALID_ORION)
 	setflag(FLAG_HIDE_ORION_WOODRIDGE_TOWN)
 	setflag(FLAG_HIDE_ORION_ORIONS_ROOM)
 	clearflag(FLAG_HIDE_MAP_NAME_POPUP)
 	setvar(VAR_NEWGAME_START, 7)
+	setvar(VAR_BLOCK_PROGRESSION_WEST, 2)
 	special(HealPlayerParty)
 	release
 }
 
 movement OrionLeave {
-	walk_left * 5
 	walk_down
-	walk_left
-	walk_down
-	walk_left
-	walk_down
-	walk_left
+	walk_left * 9
 	}
 
 movement OrionLeave2 {
 	walk_up
-	walk_left * 5
-	walk_down
-	walk_left
-	walk_down
-	walk_left
-	walk_down
-	walk_left * 2
+	walk_left * 9
 }
 
 text OrionDefeat {

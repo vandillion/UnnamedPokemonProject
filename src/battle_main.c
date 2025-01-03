@@ -310,7 +310,7 @@ static const s8 sCenterToCornerVecXs[8] ={-32, -16, -16, -32, -32};
 const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
 {
     [TRAINER_CLASS_PKMN_TRAINER_1] = { _("{PKMN} Trainer") },
-    [TRAINER_CLASS_PKMN_TRAINER_2] = { _("{PKMN} Trainer") },
+    [TRAINER_CLASS_PKMN_TRAINER_2] = { _("Hooded") },
     [TRAINER_CLASS_HIKER] = { _("Hiker"), 10 },
     [TRAINER_CLASS_TEAM_AQUA] = { _("Scalawag") },
     [TRAINER_CLASS_PKMN_BREEDER] = { _("{PKMN} Breeder"), 10, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? BALL_HEAL : BALL_FRIEND },
@@ -357,7 +357,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_SWIMMER_F] = { _("Swimmer"), 2, BALL_DIVE },
     [TRAINER_CLASS_TWINS] = { _("Twins"), 3 },
     [TRAINER_CLASS_SAILOR] = { _("Sailor"), 8 },
-    [TRAINER_CLASS_COOLTRAINER_2] = { _("Ace Trainer"), 5, BALL_ULTRA },
+    [TRAINER_CLASS_COOLTRAINER_2] = { _("Gym Trainer"), 12, BALL_GREAT },
     [TRAINER_CLASS_MAGMA_ADMIN] = { _("Subzero Exec"), 10 },
     [TRAINER_CLASS_RIVAL] = { _("{PKMN} Trainer"), 15 },
     [TRAINER_CLASS_BUG_CATCHER] = { _("Bug Catcher"), 4 },

@@ -4,7 +4,7 @@ mapscripts Route102_MapScripts {
 // Signs
 
 script Route2Sign {
-	msgbox("Route 2\p{UP_ARROW} Centra City\n{DOWN_ARROW} Animora City", MSGBOX_SIGN)
+	msgbox("Route 2\n{UP_ARROW} Centra City\l{DOWN_ARROW} Animora City", MSGBOX_SIGN)
 	end
 }
 
@@ -31,7 +31,7 @@ script Route2Jimmy {
 
 script Route2Liv {
 	trainerbattle_single(TRAINER_TIANA, format("I want to be just as strong as Leader Izzie!"), format("My wings will spread another day."))
-	msgbox(format("Izzie is a pretty strong Trainer for someone her age."), MSGBOX_NPC)
+	msgbox(format("Speaking of, I could go for some wings right now."), MSGBOX_NPC)
 	end
 }
 
@@ -43,7 +43,7 @@ script Route2Fred {
 
 script Route2Shawn {
 	trainerbattle_single(TRAINER_ALLEN, format("Ha! My Pokemon stole a random kid's Pokemon's Oran Berry!"), "Aww.")
-	msgbox(format("Some kid walked past here a couple minutes ago.\pHe was pretty strong!\nHave you met him yet?"), MSGBOX_NPC)
+	msgbox(format("There was a kid that walked past here a couple minutes ago.\pHe was pretty strong!\nHave you met him yet?"), MSGBOX_NPC)
 	end
 }
 
@@ -51,4 +51,274 @@ script Route2Luca {
 	trainerbattle_single(TRAINER_JERRY_1, format("You can't possibly beat me in a Pokemon battle!\pI passed all of my exams at the Trainer School!"), "Cheater!")
 	msgbox(format("Don't make me get my buddy Kyle! He's dealt with Herobrine before!"), MSGBOX_NPC)
 	end
+}
+
+// ========================================================================================
+
+raw `
+.set LOCALID_MAN, 13
+`
+
+script Route2CatchTutorial {
+	lock
+	applymovement(LOCALID_MAN, Route2CatchTutorialNoticePlayer)
+	playse(SE_PIN)
+	waitmovement(0)
+	switch(var(VAR_TEMP_0))
+	{
+		case 0:
+			applymovement(LOCALID_MAN, Route2CatchTutorialWalkToPlayer0)
+		case 1:
+			applymovement(LOCALID_MAN, Route2CatchTutorialWalkToPlayer1)
+		case 2:
+			applymovement(LOCALID_MAN, Route2CatchTutorialWalkToPlayer2)
+		case 3:
+			applymovement(LOCALID_MAN, Route2CatchTutorialWalkToPlayer3)
+		case 4:
+			applymovement(LOCALID_MAN, Route2CatchTutorialWalkToPlayer4)
+		case 5:
+			applymovement(LOCALID_MAN, Route2CatchTutorialWalkToPlayer5)
+	}
+	waitmovement(0)
+	msgbox(format("Hello there!\nYou're a Pokemon Trainer, correct?\p"
+				  "If you want, I can show you the basics on catching a Pokemon."), MSGBOX_YESNO)
+	switch(var(VAR_RESULT))
+	{
+		case 1:
+			msgbox("Alright, follow me!", MSGBOX_AUTOCLOSE)
+			switch(var(VAR_TEMP_0))
+   			{
+				case 0:
+					applymovement(OBJ_EVENT_ID_PLAYER, Route2CatchTutWalkToGrass0)
+					applymovement(LOCALID_MAN, Route2CatchTutWalkToGrass0)
+					waitmovement(0)
+					applymovement(LOCALID_MAN, Common_Movement_WalkInPlaceLeft)
+				case 1:
+					applymovement(OBJ_EVENT_ID_PLAYER, Route2CatchTutPlayerWalkToGrass1)
+					applymovement(LOCALID_MAN, Route2CatchTutWalkToGrass1)
+				case 2:
+					applymovement(OBJ_EVENT_ID_PLAYER, Route2CatchTutPlayerWalkToGrass2)
+					applymovement(LOCALID_MAN, Route2CatchTutWalkToGrass2)
+				case 3:
+					applymovement(OBJ_EVENT_ID_PLAYER, Route2CatchTutPlayerWalkToGrass3)
+					applymovement(LOCALID_MAN, Route2CatchTutWalkToGrass3)
+				case 4:
+					applymovement(OBJ_EVENT_ID_PLAYER, Route2CatchTutPlayerWalkToGrass4)
+					applymovement(LOCALID_MAN, Route2CatchTutWalkToGrass4)
+				case 5:
+					applymovement(OBJ_EVENT_ID_PLAYER, Route2CatchTutPlayerWalkToGrass5)
+					applymovement(LOCALID_MAN, Route2CatchTutWalkToGrass5)
+			}
+			waitmovement(0)
+			msgbox(format("You can find wild Pokemon in patches of tall grass, such as this one.\pHere comes one now!"), MSGBOX_AUTOCLOSE)
+			applymovement(LOCALID_MAN, Common_Movement_FaceAwayPlayer)
+			special(SavePlayerParty)
+			special(LoadWallyZigzagoon)
+			special(StartWallyTutorialBattle)
+			waitstate
+			special(LoadPlayerParty)
+			applymovement(LOCALID_MAN, Common_Movement_FacePlayer)
+			waitmovement(0)
+			checkitem(ITEM_POKE_BALL)
+			switch(var(VAR_RESULT))
+			{
+				case 0:
+					msgbox("Take these, too!\nI have plenty of spares.")
+					giveitem(ITEM_POKE_BALL, 5)
+					call_if_eq(VAR_RESULT, FALSE, Common_EventScript_BagIsFull)
+					msgbox(format("These are tools used to catch wild Pokemon.\pRemember to weaken the wild Pokemon before throwing a Ball."), MSGBOX_AUTOCLOSE)
+				case 1:
+					msgbox(format("Always remember to weaken the wild Pokemon before throwing a Ball."), MSGBOX_AUTOCLOSE)
+			}
+			applymovement(LOCALID_MAN, Route2CatchTutorialManLeave)
+		case 0:
+		    checkitem(ITEM_POKE_BALL)
+			switch(var(VAR_RESULT))
+			{
+				case 0:
+					msgbox(format("Oh, okay.\nI still want you to have these, anyway!"))
+					giveitem(ITEM_POKE_BALL, 5)
+					call_if_eq(VAR_RESULT, FALSE, Common_EventScript_BagIsFull)
+					msgbox(format("These are tools used to catch wild Pokemon.\pJust remember to weaken the wild Pokemon before throwing a Ball."), MSGBOX_AUTOCLOSE)
+				case 1:
+					msgbox(format("Oh, okay.\nJust remember to weaken the wild Pokemon before throwing a Ball."), MSGBOX_AUTOCLOSE)
+			}
+			applymovement(LOCALID_MAN, Route2CatchTutorialWalkOffscreen0)
+			
+	}
+	waitmovement(0)
+	removeobject(LOCALID_MAN)
+	setflag(FLAG_HIDE_ROUTE_2_CATCH_TUTORIAL)
+	setvar(VAR_ROUTE2_STATE, 1)
+	end
+}
+
+movement Route2CatchTutorialWalkOffscreen0 {
+	walk_right * 4
+	walk_up * 6
+}
+
+movement Route2CatchTutorialWalkOffscreen2 {
+	
+}
+
+movement Route2CatchTutorialWalkOffscreen3 {
+	
+}
+
+movement Route2CatchTutorialWalkOffscreen4 {
+	
+}
+
+movement Route2CatchTutorialWalkOffscreen5 {
+	
+}
+
+movement Route2CatchTutorialManLeave {
+	walk_up * 6
+}
+
+movement Route2CatchTutWalkToGrass5 {
+	walk_right * 2
+	walk_up * 3
+	walk_right * 2
+	walk_up * 2
+	walk_in_place_down
+}
+
+movement Route2CatchTutPlayerWalkToGrass5 {
+	walk_right * 3
+	walk_up * 3
+	walk_right * 2
+	walk_up
+}
+
+movement Route2CatchTutWalkToGrass4 {
+	walk_right * 2
+	walk_up * 2
+	walk_right * 2
+	walk_up * 2
+	walk_in_place_down
+}
+
+movement Route2CatchTutPlayerWalkToGrass4 {
+	walk_right * 3
+	walk_up * 2
+	walk_right * 2
+	walk_up
+}
+
+movement Route2CatchTutWalkToGrass3 {
+	walk_right * 2
+	walk_up * 2
+	walk_right * 2
+	walk_up
+	walk_in_place_down
+}
+
+movement Route2CatchTutPlayerWalkToGrass3 {
+	walk_right * 3
+	walk_up * 2
+	walk_right * 2
+	walk_in_place_up
+}
+
+movement Route2CatchTutPlayerWalkToGrass2 {
+	walk_right * 3
+	walk_up
+	walk_right * 2
+	walk_in_place_up
+}
+
+movement Route2CatchTutWalkToGrass2 {
+	walk_right * 2
+	walk_up
+	walk_right * 2
+	walk_up
+	walk_in_place_down
+}
+
+movement Route2CatchTutWalkToGrass0 {
+	walk_right * 4
+}
+
+movement Route2CatchTutWalkToGrass1 {
+	walk_right * 4
+	walk_up
+	walk_in_place_down
+}
+
+movement Route2CatchTutPlayerWalkToGrass1 {
+	walk_right * 5
+	walk_in_place_up
+}
+
+movement Route2CatchTutorialNoticePlayer {
+	face_player
+	emote_exclamation_mark
+	delay_16 * 3
+}
+
+movement Route2CatchTutorialWalkToPlayer0 {
+	walk_up
+	walk_left
+	walk_up
+	walk_left
+}
+
+movement Route2CatchTutorialWalkToPlayer1 {
+	walk_up
+	walk_left * 2
+}
+
+movement Route2CatchTutorialWalkToPlayer2 {
+	walk_left * 2
+}
+
+movement Route2CatchTutorialWalkToPlayer3 {
+	walk_down
+	walk_left * 2
+}
+
+movement Route2CatchTutorialWalkToPlayer4 {
+	walk_down
+	walk_left
+	walk_down
+	walk_left
+}
+
+movement Route2CatchTutorialWalkToPlayer5 {
+	walk_left
+	walk_down * 3
+	walk_left
+}
+
+script Route2CatchTutorialTrigger0 {
+	setvar(VAR_TEMP_0, 0)
+	goto(Route2CatchTutorial)
+}
+
+script Route2CatchTutorialTrigger1 {
+	setvar(VAR_TEMP_0, 1)
+	goto(Route2CatchTutorial)
+}
+
+script Route2CatchTutorialTrigger2 {
+	setvar(VAR_TEMP_0, 2)
+	goto(Route2CatchTutorial)
+}
+
+script Route2CatchTutorialTrigger3 {
+	setvar(VAR_TEMP_0, 3)
+	goto(Route2CatchTutorial)
+}
+
+script Route2CatchTutorialTrigger4 {
+	setvar(VAR_TEMP_0, 4)
+	goto(Route2CatchTutorial)
+}
+
+script Route2CatchTutorialTrigger5 {
+	setvar(VAR_TEMP_0, 5)
+	goto(Route2CatchTutorial)
 }
