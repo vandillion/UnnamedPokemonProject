@@ -409,7 +409,7 @@ static void HandleInputChooseAction(u32 battler)
                 }
                 else                                                                            // moves the cursor to "Run" if it's not already there.
                 {
-                    if (gActionSelectionCursor[battler] != 3)
+                    if (gActionSelectionCursor[battler] != B_ACTION_RUN)
                     {
                         PlaySE(SE_SELECT);
                         ActionSelectionDestroyCursorAt(gActionSelectionCursor[battler]);
