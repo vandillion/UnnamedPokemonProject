@@ -62,7 +62,7 @@ EventScript_ContinueObtainedItem:
 	delay 10
 	showitemdescription
 	waitfanfare
-	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
+	@ msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
 	hideitemdescription
 	setvar VAR_RESULT, TRUE
 	return
