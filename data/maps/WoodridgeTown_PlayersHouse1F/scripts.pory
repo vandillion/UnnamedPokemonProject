@@ -53,6 +53,8 @@ script IntroDialogue{
 	msgbox(format("Wow, sleepyhead!\nWas the flight that tiring? Haha!\p"
 				  "Blah blah blah we finally made it though so go find someone to talk to."))
 	setvar(VAR_NEWGAME_START, 1)
+	setvar(VAR_BLOCK_PROGRESSION_SOUTH, 1)
+	setvar(VAR_BLOCK_PROGRESSION_WEST, 1)
 	closemessage
 	release
 }

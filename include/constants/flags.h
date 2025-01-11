@@ -49,7 +49,7 @@
 #define FLAG_HIDE_CUTSCENE_NPCS_ORIONS_HOUSE    0x23
 #define FLAG_HIDE_ORIONS_STEPDAD_ORIONS_HOUSE   0x24
 #define FLAG_LOST_FIRST_BATTLE                  0x25
-#define FLAG_HIDE_HARLEY_ANIMORA_CITY           0x26
+#define FLAG_HIDE_GIRL_ANIMORA_CITY             0x26
 #define FLAG_HIDE_GYM_GUIDE_ANIMORA_CITY        0x27
 #define FLAG_HIDE_ORION_OLSTERN_CITY            0x28
 #define FLAG_HIDE_CUTSCENE_NPCS_OLSTERN_CITY_1  0x29
@@ -746,7 +746,7 @@
 #define FLAG_UNUSED_0x2BB  0x2BB // Unused Flag
 
 // Event Flags
-#define FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG                      0x2BC
+#define FLAG_UNUSED_0x2BC                                           0x2BC // Previously FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
 #define FLAG_HIDE_APPRENTICE                                        0x2BD
 #define FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN                0x2BE
 #define FLAG_HIDE_UNION_ROOM_PLAYER_1                               0x2BF
@@ -1090,7 +1090,7 @@
 #define FLAG_ITEM_ROUTE_133_BIG_PEARL                               0x40D
 #define FLAG_ITEM_ROUTE_133_STAR_PIECE                              0x40E
 #define FLAG_ITEM_ROUTE_1_POTION                                    0x40F
-#define FLAG_ITEM_PETALBURG_CITY_ETHER                              0x410
+#define FLAG_ITEM_ANIMORA_ETHER                                     0x410
 #define FLAG_ITEM_RUSTBORO_CITY_X_DEFEND                            0x411
 #define FLAG_ITEM_LILYCOVE_CITY_MAX_REPEL                           0x412
 #define FLAG_ITEM_MOSSDEEP_CITY_NET_BALL                            0x413
@@ -1317,12 +1317,12 @@
 #define FLAG_UNUSED_0x4EF                                           0x4EF // Unused Flag
 
 #define FLAG_DEFEATED_ANIMORA_GYM                                   0x4F0
-#define FLAG_DEFEATED_IMPERIAL_GYM                                   0x4F1
-#define FLAG_DEFEATED_OLSTERN_GYM                                  0x4F2
-#define FLAG_DEFEATED_CENTRA_GYM                                 0x4F3
-#define FLAG_DEFEATED_MOSTILL_GYM                                 0x4F4
-#define FLAG_DEFEATED_MYRON_GYM                                   0x4F5
-#define FLAG_DEFEATED_GESTOLIA_GYM                                  0x4F6
+#define FLAG_DEFEATED_IMPERIAL_GYM                                  0x4F1
+#define FLAG_DEFEATED_OLSTERN_GYM                                   0x4F2
+#define FLAG_DEFEATED_CENTRA_GYM                                    0x4F3
+#define FLAG_DEFEATED_MOSTILL_GYM                                   0x4F4
+#define FLAG_DEFEATED_MYRON_GYM                                     0x4F5
+#define FLAG_DEFEATED_GESTOLIA_GYM                                                                0x4F6
 #define FLAG_DEFEATED_SOOTOPOLIS_GYM                                0x4F7
 #define FLAG_DEFEATED_METEOR_FALLS_STEVEN                           0x4F8
 
@@ -1367,7 +1367,7 @@
 #define NUM_BADGES                                   (1 + FLAG_BADGE08_GET - FLAG_BADGE01_GET)
 
 // Towns and Cities
-#define FLAG_VISITED_WOODRIDGE_TOWN                (SYSTEM_FLAGS + 0xF)
+#define FLAG_VISITED_WOODRIDGE_TOWN                  (SYSTEM_FLAGS + 0xF)
 #define FLAG_VISITED_OLDALE_TOWN                    (SYSTEM_FLAGS + 0x10)
 #define FLAG_VISITED_DEWFORD_TOWN                   (SYSTEM_FLAGS + 0x11)
 #define FLAG_VISITED_LAVARIDGE_TOWN                 (SYSTEM_FLAGS + 0x12)
@@ -1375,7 +1375,7 @@
 #define FLAG_VISITED_VERDANTURF_TOWN                (SYSTEM_FLAGS + 0x14)
 #define FLAG_VISITED_PACIFIDLOG_TOWN                (SYSTEM_FLAGS + 0x15)
 #define FLAG_VISITED_ANIMORA_CITY                   (SYSTEM_FLAGS + 0x16)
-#define FLAG_VISITED_SLATEPORT_CITY                 (SYSTEM_FLAGS + 0x17)
+#define FLAG_VISITED_CENTRA_CITY                    (SYSTEM_FLAGS + 0x17)
 #define FLAG_VISITED_OLSTERN_CITY                   (SYSTEM_FLAGS + 0x18)
 #define FLAG_VISITED_RUSTBORO_CITY                  (SYSTEM_FLAGS + 0x19)
 #define FLAG_VISITED_FORTREE_CITY                   (SYSTEM_FLAGS + 0x1A)
@@ -1388,7 +1388,7 @@
 #define FLAG_NURSE_UNION_ROOM_REMINDER              (SYSTEM_FLAGS + 0x20)
 
 #define FLAG_SYS_NO_CATCHING                        (SYSTEM_FLAGS + 0x21)
-#define FLAG_UNUSED_0x882                           (SYSTEM_FLAGS + 0x22) // Unused Flag
+#define FLAG_SYS_SHINY_LOCK                         (SYSTEM_FLAGS + 0x22)
 #define FLAG_UNUSED_0x883                           (SYSTEM_FLAGS + 0x23) // Unused Flag
 #define FLAG_UNUSED_0x884                           (SYSTEM_FLAGS + 0x24) // Unused Flag
 #define FLAG_UNUSED_0x885                           (SYSTEM_FLAGS + 0x25) // Unused Flag
@@ -1506,7 +1506,7 @@
 
 #define FLAG_RECEIVED_POKEDEX_FROM_BIRCH            (SYSTEM_FLAGS + 0x84)
 
-#define FLAG_SYS_SHINY_LOCK                         (SYSTEM_FLAGS + 0x85)
+#define FLAG_UNUSED_0x8E5                           (SYSTEM_FLAGS + 0x85) // Unused Flag
 #define FLAG_UNUSED_0x8E6                           (SYSTEM_FLAGS + 0x86) // Unused Flag
 #define FLAG_UNUSED_0x8E7                           (SYSTEM_FLAGS + 0x87) // Unused Flag
 #define FLAG_UNUSED_0x8E8                           (SYSTEM_FLAGS + 0x88) // Unused Flag

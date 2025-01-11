@@ -513,6 +513,16 @@ static void Task_HandleStarterChooseInput(u8 taskId)
         gTasks[taskId].tStarterSelection++;
         gTasks[taskId].func = Task_MoveStarterChooseCursor;
     }
+    else if (JOY_NEW(DPAD_LEFT) && selection == 0)
+    {
+        gTasks[taskId].tStarterSelection = 2;
+        gTasks[taskId].func = Task_MoveStarterChooseCursor;
+    }
+    else if (JOY_NEW(DPAD_RIGHT) && selection == STARTER_MON_COUNT - 1)
+    {
+        gTasks[taskId].tStarterSelection = 0;
+        gTasks[taskId].func = Task_MoveStarterChooseCursor;
+    }
 }
 
 static void Task_WaitForStarterSprite(u8 taskId)
@@ -543,13 +553,16 @@ static void Task_HandleConfirmStarterInput(u8 taskId)
     {
     case 0:  // YES
         // Return the starter choice and exit.
-        StopCry();
+        if (IsCryPlaying())
+            StopCry();
         gSpecialVar_Result = gTasks[taskId].tStarterSelection;
         ResetAllPicSprites();
         SetMainCallback2(gMain.savedCallback);
         break;
     case 1:  // NO
     case MENU_B_PRESSED:
+        if (IsCryPlaying())
+            StopCry();
         PlaySE(SE_SELECT);
         spriteId = gTasks[taskId].tPkmnSpriteId;
         FreeOamMatrix(gSprites[spriteId].oam.matrixNum);

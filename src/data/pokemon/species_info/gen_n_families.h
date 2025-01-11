@@ -463,7 +463,7 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING),
-        .abilities = { ABILITY_KEEN_EYE, ABILITY_STURDY, ABILITY_WEAK_ARMOR },
+        .abilities = { ABILITY_NONE, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Bellanco"),
         .cryId = CRY_BULBASAUR,
@@ -503,8 +503,8 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
             gShinyOverworldPalette_Quaxly
         )
         .levelUpLearnset = sBellancoLevelUpLearnset,
-        .teachableLearnset = sSkarmoryTeachableLearnset,
-        .eggMoveLearnset = sSkarmoryEggMoveLearnset,
+        .teachableLearnset = sNoneTeachableLearnset,
+        .eggMoveLearnset = sNoneEggMoveLearnset,
     },
 #endif //P_FAMILY_BELLANCO
 

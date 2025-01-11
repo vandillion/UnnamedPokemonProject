@@ -1,12 +1,6 @@
 raw `
 .set LOCALID_ORIONS_MOM, 1
-.set LOCALID_ORION, 3
-.set LOCALID_DAISY, 4
-.set LOCALID_SAM, 5
-.set LOCALID_GS, 6
-.set LOCALID_FS, 7
-.set LOCALID_WS, 8
-.set LOCALID_ORIONS_STEPDAD, 2
+@.set LOCALID_ORIONS_STEPDAD, 2
 `
 mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
@@ -22,6 +16,55 @@ mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
 		 VAR_NEWGAME_START, 5 : TownMeeting
     ]
 }
+
+script MoveMom {
+	setobjectxyperm(LOCALID_ORIONS_MOM, 4, 5)
+    setobjectmovementtype(LOCALID_ORIONS_MOM, MOVEMENT_TYPE_FACE_DOWN)
+}
+
+
+script OrionMomIntro {
+    lock
+    playse(SE_PIN)
+    applymovement(LOCALID_ORIONS_MOM, Common_Movement_ExclamationMarkDelay)
+	waitmovement(0)
+    applymovement(LOCALID_ORIONS_MOM, OrionMomWalkToDoor)
+    waitmovement(0)
+    msgbox(format("We weren't expecting guests today.\nWho are you?"))
+    closemessage
+    delay(45)
+    msgbox(format("… … …\pSo you're our new neighbor?\nNice to meet you, {PLAYER}.\pIf you're looking for someone to talk to, we have a son who's about your age.\p"
+                  "I'm sure he'd like to meet you, but he's not here right now.\pHe's on one of his nature strolls in the woods south of here."), MSGBOX_AUTOCLOSE)
+    applymovement(LOCALID_ORIONS_MOM, MoveMomToTable)
+    waitmovement(0)
+    clearflag(FLAG_HIDE_ORION_WOODRIDGE_TOWN)
+    setvar(VAR_NEWGAME_START, 2)
+    release
+}
+
+movement MoveMomToTable {
+    walk_up * 2
+    walk_right * 6
+    walk_down
+    walk_in_place_left
+}
+
+movement OrionMomWalkToDoor {
+    walk_left * 2
+    walk_down * 2
+    
+}
+
+//==================================================================================================
+
+raw `
+.set LOCALID_ORION, 3
+.set LOCALID_DAISY, 4
+.set LOCALID_SAM, 5
+.set LOCALID_GS, 6
+.set LOCALID_FS, 7
+.set LOCALID_WS, 8
+`
 
 script OrionsHouseHidePlayer {
 	hideobjectat(OBJ_EVENT_ID_PLAYER, MAP_WOODRIDGE_TOWN_ORIONS_HOUSE1F)
@@ -44,38 +87,11 @@ script MoveMon {
     }
 }
 
-script MoveMom {
-	setobjectxyperm(1, 4, 5)
-    setobjectmovementtype(1, MOVEMENT_TYPE_FACE_DOWN)
-}
-
-
-script OrionMomIntro {
-    lock
-    turnobject(1, DIR_SOUTH)
-    playse(SE_PIN)
-    applymovement(1, Common_Movement_ExclamationMarkDelay)
-	waitmovement(0)
-    applymovement(1, OrionMomWalkToDoor)
-    waitmovement(0)
-    msgbox(format("We weren't expecting guests today.\nWho are you?"))
-    closemessage
-    delay(45)
-    msgbox(format("...\pSo you're our new neighbor?\nNice to meet you, {PLAYER}.\pIf you're looking for someone to talk to, we have a son who's about your age.\p"
-                  "I'm sure he'd like to meet you, but he's not here right now.\pHe's on one of his nature strolls in the woods south of here."))
-    closemessage
-    setvar(VAR_NEWGAME_START, 2)
-    applymovement(1, MoveMomToTable)
-    waitmovement(0)
-    clearflag(FLAG_HIDE_ORION_WOODRIDGE_TOWN)
-    release
-}
-
 script TownMeeting {
     lock
 	special(SpawnCameraObject)
 	setobjectxy(OBJ_EVENT_ID_PLAYER, 2, 8)
-    message("The next morning...")
+    message("The next morning…")
     waitmessage
     delay(45)
     closemessage
@@ -88,10 +104,10 @@ script TownMeeting {
     applymovement(LOCALID_SAM, TownMeetingNoticePlayer)
     applymovement(LOCALID_ORION, TownMeetingNoticePlayer)
     applymovement(LOCALID_ORIONS_MOM, TownMeetingNoticePlayer)
-    delay(24)
+    delay(16)
     playse(SE_PIN)
     waitmovement(0)
-    msgbox(format("Mom: {PLAYER}!\nAbout time you woke up!"), MSGBOX_AUTOCLOSE)
+    msgbox("Mom: {PLAYER}!\nAbout time you woke up!", MSGBOX_AUTOCLOSE)
     applymovement(OBJ_EVENT_ID_PLAYER, MeetingPlayerWalkFromDoorToTable)
     delay(96)
     applymovement(LOCALID_DAISY, Common_Movement_WalkInPlaceUp)
@@ -128,7 +144,7 @@ script TownMeeting {
     msgbox(format("Mom: Alright, us two are gonna get going.\pThank you for having us over, Mrs. Fields."))
     applymovement(LOCALID_ORIONS_MOM, Common_Movement_WalkInPlaceLeft)
     waitmovement(0)
-    msgbox(format("Anytime!"), MSGBOX_AUTOCLOSE)
+    msgbox("Anytime!", MSGBOX_AUTOCLOSE)
     delay(20)
     applymovement(LOCALID_SAM, SamLeaveHouse)
     applymovement(LOCALID_DAISY, DaisyLeaveHouse)
@@ -145,7 +161,7 @@ script TownMeeting {
     applymovement(LOCALID_ORION, OrionWalkToMons)
     waitmovement(0)
     msgbox(format("When I went to go check on the Pokemon this morning, one of them was missing!\p"
-                  "I looked all around the Town, but I couldn't find anything..."))
+                  "I looked all around the Town, but I couldn't find anything…"))
     closemessage
     delay(35)
     bufferleadmonspeciesname(STR_VAR_1)
@@ -171,10 +187,10 @@ script TownMeeting {
     }
     delay(20)
     applymovement(LOCALID_ORION, OrionWalkUpstairs)
-    delay(48)
-    removeobject(LOCALID_ORION)
+    waitmovement(0)
     playse(SE_EXIT)
     waitse
+    removeobject(LOCALID_ORION)
     removeobject(LOCALID_DAISY)
     removeobject(LOCALID_SAM)
     removeobject(LOCALID_GS)
@@ -201,8 +217,7 @@ movement MoveCamToDoor {
 
 movement PlayerAppearAtDoor {
     set_visible
-    delay_8
-    delay_4
+    delay_16
     walk_in_place_fast_right
 }
 
@@ -227,6 +242,7 @@ movement PlayerWalkToMon {
 movement OrionWalkUpstairs {
     walk_left * 2
     walk_up
+    set_invisible
 }
 
 movement DaisyLeaveHouse {
@@ -255,21 +271,7 @@ movement MeetingPlayerWalkFromDoorToTable {
 }
 
 movement TownMeetingNoticePlayer {
-    delay_8
     walk_in_place_left
     emote_exclamation_mark
     delay_16 * 3
-}
-
-movement MoveMomToTable {
-    walk_up * 2
-    walk_right * 6
-    walk_down
-    walk_in_place_left
-}
-
-movement OrionMomWalkToDoor {
-    walk_left * 2
-    walk_down * 2
-    
 }

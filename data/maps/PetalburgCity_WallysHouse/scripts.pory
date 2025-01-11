@@ -50,7 +50,7 @@ script ProfIntro0 {
 	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
 	waitmovement(0)
 	msgbox(format("Yes, sir!\nWe even managed to save three Pokémon from a group of goofy-looking teens!\p"
-				  "Though this morning, one of the Pokémon we saved went missing..."))
+				  "Though this morning, one of the Pokémon we saved went missing…"))
 	applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	msgbox(format("Ah, cheer up, kid!\nJust hope for the best for the litte thing.\pWhich reminds me, may I see the Pokémon you have?"), MSGBOX_AUTOCLOSE)

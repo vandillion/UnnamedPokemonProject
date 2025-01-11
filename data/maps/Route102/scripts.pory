@@ -17,7 +17,7 @@ script UnnamedCaveSignWest {
 // NPCs
 
 script Route2Boy {
-	msgbox(format("I was walking along this route the other day, and a rodent-like Pokemon took my Pokemon's Berry!\pAnd I never got it back..."), MSGBOX_NPC)
+	msgbox(format("I was walking along this route the other day, and a rodent-like Pokemon took my Pokemon's Berry!\pAnd I never got it back…"), MSGBOX_NPC)
 	end	
 }
 
@@ -25,7 +25,7 @@ script Route2Boy {
 
 script Route2Jimmy {
 	trainerbattle_single(TRAINER_CALVIN_1, format("You plus me equals a battle! Let's go!"), "Dang it.")
-	msgbox(format("I love Pokemon battles, but I always lose..."), MSGBOX_NPC)
+	msgbox(format("I love Pokemon battles, but I always lose…"), MSGBOX_NPC)
 	end
 }
 
@@ -110,8 +110,13 @@ script Route2CatchTutorial {
 					applymovement(LOCALID_MAN, Route2CatchTutWalkToGrass5)
 			}
 			waitmovement(0)
-			msgbox(format("You can find wild Pokemon in patches of tall grass, such as this one.\pHere comes one now!"), MSGBOX_AUTOCLOSE)
+			msgbox(format("You can find wild Pokemon in patches of tall grass, such as this one."))
 			applymovement(LOCALID_MAN, Common_Movement_FaceAwayPlayer)
+			waitmovement(0)
+			applymovement(LOCALID_MAN, Common_Movement_ExclamationMarkDelay)
+			playse(SE_PIN)
+			waitmovement(0)
+			msgbox("Oh!\nHere comes one now!")
 			special(SavePlayerParty)
 			special(LoadWallyZigzagoon)
 			special(StartWallyTutorialBattle)
@@ -143,35 +148,19 @@ script Route2CatchTutorial {
 				case 1:
 					msgbox(format("Oh, okay.\nJust remember to weaken the wild Pokemon before throwing a Ball."), MSGBOX_AUTOCLOSE)
 			}
-			applymovement(LOCALID_MAN, Route2CatchTutorialWalkOffscreen0)
-			
+			applymovement(LOCALID_MAN, Route2CatchTutorialWalkOffscreen)
 	}
 	waitmovement(0)
 	removeobject(LOCALID_MAN)
 	setflag(FLAG_HIDE_ROUTE_2_CATCH_TUTORIAL)
 	setvar(VAR_ROUTE2_STATE, 1)
+	release
 	end
 }
 
-movement Route2CatchTutorialWalkOffscreen0 {
+movement Route2CatchTutorialWalkOffscreen {
 	walk_right * 4
 	walk_up * 6
-}
-
-movement Route2CatchTutorialWalkOffscreen2 {
-	
-}
-
-movement Route2CatchTutorialWalkOffscreen3 {
-	
-}
-
-movement Route2CatchTutorialWalkOffscreen4 {
-	
-}
-
-movement Route2CatchTutorialWalkOffscreen5 {
-	
 }
 
 movement Route2CatchTutorialManLeave {

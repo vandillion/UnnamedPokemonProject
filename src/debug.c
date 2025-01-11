@@ -1287,7 +1287,7 @@ static u8 Debug_CheckToggleFlags(u8 id)
                 FlagGet(FLAG_VISITED_VERDANTURF_TOWN) &&
                 FlagGet(FLAG_VISITED_PACIFIDLOG_TOWN) &&
                 FlagGet(FLAG_VISITED_ANIMORA_CITY) &&
-                FlagGet(FLAG_VISITED_SLATEPORT_CITY) &&
+                FlagGet(FLAG_VISITED_CENTRA_CITY) &&
                 FlagGet(FLAG_VISITED_OLSTERN_CITY) &&
                 FlagGet(FLAG_VISITED_RUSTBORO_CITY) &&
                 FlagGet(FLAG_VISITED_FORTREE_CITY) &&
@@ -2799,7 +2799,7 @@ static void DebugAction_FlagsVars_ToggleFlyFlags(u8 taskId)
         FlagClear(FLAG_VISITED_VERDANTURF_TOWN);
         FlagClear(FLAG_VISITED_PACIFIDLOG_TOWN);
         FlagClear(FLAG_VISITED_ANIMORA_CITY);
-        FlagClear(FLAG_VISITED_SLATEPORT_CITY);
+        FlagClear(FLAG_VISITED_CENTRA_CITY);
         FlagClear(FLAG_VISITED_OLSTERN_CITY);
         FlagClear(FLAG_VISITED_RUSTBORO_CITY);
         FlagClear(FLAG_VISITED_FORTREE_CITY);
@@ -2821,7 +2821,7 @@ static void DebugAction_FlagsVars_ToggleFlyFlags(u8 taskId)
         FlagSet(FLAG_VISITED_VERDANTURF_TOWN);
         FlagSet(FLAG_VISITED_PACIFIDLOG_TOWN);
         FlagSet(FLAG_VISITED_ANIMORA_CITY);
-        FlagSet(FLAG_VISITED_SLATEPORT_CITY);
+        FlagSet(FLAG_VISITED_CENTRA_CITY);
         FlagSet(FLAG_VISITED_OLSTERN_CITY);
         FlagSet(FLAG_VISITED_RUSTBORO_CITY);
         FlagSet(FLAG_VISITED_FORTREE_CITY);

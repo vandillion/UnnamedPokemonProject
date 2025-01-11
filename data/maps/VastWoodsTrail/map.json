@@ -123,7 +123,7 @@
       "elevation": 0,
       "var": "VAR_NEWGAME_START",
       "var_value": "4",
-      "script": "StartWalkTrigger0"
+      "script": "VastWoodsTrailBattleTrigger0"
     },
     {
       "type": "trigger",
@@ -132,7 +132,7 @@
       "elevation": 0,
       "var": "VAR_NEWGAME_START",
       "var_value": "4",
-      "script": "StartWalkTrigger1"
+      "script": "VastWoodsTrailBattleTrigger1"
     }
   ],
   "bg_events": [

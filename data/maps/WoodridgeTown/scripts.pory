@@ -32,9 +32,6 @@ script UpdateOrionForBattle {
 
 script UpdateObjects {
 	setobjectxyperm(LOCALID_ORION, 13, 26)
-	setobjectxyperm(LOCALID_GS, 13, 27)
-	setobjectxyperm(LOCALID_FS, 14, 27)
-	setobjectxyperm(LOCALID_WS, 15, 27)
 	}
 
 //General town scripts
@@ -55,156 +52,14 @@ script OrionsHouseSign {
 }
 
 script WoodridgeTown3rdHouseScript {
-	goto_if_ge(VAR_ANIMORA_CITY_STATE, 2, WoodrigeHouseIsLocked)
-	goto_if_lt(VAR_NEWGAME_START, 6, WoodrigeHouseIsLocked)
-	msgbox(format("The door feels like it's barricaded shut.\pYou can hear faint snoring coming from inside."), MSGBOX_SIGN)
+	if (var(VAR_ANIMORA_CITY_STATE) >= 2 || var(VAR_NEWGAME_START) < 6) {
+		msgbox(format("This door is locked."), MSGBOX_SIGN)
+	} else {
+		msgbox(format("The door feels like it's barricaded shut.\pYou can hear faint snoring coming from inside."), MSGBOX_SIGN)
+	}
 	end
 }
 
-script WoodrigeHouseIsLocked {
-	msgbox(format("This door is locked."), MSGBOX_SIGN)
-	end
-}
-
-//Triggers
-
-script WoodridgeBattleTrigger0 {
-	setvar(VAR_TEMP_1, 0)
-	goto(WoodridgeFirstBattle)
-}
-
-script WoodridgeBattleTrigger1 {
-	setvar(VAR_TEMP_1, 1)
-	goto(WoodridgeFirstBattle)
-}
-
-
-script WoodridgeBattleTrigger2 {
-	setvar(VAR_TEMP_1, 2)
-	goto(WoodridgeFirstBattle)
-}
-
-
-script WoodridgeBattleTrigger3 {
-	setvar(VAR_TEMP_1, 3)
-	goto(WoodridgeFirstBattle)
-}
-
-script WoodridgeFirstBattle {
-	lock
-	setobjectxy(LOCALID_ORION, 9, 14)
-	msgbox("Wait up, {PLAYER}!")
-	closemessage
-	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
-	switch (var(VAR_TEMP_1)) {
-        case 0:
-			applymovement(LOCALID_ORION, OrionBattleMovement0)
-			delay(112)
-			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
-        case 1:
-			applymovement(LOCALID_ORION, OrionBattleMovement1)
-			delay(112)
-			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
-        case 2:
-			applymovement(LOCALID_ORION, OrionBattleMovement2)
-        case 3:
-			applymovement(LOCALID_ORION, OrionBattleMovement3)
-			delay(112)
-			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
-    }
-	waitmovement(LOCALID_ORION)
-	msgbox(format("Since we're about to start our adventures as trainers, it's right we have a proper battle!\pAlright!\nNo holding back, {PLAYER}!"))
-	setrespawn(HEAL_LOCATION_WOODRIDGE_TOWN_PLAYERS_HOUSE_2F)
-	goto_if_set(FLAG_LOST_FIRST_BATTLE, ContinueLostFirstBattleOrion)
-	switch (var(VAR_STARTER_MON)) {
-        case 0:
-			trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_103_TREECKO, OrionDefeat)
-        case 1:
-			trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_103_TORCHIC, OrionDefeat)
-        case 2:
-			trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_103_MUDKIP, OrionDefeat)
-    }
-	goto(PostBattleOrion1)
-}
-
-script ContinueLostFirstBattleOrion {
-	switch (var(VAR_STARTER_MON)) {
-        case 0:
-			trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_110_TREECKO, OrionDefeat)
-        case 1:
-			trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_110_TORCHIC, OrionDefeat)
-        case 2:
-			trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_110_MUDKIP, OrionDefeat)
-	}
-	goto(PostBattleOrion1)
-}
-
-script PostBattleOrion1 {
-	msgbox("Alright, I'm headin out\nSee ya later, {PLAYER}!", MSGBOX_AUTOCLOSE)					
-	switch (var(VAR_TEMP_1)) {
-        case 0:
-		case 1:
-			applymovement(LOCALID_ORION, OrionLeave)
-			delay(16)
-			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
-        case 2:
-		case 3:
-			applymovement(LOCALID_ORION, OrionLeave2)
-			delay(16)
-			turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
-			
-    }
-	delay(32)
-	turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
-	waitmovement(0)
-	removeobject(LOCALID_ORION)
-	setflag(FLAG_HIDE_ORION_WOODRIDGE_TOWN)
-	setflag(FLAG_HIDE_ORION_ORIONS_ROOM)
-	clearflag(FLAG_HIDE_MAP_NAME_POPUP)
-	setvar(VAR_NEWGAME_START, 7)
-	setvar(VAR_BLOCK_PROGRESSION_WEST, 2)
-	special(HealPlayerParty)
-	release
-}
-
-movement OrionLeave {
-	walk_down
-	walk_left * 9
-	}
-
-movement OrionLeave2 {
-	walk_up
-	walk_left * 9
-}
-
-text OrionDefeat {
-	format("What a great battle!\nWe're going to be strong trainers someday, I know it!")
-}
-
-movement OrionBattleMovement0 {
-	set_visible
-	walk_left * 4
-	walk_up
-	walk_left * 4
-	walk_in_place_up
-}
-
-movement OrionBattleMovement1 {
-	set_visible
-	walk_left * 8
-	walk_in_place_up
-}
-
-movement OrionBattleMovement2 {
-	set_visible
-	walk_left * 7
-}
-
-movement OrionBattleMovement3 {
-	set_visible
-	walk_left * 8
-	walk_in_place_down
-}
 
 //Story scripts
 
@@ -221,10 +76,14 @@ script OrionIntro {
 	delay(48)
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
 	waitmovement(LOCALID_ORION)
-	msgbox(format("Who are you?\p...\n...\pSo you're {PLAYER}\nNice to meet you!\lMay name's Orion.\pI heard you're new around here.\nMeet me near the south of town to go on a walk.\pLet your parents know first!"))
-	closemessage
+	msgbox(format("Who are you?\p"
+				  "… … …\n… … …\p"
+				  "{PLAYER}, huh?\nNice to meet you! My name's Orion.\p"
+				  "Your family just moved to this region, correct?\p"
+				  "If you're not yet familiar with this area, how about a take you on a walk?\p"
+				  "There's a forest southeast from here that I like to retreat to, and I think you'll lke it.\p"
+				  "Great! See ya later tonight!\nLet your parents know first!"), MSGBOX_AUTOCLOSE)
 	applymovement(OBJ_EVENT_ID_PLAYER, PlayerMoveOutWay)
-	delay(16)
 	applymovement(LOCALID_ORION, MoveUp)
 	waitmovement(0)
 	opendoor(19, 11)
@@ -234,6 +93,7 @@ script OrionIntro {
 	removeobject(LOCALID_ORION)
 	closedoor(19, 11)
 	waitdooranim
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
 	setflag(FLAG_HIDE_ORION_WOODRIDGE_TOWN)
 	clearflag(FLAG_HIDE_ORION_ORIONS_ROOM)
 	setvar(VAR_NEWGAME_START, 3)
@@ -264,7 +124,7 @@ movement MoveUp{
 }
 
 
-//---------------------------------------------------------------------------------
+//==========================================================================================================
 
 script CutsceneAfterFirstBattle {
 	lock
@@ -357,10 +217,144 @@ movement WalkMons3 {
 
 //==========================================================================================================
 
+script WoodridgeFirstBattle {
+	lock
+	setobjectxy(LOCALID_ORION, 9, 14)
+	msgbox("Wait up, {PLAYER}!")
+	closemessage
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
+	switch (var(VAR_TEMP_1)) {
+        case 0:
+			applymovement(LOCALID_ORION, OrionBattleMovement0)
+			delay(112)
+			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
+        case 1:
+			applymovement(LOCALID_ORION, OrionBattleMovement1)
+			delay(112)
+			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
+        case 2:
+			applymovement(LOCALID_ORION, OrionBattleMovement2)
+        case 3:
+			applymovement(LOCALID_ORION, OrionBattleMovement3)
+			delay(112)
+			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
+    }
+	waitmovement(LOCALID_ORION)
+	msgbox(format("Since we're about to start our adventures as trainers, it's right we have a proper battle!\p"
+				  "Alright!\nNo holding back, {PLAYER}!"))
+	setrespawn(HEAL_LOCATION_WOODRIDGE_TOWN_PLAYERS_HOUSE_2F)
+	if (!flag(FLAG_LOST_FIRST_BATTLE)) {
+		switch (var(VAR_STARTER_MON)) {
+        	case 0:
+				trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_103_TREECKO, OrionDefeat)
+        	case 1:
+				trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_103_TORCHIC, OrionDefeat)
+        	case 2:
+				trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_103_MUDKIP, OrionDefeat)
+	    }
+    } else {
+		switch (var(VAR_STARTER_MON)) {
+        	case 0:
+				trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_110_TREECKO, OrionDefeat)
+        	case 1:
+				trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_110_TORCHIC, OrionDefeat)
+        	case 2:
+				trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_110_MUDKIP, OrionDefeat)
+    	}
+	}
+	msgbox("Alright, I'm headin out\nSee ya later, {PLAYER}!", MSGBOX_AUTOCLOSE)					
+	switch (var(VAR_TEMP_1)) {
+        case 0:
+		case 1:
+			applymovement(LOCALID_ORION, OrionLeave)
+			delay(16)
+			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+        case 2:
+		case 3:
+			applymovement(LOCALID_ORION, OrionLeave2)
+			delay(16)
+			turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
+			
+    }
+	delay(32)
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+	waitmovement(0)
+	removeobject(LOCALID_ORION)
+	setflag(FLAG_HIDE_ORION_WOODRIDGE_TOWN)
+	setflag(FLAG_HIDE_ORION_ORIONS_ROOM)
+	clearflag(FLAG_HIDE_MAP_NAME_POPUP)
+	setvar(VAR_NEWGAME_START, 7)
+	setvar(VAR_BLOCK_PROGRESSION_WEST, 2)
+	special(HealPlayerParty)
+	release
+}
+
+text OrionDefeat {
+	format("What a great battle!\nWe're going to be strong trainers someday, I know it!")
+}
+
+movement OrionLeave {
+	walk_down
+	walk_left * 9
+	}
+
+movement OrionLeave2 {
+	walk_up
+	walk_left * 9
+}
+
+movement OrionBattleMovement0 {
+	set_visible
+	walk_left * 4
+	walk_up
+	walk_left * 4
+	walk_in_place_up
+}
+
+movement OrionBattleMovement1 {
+	set_visible
+	walk_left * 8
+	walk_in_place_up
+}
+
+movement OrionBattleMovement2 {
+	set_visible
+	walk_left * 7
+}
+
+movement OrionBattleMovement3 {
+	set_visible
+	walk_left * 8
+	walk_in_place_down
+}
+
+script WoodridgeBattleTrigger0 {
+	setvar(VAR_TEMP_1, 0)
+	goto(WoodridgeFirstBattle)
+}
+
+script WoodridgeBattleTrigger1 {
+	setvar(VAR_TEMP_1, 1)
+	goto(WoodridgeFirstBattle)
+}
+
+
+script WoodridgeBattleTrigger2 {
+	setvar(VAR_TEMP_1, 2)
+	goto(WoodridgeFirstBattle)
+}
+
+
+script WoodridgeBattleTrigger3 {
+	setvar(VAR_TEMP_1, 3)
+	goto(WoodridgeFirstBattle)
+}
+
+//==========================================================================================================
+
 script BlockProgressionN {
 	lock
-	msgbox(BlockProg)
-	closemessage
+	msgbox(BlockProg, MSGBOX_AUTOCLOSE)
 	applymovement(OBJ_EVENT_ID_PLAYER, BlockProgN)
 	waitmovement(0)
 	release
@@ -368,8 +362,7 @@ script BlockProgressionN {
 
 script BlockProgressionE {
 	lock
-	msgbox(BlockProg)
-	closemessage
+	msgbox(BlockProg, MSGBOX_AUTOCLOSE)
 	applymovement(OBJ_EVENT_ID_PLAYER, BlockProgE)
 	waitmovement(0)
 	release
@@ -377,8 +370,7 @@ script BlockProgressionE {
 
 script BlockProgressionS {
 	lock
-	msgbox(BlockProg)
-	closemessage
+	msgbox(BlockProg, MSGBOX_AUTOCLOSE)
 	applymovement(OBJ_EVENT_ID_PLAYER, BlockProgS)
 	waitmovement(0)
 	release
@@ -386,8 +378,7 @@ script BlockProgressionS {
 
 script BlockProgressionW {
 	lock
-	msgbox(BlockProg)
-	closemessage
+	msgbox(BlockProg, MSGBOX_AUTOCLOSE)
 	applymovement(OBJ_EVENT_ID_PLAYER, BlockProgW)
 	waitmovement(0)
 	release
