@@ -26,6 +26,8 @@
 #include "expansion_intro.h"
 #include "constants/rgb.h"
 #include "constants/battle_anim.h"
+#include "config/new.h"
+#include "overworld.h"
 
 /*
     The intro is grouped into the following scenes
@@ -1123,7 +1125,9 @@ static u8 SetUpCopyrightScreen(void)
     case COPYRIGHT_START_INTRO:
         if (UpdatePaletteFade())
             break;
-#if EXPANSION_INTRO == TRUE
+#if N_FAST_BOOT == TRUE
+        SetMainCallback2(CB2_ContinueSavedGame);
+#elif EXPANSION_INTRO == TRUE
         SetMainCallback2(CB2_ExpansionIntro);
         CreateTask(Task_HandleExpansionIntro, 0);
 #else
