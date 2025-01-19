@@ -1,0 +1,121 @@
+mapscripts CentraSE_Gym_MapScripts{
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		 VAR_CENTRA_SE_GYM_STATE, 0 : CentraSEGymGuideCutscene
+    ]
+}
+
+script CentraSEGymIzzie {
+	trainerbattle_single(TRAINER_ROXANNE_1, format("Izzie Intro Text"), format("Izzie Defeat Text"), IzzieContinue, NO_MUSIC)	
+}
+
+script IzzieContinue {
+	setflag(FLAG_DEFEATED_CENTRA_SE_GYM)
+	playfanfare(MUS_OBTAIN_BADGE)
+	message(format("{PLAYER} received the ??? Badge from Izzie!"))
+	waitfanfare
+	setflag(FLAG_BADGE01_GET)
+	setvar(VAR_0x8008, 1)
+	call(Common_EventScript_SetGymTrainers)
+	msgbox("Take this too!")
+	giveitem(ITEM_TM_AERIAL_ACE)
+	goto_if_eq(VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull)
+	setflag(FLAG_RECEIVED_TM_AERIAL_ACE)
+	msgbox(format("Leader Izzie is based on a real person.\pYou can find her on most social platforms {EMOJI_AT}flatwavelength."))
+	closemessage
+	setvar(VAR_CENTRA_SE_GYM_STATE, 2)
+	//setflag(FLAG_HIDE_ORION_OLSTERN_CITY)
+	//setflag(FLAG_HIDE_CUTSCENE_NPCS_OLSTERN_CITY_1)
+	//setflag(FLAG_HIDE_CUTSCENE_NPCS_OLSTERN_CITY_2)
+	end
+}
+
+script CentraSEGymDarren {
+	trainerbattle_single(TRAINER_JOSH, format(""), format(""))
+	msgbox(format(""), MSGBOX_NPC)
+	end
+}
+
+script CentraSEGymEmily {
+	trainerbattle_single(TRAINER_TOMMY, format(""), format(""))
+	msgbox(format(""), MSGBOX_NPC)
+	end
+}
+
+script CentraSEGymMary {
+	trainerbattle_single(TRAINER_MARC, format(""), format(""))
+	msgbox(format(""), MSGBOX_NPC)
+	end
+}
+
+raw `
+.set LOCALID_GUIDE, 5
+`
+
+script CentraSEGymGuideCutscene {
+	lock
+	applymovement(LOCALID_GUIDE, Common_Movement_ExclamationMarkDelay)
+	playse(SE_PIN)
+	waitmovement(0)
+	applymovement(LOCALID_GUIDE, CentraSEGymGuideWalkToEntrance)
+	waitmovement(0)
+	msgbox(format("Hey, there!\nHow's it going, Trainer?\p"
+				  "Listen, my friend! Would you like to become the Champion?\p"
+				  "I'm no Trainer, not me, but I can sure give you winning advice!\p"
+				  "Let me take you to the top!"), MSGBOX_AUTOCLOSE)
+	applymovement(LOCALID_GUIDE, CentraSEGymGuideWalkToStatue)
+	applymovement(OBJ_EVENT_ID_PLAYER, CentraSEGymPlayerWalkToStatue)
+	waitmovement(0)
+	msgbox(format("For starters, I want you to have this!"))
+	giveitem(ITEM_FRESH_WATER)
+	call_if_eq(VAR_RESULT, FALSE, Common_EventScript_BagIsFull)
+	msgbox(format("It's important to stay hydrated, even while battling!\p"
+				  "Now, to get the top, you as a Trainer have to collect Gym Badges from Leaders.\p"
+				  "Gym Leaders are no pushovers!\nAnd that's where I come in!\p"
+				  "Izzie, the Gym Leader for this Gym, uses a Flying-type team.\p"
+				  "Flying-type Pokémon tend to excel in Speed, but they're weak to Rock- and Electric-type moves.\p"
+				  "Izzie, however, has a trick up her sleeve for this!\p"
+				  "That's all I can tell you now.\nGo get 'em!"), MSGBOX_AUTOCLOSE)
+	setvar(VAR_CENTRA_SE_GYM_STATE, 1)
+	end
+}
+
+script CentraSEGymGuide {
+	switch(var(VAR_CENTRA_SE_GYM_STATE))
+	{
+		case 1:
+		default:
+		msgbox(format("Izzie, the Gym Leader for this Gym, uses a Flying-type team.\p"
+			   "Flying-type Pokémon tend to excel in Speed, but they're weak to Rock- and Electric-type moves.\p"
+				"Izzie, however, has a trick up her sleeve for this!\p"
+			   "That's all I can tell you now.\nGo get 'em!"), MSGBOX_NPC)
+		case 2:
+		msgbox(format("Whoa! What a breathtaking victory!\nMy cheering must've worked!\p"
+               "Great! Check your Trainer Card.\nThe ??? Badge you receieved should be properly recorded on it.\p"
+               "In other words…\nYou've climbed the first step on the stairs to the Championship!\p"
+               "That's got to feel awesome!"), MSGBOX_NPC)
+		end
+	}
+	end
+}
+
+movement CentraSEGymGuideWalkToEntrance {
+	walk_right
+	walk_down
+}
+
+movement CentraSEGymGuideWalkToStatue {
+	walk_up
+	walk_left
+	walk_in_place_right
+}
+
+movement CentraSEGymPlayerWalkToStatue {
+	walk_up * 2
+	walk_in_place_left
+}
+
+script CentraSEGymStatue {
+	msgbox("Southeast Centra Pokémon Gym\nLeader: Izzie\p"
+		   "The ????????????!", MSGBOX_SIGN)
+	end
+}

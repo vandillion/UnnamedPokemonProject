@@ -15,13 +15,13 @@
   "connections": [
     {
       "map": "MAP_ROUTE102",
-      "offset": -1,
+      "offset": 19,
       "direction": "down"
     },
     {
       "map": "MAP_ROUTE134",
       "offset": 0,
-      "direction": "left"
+      "direction": "up"
     }
   ],
   "object_events": [
@@ -53,8 +53,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_RICH_BOY",
-      "x": 5,
-      "y": 13,
+      "x": 8,
+      "y": 14,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 1,
@@ -221,17 +221,17 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MANIAC",
-      "x": 8,
-      "y": 24,
+      "graphics_id": "OBJ_EVENT_GFX_SCOTT",
+      "x": 24,
+      "y": 23,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
       "movement_range_x": 0,
-      "movement_range_y": 1,
+      "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SlateportCity_EventScript_Maniac",
-      "flag": "0"
+      "script": "CentraSEGymGuideOutside",
+      "flag": "FLAG_HIDE_GYM_GUIDE_CENTRA_SE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
@@ -483,8 +483,8 @@
   ],
   "warp_events": [
     {
-      "x": 13,
-      "y": 13,
+      "x": 33,
+      "y": 33,
       "elevation": 0,
       "dest_map": "MAP_SLATEPORT_CITY_POKEMON_CENTER_1F",
       "dest_warp_id": "0"
@@ -553,10 +553,10 @@
       "dest_warp_id": "2"
     },
     {
-      "x": 21,
-      "y": 44,
+      "x": 24,
+      "y": 22,
       "elevation": 0,
-      "dest_map": "MAP_SLATEPORT_CITY_HOUSE",
+      "dest_map": "MAP_CENTRA_SE_GYM",
       "dest_warp_id": "0"
     }
   ],
