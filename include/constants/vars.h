@@ -97,7 +97,7 @@
 #define VAR_POKELOT_PRIZE_PLACE                          0x404D
 #define VAR_LAST_REPEL_USED                              0x404E
 #define VAR_LOTAD_SIZE_RECORD                            0x404F
-#define VAR_LITTLEROOT_TOWN_STATE                        0x4050
+#define VAR_WOODRIDGE_TOWN_STATE                         0x4050
 #define VAR_OLDALE_TOWN_STATE                            0x4051
 #define VAR_DEWFORD_TOWN_STATE                           0x4052 // Unused Var
 #define VAR_LAVARIDGE_TOWN_STATE                         0x4053
@@ -105,7 +105,7 @@
 #define VAR_VERDANTURF_TOWN_STATE                        0x4055 // Unused Var
 #define VAR_PACIFIDLOG_TOWN_STATE                        0x4056 // Unused Var
 #define VAR_ANIMORA_CITY_STATE                           0x4057
-#define VAR_SLATEPORT_CITY_STATE                         0x4058
+#define VAR_CENTRA_CITY_STATE                            0x4058
 #define VAR_OLSTERN_CITY_STATE                           0x4059
 #define VAR_RUSTBORO_CITY_STATE                          0x405A
 #define VAR_FORTREE_CITY_STATE                           0x405B // Unused Var
@@ -146,11 +146,11 @@
 #define VAR_ROUTE131_STATE                               0x407E // Unused Var
 #define VAR_ROUTE132_STATE                               0x407F // Unused Var
 #define VAR_ROUTE133_STATE                               0x4080 // Unused Var
-#define VAR_ROUTE134_STATE                               0x4081 // Unused Var
+#define VAR_VAST_WOODS_TRAIL_STATE                       0x4081
 #define VAR_LITTLEROOT_HOUSES_STATE_MAY                  0x4082
 #define VAR_NEWGAME_START                                0x4083
 #define VAR_BIRCH_LAB_STATE                              0x4084
-#define VAR_ANIMORA_GYM_STATE                            0x4085
+#define VAR_CENTRA_SE_GYM_STATE                          0x4085
 #define VAR_CONTEST_HALL_STATE                           0x4086
 #define VAR_CABLE_CLUB_STATE                             0x4087
 #define VAR_CONTEST_TYPE                                 0x4088
@@ -185,7 +185,7 @@
 #define VAR_TRICK_HOUSE_BEING_WATCHED_STATE              0x40A5
 #define VAR_TRICK_HOUSE_FOUND_TRICK_MASTER               0x40A6
 #define VAR_TRICK_HOUSE_ENTRANCE_STATE                   0x40A7
-#define VAR_UNUSED_0x40A8                                0x40A8 // Unused Var
+#define VAR_POKEMON_ACADEMY_STATE                        0x40A8
 #define VAR_CYCLING_CHALLENGE_STATE                      0x40A9
 #define VAR_SLATEPORT_MUSEUM_1F_STATE                    0x40AA
 #define VAR_TRICK_HOUSE_PUZZLE_1_STATE                   0x40AB
@@ -270,9 +270,9 @@
 #define VAR_BLOCK_PROGRESSION_SOUTH                      0x40F9
 #define VAR_BLOCK_PROGRESSION_WEST                       0x40FA
 
-#define VAR_UNUSED_0x40FB                                0x40FB // Unused Var
-#define VAR_UNUSED_0x40FC                                0x40FC // Unused Var
-#define VAR_UNUSED_0x40FD                                0x40FD // Unused Var
+#define VAR_ACADEMY2F_HOMEROOM_NO                        0x40FB
+#define VAR_ACADEMY3F_HOMEROOM_NO                        0x40FC
+#define VAR_ACADEMY4F_HOMEROOM_NO                        0x40FD
 #define VAR_UNUSED_0x40FE                                0x40FE // Unused Var
 #define VAR_UNUSED_0x40FF                                0x40FF // Unused Var
 

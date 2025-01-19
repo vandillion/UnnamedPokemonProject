@@ -1,68 +1,115 @@
-raw `
-.set LOCALID_MOM, 1
-.set LOCALID_DAD, 2
-`
+const LOCALID_MOM = 1
+
+//                                         TODO:
+// Player receives costume box from boxes in their room						NOT STARTED
+// Vast Woods (Trail) becomes accessible to player after the Leon encounter	NOT STARTED
 
 mapscripts WoodridgeTown_PlayersHouse1F_MapScripts {
 	MAP_SCRIPT_ON_FRAME_TABLE [
-		 VAR_NEWGAME_START, 0 : IntroDialogue
-		 VAR_NEWGAME_START, 3 : TalkToParents
+		VAR_NEWGAME_START, 0 { // Player walks down the stairs for the first time
+			lock
+			playse(SE_PIN)
+			applymovement(LOCALID_MOM, Common_Movement_ExclamationMarkDelay)
+			waitmovement(0)
+			msgbox(format("Mom: Oh! {PLAYER}!\n You're awake!"))
+			playbgm(MUS_RG_FOLLOW_ME, TRUE)
+			closemessage
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left * 2
+											 		 walk_down * 2
+													 walk_left
+													 walk_down
+													 walk_in_place_fast_left))
+			waitmovement(0)
+			msgbox(format("Wow, sleepyhead! Jet Lag must've hit you big time, huh?\p"
+				  		  "Just messing with you, haha!\nNow you don't want to make yourself look like a bad neighbor, do you?\p"
+						  "Of course you don't.\nSo, why don't you go introduce yourself?"), MSGBOX_AUTOCLOSE)
+			fadedefaultbgm
+			setvar(VAR_NEWGAME_START, 1)
+			setvar(VAR_BLOCK_PROGRESSION_SOUTH, 1)
+			setvar(VAR_BLOCK_PROGRESSION_WEST, 1)
+			release
+			end
+		}
+		VAR_NEWGAME_START, 3 { // Player has a chat with Mom before heading out for walk with Orion
+			lock
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left * 3
+													 walk_up * 2
+													 walk_in_place_left))
+			waitmovement(0)
+			applymovement(LOCALID_MOM, Common_Movement_WalkInPlaceRight)
+			waitmovement(0)
+			msgbox(format("Did you introduce yourself to the neighbors, {PLAYER}?"), MSGBOX_AUTOCLOSE)
+			delay(60)
+			msgbox(format("…\n…\p"
+						  "The kid next door asked to take you on a walk into the woods?\p"
+						  "Well, sound like you two will have a great time.\p"
+						  "Just be careful, please {PLAYER}!\nRemember just moved here and we aren't familiar with the environment.\p"
+						  "Oh!\nTake these, too!"))
+			playfanfare(MUS_OBTAIN_ITEM)
+			message(format("{PLAYER} received the Running Shoes!"))
+			waitfanfare
+			setflag(FLAG_SYS_B_DASH)
+			setflag(FLAG_RECEIVED_RUNNING_SHOES)
+			applymovement(LOCALID_MOM, Common_Movement_WalkInPlaceRight)
+			waitmovement(0)
+			msgbox(format("If anything happens to you let me know."), MSGBOX_AUTOCLOSE)
+			setvar(VAR_NEWGAME_START, 4)
+			setvar(VAR_BLOCK_PROGRESSION_SOUTH, 2)
+			release
+			end
+		}
+		VAR_NEWGAME_START, 7 { // When the player whites out to Orion
+			lock
+			applymovement(LOCALID_MOM, Common_Movement_WalkInPlaceRight)
+			waitmovement(0)
+			msgbox("Oh, {PLAYER}.\nYou should rest.", MSGBOX_AUTOCLOSE)
+			playse(SE_USE_ITEM)
+			delay(60)
+			if(!flag(FLAG_UNUSED_0x068)) {
+				msgbox(format("There. You look all refreshed!\p"
+					          "If you plan on having any more surprise Pokemon battles, at least come prepared.\p"
+							  "Here, take this!"))
+				giveitem(ITEM_POTION)
+				msgbox("Good luck, {PLAYER}!", MSGBOX_AUTOCLOSE)
+				setflag(FLAG_UNUSED_0x068)
+			} else {
+				msgbox("There. You look all refreshed!\nGood luck, {PLAYER}!", MSGBOX_AUTOCLOSE)
+			}
+			subvar(VAR_NEWGAME_START, 1)
+			playbgm(MUS_LITTLEROOT, TRUE)
+			release
+			end
+		}
     ]
+	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+		VAR_NEWGAME_START, 7 { // When the player whites out to Orion
+			playbgm(MUS_NONE, TRUE)
+			turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+			end
+		}
+	]
 }
 
-script TalkToParents {
+script WoodridgePlayersHouse1F_Mom {
 	lock
-	applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalkToTableFromDoor)
+	faceplayer
+	if(var(VAR_NEWGAME_START) < 4 ) {
+		msgbox(format("{PLAYER}, I saw that there were other people in this town.\p"
+					  "Let's not make ourselves look like bad neightbors. Go introduce yourself!"), MSGBOX_AUTOCLOSE)
+	} elif(var(VAR_NEWGAME_START) < 6) {
+		msgbox(format("If anything happens to you let me know."), MSGBOX_AUTOCLOSE)
+	} elif(var(VAR_TEMP_1) == TRUE) {
+		msgbox("You look all refreshed!\nTake care!", MSGBOX_AUTOCLOSE)
+	} else {
+		msgbox("Oh! {PLAYER}!\nYou should take a rest.", MSGBOX_AUTOCLOSE)
+		playse(SE_USE_ITEM)
+		special(HealPlayerParty)
+		waitse
+		msgbox("There. You look all refreshed!\nTake care!", MSGBOX_AUTOCLOSE)
+		setvar(VAR_TEMP_1, TRUE)
+	}
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	waitmovement(0)
-	applymovement(1, Common_Movement_WalkInPlaceRight)
-	waitmovement(0)
-	msgbox(format("So you've found a friend! That's nice.\pJust make sure to stay safe."))
-	applymovement(2, Common_Movement_WalkInPlaceRight)
-	waitmovement(0)
-	msgbox(format("Yeah, honey.\nRemember we just moved here, so anything could attack you n shi\ptake these too, it'll come in handy later"))
-	playfanfare(MUS_OBTAIN_ITEM)
-	message(format("{PLAYER} received the Running Shoes!"))
-	waitfanfare
-	setflag(FLAG_SYS_B_DASH)
-	setflag(FLAG_RECEIVED_RUNNING_SHOES)
-	applymovement(1, Common_Movement_WalkInPlaceRight)
-	waitmovement(0)
-	msgbox(format("It makes me so happy seeing you grow up so fast.\pIt reminds me of your uncle Blue, haha!"))
-	applymovement(2, Common_Movement_WalkInPlaceRight)
-	waitmovement(0)
-	msgbox(format("If anything happens to you let us know."), MSGBOX_AUTOCLOSE)
-	setvar(VAR_NEWGAME_START, 4)
-	setvar(VAR_BLOCK_PROGRESSION_SOUTH, 0)
 	release
-}
-
-movement PlayerWalkToTableFromDoor {
-	walk_left * 3
-	walk_up
-	face_left
-}
-
-script IntroDialogue{
-	lock
-	setflag(FLAG_HIDE_MAP_NAME_POPUP)
-	delay(25)
-	msgbox(format("Mom: Oh! {PLAYER}!\n You're awake!"))
-	closemessage
-	applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalkToTableFromStairs)
-	waitmovement(0)
-	msgbox(format("Wow, sleepyhead!\nWas the flight that tiring? Haha!\p"
-				  "Blah blah blah we finally made it though so go find someone to talk to."))
-	setvar(VAR_NEWGAME_START, 1)
-	setvar(VAR_BLOCK_PROGRESSION_SOUTH, 1)
-	setvar(VAR_BLOCK_PROGRESSION_WEST, 1)
-	closemessage
-	release
-}
-
-movement PlayerWalkToTableFromStairs {
-	walk_left * 2
-	walk_down * 2
-	walk_left
-	walk_down
-	walk_in_place_left
+	end
 }

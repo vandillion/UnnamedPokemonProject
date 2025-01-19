@@ -22325,7 +22325,7 @@ static const struct LevelUpMove sSugarglideLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 16, MOVE_AIR_CUTTER),
     LEVEL_UP_MOVE( 20, MOVE_TAILWIND),
     LEVEL_UP_MOVE( 24, MOVE_LEAF_TORNADO),
-    LEVEL_UP_MOVE( 28, MOVE_AIR_SLASH),
+    LEVEL_UP_MOVE( 28, MOVE_TWISTER),
     LEVEL_UP_END
 };
 #endif //P_FAMILY_SUGARGLIDE
@@ -22339,7 +22339,7 @@ static const struct LevelUpMove sParmiLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 10, MOVE_BITE),
     LEVEL_UP_MOVE( 13, MOVE_FLAME_CHARGE),
     LEVEL_UP_MOVE( 16, MOVE_HEADBUTT),
-    LEVEL_UP_MOVE( 20, MOVE_HEADBUTT),
+    LEVEL_UP_MOVE( 20, MOVE_HONE_CLAWS),
     LEVEL_UP_MOVE( 24, MOVE_FLAME_WHEEL),
     LEVEL_UP_MOVE( 28, MOVE_SLAM),
     LEVEL_UP_END
@@ -22350,7 +22350,7 @@ static const struct LevelUpMove sParmiLevelUpLearnset[] = {
 static const struct LevelUpMove sRadpoleLevelUpLearnset[] = {
     LEVEL_UP_MOVE(  1, MOVE_POUND),
     LEVEL_UP_MOVE(  1, MOVE_GROWL),
-    LEVEL_UP_MOVE(  4, MOVE_BUBBLE),
+    LEVEL_UP_MOVE(  4, MOVE_WATER_GUN),
     LEVEL_UP_MOVE(  7, MOVE_CONFUSION),
     LEVEL_UP_MOVE( 10, MOVE_YAWN),
     LEVEL_UP_MOVE( 13, MOVE_WATER_PULSE),

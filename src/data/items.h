@@ -11340,12 +11340,14 @@ const struct Item gItemsInfo[] =
     {
         .name = _("TM65"),
         .price = 3000,
-        .description = sQuestionMarksDesc, // Todo
+        .description = COMPOUND_STRING(
+            "Power doubles\n"
+            "if last move failed."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_NONE, // Todo
+        .secondaryId = MOVE_TEMPER_FLARE,
     },
 
     [ITEM_TM66] =
@@ -12469,22 +12471,6 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_PokeFlute,
     },
 
-    [ITEM_FAME_CHECKER] =
-    {
-        .name = _("Fame Checker"),
-        .price = 0,
-        .description = COMPOUND_STRING(
-            "Stores information\n"
-            "on famous people\n"
-            "for instant recall."),
-        .importance = 1,
-        .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .iconPic = gItemIcon_FameChecker,
-        .iconPalette = gItemIconPalette_FameChecker,
-    },
-
     [ITEM_TEACHY_TV] =
     {
         .name = _("Teachy TV"),
@@ -12502,6 +12488,22 @@ const struct Item gItemsInfo[] =
     },
 
 // Story Key Items
+
+    [ITEM_ACADEMY_BADGE] =
+    {
+        .name = _("Academy Badge"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "Your own badge\n"
+            "containing useful\n"
+            "{PKMN} Academy info."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_QuestionMark,
+        .iconPalette = gItemIconPalette_QuestionMark,
+    },
 
     [ITEM_SS_TICKET] =
     {

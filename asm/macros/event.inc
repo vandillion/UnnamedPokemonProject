@@ -1230,7 +1230,7 @@
 
 	@ Opens the Pokemart system, offering the specified products for sale.
 	@ Products should be a list of .2byte item values preceded by an .align 2
-	.macro pokemart products:req
+	.macro pokemart products=0
 	.byte 0x86
 	.4byte \products
 	.endm

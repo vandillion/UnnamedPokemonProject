@@ -50,7 +50,7 @@
 #define FLAG_HIDE_ORIONS_STEPDAD_ORIONS_HOUSE   0x24
 #define FLAG_LOST_FIRST_BATTLE                  0x25
 #define FLAG_HIDE_GIRL_ANIMORA_CITY             0x26
-#define FLAG_HIDE_GYM_GUIDE_ANIMORA_CITY        0x27
+#define FLAG_HIDE_GYM_GUIDE_CENTRA_SE           0x27
 #define FLAG_HIDE_ORION_OLSTERN_CITY            0x28
 #define FLAG_HIDE_CUTSCENE_NPCS_OLSTERN_CITY_1  0x29
 #define FLAG_HIDE_CUTSCENE_NPCS_OLSTERN_CITY_2  0x2A
@@ -298,7 +298,7 @@
 #define FLAG_RECEIVED_EXP_SHARE              0x110
 #define FLAG_POKERUS_EXPLAINED               0x111
 #define FLAG_RECEIVED_RUNNING_SHOES          0x112
-#define FLAG_RECEIVED_QUICK_CLAW             0x113
+#define FLAG_UNUSED_0x113                    0x113 // Previously FLAG_RECEIVED_QUICK_CLAW
 #define FLAG_RECEIVED_KINGS_ROCK             0x114
 #define FLAG_RECEIVED_MACHO_BRACE            0x115
 #define FLAG_RECEIVED_SOOTHE_BELL            0x116
@@ -746,7 +746,7 @@
 #define FLAG_UNUSED_0x2BB  0x2BB // Unused Flag
 
 // Event Flags
-#define FLAG_UNUSED_0x2BC                                           0x2BC // Previously FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
+#define FLAG_HIDE_NPCS_VAST_WOODS_TRAIL                             0x2BC // Previously FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
 #define FLAG_HIDE_APPRENTICE                                        0x2BD
 #define FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN                0x2BE
 #define FLAG_HIDE_UNION_ROOM_PLAYER_1                               0x2BF
@@ -1208,7 +1208,7 @@
 #define FLAG_ITEM_ROUTE_127_RARE_CANDY                              0x483
 #define FLAG_ITEM_ROUTE_132_PROTEIN                                 0x484
 #define FLAG_ITEM_ROUTE_133_MAX_REVIVE                              0x485
-#define FLAG_ITEM_ROUTE_134_CARBOS                                  0x486
+#define FLAG_ITEM_CENTRA_E_TM_TEMPER_FLARE                          0x486
 #define FLAG_ITEM_ROUTE_134_STAR_PIECE                              0x487
 #define FLAG_ITEM_ROUTE_114_ENERGY_POWDER                           0x488
 #define FLAG_ITEM_ROUTE_115_PP_UP                                   0x489
@@ -1316,13 +1316,13 @@
 #define FLAG_UNUSED_0x4EE                                           0x4EE // Unused Flag
 #define FLAG_UNUSED_0x4EF                                           0x4EF // Unused Flag
 
-#define FLAG_DEFEATED_ANIMORA_GYM                                   0x4F0
+#define FLAG_DEFEATED_CENTRA_SE_GYM                                 0x4F0
 #define FLAG_DEFEATED_IMPERIAL_GYM                                  0x4F1
 #define FLAG_DEFEATED_OLSTERN_GYM                                   0x4F2
-#define FLAG_DEFEATED_CENTRA_GYM                                    0x4F3
+#define FLAG_DEFEATED_CENTRA_NW_GYM                                 0x4F3
 #define FLAG_DEFEATED_MOSTILL_GYM                                   0x4F4
 #define FLAG_DEFEATED_MYRON_GYM                                     0x4F5
-#define FLAG_DEFEATED_GESTOLIA_GYM                                                                0x4F6
+#define FLAG_DEFEATED_GESTOLIA_GYM                                  0x4F6
 #define FLAG_DEFEATED_SOOTOPOLIS_GYM                                0x4F7
 #define FLAG_DEFEATED_METEOR_FALLS_STEVEN                           0x4F8
 
@@ -1355,7 +1355,7 @@
 #define FLAG_SYS_CHAT_USED                           (SYSTEM_FLAGS + 0x5)
 #define FLAG_UNLOCKED_TRENDY_SAYINGS                 (SYSTEM_FLAGS + 0x6)
 
-// Badges
+// Badges (Total: 8, 0x867-0x86E)
 #define FLAG_BADGE01_GET                             (SYSTEM_FLAGS + 0x7)
 #define FLAG_BADGE02_GET                             (SYSTEM_FLAGS + 0x8)
 #define FLAG_BADGE03_GET                             (SYSTEM_FLAGS + 0x9)

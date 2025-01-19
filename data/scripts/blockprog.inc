@@ -1,0 +1,49 @@
+Common_EventScript_BlockProgression::
+	lock
+	msgbox Common_EventScript_BlockProgression_Text_0, MSGBOX_AUTOCLOSE
+	getobjectfacingdirection OBJ_EVENT_ID_PLAYER, VAR_TEMP_A
+	switch VAR_TEMP_A
+	case DIR_NORTH, Common_EventScript_BlockProgression_3
+	case DIR_EAST, Common_EventScript_BlockProgression_4
+	case DIR_SOUTH, Common_EventScript_BlockProgression_5
+	case DIR_WEST, Common_EventScript_BlockProgression_6
+Common_EventScript_BlockProgression_1:
+	waitmovement 0
+	release
+	end
+
+Common_EventScript_BlockProgression_3:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_EventScript_BlockProgression_Movement_0
+	goto Common_EventScript_BlockProgression_1
+
+Common_EventScript_BlockProgression_4:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_EventScript_BlockProgression_Movement_1
+	goto Common_EventScript_BlockProgression_1
+
+Common_EventScript_BlockProgression_5:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_EventScript_BlockProgression_Movement_2
+	goto Common_EventScript_BlockProgression_1
+
+Common_EventScript_BlockProgression_6:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_EventScript_BlockProgression_Movement_3
+	goto Common_EventScript_BlockProgression_1
+
+
+Common_EventScript_BlockProgression_Movement_0:
+	walk_down
+	step_end
+
+Common_EventScript_BlockProgression_Movement_1:
+	walk_left
+	step_end
+
+Common_EventScript_BlockProgression_Movement_2:
+	walk_up
+	step_end
+
+Common_EventScript_BlockProgression_Movement_3:
+	walk_right
+	step_end
+
+Common_EventScript_BlockProgression_Text_0:
+	.string "You can't go this way yet.$"

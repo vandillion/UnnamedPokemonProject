@@ -11,15 +11,7 @@ Debug_ShowFieldMessageStringVar4::
 Debug_CheatStart::
 	setflag FLAG_SYS_EXP_SHARE
 	setflag FLAG_SYS_B_DASH
-	givemon SPECIES_BANDITOOK, 14, ITEM_NONE
-	givemon SPECIES_RACCAT, 14, ITEM_NONE
-	givemon SPECIES_LUEL, 14, ITEM_NONE
-	givemon SPECIES_SUGARGLIDE, 14, ITEM_NONE
-	givemon SPECIES_PARMI, 14, ITEM_NONE
-	givemon SPECIES_RADPOLE, 14, ITEM_NONE
-	additem ITEM_POTION, 12
-	setflag FLAG_BADGE02_GET
-	warpnofade MAP_PETALBURG_CITY_GYM, 0
+	warpnofade MAP_VAST_WOODS_TRAIL, 19, 27
 	end
 
 Debug_CheatStartOld::
@@ -39,7 +31,7 @@ Debug_CheatStartOld::
 	special EnableNationalPokedex
 	setflag FLAG_RECEIVED_RUNNING_SHOES
 	setflag FLAG_SYS_B_DASH
-	setvar VAR_LITTLEROOT_TOWN_STATE, 4 @ 4: Received Running Shoes
+	setvar VAR_WOODRIDGE_TOWN_STATE, 4 @ 4: Received Running Shoes
 	setvar VAR_LITTLEROOT_INTRO_STATE, 7 @ 7: Told to go meet rival
 	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 2 @ 2: Met Rival's Mom (and is corresponding gender)
 	setvar VAR_LITTLEROOT_HOUSES_STATE_MAY, 2 @ 2: Met Rival's Mom (and is corresponding gender)
