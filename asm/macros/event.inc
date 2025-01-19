@@ -444,7 +444,7 @@
 	@ or a pair of x/y coordinates to go to directly on the destination map.
 	@ Skips the fade to black before warping.
 	.macro warpnofade map:req, a, b, c
-	.byte 0xe5
+	.byte SCR_OP_WARPNOFADE
 	formatwarp \map, \a, \b, \c
 	.endm
 
