@@ -37,8 +37,14 @@
     "gMapGroup_IndoorWoodridge"
   ],
   "gMapGroup_TownsAndRoutes": [
+    "VastWoodsTrail",
+    "WoodridgeTown",
+    "Route101",
     "PetalburgCity",
+    "Route102",
     "SlateportCity",
+    "Route134",
+    "Route133",
     "MauvilleCity",
     "RustboroCity",
     "FortreeCity",
@@ -53,8 +59,6 @@
     "FallarborTown",
     "VerdanturfTown",
     "PacifidlogTown",
-    "Route101",
-    "Route102",
     "Route103",
     "Route104",
     "Route105",
@@ -85,17 +89,13 @@
     "Route130",
     "Route131",
     "Route132",
-    "Route133",
-    "Route134",
     "Underwater_Route124",
     "Underwater_Route126",
     "Underwater_Route127",
     "Underwater_Route128",
     "Underwater_Route129",
     "Underwater_Route105",
-    "Underwater_Route125",
-    "WoodridgeTown",
-    "VastWoodsTrail"
+    "Underwater_Route125"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
@@ -160,7 +160,6 @@
   ],
   "gMapGroup_IndoorPetalburg": [
     "PetalburgCity_WallysHouse",
-    "PetalburgCity_Gym",
     "PetalburgCity_House1",
     "PetalburgCity_House2",
     "PetalburgCity_PokemonCenter_1F",
@@ -168,6 +167,7 @@
     "PetalburgCity_Mart"
   ],
   "gMapGroup_IndoorSlateport": [
+    "CentraSE_Gym",
     "SlateportCity_SternsShipyard_1F",
     "SlateportCity_SternsShipyard_2F",
     "SlateportCity_BattleTentLobby",
@@ -628,6 +628,10 @@
     "WoodridgeTown_PlayersHouse1F",
     "WoodridgeTown_PlayersHouse2F",
     "WoodridgeTown_OrionsHouse1F",
-    "WoodridgeTown_OrionsHouse2F"
+    "WoodridgeTown_OrionsHouse2F",
+    "CentraNE_PokemonAcademy1F",
+    "CentraNE_PokemonAcademy2F",
+    "CentraNE_PokemonAcademy3F",
+    "CentraNE_PokemonAcademy4F"
   ]
 }

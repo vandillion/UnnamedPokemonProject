@@ -1,0 +1,175 @@
+const LOCALID_PRINCIPAL = 1
+
+mapscripts CentraNE_PokemonAcademy1F_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        if(!var(VAR_POKEMON_ACADEMY_STATE)) {
+			setobjectxyperm(LOCALID_PRINCIPAL, 31, 39)
+		}
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_POKEMON_ACADEMY_STATE, 0 { // Player enters the Pokemon Academy for the first time
+            lock
+            getobjectxy(OBJ_EVENT_ID_PLAYER, CURRENT_POSITION, VAR_TEMP_0, VAR_TEMP_1)
+            if (var(VAR_TEMP_1) == 50) {
+                switch(var(VAR_TEMP_0)) {
+                    case 28:
+                        applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 2
+                                                                 walk_right * 5
+                                                                 walk_up
+                                                                 walk_right * 2
+                                                                 walk_up * 2
+                                                                 ))
+                    case 29:
+                        applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 2
+                                                                 walk_right * 4
+                                                                 walk_up
+                                                                 walk_right * 2
+                                                                 walk_up * 2
+                                                                 ))
+                    case 44:
+                        applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 2
+                                                                walk_left * 4
+                                                                walk_up * 2
+                                                                walk_left * 5
+                                                                walk_up
+                                                                ))
+                    case 45:
+                        applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 2
+                                                                walk_left * 4
+                                                                walk_up * 2
+                                                                walk_left * 6
+                                                                walk_up
+                                                                ))
+                }
+            }
+            waitmovement(0)
+            applymovement(2, Common_Movement_WalkInPlaceDown)
+            waitmovement(0)
+            message("Hello.\nHow may I help you?")
+            waitmessage
+            delay(30)
+            closemessage
+            delay(60)
+            msgbox("… … …\n{PAUSE 60}{PLAYER}, was it?\p"
+                   "Alright.\nWait here for one moment please.", MSGBOX_AUTOCLOSE)
+            delay(16)
+            applymovement(2, moves(walk_up * 3
+                                   walk_left * 4
+                                   walk_up))
+            waitmovement(0)
+            delay(450)
+            applymovement(2, moves(walk_down
+                                   walk_right * 4
+                                   walk_down * 3
+                                   lock_facing_direction
+                                   walk_left
+                                   unlock_facing_direction))
+            applymovement(LOCALID_PRINCIPAL, moves(delay_16
+                                                   walk_down
+                                                   walk_right * 4
+                                                   walk_down * 3))
+            waitmovement(0)
+            msgbox(format("Ah. You must be {PLAYER}.\nThe Professor forewarned us of your arrival.\p"
+                          "Allow me to introduce myself.\nMy name is Charnell. I am the principal of this Academy.\p"
+                          "Your friend, Orion, has already arrived.\nPlease follow me."), MSGBOX_AUTOCLOSE)
+            applymovement(LOCALID_PRINCIPAL, moves(walk_up
+                                                   walk_right * 3
+                                                   walk_in_place_fast_down))
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right * 3
+                                                     walk_up * 2))
+            waitmovement(0)
+            delay(8)
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 5
+                                                     walk_left))
+            applymovement(LOCALID_PRINCIPAL, moves(walk_up * 4
+                                                   walk_left * 2
+                                                   walk_in_place_fast_right))
+            waitmovement(0)
+            msgbox(format("This is the main office.\nIt's where all of administration is located.\p
+                           If you have any trouble during your time here, you are free pay a visit at anytime.\p
+                           Please excuse me while I grab your Academy Badge."), MSGBOX_AUTOCLOSE)
+            delay(8)
+            applymovement(LOCALID_PRINCIPAL, moves(walk_left * 7))
+            waitmovement(0)
+            delay(300)
+            applymovement(LOCALID_PRINCIPAL, moves(walk_right * 7))
+            waitmovement(0)
+            giveitem(ITEM_ACADEMY_BADGE)
+            call(SetAcademy3FHomeroom)
+            message(format("Today you'll be attending a total of 3 classes."))
+            waitmessage
+            delay(40)
+            call(BufferHomeroom3F)
+            message(format("Your first class will be held in room {COLOR RED}{SHADOW LIGHT_RED}{STR_VAR_1}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY},
+                            which is located on the {COLOR RED}{SHADOW LIGHT_RED}third floor{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}."))
+            waitmessage
+            delay(40)
+            call(BufferHomeroom2F)
+            message(format("After that you will head to room {COLOR RED}{SHADOW LIGHT_RED}{STR_VAR_1}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}
+                           on the {COLOR RED}{SHADOW LIGHT_RED}second floor{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}."))
+            waitmessage
+            delay(40)
+            call(BufferHomeroom4F)
+            message("And finally, your last class will be held\nin room {COLOR RED}{SHADOW LIGHT_RED}{STR_VAR_1}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}
+                            on the {COLOR RED}{SHADOW LIGHT_RED}fourth floor{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}.")
+            waitmessage
+            delay(40)
+            waitbuttonpress
+            msgbox(format("If at anytime you have trouble navigating the campus, you can always check your Academy Badge.\p
+                           Your Academy Badge also has your Homeroom numbers printed on the back.\p
+                           Please make your way through the corridor behind you."), MSGBOX_AUTOCLOSE)
+            setobjectxyperm(LOCALID_PRINCIPAL, 7, 34)
+            applymovement(LOCALID_PRINCIPAL, moves(walk_left * 7))
+            waitmovement(0)
+            removeobject(LOCALID_PRINCIPAL)
+            setvar(VAR_POKEMON_ACADEMY_STATE, 1)
+            end
+        }
+    ]
+}
+
+script SetAcademy3FHomeroom {
+    random(16)
+    addvar(VAR_RESULT, 1)
+    copyvar(VAR_ACADEMY3F_HOMEROOM_NO, VAR_RESULT)
+    goto(SetAcademy2FHomeroom)
+}
+
+script SetAcademy2FHomeroom {
+    random(16)
+    compare(VAR_RESULT, VAR_ACADEMY3F_HOMEROOM_NO)
+    goto_if_eq(SetAcademy2FHomeroom)
+    addvar(VAR_RESULT, 1)
+    copyvar(VAR_ACADEMY2F_HOMEROOM_NO, VAR_RESULT)
+    goto(SetAcademy4FHomeroom)
+}
+
+script SetAcademy4FHomeroom {
+    random(16)
+    compare(VAR_RESULT, VAR_ACADEMY2F_HOMEROOM_NO)
+    goto_if_eq(SetAcademy4FHomeroom)
+    addvar(VAR_RESULT, 1)
+    copyvar(VAR_ACADEMY4F_HOMEROOM_NO, VAR_RESULT)
+    return
+}
+
+script BufferHomeroom2F {
+    copyvar(VAR_TEMP_2, VAR_ACADEMY2F_HOMEROOM_NO)
+    addvar(VAR_TEMP_2, 100)
+    buffernumberstring(STR_VAR_1, VAR_TEMP_2)
+    return
+}
+
+script BufferHomeroom3F {
+    copyvar(VAR_TEMP_2, VAR_ACADEMY3F_HOMEROOM_NO)
+    addvar(VAR_TEMP_2, 200)
+    buffernumberstring(STR_VAR_1, VAR_TEMP_2)
+    return
+}
+
+script BufferHomeroom4F {
+    copyvar(VAR_TEMP_2, VAR_ACADEMY4F_HOMEROOM_NO)
+    addvar(VAR_TEMP_2, 300)
+    buffernumberstring(STR_VAR_1, VAR_TEMP_2)
+    return
+}

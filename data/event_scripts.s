@@ -210,7 +210,7 @@ gStdScripts_End::
 	.include "data/maps/PacifidlogTown_House4/scripts.inc"
 	.include "data/maps/PacifidlogTown_House5/scripts.inc"
 	.include "data/maps/PetalburgCity_WallysHouse/scripts.inc"
-	.include "data/maps/PetalburgCity_Gym/scripts.inc"
+	.include "data/maps/CentraSE_Gym/scripts.inc"
 	.include "data/maps/PetalburgCity_House1/scripts.inc"
 	.include "data/maps/PetalburgCity_House2/scripts.inc"
 	.include "data/maps/PetalburgCity_PokemonCenter_1F/scripts.inc"
@@ -592,8 +592,8 @@ EventScript_AfterWhiteOutHeal::
 	lockall
 	msgbox gText_FirstShouldRestoreMonsHealth
 	call EventScript_PkmnCenterNurse_TakeAndHealPkmn
-	call_if_unset FLAG_DEFEATED_ANIMORA_GYM, EventScript_AfterWhiteOutHealMsgPreRoxanne
-	call_if_set FLAG_DEFEATED_ANIMORA_GYM, EventScript_AfterWhiteOutHealMsg
+	call_if_unset FLAG_DEFEATED_CENTRA_SE_GYM, EventScript_AfterWhiteOutHealMsgPreRoxanne
+	call_if_set FLAG_DEFEATED_CENTRA_SE_GYM, EventScript_AfterWhiteOutHealMsg
 	applymovement VAR_LAST_TALKED, Movement_PkmnCenterNurse_Bow
 	waitmovement 0
 	fadedefaultbgm
@@ -1097,6 +1097,7 @@ EventScript_VsSeekerChargingDone::
 	end
 
 	.include "data/scripts/pc_transfer.inc"
+	.include "data/scripts/blockprog.inc"
 	.include "data/scripts/questionnaire.inc"
 	.include "data/scripts/abnormal_weather.inc"
 	.include "data/scripts/trainer_script.inc"
@@ -1162,3 +1163,11 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/WoodridgeTown_OrionsHouse1F/scripts.inc"
 
 	.include "data/maps/WoodridgeTown_OrionsHouse2F/scripts.inc"
+
+	.include "data/maps/CentraNE_PokemonAcademy1F/scripts.inc"
+
+	.include "data/maps/CentraNE_PokemonAcademy2F/scripts.inc"
+
+	.include "data/maps/CentraNE_PokemonAcademy3F/scripts.inc"
+
+	.include "data/maps/CentraNE_PokemonAcademy4F/scripts.inc"
