@@ -6,17 +6,10 @@ mapscripts PetalburgCity_MapScripts {
 	}
 }
 
-script AnimoraCityGymGuideOutside {
-	msgbox(format("Hey, Trainer! Lookin' to challenge the Gym leader?\p"
-				  "Well sorry to say, but she's not here at the moment.\p"
-				  "She's at the Trainer's School in Centra instructing a lesson!"), MSGBOX_NPC)
-}
-
 // =========================================================================================================================================
 raw `
 .set LOCALID_GIRL, 1
 `
-
 
 script AnimoraCityHoodedGirlBattle {
 	lock
@@ -34,7 +27,7 @@ script AnimoraCityHoodedGirlBattle {
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
 	playse(SE_PIN)
 	delay(8)
-	applymovement(LOCALID_GIRL, AnimoraCityHoodedGirlLeave)
+	applymovement(LOCALID_GIRL, moves(walk_fast_left * 7))
 	waitmovement(0)
 	delay(30)
 	msgbox("Battle me.\nNow!")
@@ -62,11 +55,21 @@ script AnimoraCityHoodedGirlBattle {
 	playse(SE_FLEE)
 	switch (var(VAR_TEMP_0)) {
         case 0:
-			applymovement(LOCALID_GIRL, AnimoraCityHoodedGirlLeave0)
+			applymovement(LOCALID_GIRL, moves(walk_fast_down
+											  walk_fast_left * 2
+											  walk_diag_southwest
+											  walk_fast_left
+											  walk_diag_southwest
+											  walk_fast_left * 4))
 			delay(8)
 			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
         case 1:
-			applymovement(LOCALID_GIRL, AnimoraCityHoodedGirlLeave1)
+			applymovement(LOCALID_GIRL, moves(walk_fast_up
+											  walk_fast_left * 2
+											  walk_diag_southwest
+											  walk_fast_left
+											  walk_diag_southwest
+											  walk_fast_left * 4))
 			delay(8)
 			turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
     }
@@ -76,7 +79,6 @@ script AnimoraCityHoodedGirlBattle {
 	fadedefaultbgm
 	removeobject(LOCALID_GIRL)
 	setflag(FLAG_HIDE_GIRL_ANIMORA_CITY)
-	setflag(FLAG_HIDE_GYM_GUIDE_ANIMORA_CITY) // delete when ready
 	setvar(VAR_ANIMORA_CITY_STATE, 2)
 	delay(16)
 	release
@@ -84,27 +86,6 @@ script AnimoraCityHoodedGirlBattle {
 
 text HoodedGirlDefeat {
 	"… … …\n… … …"
-}
-movement AnimoraCityHoodedGirlLeave {
-	walk_fast_left * 7
-}
-
-movement AnimoraCityHoodedGirlLeave0 {
-	walk_fast_down
-	walk_fast_left * 2
-	walk_diag_southwest
-	walk_fast_left
-	walk_diag_southwest
-	walk_fast_left * 4
-}
-
-movement AnimoraCityHoodedGirlLeave1 {
-	walk_fast_up
-	walk_fast_left * 2
-	walk_diag_southwest
-	walk_fast_left
-	walk_diag_southwest
-	walk_fast_left * 4
 }
 
 script AnimoraCityHoodedGirlBattleTrigger0 {

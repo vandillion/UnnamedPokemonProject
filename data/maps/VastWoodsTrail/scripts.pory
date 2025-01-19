@@ -1,329 +1,405 @@
-raw `
-.set LOCALID_ORION, 1
-.set LOCALID_GS, 2
-.set LOCALID_FS, 3
-.set LOCALID_WS, 4
-.set LOCALID_LEON, 5
-.set LOCALID_GRUNT, 6
-.set LOCALID_HARLEY, 7
-`
+const LOCALID_ORION = 1
+const LOCALID_GS = 2
+const LOCALID_FS = 3
+const LOCALID_WS = 4
+const LOCALID_LEON = 5
+const LOCALID_GRUNT = 6
+const LOCALID_HARLEY = 7
 
 mapscripts VastWoodsTrail_MapScripts {
-    MAP_SCRIPT_ON_RESUME {
-        call_if_eq(VAR_TEMP_1, 1, ShowMons)
-	}
-}
-
-script ShowMons {
-    playbgm(MUS_NONE, TRUE)
-	showobjectat(VAR_TEMP_2, MAP_VAST_WOODS_TRAIL)
-    showobjectat(VAR_TEMP_3, MAP_VAST_WOODS_TRAIL)
-}
-
-script VastWoodsTrailBattle {
-	lock
-	setflag(FLAG_HIDE_ORION_ORIONS_ROOM)
-	setobjectxy(LOCALID_ORION, 4, 1)
-	msgbox("Hey!\n{PLAYER}!")
-	closemessage
-	turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
-    switch (var(VAR_TEMP_0)) {
-        case 0:
-            applymovement(LOCALID_ORION, OrionWalkFromTown0)
-		    waitmovement(0)
-		    turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
-        case 1:
-            applymovement(LOCALID_ORION, OrionWalkFromTown1)
-		    waitmovement(0)
-		    turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
-    }
-	msgbox(format("You ready for our walk?"), MSGBOX_AUTOCLOSE)
-    switch (var(VAR_TEMP_0)) {
-        case 0:
-            applymovement(LOCALID_ORION, OrionWalk0)
-            applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalk0)
-        case 1:
-            applymovement(LOCALID_ORION, OrionWalk1)
-        applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalk1)
-    }
-    waitmovement(0)
-    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
-    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
-    waitmovement(0)
-    msgbox(format("This forest is home to a plethora of Pokemon, {PLAYER}!"), MSGBOX_AUTOCLOSE)
-    playbgm(MUS_NONE, FALSE)
-    playmoncry(SPECIES_SUGARGLIDE, CRY_MODE_ENCOUNTER)
-    delay(20)
-    playmoncry(SPECIES_PARMI, CRY_MODE_ENCOUNTER)
-    delay(20)
-    playmoncry(SPECIES_RADPOLE, CRY_MODE_ENCOUNTER)
-    delay(20)
-    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
-    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
-    waitmovement(0)
-    applymovement(LOCALID_ORION, Common_Movement_ExclamationMarkDelay)
-    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMarkDelay)
-    playse(SE_PIN)
-    waitmovement(0)
-    msgbox("What was that!?")
-    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
-    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
-    waitmovement(0)
-    msgbox(format("{PLAYER}, we have to go check what those noises were!"), MSGBOX_AUTOCLOSE)
-    applymovement(LOCALID_ORION, VastWoodsTrailRunIntoWoods0)
-    applymovement(OBJ_EVENT_ID_PLAYER, VastWoodsTrailRunIntoWoods1)
-    waitmovement(0)
-    turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
-    msgbox("Hold on!\nSomething's coming towards us!", MSGBOX_AUTOCLOSE)
-    playmoncry(SPECIES_SUGARGLIDE, CRY_MODE_NORMAL)
-    applymovement(LOCALID_GS, RunToPlayer0)
-    waitmovement(0)
-    turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
-    turnobject(LOCALID_ORION, DIR_NORTH)
-    msgbox("Huh?\nWho's this Pokemon?")
-    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
-    waitmovement(0)
-    msgbox(format("There's more coming from the forest!"))
-    closemessage
-    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
-    playmoncry(SPECIES_PARMI, CRY_MODE_NORMAL)
-    applymovement(LOCALID_FS, RunToPlayer1)
-    delay(40)
-    playmoncry(SPECIES_RADPOLE, CRY_MODE_NORMAL)
-    applymovement(LOCALID_WS, RunToPlayer2)
-    waitmovement(0)
-    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
-    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
-    waitmovement(0)
-    msgbox(format("I've never seen any of these Pokemon before!\p"
-                  "And they don't look native to the Vast Woods.\p"
-                  "Where could they have came from?"), MSGBOX_AUTOCLOSE)
-    delay(90)
-    message("???: You two!\nDon't move!")
-    waitmessage
-    playbgm(MUS_HELP, TRUE)
-    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
-    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
-    delay(16)
-    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMarkDelay)
-    applymovement(LOCALID_ORION, Common_Movement_ExclamationMark)
-    applymovement(LOCALID_LEON, GoonsWalkTowardsPlayer)
-    applymovement(LOCALID_GRUNT, GoonsWalkTowardsPlayer)
-    applymovement(LOCALID_HARLEY, GoonsWalkTowardsPlayer)
-    waitmovement(OBJ_EVENT_ID_PLAYER)
-    closemessage
-    waitmovement(LOCALID_LEON)
-    delay(30)
-    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
-    waitmovement(0)
-    msgbox("And who might you three be?")
-    waitmovement(0)
-    applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceLeft)
-    waitmovement(0)
-    msgbox("That doesn't matter.\nThose Pokemon are ours!\pReturn them to us immediately!")
-    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
-    delay(60)
-    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
-    waitmovement(0)
-    msgbox(format("Why would we do that when not only were these Pokemon running away from you, but you look like you're dressed for the Winter Olympics?\p"
-                  "I'll ask again.\nWho EXACTLY are you?"))
-    applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceLeft)
-    waitmovement(0)
-    msgbox(format("Fine!{PAUSE 40}\n"
-                  "I am Leon of the brilliant group that is Subzero!\p"
-                  "Now return the Pokemon!"))
-    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
-    waitmovement(0)
-    msgbox("Not without a fight!")
-    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
-    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
-    waitmovement(0)
-    msgbox(format("{PLAYER}, it looks like we're about to have our first Pokemon battle!"))
-    applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceLeft)
-    waitmovement(0)
-    message(format("Attempting to use our own Pokemon against us in a battle?\p"
-                  "Fine!\nWe'll gladly accept your challenge!"))
-    delay(16)
-    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
-    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
-    waitmessage
-    waitbuttonpress
-    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
-    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
-    waitmovement(0)
-    msgbox(format("Are you ready, {PLAYER}?\nChoose a Pokemon to battle with!\p"
-                  "I'll choose after you!"), MSGBOX_AUTOCLOSE)
-    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
-    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
-    fadescreen(FADE_TO_BLACK)
-    special(ChooseStarter)
-    waitstate
-    switch (var(VAR_STARTER_MON)) {
-        case 0:
-            setvar(VAR_TEMP_2, LOCALID_GS)
-            setvar(VAR_TEMP_3, LOCALID_FS)
-            setvar(VAR_TEMP_4, PARTNER_ORION_FIRE)
-        case 1:
-            setvar(VAR_TEMP_2, LOCALID_FS)
-            setvar(VAR_TEMP_3, LOCALID_WS)
-            setvar(VAR_TEMP_4, PARTNER_ORION_WATER)
-        case 2:
-            setvar(VAR_TEMP_2, LOCALID_WS)
-            setvar(VAR_TEMP_3, LOCALID_GS)
-            setvar(VAR_TEMP_4, PARTNER_ORION_GRASS)
-    }
-    playse(SE_BALL_OPEN)
-    applymovement(VAR_TEMP_2, Common_Movement_EnterBall)
-    waitse
-    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
-    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
-    waitmovement(0)
-    message(format("… … …{PAUSE 40}\nAlright, I'll use this one!{PAUSE 8}"))
-    waitmessage
-    playse(SE_BALL_OPEN)
-    applymovement(VAR_TEMP_3, Common_Movement_EnterBall)
-    waitse
-    delay(8)
-    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
-    waitmovement(0)
-    applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceRight)
-    waitmovement(0)
-    msgbox("Harley, help me fight these guys!")
-    playse(SE_PIN)
-    applymovement(LOCALID_HARLEY, HarleyMoveAway)
-    waitmovement(0)
-    msgbox("Absolutely not!")
-    applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceLeft)
-    applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceLeft)
-    waitmovement(0)
-    msgbox("Fine!\nUs two will take you down!")
-    clearflag(FLAG_HIDE_ORION_WOODRIDGE_TOWN)
-    clearflag(FLAG_HIDE_POKEMON_WOODRIDGE_TOWN)
-    setvar(VAR_NEWGAME_START, 5)
-    setvar(VAR_TEMP_1, 1)
-    multi_fixed_2_vs_2(TRAINER_MAXIE_MOSSDEEP, LeonDefeatText, TRAINER_TABITHA_MOSSDEEP, GruntDefeatText, VAR_TEMP_4)
-    special(HealPlayerParty)
-    switch (var(VAR_RESULT)) {
-        case 1:
-    //wonFirstBattle
-            playbgm(MUS_HELP, TRUE)
-            applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
-            applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
+    MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_VAST_WOODS_TRAIL_STATE, 0 { // Player's walk with Orion
+            lock
+            setflag(FLAG_HIDE_ORION_ORIONS_ROOM)
+            applymovement(LOCALID_ORION, moves(set_invisible
+                                               walk_faster_up * 12
+                                               set_visible))
+            msgbox("Hey!\n{PLAYER}!")
+            closemessage
             waitmovement(0)
-            msgbox(format("Alright, {PLAYER}!\nWe won our first Pokemon battle!"), MSGBOX_AUTOCLOSE)
+            turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
+            applymovement(LOCALID_ORION, moves(walk_down* 3))
+            getobjectxy(OBJ_EVENT_ID_PLAYER, CURRENT_POSITION, VAR_TEMP_0, VAR_TEMP_1)
+            waitmovement(0)
+            switch(var(VAR_TEMP_0)){
+                case 13:
+                    applymovement(LOCALID_ORION, moves(walk_left * 2
+                                                       walk_down * 3
+                                                       walk_left))
+                    delay(64)
+                    turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
+                case 14:
+                    applymovement(LOCALID_ORION, moves(walk_left * 2
+                                                       walk_down * 3
+                                                       walk_in_place_left))
+                    delay(64)
+                    turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
+                case 15:
+                    applymovement(LOCALID_ORION, moves(walk_left
+                                                       walk_down * 3
+                                                       walk_in_place_left))
+                    delay(48)
+                    turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
+                case 16:
+                    applymovement(LOCALID_ORION, moves(walk_down * 3
+                                                       walk_in_place_left))
+                    delay(32)
+                    turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
+                case 17:
+                    applymovement(LOCALID_ORION, moves(walk_down * 2))
+                case 18:
+                    applymovement(LOCALID_ORION, moves(walk_down * 3
+                                                       walk_in_place_right))
+                    delay(32)
+                    turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+                case 19:
+                    applymovement(LOCALID_ORION, moves(walk_right
+                                                       walk_down * 3
+                                                       walk_in_place_right))
+                    delay(48)
+                    turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+                case 20:
+                    applymovement(LOCALID_ORION, moves(walk_right * 2
+                                                       walk_down * 3
+                                                       walk_in_place_right))
+                    delay(64)
+                    turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+            }
+            waitmovement(0)
+            msgbox(format("You ready for our walk?"), MSGBOX_AUTOCLOSE)
+            // movement sequences. Make sure Player ends up at 19 27 and orion at 19 28
+            turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+            turnobject(LOCALID_ORION, DIR_NORTH)
+            msgbox(format("This forest is home to a plethora of Pokemon, {PLAYER}!"), MSGBOX_AUTOCLOSE)
+            playbgm(MUS_NONE, FALSE)
+            playmoncry(SPECIES_SUGARGLIDE, CRY_MODE_ENCOUNTER)
+            delay(20)
+            playmoncry(SPECIES_PARMI, CRY_MODE_ENCOUNTER)
+            delay(20)
+            playmoncry(SPECIES_RADPOLE, CRY_MODE_ENCOUNTER)
+            delay(20)
             applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
             applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
             waitmovement(0)
-            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceLeft)
+            applymovement(LOCALID_ORION, Common_Movement_ExclamationMarkDelay)
+            applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMarkDelay)
+            playse(SE_PIN)
             waitmovement(0)
-            msgbox("Fine!\nTake the Pokemon!\pWe didn't need them anyway!")
-            applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
-            waitmovement(0)
-            msgbox(format("I know you're bluffing, but we'll leave anyway. Bye!"))
+            msgbox("What was that!?")
             applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
             applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            msgbox(format("{PLAYER}, let's head back home with the Pokemon!"), MSGBOX_AUTOCLOSE)
-            call(PlayerRivalRunBackHome)
-            applymovement(OBJ_EVENT_ID_CAMERA, MoveCamToGoons)
+            msgbox(format("{PLAYER}, we have to go check what those noises were!"), MSGBOX_AUTOCLOSE)
+            applymovement(LOCALID_ORION, moves(walk_fast_right * 15))
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(player_run_right * 15))
             waitmovement(0)
-            applymovement(LOCALID_LEON, WalkLeftTurn)
+            turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
+            msgbox("Hold on!\nSomething's coming towards us!", MSGBOX_AUTOCLOSE)
+            playmoncry(SPECIES_SUGARGLIDE, CRY_MODE_NORMAL)
+            applymovement(LOCALID_GS, moves(walk_fast_left * 2
+                                            walk_fast_down
+                                            walk_fast_left * 6
+                                            walk_fast_up
+                                            walk_fast_left * 2
+                                            walk_fast_down
+                                            walk_in_place_fast_right))
             waitmovement(0)
-            message(format("What the hell was that?!\pHarley, we could've beaten them if you helped!"))
-            waitmessage
-            applymovement(LOCALID_HARLEY, HarleyWalkLeft)
+            turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+            turnobject(LOCALID_ORION, DIR_NORTH)
+            msgbox("Huh?\nWho's this Pokemon?")
+            applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
             waitmovement(0)
-            msgbox(format("Excuse me!?\nThat battle had absolutely nothing to do with me!\p"
-                          "Besides, have you forgotten exactly why we joined this group in the first place?"))
-            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceRight)
-            waitmovement(0)
-            msgbox(format("To be fair, you brought me into this mess and I started diggin' it.\p"
-                          "Besides, you know the consequences are if they find out you're trying to take this group down!"))
-            applymovement(LOCALID_HARLEY, Common_Movement_WalkInPlaceLeft)
-            waitmovement(0)
-            msgbox("You are very stubborn.\nI'm done with you.")
-            applymovement(LOCALID_LEON, Common_Movement_ExclamationMarkDelay)
-            playse(SE_PIN)
-            waitse
-            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceRight)
-            waitmovement(0)
-            msgbox("What?!\nWhat are you on about, Harley??")
-            applymovement(LOCALID_HARLEY, Common_Movement_WalkInPlaceLeft)
-            waitmovement(0)
-            msgbox("Bye, Leon.", MSGBOX_AUTOCLOSE)
-            playse(SE_FLEE)
-            applymovement(LOCALID_HARLEY, VastWoodsTrailHarleyWalkOffscreen)
-            delay(16)
-            turnobject(LOCALID_LEON, DIR_NORTH)
-            message(format("Harley!\n{PAUSE 40}Wait!"))
-            delay(24)
-            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceLeft)
-            waitmovement(LOCALID_HARLEY)
-            delay(24)
-            message(format("Where the fuck are you even going…{PAUSE 75}"))
-            waitmessage
+            msgbox(format("There's more coming from the forest!"))
             closemessage
+            applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
+            playmoncry(SPECIES_PARMI, CRY_MODE_NORMAL)
+            applymovement(LOCALID_FS, moves(walk_fast_left * 2
+                                            walk_fast_down * 2
+                                            walk_fast_left * 6
+                                            walk_fast_down
+                                            walk_fast_left * 2
+                                            walk_fast_up
+                                            walk_in_place_fast_right))
             delay(40)
-            applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceLeft)
+            playmoncry(SPECIES_RADPOLE, CRY_MODE_NORMAL)
+            applymovement(LOCALID_WS, moves(walk_fast_left * 2
+                                            walk_fast_down
+                                            walk_fast_left * 6
+                                            walk_fast_up
+                                            walk_fast_left * 3
+                                            walk_fast_down
+                                            walk_in_place_fast_right))
             waitmovement(0)
-            msgbox(format("Dude…{PAUSE 45}\nAre you going to be okay?"), MSGBOX_AUTOCLOSE)
-            delay(45)
-            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceRight)
+            applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
+            applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
             waitmovement(0)
-            msgbox(format("Yeah.{PAUSE 45}\nYeah,{PAUSE 45} I will.\pI just wonder what she plans on doing."), MSGBOX_AUTOCLOSE)
-            delay(60)
-            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceRight)
-            waitmovement(0)
-            msgbox(format("Let's start heading back to the base.\pThe Boss is already going to be furious for us being out here."))
-            applymovement(LOCALID_LEON, VastWoodsTrailLeonWalkToGrunt)
-            applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceLeft)
-            waitmovement(0)
-            message(format("Agreed, but what are you going to tell her when she arrives?"))
+            msgbox(format("I've never seen any of these Pokemon before!\p"
+                        "And they don't look native to the Vast Woods.\p"
+                        "Where could they have came from?"), MSGBOX_AUTOCLOSE)
+            delay(90)
+            message("???: You two!\nDon't move!")
+            waitmessage
+            playbgm(MUS_HELP, TRUE)
+            applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
+            applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
+            delay(16)
+            applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMarkDelay)
+            applymovement(LOCALID_ORION, Common_Movement_ExclamationMark)
+            applymovement(LOCALID_LEON, moves(walk_left
+                                              walk_down
+                                              walk_left
+                                              walk_down
+                                              walk_left * 3))
+            applymovement(LOCALID_GRUNT, moves(delay_16
+                                               walk_left
+                                               walk_down
+                                               walk_left * 4))
+            applymovement(LOCALID_HARLEY, moves(delay_16 * 3
+                                                walk_left
+                                                walk_down
+                                                walk_left
+                                                walk_down
+                                                walk_left * 2))
+            waitmovement(OBJ_EVENT_ID_PLAYER)
+            closemessage
             waitmovement(LOCALID_LEON)
-            applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceDown)
+            delay(30)
+            applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
+            waitmovement(0)
+            msgbox("And who might you three be?")
+            waitmovement(0)
+            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceLeft)
+            waitmovement(0)
+            msgbox("That doesn't matter.\nThose Pokemon are ours!\pReturn them to us immediately!")
+            applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
+            delay(60)
+            applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
+            waitmovement(0)
+            msgbox(format("Why would we do that when not only were these Pokemon running away from you, but you look like you're dressed for the Winter Olympics?\p"
+                        "I'll ask again.\nWho EXACTLY are you?"))
+            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceLeft)
+            waitmovement(0)
+            msgbox(format("Fine!{PAUSE 40}\n"
+                        "I am Leon of the brilliant group that is Subzero!\p"
+                        "Now return the Pokemon!"))
+            applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
+            waitmovement(0)
+            msgbox("Not without a fight!")
+            applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
+            applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
+            waitmovement(0)
+            msgbox(format("{PLAYER}, it looks like we're about to have our first Pokemon battle!"))
+            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceLeft)
+            waitmovement(0)
+            message(format("Attempting to use our own Pokemon against us in a battle?\p"
+                        "Fine!\nWe'll gladly accept your challenge!"))
+            delay(16)
+            applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
+            applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
             waitmessage
             waitbuttonpress
-            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
+            applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
+            applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            msgbox("The truth.", MSGBOX_AUTOCLOSE)
-            delay(16)
-            applymovement(LOCALID_LEON, VastWoodsTrailLeonWalkOffscreen)
-            applymovement(LOCALID_GRUNT, VastWoodsTrailGruntWalkOffscreen)
-            waitmovement(0)
-            warpsilent(MAP_WOODRIDGE_TOWN, 14, 20)
+            msgbox(format("Are you ready, {PLAYER}?\nChoose a Pokemon to battle with!\p"
+                        "I'll choose after you!"), MSGBOX_AUTOCLOSE)
+            applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
+            applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
+            fadescreen(FADE_TO_BLACK)
+            special(ChooseStarter)
             waitstate
-	        release
-	        end
-    }
-    //lostFirstBattle
-    applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceLeft)
-    waitmovement(0)
-    msgbox(format("You lost the battle.\nNow give us the Pokemon!"))
-    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
-    waitmovement(0)
-    msgbox(format("Still not happening!"), MSGBOX_AUTOCLOSE)
-    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
-    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
-    waitmovement(0)                                //SPOILER ALERT: It does!               
-    msgbox(format("{PLAYER}, whether we won or not doesn't matter right now.\p"
-                  "Let's just head back home with the Pokemon!"), MSGBOX_AUTOCLOSE)
-    call(PlayerRivalRunBackHome)
-    setflag(FLAG_LOST_FIRST_BATTLE)
-    warpsilent(MAP_WOODRIDGE_TOWN, 14, 20)
-    waitstate
-	release
-	end
+            switch (var(VAR_STARTER_MON)) {
+                case 0:
+                    setvar(VAR_TEMP_2, LOCALID_GS)
+                    setvar(VAR_TEMP_3, LOCALID_FS)
+                    setvar(VAR_TEMP_4, PARTNER_ORION_FIRE)
+                case 1:
+                    setvar(VAR_TEMP_2, LOCALID_FS)
+                    setvar(VAR_TEMP_3, LOCALID_WS)
+                    setvar(VAR_TEMP_4, PARTNER_ORION_WATER)
+                case 2:
+                    setvar(VAR_TEMP_2, LOCALID_WS)
+                    setvar(VAR_TEMP_3, LOCALID_GS)
+                    setvar(VAR_TEMP_4, PARTNER_ORION_GRASS)
+            }
+            playse(SE_BALL_OPEN)
+            applymovement(VAR_TEMP_2, Common_Movement_EnterBall)
+            waitse
+            applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
+            applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
+            waitmovement(0)
+            message(format("… … …{PAUSE 40}\nAlright, I'll use this one!{PAUSE 8}"))
+            waitmessage
+            playse(SE_BALL_OPEN)
+            applymovement(VAR_TEMP_3, Common_Movement_EnterBall)
+            waitse
+            delay(8)
+            applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
+            waitmovement(0)
+            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceRight)
+            waitmovement(0)
+            msgbox("Harley, help me fight these guys!")
+            playse(SE_PIN)
+            applymovement(LOCALID_HARLEY, moves(emote_exclamation_mark
+                                                delay_16 * 2
+                                                lock_facing_direction
+                                                walk_right))
+            waitmovement(0)
+            msgbox("Absolutely not!")
+            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceLeft)
+            applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceLeft)
+            waitmovement(0)
+            msgbox("Fine!\nUs two will take you down!")
+            clearflag(FLAG_HIDE_ORION_WOODRIDGE_TOWN)
+            clearflag(FLAG_HIDE_POKEMON_WOODRIDGE_TOWN)
+            setvar(VAR_NEWGAME_START, 5)
+            addvar(VAR_VAST_WOODS_TRAIL_STATE, 1)
+            multi_fixed_2_vs_2(TRAINER_MAXIE_MOSSDEEP, LeonDefeatText, TRAINER_TABITHA_MOSSDEEP, GruntDefeatText, VAR_TEMP_4)
+            special(HealPlayerParty)
+            switch (var(VAR_RESULT)) {
+                case 1: //wonFirstBattle
+                    playbgm(MUS_HELP, TRUE)
+                    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
+                    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
+                    waitmovement(0)
+                    msgbox(format("Alright, {PLAYER}!\nWe won our first Pokemon battle!"), MSGBOX_AUTOCLOSE)
+                    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
+                    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
+                    waitmovement(0)
+                    applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceLeft)
+                    waitmovement(0)
+                    msgbox("Fine!\nTake the Pokemon!\pWe didn't need them anyway!")
+                    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
+                    waitmovement(0)
+                    msgbox(format("I know you're bluffing, but we'll leave anyway. Bye!"))
+                    applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
+                    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
+                    waitmovement(0)
+                    msgbox(format("{PLAYER}, let's head back home with the Pokemon!"), MSGBOX_AUTOCLOSE)
+                    call(PlayerRivalRunBackHome)
+                    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right * 2))
+                    waitmovement(0)
+                    applymovement(LOCALID_LEON, moves(walk_left * 2
+                                                      walk_in_place_right))
+                    waitmovement(0)
+                    message(format("What the hell was that?!\pHarley, we could've beaten them if you helped!"))
+                    waitmessage
+                    playse(SE_PIN)
+                    applymovement(LOCALID_HARLEY, moves(emote_exclamation_mark
+                                                        delay_16 * 2
+                                                        walk_left * 2))
+                    waitmovement(0)
+                    msgbox(format("Excuse me!?\nThat battle had absolutely nothing to do with me!\p"
+                                "Besides, have you forgotten exactly why we joined this group in the first place?"))
+                    applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceRight)
+                    waitmovement(0)
+                    msgbox(format("To be fair, you brought me into this mess and I started diggin' it.\p"
+                                "Besides, you know the consequences are if they find out you're trying to take this group down!"))
+                    applymovement(LOCALID_HARLEY, Common_Movement_WalkInPlaceLeft)
+                    waitmovement(0)
+                    msgbox("You are very stubborn.\nI'm done with you.")
+                    applymovement(LOCALID_LEON, Common_Movement_ExclamationMarkDelay)
+                    playse(SE_PIN)
+                    waitse
+                    applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceRight)
+                    waitmovement(0)
+                    msgbox("What?!\nWhat are you on about, Harley??")
+                    applymovement(LOCALID_HARLEY, Common_Movement_WalkInPlaceLeft)
+                    waitmovement(0)
+                    msgbox("Bye, Leon.", MSGBOX_AUTOCLOSE)
+                    playse(SE_FLEE)
+                    applymovement(LOCALID_HARLEY, moves(walk_fast_left
+                                                        walk_fast_up
+                                                        walk_fast_left * 10))
+                    delay(16)
+                    turnobject(LOCALID_LEON, DIR_NORTH)
+                    message(format("Harley!\n{PAUSE 40}Wait!"))
+                    delay(24)
+                    applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceLeft)
+                    waitmovement(LOCALID_HARLEY)
+                    delay(24)
+                    message(format("Where the fuck are you even going…{PAUSE 75}"))
+                    waitmessage
+                    closemessage
+                    delay(40)
+                    applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceLeft)
+                    waitmovement(0)
+                    msgbox(format("Dude…{PAUSE 45}\nAre you going to be okay?"), MSGBOX_AUTOCLOSE)
+                    delay(45)
+                    applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceRight)
+                    waitmovement(0)
+                    msgbox(format("Yeah.{PAUSE 45}\nI'll be fine.\pI just wonder what she plans on doing."), MSGBOX_AUTOCLOSE)
+                    delay(60)
+                    applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceRight)
+                    waitmovement(0)
+                    msgbox(format("Let's start heading back to the base.\pThe Boss is already going to be furious for us being out here."))
+                    applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceLeft)
+                    delay(8)
+                    applymovement(LOCALID_LEON, moves(walk_right * 2))
+                    waitmovement(LOCALID_GRUNT)
+                    msgbox(format("Agreed, but what are you going to tell her when she arrives?"))
+                    applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceDown)
+                    applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
+                    waitmovement(0)
+                    msgbox("Leon: The truth.", MSGBOX_AUTOCLOSE)
+                    delay(16)
+                    applymovement(LOCALID_LEON, moves(walk_right * 4
+                                                       walk_up
+                                                       walk_right
+                                                       walk_up * 6))
+                    applymovement(LOCALID_GRUNT, moves(walk_down
+                                                       walk_right * 4
+                                                       walk_up
+                                                       walk_right
+                                                       walk_up * 6))
+                    waitmovement(0)
+                    delay(30)
+                    warpsilent(MAP_WOODRIDGE_TOWN, 16, 25)
+                    waitstate
+                    release
+                    end
+            }
+        //lostFirstBattle
+            setflag(FLAG_LOST_FIRST_BATTLE)
+            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceLeft)
+            waitmovement(0)
+            msgbox(format("You lost the battle.\nNow give us the Pokemon!"))
+            applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
+            waitmovement(0)
+            msgbox(format("Still not happening!"), MSGBOX_AUTOCLOSE)
+            applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
+            applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
+            waitmovement(0)                                //SPOILER ALERT: It does!               
+            msgbox(format("{PLAYER}, whether we won or not doesn't matter right now.\p"
+                        "Let's just head back home with the Pokemon!"), MSGBOX_AUTOCLOSE)
+            call(PlayerRivalRunBackHome)
+            warpsilent(MAP_WOODRIDGE_TOWN, 16, 25)
+            waitstate
+            release
+            end
+        }
+    ]
+    MAP_SCRIPT_ON_RESUME {
+        if(var(VAR_VAST_WOODS_TRAIL_STATE) == 1){
+            playbgm(MUS_NONE, TRUE)
+	        showobjectat(VAR_TEMP_2, MAP_VAST_WOODS_TRAIL)
+            showobjectat(VAR_TEMP_3, MAP_VAST_WOODS_TRAIL)
+        }
+	}
 }
 
 script PlayerRivalRunBackHome {    
     closemessage
     special(SpawnCameraObject)
     playse(SE_FLEE)
-    applymovement(LOCALID_ORION, RunBackHome0)
-    applymovement(OBJ_EVENT_ID_PLAYER, PlayerRunHome)
-    applymovement(LOCALID_GS, RunBackHome1)
-    applymovement(LOCALID_FS, RunBackHome1)
-    applymovement(LOCALID_WS, RunBackHome2)
+    applymovement(LOCALID_ORION, moves(walk_fast_left * 8))
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(player_run_left * 8))
+    applymovement(LOCALID_GS, moves(walk_fast_right
+                                    walk_fast_left * 9))
+    applymovement(LOCALID_FS, moves(walk_fast_right
+                                    walk_fast_left * 9))
+    applymovement(LOCALID_WS, moves(walk_fast_right * 2
+                                    walk_fast_left * 10))
     delay(60)
     fadenewbgm(MUS_NONE)
     delay(60)
@@ -332,162 +408,10 @@ script PlayerRivalRunBackHome {
     setobjectxyperm(LOCALID_GS, 0, 0)
     setobjectxyperm(LOCALID_FS, 0, 0)
     setobjectxyperm(LOCALID_WS, 0, 0)
+	setflag(FLAG_HIDE_NPCS_VAST_WOODS_TRAIL)
+    addvar(VAR_VAST_WOODS_TRAIL_STATE, 1)
 }
 
 text LeonDefeatText {format("What?! You used our Pokemon against us and won!\pIs that even fair?!")}
 
 text GruntDefeatText {format("Boss ain't gonna be happy to hear this…")}
-
-movement HarleyWalkLeft {
-    emote_exclamation_mark
-    delay_16 * 3
-    walk_left * 2
-}
-
-movement RunBackHome0 {
-    walk_fast_left * 8
-}
-
-movement PlayerRunHome {
-    player_run_left * 8
-}
-
-movement RunBackHome1 {
-    walk_fast_right
-    walk_fast_left * 9
-}
-
-movement RunBackHome2 {
-    walk_fast_right * 2
-    walk_fast_left * 9
-}
-
-movement WalkLeftTurn {
-    walk_left * 2
-    walk_in_place_right
-}
-
-movement VastWoodsTrailHarleyWalkOffscreen {
-    walk_fast_left
-    walk_fast_up
-    walk_fast_left * 10
-}
-
-movement VastWoodsTrailLeonWalkToGrunt {
-    walk_right * 2
-}
-
-movement VastWoodsTrailLeonWalkOffscreen {
-    walk_right * 10
-}
-
-movement VastWoodsTrailGruntWalkOffscreen {
-    walk_down
-    walk_right * 10
-}
-
-movement HarleyMoveAway {
-    emote_exclamation_mark
-    delay_16
-    delay_16
-    delay_16
-    lock_facing_direction
-    walk_right
-}
-
-movement GoonsWalkTowardsPlayer {walk_left * 5}
-
-movement MoveCamToGoons {walk_slow_right * 2}
-
-movement RunToPlayer0 {
-    walk_fast_left * 8
-    walk_fast_up
-    walk_fast_left * 2
-    walk_fast_down
-    walk_in_place_fast_right
-}
-movement RunToPlayer1 {
-    walk_fast_left * 8
-    walk_fast_down
-    walk_fast_left * 2
-    walk_fast_up
-    walk_in_place_fast_right
-}
-
-movement RunToPlayer2 {
-    walk_fast_left * 8
-    walk_fast_up
-    walk_fast_left * 3
-    walk_fast_down
-    walk_in_place_fast_right
-}
-
-movement VastWoodsTrailRunIntoWoods0 {walk_fast_right * 12}
-
-movement VastWoodsTrailRunIntoWoods1 {player_run_right * 12}
-
-movement OrionWalkFromTown0 {
-    set_visible
-    walk_down * 6
-    walk_in_place_left
-}
-
-movement OrionWalkFromTown1 {
-    set_visible
-    walk_down * 3
-    walk_left
-    walk_down * 3
-    walk_in_place_right
-}
-
-movement PlayerWalk0 {
-    walk_right
-    walk_down * 2
-    walk_right
-    walk_down
-    walk_right
-    walk_down
-    walk_right * 17
-    walk_up
-    walk_right
-}
-
-movement PlayerWalk1 {
-    walk_left
-    walk_down * 2
-    walk_right
-    walk_down
-    walk_right
-    walk_down
-    walk_right * 18
-    walk_up
-    walk_right
-}
-
-movement OrionWalk0 {
-    walk_down * 2
-    walk_right
-    walk_down
-    walk_right
-    walk_down
-    walk_right * 18
-}
-
-
-movement OrionWalk1 {
-    walk_down * 2
-    walk_right
-    walk_down
-    walk_right
-    walk_down
-    walk_right * 19
-}
-
-script VastWoodsTrailBattleTrigger0 {
-	setvar(VAR_TEMP_0, 0)
-	goto(VastWoodsTrailBattle)
-}
-script VastWoodsTrailBattleTrigger1 {
-	setvar(VAR_TEMP_0, 1)
-	goto(VastWoodsTrailBattle)
-}
