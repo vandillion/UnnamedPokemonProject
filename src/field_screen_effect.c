@@ -316,7 +316,7 @@ static void FieldCB_SpinEnterWarp(void)
 {
     Overworld_PlaySpecialMapMusic();
     WarpFadeInScreen();
-    PlaySE(SE_WARP_OUT);
+    PlaySE(SE_M_MINIMIZE);
     CreateTask(Task_SpinEnterWarp, 10);
     LockPlayerFieldControls();
 }
@@ -325,7 +325,7 @@ static void FieldCB_MossdeepGymWarpExit(void)
 {
     Overworld_PlaySpecialMapMusic();
     WarpFadeInScreen();
-    PlaySE(SE_WARP_OUT);
+    PlaySE(SE_M_MINIMIZE);
     CreateTask(Task_ExitNonDoor, 10);
     LockPlayerFieldControls();
     SetObjectEventLoadFlag((~SKIP_OBJECT_EVENT_LOAD) & 0xF);
@@ -577,7 +577,7 @@ void DoTeleportTileWarp(void)
     LockPlayerFieldControls();
     TryFadeOutOldMapMusic();
     WarpFadeOutScreen();
-    PlaySE(SE_WARP_IN);
+    PlaySE(SE_M_TELEPORT);
     CreateTask(Task_WarpAndLoadMap, 10);
     gFieldCallback = FieldCB_SpinEnterWarp;
 }
@@ -589,7 +589,7 @@ void DoMossdeepGymWarp(void)
     SaveObjectEvents();
     TryFadeOutOldMapMusic();
     WarpFadeOutScreen();
-    PlaySE(SE_WARP_IN);
+    PlaySE(SE_M_TELEPORT);
     CreateTask(Task_WarpAndLoadMap, 10);
     gFieldCallback = FieldCB_MossdeepGymWarpExit;
 }
