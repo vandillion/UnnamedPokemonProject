@@ -2198,7 +2198,7 @@ gBattleAnimMove_ZenHeadbutt::
 	createvisualtask AnimTask_ShakeMonInPlace, 2, ANIM_ATTACKER, 2, 0, 4, 1
 	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 5, 0, 6, 1
 	createsprite gBowMonSpriteTemplate, ANIM_ATTACKER, 1, 2
-	createsprite gAquaTailHitSpriteTemplate, ANIM_TARGER, 131, 0, 0, 1, 1
+	createsprite gAquaTailHitSpriteTemplate, ANIM_TARGET, 131, 0, 0, 1, 1
 	playsewithpan SE_M_VITAL_THROW2, SOUND_PAN_TARGET
 	waitforvisualfinish
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 1, 4, 4, 0, 0
@@ -2216,22 +2216,22 @@ gBattleAnimMove_MirrorShot::
 	createvisualtask AnimTask_BlendBattleAnimPalExclude, 5, 5, 2, 0, 10, RGB_WHITEALPHA
 	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_IMPACT, 0, 12, 12, RGB(21, 21, 21)
 	waitforvisualfinish
-	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGER, 131, 1, 2
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 131, 1, 2
 	createvisualtask SoundTask_PlaySE1WithPanning, 5, SE_M_VITAL_THROW2, SOUND_PAN_TARGET
 	delay 3
-	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGER, 131, 1, 2
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 131, 1, 2
 	createvisualtask SoundTask_PlaySE1WithPanning, 5, SE_M_VITAL_THROW2, SOUND_PAN_TARGET
 	delay 3
-	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGER, 131, 1, 2
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 131, 1, 2
 	createvisualtask SoundTask_PlaySE1WithPanning, 5, SE_M_VITAL_THROW2, SOUND_PAN_TARGET
 	delay 3
-	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGER, 131, 1, 2
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 131, 1, 2
 	createvisualtask SoundTask_PlaySE1WithPanning, 5, SE_M_VITAL_THROW2, SOUND_PAN_TARGET
 	delay 3
-	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGER, 131, 1, 2
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 131, 1, 2
 	createvisualtask SoundTask_PlaySE1WithPanning, 5, SE_M_VITAL_THROW2, SOUND_PAN_TARGET
 	delay 3
-	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGER, 131, 1, 2
+	createsprite gRandomPosHitSplatSpriteTemplate, ANIM_TARGET, 131, 1, 2
 	createvisualtask SoundTask_PlaySE1WithPanning, 5, SE_M_VITAL_THROW2, SOUND_PAN_TARGET
 	waitforvisualfinish
 	createvisualtask AnimTask_BlendBattleAnimPalExclude, 5, 5, 2, 10, 0, RGB_WHITEALPHA
@@ -22402,7 +22402,7 @@ gBattleAnimMove_Rest::
 
 gBattleAnimMove_Confusion::
 	monbg ANIM_DEF_PARTNER
-	call SetPsychicBackground
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 1, 0, 7, RGB(24, 10, 26)
 	setalpha 8, 8
 	createvisualtask AnimTask_ShakeMon2, 2, ANIM_ATTACKER, 1, 0, 10, 1
 	createvisualtask AnimTask_BlendColorCycle, 2, F_PAL_ATTACKER, 0, 2, 0, 8, RGB_WHITE
@@ -22414,7 +22414,7 @@ gBattleAnimMove_Confusion::
 	clearmonbg ANIM_DEF_PARTNER
 	blendoff
 	delay 1
-	call UnsetPsychicBg
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 1, 7, 0, RGB(24, 10, 26)
 	end
 
 gBattleAnimMove_Psychic::
@@ -23914,7 +23914,7 @@ gBattleAnimMove_WaterGun::
 	monbg ANIM_DEF_PARTNER
 	splitbgprio ANIM_TARGET
 	setalpha 12, 8
-	playsewithpan SE_M_SURF, SOUND_PAN_ATTACKER
+	panse SE_M_SURF, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, 3, 0
 	call WaterGunStream
 	createvisualtask AnimTask_ShakeMon2, 5, ANIM_TARGET, 1, 0, 8, 1
 	createsprite gWaterHitSplatSpriteTemplate, ANIM_ATTACKER, 4, 0, 0, ANIM_TARGET, 2
