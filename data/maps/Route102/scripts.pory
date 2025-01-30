@@ -62,33 +62,32 @@ script Route2CatchTutorial {
 	lock
 	applymovement(LOCALID_MAN, moves(face_player
 									 emote_exclamation_mark
-									 delay_16 * 3))
+									 delay_16 * 2))
 	playse(SE_PIN)
 	waitmovement(0)
 	switch(var(VAR_TEMP_0))
 	{
 		case 0:
 			applymovement(LOCALID_MAN, moves(walk_up
-											 walk_left
+											 walk_right * 2
 											 walk_up
-											 walk_left))
+											 walk_right))
 		case 1:
-			applymovement(LOCALID_MAN, moves(walk_up
-											 walk_left * 2))
+			applymovement(LOCALID_MAN, moves(walk_right * 2
+											 walk_up
+											 walk_right))
 		case 2:
-			applymovement(LOCALID_MAN, moves(walk_left * 2))
+			applymovement(LOCALID_MAN, moves(walk_right * 3))
 		case 3:
-			applymovement(LOCALID_MAN, moves(walk_down
-                                             walk_left * 2))
-		case 4:
-			applymovement(LOCALID_MAN, moves(walk_down
-											 walk_left
+			applymovement(LOCALID_MAN, moves(walk_right * 2
 											 walk_down
-											 walk_left))
-		case 5:
-			applymovement(LOCALID_MAN, moves(walk_left
-											 walk_down * 3
-											 walk_left))
+											 walk_right))
+		case 4:
+			applymovement(LOCALID_MAN, moves(walk_right * 2
+											 walk_down
+											 walk_right
+											 walk_down
+											 walk_in_place_fast_right))
 	}
 	waitmovement(0)
 	msgbox(format("Hello there!\nYou're a Pokemon Trainer, correct?\p"
@@ -100,92 +99,85 @@ script Route2CatchTutorial {
 			switch(var(VAR_TEMP_0))
    			{
 				case 0:
-					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right * 4))
-					applymovement(LOCALID_MAN, moves(walk_right * 4))
-					waitmovement(0)
-					applymovement(LOCALID_MAN, Common_Movement_WalkInPlaceLeft)
+					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left * 3
+															 walk_down * 4))
+					applymovement(LOCALID_MAN, moves(walk_left * 2
+													 walk_down * 5
+													 walk_in_place_fast_up))
 				case 1:
-					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right * 5
-															 walk_in_place_up))
-					applymovement(LOCALID_MAN, moves(walk_right * 4
-													 walk_up
-													 walk_in_place_down))
+					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left * 3
+															 walk_down * 3))
+					applymovement(LOCALID_MAN, moves(walk_left * 2
+													 walk_down * 4
+													 walk_in_place_fast_up))
 				case 2:
-					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right * 3
-					                                         walk_up
-															 walk_right * 2
-															 walk_in_place_up))
-					applymovement(LOCALID_MAN, moves(walk_right * 2
-													 walk_up
-													 walk_right * 2
-													 walk_up
-													 walk_in_place_down))
+					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left * 3
+															 walk_down * 2))
+					applymovement(LOCALID_MAN, moves(walk_left * 2
+													 walk_down * 3
+													 walk_in_place_fast_up))
 				case 3:
-					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right * 3
-															 walk_up * 2
-															 walk_right * 2
-															 walk_in_place_up))
-					applymovement(LOCALID_MAN, moves(walk_right * 2
-													 walk_up * 2
-													 walk_right * 2
-													 walk_up
-													 walk_in_place_down))
+					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left * 3
+															 walk_down))
+					applymovement(LOCALID_MAN, moves(walk_left * 2
+													 walk_down * 2
+													 walk_in_place_fast_up))
 				case 4:
-					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right * 3
-															 walk_up * 2
-															 walk_right * 2
-															 walk_up))
-					applymovement(LOCALID_MAN, moves(walk_right * 2
-													 walk_up * 2
-													 walk_right * 2
-													 walk_up * 2
-													 walk_in_place_down))
-				case 5:
-					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right * 3
-															 walk_up * 3
-															 walk_right * 2
-															 walk_up))
-					applymovement(LOCALID_MAN, moves(walk_right * 2
-													 walk_up * 3
-													 walk_right * 2
-													 walk_up * 2
-													 walk_in_place_down))
+					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left * 3
+															 walk_in_place_fast_down))
+					applymovement(LOCALID_MAN, moves(walk_left * 2
+													 walk_down
+													 walk_in_place_fast_up))
 			}
 			waitmovement(0)
 			msgbox(format("You can find wild Pokemon in patches of tall grass, such as this one."))
-			applymovement(LOCALID_MAN, Common_Movement_FaceAwayPlayer)
-			waitmovement(0)
-			applymovement(LOCALID_MAN, Common_Movement_ExclamationMarkDelay)
-			playse(SE_PIN)
+			applymovement(LOCALID_MAN, moves(walk_in_place_fast_right))
 			waitmovement(0)
 			msgbox("Oh!\nHere comes one now!")
+			closemessage
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_right))
+			waitmovement(0)
 			special(SavePlayerParty)
 			special(LoadWallyZigzagoon)
 			special(StartWallyTutorialBattle)
 			waitstate
 			special(LoadPlayerParty)
-			applymovement(LOCALID_MAN, Common_Movement_FacePlayer)
-			waitmovement(0)
+			delay(20)
+			turnobject(LOCALID_MAN, DIR_NORTH)
+			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+			delay(8)
 			if (!checkitem(ITEM_POKE_BALL)) {
 				msgbox("Take these, too!\nI have plenty of spares.")
-				giveitem(ITEM_POKE_BALL, 5)
+				giveitem(ITEM_POKE_BALL, 10)
 				call_if_eq(VAR_RESULT, FALSE, Common_EventScript_BagIsFull)
 				msgbox(format("These are tools used to catch wild Pokemon.\pRemember to weaken the wild Pokemon before throwing a Ball."), MSGBOX_AUTOCLOSE)
 			} else {
 				msgbox(format("Always remember to weaken the wild Pokemon before throwing a Ball."), MSGBOX_AUTOCLOSE)
 			}
-			applymovement(LOCALID_MAN, moves(walk_up * 6))
+			applymovement(LOCALID_MAN, moves(walk_left * 8))
 		case 0:
 			if (!checkitem(ITEM_POKE_BALL)) {
 				msgbox(format("Oh, okay.\nI still want you to have these, anyway!"))
-				giveitem(ITEM_POKE_BALL, 5)
+				giveitem(ITEM_POKE_BALL, 10)
 				call_if_eq(VAR_RESULT, FALSE, Common_EventScript_BagIsFull)
 				msgbox(format("These are tools used to catch wild Pokemon.\pJust remember to weaken the wild Pokemon before throwing a Ball."), MSGBOX_AUTOCLOSE)
 			} else {
 				msgbox(format("Oh, okay.\nJust remember to weaken the wild Pokemon before throwing a Ball."), MSGBOX_AUTOCLOSE)
 			}
-			applymovement(LOCALID_MAN, moves(walk_right * 4
-											 walk_up * 6))
+			switch(var(VAR_TEMP_0)) {
+				case 0:
+					applymovement(LOCALID_MAN, moves(walk_down * 2))
+				case 1:
+					applymovement(LOCALID_MAN, moves(walk_down))
+				case 3:
+					applymovement(LOCALID_MAN, moves(walk_up))
+				case 4:
+					applymovement(LOCALID_MAN, moves(walk_up * 2))
+			}
+			waitmovement(0)
+			applymovement(LOCALID_MAN, moves(walk_left * 6
+											 walk_down
+											 walk_left * 2))
 	}
 	waitmovement(0)
 	removeobject(LOCALID_MAN)
@@ -217,10 +209,5 @@ script Route2CatchTutorialTrigger3 {
 
 script Route2CatchTutorialTrigger4 {
 	setvar(VAR_TEMP_0, 4)
-	goto(Route2CatchTutorial)
-}
-
-script Route2CatchTutorialTrigger5 {
-	setvar(VAR_TEMP_0, 5)
 	goto(Route2CatchTutorial)
 }

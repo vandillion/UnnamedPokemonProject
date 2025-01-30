@@ -23,8 +23,7 @@ mapscripts WoodridgeTown_MapScripts {
 		}
     ]
 	MAP_SCRIPT_ON_FRAME_TABLE [
-		VAR_NEWGAME_START, 2 {
-		// Orion meets player for the first time and introduces himself, and asks the player out on a walk later that day
+		VAR_NEWGAME_START, 2 { // Orion meets player for the first time and introduces himself, and asks the player out on a walk later that day
     		lock
 			applymovement(LOCALID_ORION, moves(walk_up * 4
 											   walk_left
@@ -70,8 +69,7 @@ mapscripts WoodridgeTown_MapScripts {
 			release
 			end
 		}
-		 VAR_NEWGAME_START, 5 {
-		// Cutscene after the Vast Woods Trail battle
+		 VAR_NEWGAME_START, 5 { // Cutscene after the Vast Woods Trail battle
 			lock
 			special(SpawnCameraObject)
 			setobjectxy(OBJ_EVENT_ID_PLAYER, 17, 31)
@@ -106,7 +104,7 @@ mapscripts WoodridgeTown_MapScripts {
 											   walk_fast_left
 											   walk_fast_up * 4
 											   walk_up * 6
-											   delay_16 * 3
+											   delay_16 * 2
 											   walk_in_place_fast_down))
 			waitmovement(0)
 			special(RemoveCameraObject)
@@ -233,23 +231,37 @@ script WoodridgeFirstBattle {
 	if (!flag(FLAG_LOST_FIRST_BATTLE)) {
 		switch (var(VAR_STARTER_MON)) {
         	case 0:
-				trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_103_TREECKO, OrionDefeat)
+				trainerbattle_no_intro_no_whiteout(TRAINER_BRENDAN_ROUTE_103_TREECKO, OrionDefeat)
         	case 1:
-				trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_103_TORCHIC, OrionDefeat)
+				trainerbattle_no_intro_no_whiteout(TRAINER_BRENDAN_ROUTE_103_TORCHIC, OrionDefeat)
         	case 2:
-				trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_103_MUDKIP, OrionDefeat)
+				trainerbattle_no_intro_no_whiteout(TRAINER_BRENDAN_ROUTE_103_MUDKIP, OrionDefeat)
 	    }
     } else {
 		switch (var(VAR_STARTER_MON)) {
         	case 0:
-				trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_110_TREECKO, OrionDefeat)
+				trainerbattle_no_intro_no_whiteout(TRAINER_BRENDAN_ROUTE_110_TREECKO, OrionDefeat)
         	case 1:
-				trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_110_TORCHIC, OrionDefeat)
+				trainerbattle_no_intro_no_whiteout(TRAINER_BRENDAN_ROUTE_110_TORCHIC, OrionDefeat)
         	case 2:
-				trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_110_MUDKIP, OrionDefeat)
+				trainerbattle_no_intro_no_whiteout(TRAINER_BRENDAN_ROUTE_110_MUDKIP, OrionDefeat)
     	}
 	}
-	msgbox("Alright, I'm headin out\nSee ya later, {PLAYER}!", MSGBOX_AUTOCLOSE)
+	if(defeated(TRAINER_BRENDAN_ROUTE_103_TREECKO)
+    || defeated(TRAINER_BRENDAN_ROUTE_103_TORCHIC)
+    || defeated(TRAINER_BRENDAN_ROUTE_103_MUDKIP)
+    || defeated(TRAINER_BRENDAN_ROUTE_110_TREECKO)
+    || defeated(TRAINER_BRENDAN_ROUTE_110_TORCHIC)
+    || defeated(TRAINER_BRENDAN_ROUTE_110_MUDKIP)) {
+			msgbox(format("That battle could've gone either way.\nIt was that close!\p
+			               Alright {PLAYER}, I'm gonna start heading over to Animora City.\p
+						   See you later!"), MSGBOX_AUTOCLOSE)
+	} else {
+			msgbox(format("Alright! I won! But that battle could've gone either way. It was that close!\p
+			        	   Alright {PLAYER}, I'm gonna start heading over to Animora City.\p
+					       See you later!"), MSGBOX_AUTOCLOSE)
+
+	}
 	applymovement(LOCALID_ORION, moves(walk_left * 8))
 	delay(36)
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)

@@ -15,20 +15,20 @@
   "connections": [
     {
       "map": "MAP_PETALBURG_CITY",
-      "offset": -4,
+      "offset": 10,
       "direction": "down"
     },
     {
       "map": "MAP_SLATEPORT_CITY",
-      "offset": -19,
+      "offset": -15,
       "direction": "up"
     }
   ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_SCHOOL_KID_M",
-      "x": 21,
-      "y": 8,
+      "x": 24,
+      "y": 36,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 1,
@@ -40,10 +40,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
-      "x": 26,
-      "y": 47,
+      "x": 32,
+      "y": 60,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
@@ -53,24 +53,24 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BUG_CATCHER",
-      "x": 22,
-      "y": 33,
+      "x": 9,
+      "y": 57,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "4",
+      "trainer_sight_or_berry_tree_id": "2",
       "script": "Route2Fred",
       "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LASS",
-      "x": 12,
+      "x": 14,
       "y": 26,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_DOWN_LEFT_UP",
-      "movement_range_x": 8,
+      "movement_range_x": 6,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
@@ -79,11 +79,11 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_1",
-      "x": 16,
-      "y": 35,
+      "x": 18,
+      "y": 36,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
-      "movement_range_x": 2,
+      "movement_type": "MOVEMENT_TYPE_WANDER_RIGHT_AND_LEFT",
+      "movement_range_x": 3,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
@@ -101,7 +101,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_LIFE_ORB",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE_102_POTION"
+      "flag": "FLAG_ITEM_ANIMORA_ETHER"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
@@ -144,7 +144,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_HIKER",
-      "x": 39,
+      "x": 40,
       "y": 16,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -170,8 +170,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_3",
-      "x": 38,
-      "y": 56,
+      "x": 44,
+      "y": 59,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -180,11 +180,37 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_HIDE_ROUTE_2_CATCH_TUTORIAL"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MURKROW)",
+      "x": 39,
+      "y": 4,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 27,
+      "y": 27,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_POTION",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_ROUTE_102_POTION"
     }
   ],
   "warp_events": [
     {
-      "x": 56,
+      "x": 55,
       "y": 22,
       "elevation": 0,
       "dest_map": "MAP_ROUTE102",
@@ -201,8 +227,8 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 35,
-      "y": 54,
+      "x": 48,
+      "y": 57,
       "elevation": 0,
       "var": "VAR_ROUTE2_STATE",
       "var_value": "0",
@@ -210,8 +236,8 @@
     },
     {
       "type": "trigger",
-      "x": 35,
-      "y": 55,
+      "x": 48,
+      "y": 58,
       "elevation": 0,
       "var": "VAR_ROUTE2_STATE",
       "var_value": "0",
@@ -219,8 +245,8 @@
     },
     {
       "type": "trigger",
-      "x": 35,
-      "y": 56,
+      "x": 48,
+      "y": 59,
       "elevation": 0,
       "var": "VAR_ROUTE2_STATE",
       "var_value": "0",
@@ -228,8 +254,8 @@
     },
     {
       "type": "trigger",
-      "x": 35,
-      "y": 57,
+      "x": 48,
+      "y": 60,
       "elevation": 0,
       "var": "VAR_ROUTE2_STATE",
       "var_value": "0",
@@ -237,28 +263,19 @@
     },
     {
       "type": "trigger",
-      "x": 35,
-      "y": 58,
+      "x": 48,
+      "y": 61,
       "elevation": 0,
       "var": "VAR_ROUTE2_STATE",
       "var_value": "0",
       "script": "Route2CatchTutorialTrigger4"
-    },
-    {
-      "type": "trigger",
-      "x": 35,
-      "y": 59,
-      "elevation": 0,
-      "var": "VAR_ROUTE2_STATE",
-      "var_value": "0",
-      "script": "Route2CatchTutorialTrigger5"
     }
   ],
   "bg_events": [
     {
       "type": "sign",
-      "x": 17,
-      "y": 25,
+      "x": 23,
+      "y": 38,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route2Sign"

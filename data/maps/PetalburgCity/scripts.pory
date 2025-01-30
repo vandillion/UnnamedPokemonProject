@@ -34,20 +34,20 @@ script AnimoraCityHoodedGirlBattle {
 	if (!flag(FLAG_LOST_FIRST_BATTLE)) {
 		switch (var(VAR_STARTER_MON)) {
         	case 0:
-				trainerbattle_no_intro(TRAINER_MAY_ROUTE_103_TREECKO, HoodedGirlDefeat)
+				trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_103_TREECKO, HoodedGirlDefeat)
         	case 1:
-				trainerbattle_no_intro(TRAINER_MAY_ROUTE_103_TORCHIC, HoodedGirlDefeat)
+				trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_103_TORCHIC, HoodedGirlDefeat)
         	case 2:
-				trainerbattle_no_intro(TRAINER_MAY_ROUTE_103_MUDKIP, HoodedGirlDefeat)
+				trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_103_MUDKIP, HoodedGirlDefeat)
 	    }
     } else {
 		switch (var(VAR_STARTER_MON)) {
         	case 0:
-				trainerbattle_no_intro(TRAINER_MAY_ROUTE_110_TREECKO, HoodedGirlDefeat)
+				trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_110_TREECKO, HoodedGirlDefeat)
         	case 1:
-				trainerbattle_no_intro(TRAINER_MAY_ROUTE_110_TORCHIC, HoodedGirlDefeat)
+				trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_110_TORCHIC, HoodedGirlDefeat)
         	case 2:
-				trainerbattle_no_intro(TRAINER_MAY_ROUTE_110_MUDKIP, HoodedGirlDefeat)
+				trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_110_MUDKIP, HoodedGirlDefeat)
     	}
 	}
 	msgbox("… … …\pWe'll meet again…")
@@ -78,10 +78,12 @@ script AnimoraCityHoodedGirlBattle {
 	waitmovement(0)
 	fadedefaultbgm
 	removeobject(LOCALID_GIRL)
+	special(HealPlayerParty)
 	setflag(FLAG_HIDE_GIRL_ANIMORA_CITY)
 	setvar(VAR_ANIMORA_CITY_STATE, 2)
 	delay(16)
 	release
+	end
 	}
 
 text HoodedGirlDefeat {
