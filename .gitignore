@@ -44,3 +44,7 @@ tools/trainerproc/trainerproc
 /tools/poryscript
 data/maps/*/scripts.inc
 /tools/trainerproc
+*.Identifier
+*.smol
+*.fastSmol
+*.smolTM
