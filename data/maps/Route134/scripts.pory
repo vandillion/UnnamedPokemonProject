@@ -1,12 +1,58 @@
-raw `
-Route134_MapScripts::
-	map_script MAP_SCRIPT_ON_RESUME, Route134_OnResume
-	.byte 0
+const LOCALID_MALLGUARD1 = 3 
+const LOCALID_MALLGUARD2 = 4 
 
-Route134_OnResume:
-	setdivewarp MAP_UNDERWATER_ROUTE134, 8, 6
+mapscripts Route134_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		setflag(FLAG_VISITED_CENTRA_CITY)
+		setrespawn(HEAL_LOCATION_ROUTE134)
+		end
+	}
+}
+
+//NPCs
+
+script CentraE_MallGuard {
+	msgbox("The Centra Mall is currently closed.", MSGBOX_NPC)
 	end
+}
 
+// BGs
+
+script CentraE_MallTrigger {
+	lock
+	getobjectxy(OBJ_EVENT_ID_PLAYER, CURRENT_POSITION, VAR_TEMP_9, VAR_TEMP_1)
+	switch(var(VAR_TEMP_1)) {
+		case 16:
+		case 17:
+			applymovement(LOCALID_MALLGUARD1, moves(walk_in_place_fast_up))
+			waitmovement(0)
+			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+		case 19:
+		case 20:
+			applymovement(LOCALID_MALLGUARD1, moves(walk_in_place_fast_down))
+			waitmovement(0)
+			turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
+		case 49:
+		case 50:
+			applymovement(LOCALID_MALLGUARD2, moves(walk_in_place_fast_up))
+			waitmovement(0)
+			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+		case 52:
+		case 53:
+			applymovement(LOCALID_MALLGUARD2, moves(walk_in_place_fast_down))
+			waitmovement(0)
+			turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
+	}
+	msgbox("I'm sorry.\nThe Centra Mall is currently closed.", MSGBOX_AUTOCLOSE)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left))
+	applymovement(LOCALID_MALLGUARD1, Common_Movement_FaceOriginalDirection)
+	applymovement(LOCALID_MALLGUARD2, Common_Movement_FaceOriginalDirection)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	release
+	end
+}
+
+raw`
 Route134_EventScript_Jack::
 	trainerbattle_single TRAINER_JACK, Route134_Text_JackIntro, Route134_Text_JackDefeat
 	msgbox Route134_Text_JackPostBattle, MSGBOX_AUTOCLOSE

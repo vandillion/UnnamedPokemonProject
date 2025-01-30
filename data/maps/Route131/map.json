@@ -2,11 +2,11 @@
   "id": "MAP_ROUTE131",
   "name": "Route131",
   "layout": "LAYOUT_ROUTE131",
-  "music": "MUS_ROUTE119",
+  "music": "MUS_SLATEPORT",
   "region_map_section": "MAPSEC_ROUTE_131",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
-  "map_type": "MAP_TYPE_OCEAN_ROUTE",
+  "map_type": "MAP_TYPE_CITY",
   "allow_cycling": true,
   "allow_escaping": false,
   "allow_running": true,
@@ -14,21 +14,36 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "map": "MAP_PACIFIDLOG_TOWN",
+      "map": "MAP_ROUTE132",
+      "offset": 0,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_SLATEPORT_CITY",
+      "offset": 0,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_ROUTE134",
+      "offset": 60,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_ROUTE129",
       "offset": 0,
       "direction": "left"
     },
     {
-      "map": "MAP_ROUTE130",
-      "offset": 0,
-      "direction": "right"
+      "map": "MAP_ROUTE128",
+      "offset": -80,
+      "direction": "up"
     }
   ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
-      "x": 41,
-      "y": 32,
+      "x": 0,
+      "y": 0,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_UP_RIGHT_LEFT_DOWN",
       "movement_range_x": 5,
@@ -40,8 +55,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
-      "x": 18,
-      "y": 19,
+      "x": 1,
+      "y": 0,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
       "movement_range_x": 0,
@@ -53,8 +68,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
-      "x": 10,
-      "y": 22,
+      "x": 2,
+      "y": 0,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN_UP_AND_RIGHT",
       "movement_range_x": 6,
@@ -66,8 +81,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
-      "x": 31,
-      "y": 25,
+      "x": 3,
+      "y": 0,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_LEFT_DOWN_RIGHT_UP",
       "movement_range_x": 3,
@@ -79,8 +94,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
-      "x": 9,
-      "y": 16,
+      "x": 4,
+      "y": 0,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
@@ -92,8 +107,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TUBER_M_SWIMMING",
-      "x": 8,
-      "y": 16,
+      "x": 5,
+      "y": 0,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
@@ -105,8 +120,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
-      "x": 52,
-      "y": 20,
+      "x": 6,
+      "y": 0,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_WALK_DOWN_AND_UP",
       "movement_range_x": 1,
@@ -118,8 +133,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
-      "x": 52,
-      "y": 27,
+      "x": 7,
+      "y": 0,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_WALK_UP_AND_DOWN",
       "movement_range_x": 1,
@@ -131,14 +146,12 @@
     }
   ],
   "warp_events": [
-    {
-      "x": 36,
-      "y": 6,
-      "elevation": 3,
-      "dest_map": "MAP_SKY_PILLAR_ENTRANCE",
-      "dest_warp_id": "0"
-    }
+
   ],
-  "coord_events": [],
-  "bg_events": []
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
 }

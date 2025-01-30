@@ -1,6 +1,4 @@
-raw `
-.set LOCALID_NURSE, 1
-`
+const LOCALID_NURSE = 1
 
 mapscripts SlateportCity_PokemonCenter_1F_MapScripts {
     MAP_SCRIPT_ON_RESUME {
@@ -13,7 +11,7 @@ script SlateportCity_PokemonCenter_1F_EventScript_Nurse {
 	setvar(VAR_0x800B, LOCALID_NURSE)
 	call(Common_EventScript_PkmnCenterNurse)
 	waitmessage
-	waitbuttonpress
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
 	release
 	end
 }

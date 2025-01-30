@@ -1,7 +1,12 @@
-raw `
-Route132_MapScripts::
-	.byte 0
+mapscripts Route132_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		setflag(FLAG_VISITED_CENTRA_CITY)
+		//setrespawn(HEAL_LOCATION_ROUTE132)
+		end
+	}
+}
 
+raw `
 Route132_EventScript_Gilbert::
 	trainerbattle_single TRAINER_GILBERT, Route132_Text_GilbertIntro, Route132_Text_GilbertDefeat
 	msgbox Route132_Text_GilbertPostBattle, MSGBOX_AUTOCLOSE
