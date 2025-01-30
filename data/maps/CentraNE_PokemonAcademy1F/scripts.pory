@@ -95,7 +95,7 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
             applymovement(LOCALID_PRINCIPAL, moves(walk_right * 7))
             waitmovement(0)
             giveitem(ITEM_ACADEMY_BADGE)
-            call(SetAcademy3FHomeroom)
+            call(SetHomeroomNumbers)
             message(format("Today you'll be attending a total of 3 classes."))
             waitmessage
             delay(40)
@@ -128,26 +128,26 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
     ]
 }
 
-script SetAcademy3FHomeroom {
+script SetHomeroomNumbers {
+
+// 3F
     random(16)
     addvar(VAR_RESULT, 1)
     copyvar(VAR_ACADEMY3F_HOMEROOM_NO, VAR_RESULT)
-    goto(SetAcademy2FHomeroom)
-}
 
-script SetAcademy2FHomeroom {
+// 2F
     random(16)
     compare(VAR_RESULT, VAR_ACADEMY3F_HOMEROOM_NO)
-    goto_if_eq(SetAcademy2FHomeroom)
+    goto_if_eq(SetHomeroomNumbers)
     addvar(VAR_RESULT, 1)
     copyvar(VAR_ACADEMY2F_HOMEROOM_NO, VAR_RESULT)
-    goto(SetAcademy4FHomeroom)
-}
 
-script SetAcademy4FHomeroom {
+// 4F
     random(16)
     compare(VAR_RESULT, VAR_ACADEMY2F_HOMEROOM_NO)
-    goto_if_eq(SetAcademy4FHomeroom)
+    goto_if_eq(SetHomeroomNumbers)
+    compare(VAR_RESULT, VAR_ACADEMY3F_HOMEROOM_NO)
+    goto_if_eq(SetHomeroomNumbers)
     addvar(VAR_RESULT, 1)
     copyvar(VAR_ACADEMY4F_HOMEROOM_NO, VAR_RESULT)
     return

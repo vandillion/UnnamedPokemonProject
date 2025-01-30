@@ -115,14 +115,14 @@ mapscripts RustboroCity_PokemonSchool_MapScripts {
 			special(RemoveCameraObject)
 			message(format("Okay, class! I'd like to introduce you to our temporary student, {PLAYER}!"))
 			waitmessage
-			delay(120)
+			delay(60)
 			applymovement(LOCALID_TEACHER, Common_Movement_WalkInPlaceDown)
 			waitmovement(0)
 			turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
 			msgbox(("Please have a seat.\nIt doesn't matter where."), MSGBOX_AUTOCLOSE)
 			warpsilent(MAP_RUSTBORO_CITY_POKEMON_SCHOOL, 8, 5)
 			setvar(VAR_POKEMON_ACADEMY_STATE, 2)
-			setvar(VAR_BLOCK_PROGRESSION_SOUTH, 1) // SET BACK TO 2 AFTER!!
+			setvar(VAR_BLOCK_PROGRESSION_SOUTH, 1)
 			waitstate
 			release
 			end
@@ -205,8 +205,10 @@ mapscripts RustboroCity_PokemonSchool_MapScripts {
 			waitmovement(0)
 			msgbox(format("Alright class! We're beginning to wrap up our time with Ms. Izzie.\p
 					       You all can ask her a total of three more questions."), MSGBOX_AUTOCLOSE)
+			closemessage
 			call(SelectRandomClassmate)
-			applymovement(VAR_TEMP_3, Common_Movement_WalkInPlaceUp)
+			delay(60)
+			applymovement(VAR_TEMP_3, moves(jump_in_place_up * 2))
 			waitmovement(0)
 			msgbox(format("Well first off, congratulations on becoming an Alumni!\p
 			               What was it you said you do now, again?"))
@@ -214,27 +216,31 @@ mapscripts RustboroCity_PokemonSchool_MapScripts {
 			waitmovement(0)
 			msgbox(format("First, thank you!\n
 	         			   Second, I am now a Gym Leader at the Gym in the southeastern part of this city!\p
-						   When you challenge a Gym, you have an opportunity to receive a Gym Badge from a Leader, like me!\p
-						   Each earned gym badge is a step up the ladder to the Pokemon CHampionship!\p
+						   When you challenge a Gym, you'll have an opportunity to receive a Gym Badge from a Leader, like me!\p
+						   Each earned gym badge is a step up the ladder to the Pokémon Championship!\p
 						   I also ????????????? in my freetime!"))
+			closemessage			   
 			call(SelectRandomClassmate)
-			applymovement(VAR_TEMP_3, Common_Movement_WalkInPlaceUp)
+			delay(60)
+			applymovement(VAR_TEMP_3, moves(jump_in_place_up * 2))
 			waitmovement(0)
 			msgbox(format("Do you have a partner of your own?"))
 			applymovement(LOCALID_IZZIE, Common_Movement_WalkInPlaceDown)
 			waitmovement(0)
-			msgbox(format("Actually I do!\nMy trusty partner, Kedle!"))
+			msgbox(format("Actually I do!\nHer name is Kedle!"))
+			closemessage			   
 			call(SelectRandomClassmate)
-			applymovement(VAR_TEMP_3, Common_Movement_WalkInPlaceUp)
+			delay(60)
+			applymovement(VAR_TEMP_3, moves(jump_in_place_up * 2))
 			waitmovement(0)
-			msgbox(format("You're a gym leader, right?\n{PAUSE 40}
-			               How about a Pokemon battle to demonstrate the might of a Gym Leader?"))
+			msgbox(format("You're a Gym Keader, right?\n{PAUSE 40}"
+			              "How about a Pokémon battle to demonstrate the might of a Gym Leader?"))
 			applymovement(LOCALID_IZZIE, Common_Movement_WalkInPlaceDown)
 			waitmovement(0)
 			//TODO
-			trainerbattle(TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, TRAINER_ROXANNE_2, 0, "Alright!\nGet ready, {PLAYER}!", format("pee"))
-			msgbox("sart", MSGBOX_AUTOCLOSE)
+			trainerbattle_no_intro_no_whiteout(TRAINER_ROXANNE_2, "Wow, {PLAYER}! For someone who just\nbecame a Pokémon Trainer, you're\lpretty sharp!")
 			setvar(VAR_POKEMON_ACADEMY_STATE, 4)
+			setvar(VAR_BLOCK_PROGRESSION_SOUTH, 2) // Delete when ready
 			setflag(FLAG_UNUSED_0x02D) // Delete when ready
 			setflag(FLAG_HIDE_GYM_GUIDE_CENTRA_SE) // Delete when ready
 			release
@@ -244,14 +250,12 @@ mapscripts RustboroCity_PokemonSchool_MapScripts {
 }
 
 script SelectRandomClassmate {
-	closemessage
 	random(12)
 	addvar(VAR_RESULT, 3)
 	if(var(VAR_RESULT) > 12) {
 		goto(SelectRandomClassmate)
 	}
 	copyvar(VAR_TEMP_3, VAR_RESULT)
-	delay(60)
 	return
 }
 
@@ -262,9 +266,9 @@ script DeskTrigger3F {
 		applymovement(LOCALID_TEACHER, moves(walk_in_place_fast_right))
 		waitmovement(0)
 		msgbox(format("When I said “sit anywhere”, I didn't mean it literally!\p"
-					  "Oh, well. I guess that one's on me.\nYou can sit here.\p"
-					  "You're only here for a couple minutes, anyway."), MSGBOX_AUTOCLOSE)
-		delay(60)
+					  " {PAUSE 60}Oh, well. I guess that one's on me.\nYou can sit here.\p"
+					  "You're only here for a couple of minutes, anyway."), MSGBOX_AUTOCLOSE)
+		delay(30)
 		applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_down))
 	} else {
 		applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_up))
