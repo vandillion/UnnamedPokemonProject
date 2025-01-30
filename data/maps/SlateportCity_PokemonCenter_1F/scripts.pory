@@ -7,7 +7,7 @@ mapscripts SlateportCity_PokemonCenter_1F_MapScripts {
 	}
 }
 
-script SlateportCity_PokemonCenter_1F_EventScript_Nurse {
+script CentraSE_PokemonCenter_1F_EventScript_Nurse {
 	setvar(VAR_0x800B, LOCALID_NURSE)
 	call(Common_EventScript_PkmnCenterNurse)
 	waitmessage
@@ -37,5 +37,3 @@ script CentraSE_PokemonCenter_1F_EventScript_IzzieHint {
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	end
 }
-
-
