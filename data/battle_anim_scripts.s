@@ -11988,7 +11988,7 @@ PrismaticLaserRain:
 	return
 
 gBattleAnimMove_SpectralThief::
-	choosetwoturnanim SpectralThiefSteal SpectralThiefUnleash
+	choosetwoturnanim SpectralThiefUnleash SpectralThiefSteal
 SpectralThiefUnleash:
 	loadspritegfx ANIM_TAG_HANDS_AND_FEET @Black Colour
 	loadspritegfx ANIM_TAG_QUICK_GUARD_HAND @Black Colour
@@ -13256,7 +13256,7 @@ gBattleAnimMove_MagicPowder::
 gBattleAnimMove_DragonDarts::
 	loadspritegfx ANIM_TAG_DREEPY_SHINY
 	loadspritegfx ANIM_TAG_DREEPY
-        loadspritegfx ANIM_TAG_AIR_WAVE
+	loadspritegfx ANIM_TAG_AIR_WAVE
 	loadspritegfx ANIM_TAG_EXPLOSION
 	playsewithpan SE_FALL, SOUND_PAN_ATTACKER
 	createdragondartsprite ANIM_TARGET, 2, 0x0, 0x0, 0x19
@@ -14052,9 +14052,9 @@ gBattleAnimMove_ExpandingForce::
 	createvisualtask AnimTask_BlendColorCycle, 2, F_PAL_ATTACKER, F_PAL_ATTACKER, 2, 0, 8, RGB(31, 23, 0)
 	waitforvisualfinish
 	playsewithpan SE_M_MEGA_KICK, SOUND_PAN_TARGET
-	choosetwoturnanim EXPANDING_FORCE_SINGLE_TARGET EXPANDING_FORCE_BOTH_TARGETS
+	choosetwoturnanim ExpandingForceSingleTarget ExpandingForceBothTargets
 
-EXPANDING_FORCE_SINGLE_TARGET:
+ExpandingForceSingleTarget:
 	createsprite gSpriteTemplate_SpiritBreakChargeBall, ANIM_TARGET, 1, ANIM_TARGET
 	waitforvisualfinish
 	createvisualtask AnimTask_ShakeTargetBasedOnMovePowerOrDmg, 0x2, 0x0, 0x1, 0x18, 0x1, 0x0
@@ -14064,7 +14064,7 @@ EXPANDING_FORCE_SINGLE_TARGET:
 	clearmonbg ANIM_DEF_PARTNER
 	end
 
-EXPANDING_FORCE_BOTH_TARGETS:
+ExpandingForceBothTargets:
 	createsprite gSpriteTemplate_SpiritBreakChargeBall, ANIM_TARGET, 1, ANIM_TARGET
 	createsprite gSpriteTemplate_SpiritBreakChargeBall, ANIM_TARGET, 1, ANIM_DEF_PARTNER
 	waitforvisualfinish
@@ -14196,9 +14196,9 @@ gBattleAnimMove_MeteorBeam::
 	loadspritegfx ANIM_TAG_ROCKS
 	fadetobg BG_COSMIC
 	waitbgfadeout
-	choosetwoturnanim METEOR_BEAM_CHARGE METEOR_BEAM_BLAST
+	choosetwoturnanim MeteorBeamCharge MeteorBeamBlast
 
-METEOR_BEAM_CHARGE:
+MeteorBeamCharge:
 	createvisualtask AnimTask_StartSlidingBg, 0x5, 0x0, 0xFC00, FALSE, 0xffff
 	waitbgfadein
 	monbg ANIM_ATK_PARTNER
@@ -14211,7 +14211,7 @@ METEOR_BEAM_CHARGE:
 	call UnsetPsychicBg
 	end
 
-METEOR_BEAM_BLAST:
+MeteorBeamBlast:
 	createvisualtask AnimTask_StartSlidingBg, 0x5, 0xf700, 0x0, TRUE, 0xffff @;Scroll right/left
 	waitbgfadein
 	monbg ANIM_TARGET

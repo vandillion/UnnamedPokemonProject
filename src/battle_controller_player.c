@@ -688,6 +688,7 @@ void HandleInputChooseMove(u32 battler)
 
     if (JOY_NEW(A_BUTTON) && !gBattleStruct->descriptionSubmenu)
     {
+        TryToHideMoveInfoWindow();
         PlaySE(SE_SELECT);
 
         moveTarget = GetBattlerMoveTargetType(battler, moveInfo->moves[gMoveSelectionCursor[battler]]);
@@ -798,6 +799,7 @@ void HandleInputChooseMove(u32 battler)
             BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, 0xFFFF);
             HideGimmickTriggerSprite();
             PlayerBufferExecCompleted(battler);
+            TryToHideMoveInfoWindow();
         }
     }
     else if (JOY_NEW(DPAD_LEFT) && !gBattleStruct->zmove.viewing)
@@ -897,7 +899,7 @@ void HandleInputChooseMove(u32 battler)
             MoveSelectionDisplayMoveType(battler);
         }
     }
-    else if (JOY_NEW(B_MOVE_DESCRIPTION_BUTTON) && B_MOVE_DESCRIPTION_BUTTON != B_LAST_USED_BALL_BUTTON)
+    else if (JOY_NEW(B_MOVE_DESCRIPTION_BUTTON))
     {
         gBattleStruct->descriptionSubmenu = TRUE;
         MoveSelectionDisplayMoveDescription(battler);
@@ -2154,6 +2156,7 @@ void PlayerHandleChooseMove(u32 battler)
 
         InitMoveSelectionsVarsAndStrings(battler);
         gBattleStruct->gimmick.playerSelect = FALSE;
+        TryToAddMoveInfoWindow();
 
         AssignUsableZMoves(battler, moveInfo->moves);
         gBattleStruct->zmove.viable = (gBattleStruct->zmove.possibleZMoves[battler] & (1u << gMoveSelectionCursor[battler])) != 0;
