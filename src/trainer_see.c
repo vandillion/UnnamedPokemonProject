@@ -662,19 +662,21 @@ static bool8 TrainerMoveToPlayer(u8 taskId, struct Task *task, struct ObjectEven
 {
     if (!ObjectEventIsMovementOverridden(trainerObj) || ObjectEventClearHeldMovementIfFinished(trainerObj))
     {
+#if N_TRAINERS_DONT_WALK_TO_PLAYER == FALSE
         if (task->tTrainerRange)
         {
-            if (!N_TRAINERS_DONT_WALK_TO_PLAYER)
-            {
                 ObjectEventSetHeldMovement(trainerObj, GetWalkNormalMovementAction(trainerObj->facingDirection));
-            }
-            task->tTrainerRange--;
+                task->tTrainerRange--;
         }
         else
         {
             ObjectEventSetHeldMovement(trainerObj, MOVEMENT_ACTION_FACE_PLAYER);
             task->tFuncId++; // TRSEE_PLAYER_FACE
         }
+#else
+    ObjectEventSetHeldMovement(trainerObj, MOVEMENT_ACTION_FACE_PLAYER);
+    task->tFuncId++; // TRSEE_PLAYER_FACE
+#endif
     }
     return FALSE;
 }

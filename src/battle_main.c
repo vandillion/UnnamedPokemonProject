@@ -357,7 +357,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_SWIMMER_F] = { _("Swimmer"), 2, BALL_DIVE },
     [TRAINER_CLASS_TWINS] = { _("Twins"), 3 },
     [TRAINER_CLASS_SAILOR] = { _("Sailor"), 8 },
-    [TRAINER_CLASS_COOLTRAINER_2] = { _("Gym Trainer"), 12, BALL_GREAT },
+    [TRAINER_CLASS_GYM_TRAINER] = { _("Gym Trainer"), 12, BALL_GREAT },
     [TRAINER_CLASS_MAGMA_ADMIN] = { _("Subzero Exec"), 10 },
     [TRAINER_CLASS_RIVAL] = { _("{PKMN} Trainer"), 15 },
     [TRAINER_CLASS_BUG_CATCHER] = { _("Bug Catcher"), 4 },
@@ -5439,37 +5439,33 @@ static void HandleEndTurn_BattleWon(void)
     {
         BattleStopLowHpSound();
         gBattlescriptCurrInstr = BattleScript_LocalTrainerBattleWon;
-
-        if (!N_MUTE_BATTLE_BGM)
+#if N_MUTE_BATTLE_BGM == FALSE
+        switch (GetTrainerClassFromId(gTrainerBattleOpponent_A))
         {
-            switch (GetTrainerClassFromId(gTrainerBattleOpponent_A))
-            {
-                case TRAINER_CLASS_ELITE_FOUR:
-                case TRAINER_CLASS_CHAMPION:
-                    PlayBGM(MUS_VICTORY_LEAGUE);
-                    break;
-                case TRAINER_CLASS_TEAM_MAGMA:
-                case TRAINER_CLASS_MAGMA_ADMIN:
-                case TRAINER_CLASS_MAGMA_LEADER:
-                    PlayBGM(MUS_VICTORY_AQUA_MAGMA);
-                    break;
-                case TRAINER_CLASS_TEAM_AQUA:
-                case TRAINER_CLASS_AQUA_ADMIN:
-                case TRAINER_CLASS_AQUA_LEADER:
-                    PlayBGM(MUS_VICTORY_AQUA_MAGMA);
-                    break;
-                case TRAINER_CLASS_LEADER:
-                    PlayBGM(MUS_VICTORY_GYM_LEADER);
-                    break;
-                default:
-                    PlayBGM(MUS_VICTORY_TRAINER);
-                    break;
-            }
+            case TRAINER_CLASS_ELITE_FOUR:
+            case TRAINER_CLASS_CHAMPION:
+                PlayBGM(MUS_VICTORY_LEAGUE);
+                break;
+            case TRAINER_CLASS_TEAM_MAGMA:
+            case TRAINER_CLASS_MAGMA_ADMIN:
+            case TRAINER_CLASS_MAGMA_LEADER:
+                PlayBGM(MUS_VICTORY_AQUA_MAGMA);
+                break;
+            case TRAINER_CLASS_TEAM_AQUA:
+            case TRAINER_CLASS_AQUA_ADMIN:
+            case TRAINER_CLASS_AQUA_LEADER:
+                PlayBGM(MUS_VICTORY_AQUA_MAGMA);
+                break;
+            case TRAINER_CLASS_LEADER:
+                PlayBGM(MUS_VICTORY_GYM_LEADER);
+                break;
+            default:
+                PlayBGM(MUS_VICTORY_TRAINER);
+                break;
         }
-        else
-        {
-            PlayBGM(MUS_NONE);
-        }
+#else
+        PlayBGM(MUS_NONE);
+#endif
     }
     else
     {
