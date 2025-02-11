@@ -1,22 +1,29 @@
-raw `
-OldaleTown_House2_MapScripts::
-	.byte 0
+mapscripts OldaleTown_House2_MapScripts{}
 
-OldaleTown_House2_EventScript_Woman::
-	msgbox OldaleTown_House2_Text_PokemonLevelUp, MSGBOX_NPC
+script ImperialIslandHouse2Fisherman {
+	lock
+	faceplayer
+	if(!checkitem(ITEM_OLD_ROD)) {
+		msgbox(format("This is a renowned fishing spot.\n"
+	                  "Are you getting the itch to fish?"), MSGBOX_YESNO)
+		if(var(VAR_RESULT)) {
+			msgbox("I hear you, and I like what you're saying!\p"
+	               "I'll give you one of my fishing Rods.")
+			giveitem(ITEM_OLD_ROD)
+			goto_if_eq(VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull)
+			setflag(FLAG_RECEIVED_OLD_ROD)
+			msgbox(format("And, as an added bonus, I'll even throw in a little fishing advice!\p"
+	                      "First, you want to face the water, then use the Rod.\p"
+						  "Focus your mind… If you get a bite, pull on the Rod.\p"
+						  "Sometimes you can snag something immediately, but with bigger catches, you need to time the pulls on your ROD to haul them in."), MSGBOX_NPC)
+		} else {
+			msgbox("Oh, is that so?\nThat's too bad, then.", MSGBOX_NPC)
+		}
+	} else {
+		msgbox(format("First, you want to face the water, then use the Rod.\p"
+						  "Focus your mind… If you get a bite, pull on the Rod.\p"
+						  "Sometimes you can snag something immediately, but with bigger catches, you need to time the pulls on your ROD to haul them in."), MSGBOX_NPC)
+	}
+	release
 	end
-
-OldaleTown_House2_EventScript_Man::
-	msgbox OldaleTown_House2_Text_YoullGoFurtherWithStrongPokemon, MSGBOX_NPC
-	end
-
-OldaleTown_House2_Text_PokemonLevelUp:
-	.string "When POKéMON battle, they eventually\n"
-	.string "level up and become stronger.$"
-
-OldaleTown_House2_Text_YoullGoFurtherWithStrongPokemon:
-	.string "If the POKéMON with you become\n"
-	.string "stronger, you'll be able to go farther\l"
-	.string "away from here.$"
-
-`
+}

@@ -22427,3 +22427,17 @@ static const struct LevelUpMove sBellancoLevelUpLearnset[] = {
     LEVEL_UP_END
 };
 #endif //P_FAMILY_BELLANCO
+
+#if P_FAMILY_SKULLIAN
+static const struct LevelUpMove sSkullianLevelUpLearnset[] = {
+    LEVEL_UP_MOVE(  1, MOVE_CUT),
+    LEVEL_UP_MOVE(  1, MOVE_LEER),
+    LEVEL_UP_MOVE(  4, MOVE_THIEF),
+    LEVEL_UP_MOVE(  8, MOVE_FALSE_SWIPE),
+    LEVEL_UP_MOVE( 12, MOVE_BONEMERANG),
+    LEVEL_UP_MOVE( 16, MOVE_ASSURANCE),
+    LEVEL_UP_MOVE( 20, MOVE_KNOCK_OFF),
+    LEVEL_UP_MOVE( 24, MOVE_SHADOW_BONE),
+    LEVEL_UP_END
+};
+#endif //P_FAMILY_SKULLIAN

@@ -43,7 +43,7 @@ mapscripts RustboroCity_PokemonSchool_MapScripts {
 		end
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
-		VAR_POKEMON_ACADEMY_STATE, 1 { // Cuscene when the player first enters the classroom
+		VAR_POKEMON_ACADEMY_STATE, 2 { // Cuscene when the player first enters the classroom
 			lock
 			special(SpawnCameraObject)
 			delay(30)
@@ -77,7 +77,13 @@ mapscripts RustboroCity_PokemonSchool_MapScripts {
 			applymovement(LOCALID_TEACHER, Common_Movement_WalkInPlaceDown)
 			waitmovement(0)
 			setobjectxy(OBJ_EVENT_ID_PLAYER, 8, 12)
-			msgbox(format("It appears we have a new student."), MSGBOX_AUTOCLOSE)
+			delay(16)
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 5))
+			applymovement(LOCALID_TEACHER, moves(walk_left
+												 walk_down * 3
+												 walk_right
+												 walk_in_place_fast_down))
+			delay(20)
 			applymovement(3, Common_Movement_WalkInPlaceUp)
 			applymovement(4, Common_Movement_WalkInPlaceUp)
 			applymovement(5, Common_Movement_WalkInPlaceUp)
@@ -90,11 +96,6 @@ mapscripts RustboroCity_PokemonSchool_MapScripts {
 			applymovement(12, Common_Movement_WalkInPlaceUp)
 			applymovement(13, Common_Movement_WalkInPlaceUp)
 			applymovement(14, Common_Movement_WalkInPlaceUp)
-			applymovement(LOCALID_TEACHER, moves(walk_left
-												 walk_down * 3
-												 walk_right
-												 walk_in_place_fast_down))
-			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 5))
 			waitmovement(LOCALID_TEACHER)
 			msgbox(format("May I see your Academy Badge, please?\p"
 						  "… … …\n… … …\p"
@@ -103,8 +104,6 @@ mapscripts RustboroCity_PokemonSchool_MapScripts {
 			delay(16)
 			applymovement(OBJ_EVENT_ID_CAMERA, moves(delay_16
 												     walk_up))
-			applymovement(LOCALID_IZZIE, moves(delay_16
-											   walk_in_place_left))
 			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 2
 													 walk_in_place_fast_down))
 			applymovement(LOCALID_TEACHER, moves(walk_left
@@ -113,31 +112,31 @@ mapscripts RustboroCity_PokemonSchool_MapScripts {
 												 walk_in_place_fast_down))
 			waitmovement(0)
 			special(RemoveCameraObject)
-			message(format("Okay, class! I'd like to introduce you to our temporary student, {PLAYER}!"))
+			message(format("Okay, class! I'd like to introduce you to our temporary student, {PLAYER}!{PAUSE 40}"))
 			waitmessage
-			delay(60)
 			applymovement(LOCALID_TEACHER, Common_Movement_WalkInPlaceDown)
 			waitmovement(0)
 			turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
 			msgbox(("Please have a seat.\nIt doesn't matter where."), MSGBOX_AUTOCLOSE)
 			warpsilent(MAP_RUSTBORO_CITY_POKEMON_SCHOOL, 8, 5)
-			setvar(VAR_POKEMON_ACADEMY_STATE, 2)
+			setvar(VAR_POKEMON_ACADEMY_STATE, 3)
 			setvar(VAR_BLOCK_PROGRESSION_SOUTH, 1)
 			waitstate
 			release
 			end
 		}
-		VAR_POKEMON_ACADEMY_STATE, 3 { // First lesson
+		VAR_POKEMON_ACADEMY_STATE, 4 { // First lesson
 			lock
+			special(HealPlayerParty)
 			special(SpawnCameraObject)
 			delay(30)
-			getobjectxy(OBJ_EVENT_ID_PLAYER, CURRENT_POSITION, VAR_TEMP_0, VAR_TEMP_1)
-			switch(var(VAR_TEMP_1)) {
+			getobjectxy(OBJ_EVENT_ID_PLAYER, CURRENT_POSITION, VAR_TEMP_A, VAR_TEMP_B)
+			switch(var(VAR_TEMP_B)) {
 				case 3: 
 					applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_southwest
 					                                         walk_down * 3))
 				case 6: 
-					switch(var(VAR_TEMP_0)) {
+					switch(var(VAR_TEMP_A)) {
 						case 2:
 							applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_southeast
 																	 walk_right * 5))
@@ -155,7 +154,7 @@ mapscripts RustboroCity_PokemonSchool_MapScripts {
 																	 walk_left * 6))
 					}
 				case 8:
-					if(var(VAR_TEMP_0) == 2) {
+					if(var(VAR_TEMP_A) == 2) {
 						applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northeast * 3
 																 walk_right * 3))
 					} else {
@@ -165,7 +164,7 @@ mapscripts RustboroCity_PokemonSchool_MapScripts {
 				case 10:
 					applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northwest * 3))
 				case 12:
-					switch(var(VAR_TEMP_0)) {
+					switch(var(VAR_TEMP_A)) {
 						case 2:
 							applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northeast * 5
 																	 walk_right))
@@ -180,7 +179,7 @@ mapscripts RustboroCity_PokemonSchool_MapScripts {
 																	 walk_left * 2))
 					}
 				case 14:
-					switch(var(VAR_TEMP_0)) {
+					switch(var(VAR_TEMP_A)) {
 						case 2:
 							applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northeast * 6
 																	 walk_up))
@@ -203,25 +202,21 @@ mapscripts RustboroCity_PokemonSchool_MapScripts {
 			waitmovement(0)
 			applymovement(LOCALID_TEACHER, Common_Movement_WalkInPlaceDown)
 			waitmovement(0)
-			msgbox(format("Alright class! We're beginning to wrap up our time with Ms. Izzie.\p
-					       You all can ask her a total of three more questions."), MSGBOX_AUTOCLOSE)
+			msgbox(format("Alright class! We're beginning to wrap up our time with Ms. Izzie.\p"
+			              "You all can ask her a total of three more questions."), MSGBOX_AUTOCLOSE)
 			closemessage
 			call(SelectRandomClassmate)
-			delay(60)
 			applymovement(VAR_TEMP_3, moves(jump_in_place_up * 2))
 			waitmovement(0)
-			msgbox(format("Well first off, congratulations on becoming an Alumni!\p
-			               What was it you said you do now, again?"))
+			msgbox(format("Well first off, congratulations on becoming an Alumni!\p"
+			               "What was it you said you do now, again?"))
 			applymovement(LOCALID_IZZIE, Common_Movement_WalkInPlaceDown)
 			waitmovement(0)
-			msgbox(format("First, thank you!\n
-	         			   Second, I am now a Gym Leader at the Gym in the southeastern part of this city!\p
-						   When you challenge a Gym, you'll have an opportunity to receive a Gym Badge from a Leader, like me!\p
-						   Each earned gym badge is a step up the ladder to the Pokémon Championship!\p
-						   I also ????????????? in my freetime!"))
-			closemessage			   
+			msgbox(format("First, thank you!\n"
+	         			  "Second, I am now a Gym Leader at the Gym in the southeastern part of this city!\p"
+						  "When you challenge a Gym, you'll have an opportunity to receive a Gym Badge from a Leader, like me!\p"
+						  "Each earned gym badge is a step up the ladder to the Pokémon Championship!"), MSGBOX_AUTOCLOSE)
 			call(SelectRandomClassmate)
-			delay(60)
 			applymovement(VAR_TEMP_3, moves(jump_in_place_up * 2))
 			waitmovement(0)
 			msgbox(format("Do you have a partner of your own?"))
@@ -230,16 +225,60 @@ mapscripts RustboroCity_PokemonSchool_MapScripts {
 			msgbox(format("Actually I do!\nHer name is Kedle!"))
 			closemessage			   
 			call(SelectRandomClassmate)
-			delay(60)
 			applymovement(VAR_TEMP_3, moves(jump_in_place_up * 2))
 			waitmovement(0)
 			msgbox(format("You're a Gym Keader, right?\n{PAUSE 40}"
 			              "How about a Pokémon battle to demonstrate the might of a Gym Leader?"))
 			applymovement(LOCALID_IZZIE, Common_Movement_WalkInPlaceDown)
 			waitmovement(0)
+			msgbox(format("I think that's a great idea!\nGet ready!"), MSGBOX_AUTOCLOSE)
+			playse(SE_PIN)
+			applymovement(VAR_TEMP_3, moves(emote_exclamation_mark
+											delay_16 * 2))
+			waitmovement(0)
+			msgbox(format("Oh no, not with me! I don't have any Pokémon of my own!"))
+			applymovement(LOCALID_IZZIE, Common_Movement_WalkInPlaceDown)
+			waitmovement(0)
+			msgbox(format("Oh, alright.\nThen who am I going to battle?"), MSGBOX_AUTOCLOSE)
+			delay(40)
+			applymovement(LOCALID_TEACHER, Common_Movement_WalkInPlaceDown)
+			waitmovement(0)
+			checkplayergender
+			if (!var(VAR_RESULT)) {
+				bufferstring(STR_VAR_1, "He")
+				bufferstring(STR_VAR_2, "him")
+			} else {
+				bufferstring(STR_VAR_1, "She")
+				bufferstring(STR_VAR_2, "her")
+			}
+			message(format("How about {PLAYER}?\n{STR_VAR_1} just became a Pokémon Trainer, so any battling expericnce will be beneficial to {STR_VAR_2}!"))
+			delay(16)
+			turnobject(LOCALID_IZZIE, DIR_NORTH)
+			if(var(VAR_TEMP_B) == 3) {
+				turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+			}
+			waitmessage
+			waitbuttonpress
+			if(var(VAR_TEMP_B) != 3) {
+				applymovement(LOCALID_IZZIE, Common_Movement_WalkInPlaceDown)
+				waitmovement(0)
+			} else {
+				turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)	
+			}
+			msgbox(format("If {PLAYER} agrees to a Pokémon battle, then so do I!\p"
+						  "Are you up for it, {PLAYER}?"), MSGBOX_YESNO)
+			switch(var(VAR_RESULT)) {	
+				case TRUE:
+					msgbox(format("Alright, don't hold back!"))
+					trainerbattle_no_intro_no_whiteout(TRAINER_ROXANNE_2, "Wow, {PLAYER}! For someone who just\nbecame a Pokémon Trainer, you're\lpretty sharp!")
+					special(HealPlayerParty)
+				case FALSE:
+					msgbox(format("Ah, I see you're holding your energy for our official Gym battle!\p"
+								  "No worries! I look forward to the day I see you again, haha!"))
+			}
 			//TODO
-			trainerbattle_no_intro_no_whiteout(TRAINER_ROXANNE_2, "Wow, {PLAYER}! For someone who just\nbecame a Pokémon Trainer, you're\lpretty sharp!")
-			setvar(VAR_POKEMON_ACADEMY_STATE, 4)
+			//TODO
+			setvar(VAR_POKEMON_ACADEMY_STATE, 5)
 			setvar(VAR_BLOCK_PROGRESSION_SOUTH, 2) // Delete when ready
 			setflag(FLAG_UNUSED_0x02D) // Delete when ready
 			setflag(FLAG_HIDE_GYM_GUIDE_CENTRA_SE) // Delete when ready
@@ -249,13 +288,17 @@ mapscripts RustboroCity_PokemonSchool_MapScripts {
 	]
 }
 
+script(local) TurnStudentsAndIncrement {
+	applymovement(VAR_TEMP_0, moves(walk_in_place_down))
+	addvar(VAR_TEMP_0, 1)
+}
+
 script SelectRandomClassmate {
 	random(12)
 	addvar(VAR_RESULT, 3)
-	if(var(VAR_RESULT) > 12) {
-		goto(SelectRandomClassmate)
-	}
+	goto_if_gt(VAR_RESULT, 12, SelectRandomClassmate)
 	copyvar(VAR_TEMP_3, VAR_RESULT)
+	delay(30)
 	return
 }
 
@@ -266,29 +309,23 @@ script DeskTrigger3F {
 		applymovement(LOCALID_TEACHER, moves(walk_in_place_fast_right))
 		waitmovement(0)
 		msgbox(format("When I said “sit anywhere”, I didn't mean it literally!\p"
-					  " {PAUSE 60}Oh, well. I guess that one's on me.\nYou can sit here.\p"
+					  "Oh, well. I guess that one's on me.\nYou can sit here.\p"
 					  "You're only here for a couple of minutes, anyway."), MSGBOX_AUTOCLOSE)
-		delay(30)
 		applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_down))
 	} else {
 		applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_up))
 	}
 	waitmovement(0)
-	setvar(VAR_POKEMON_ACADEMY_STATE, 3)
+	setvar(VAR_POKEMON_ACADEMY_STATE, 4)
 	release
 	end
 }
 
 script BlockPlayerFromLeaving {
 	lock
-	msgbox(format("You can't leave during a lesson!"), MSGBOX_AUTOCLOSE)
+	msgbox(format("Teacher: Excuse me, {PLAYER}!\nWhere do you think you're going?\pClass already started.\nNow please have a seat!"), MSGBOX_AUTOCLOSE)
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up))
 	waitmovement(0)
 	release
 	end
-}
-
-script(local) TurnStudentsAndIncrement {
-	applymovement(VAR_TEMP_0, moves(walk_in_place_down))
-	addvar(VAR_TEMP_0, 1)
 }

@@ -355,10 +355,9 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .trainerScale = 271,
         .trainerOffset = 0,.frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = 9,
+        .frontPicYOffset = 12,
         .frontAnimFrames = sAnims_Quaxly,
         .frontAnimId = ANIM_H_SLIDE,
-        .enemyMonElevation = 12,
         .backPic = gMonBackPic_CircledQuestionMark,
         .backPicSize = MON_COORDS_SIZE(40, 40),
         .backPicYOffset = 7,
@@ -507,6 +506,68 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .eggMoveLearnset = sNoneEggMoveLearnset,
     },
 #endif //P_FAMILY_BELLANCO
+
+#if P_FAMILY_SKULLIAN
+    [SPECIES_SKULLIAN] =
+    {
+        .baseHP        = 50,
+        .baseAttack    = 50,
+        .baseDefense   = 50,
+        .baseSpeed     = 50,
+        .baseSpAttack  = 50,
+        .baseSpDefense = 50,
+        .types = MON_TYPES(TYPE_DARK, TYPE_DARK),
+        .catchRate = 190,
+        .expYield = 65,
+        .evYield_Attack = 1,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS, EGG_GROUP_HUMAN_LIKE),
+        .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_WHITE,
+        .speciesName = _("Skullian"),
+        .cryId = CRY_BULBASAUR,
+        .natDexNum = NATIONAL_DEX_SKULLIAN,
+        .categoryName = _("Scalawag"),
+        .height = 7,
+        .weight = 45,
+        .description = COMPOUND_STRING(
+            "A Pokémon that has a body and wings of\n"
+            "steel. People in the past used feathers\n"
+            "fallen from Skarmory to make swords and\n"
+            "knives."),
+        .pokemonScale = 256,
+        .pokemonOffset = 0,
+        .trainerScale = 271,
+        .trainerOffset = 0,.frontPic = gMonFrontPic_CircledQuestionMark,
+        .frontPicSize = MON_COORDS_SIZE(40, 40),
+        .frontPicYOffset = 12,
+        .frontAnimFrames = sAnims_Quaxly,
+        .frontAnimId = ANIM_V_JUMPS_BIG,
+        .backPic = gMonBackPic_CircledQuestionMark,
+        .backPicSize = MON_COORDS_SIZE(40, 40),
+        .backPicYOffset = 12,
+        .backAnimId = BACK_ANIM_CONCAVE_ARC_SMALL,
+        .palette = gMonPalette_CircledQuestionMark,
+        .shinyPalette = gMonShinyPalette_CircledQuestionMark,
+        .iconSprite = gMonIcon_QuestionMark,
+        .iconPalIndex = 0,
+        FOOTPRINT(QuestionMark)
+                OVERWORLD(
+            sPicTable_Quaxly,
+            SIZE_32x32,
+            SHADOW_SIZE_S,
+            TRACKS_FOOT,
+            gOverworldPalette_Quaxly,
+            gShinyOverworldPalette_Quaxly
+        )
+        .levelUpLearnset = sSkullianLevelUpLearnset,
+        .teachableLearnset = sNoneTeachableLearnset,
+        .eggMoveLearnset = sNoneEggMoveLearnset,
+    },
+#endif //P_FAMILY_SKULLIAN
 
 #ifdef __INTELLISENSE__
 };

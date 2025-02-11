@@ -24,22 +24,25 @@ script ImperialIslandWoman {
 
 // Signs
 
-script ImperialIslandMuralSign {
-	lock
-	special(SpawnCameraObject)
-	waitse
-	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northeast
-											 walk_right * 5))
-	waitmovement(0)
-	msgbox(format("{CLEAR_TO 70}Globe Crater{PAUSE 60}\n"
-		          "Infamously known for resembling a planet, this crater was created thousands of years ago via impact from a relatively small meteor."), MSGBOX_AUTOCLOSE)
-	waitbuttonpress
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_left * 5
-											 walk_diag_southwest))
-	waitmovement(0)
-	special(RemoveCameraObject)
-	turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
-	msgbox(format("A note from Leader Redbeard:\nYarrgh! Don't be littering in me island's mural!\pOtherwise I'll be after yer head!"), MSGBOX_SIGN)
+script ImperialIslandSign {
+	msgbox("Imperial Island\nA humble island with a blue horizon", MSGBOX_SIGN)
+	msgbox("View the Globe Crater?", MSGBOX_YESNO)
+	closemessage
+	if(var(VAR_RESULT)) {
+		lock
+		special(SpawnCameraObject)
+		waitse
+		applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 6))
+		waitmovement(0)
+		msgbox(format("{CLEAR_TO 70}Globe Crater{PAUSE 60}\n"
+					  "This crater was created thousands of years ago via impact from a relatively small meteor.\p"
+					  "Over the years, it began taking on the planet-like appearance it has today."), MSGBOX_AUTOCLOSE)
+		waitbuttonpress
+		applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 6))
+		waitmovement(0)
+		special(RemoveCameraObject)
+		msgbox(format("A note from Leader Redbeard:\nYarrgh! Don't be littering in me island's mural!\pOtherwise I'll be after yer head!"), MSGBOX_SIGN)
+		release
+	}
 	end
 }

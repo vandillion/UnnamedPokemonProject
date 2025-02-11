@@ -71,58 +71,28 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
             waitmovement(0)
             msgbox(format("Ah. You must be {PLAYER}.\nThe Professor forewarned us of your arrival.\p"
                           "Allow me to introduce myself.\nMy name is Charnell. I am the principal of this Academy.\p"
-                          "Your friend, Orion, has already arrived.\nPlease follow me."), MSGBOX_AUTOCLOSE)
-            applymovement(LOCALID_PRINCIPAL, moves(walk_up
-                                                   walk_right * 3
-                                                   walk_in_place_fast_down))
-            applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right * 3
-                                                     walk_up * 2))
+                          "Please follow me into my office."), MSGBOX_AUTOCLOSE)
+            setvar(VAR_POKEMON_ACADEMY_STATE, 1)
+            warp(MAP_CENTRA_NE_POKEMON_ACADEMY1F, 7, 36)
+            waitstate
+            release
+            end
+        }
+        VAR_POKEMON_ACADEMY_STATE, 1 {
+            lock
+            applymovement(LOCALID_PRINCIPAL, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            delay(8)
-            applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 5
-                                                     walk_left))
-            applymovement(LOCALID_PRINCIPAL, moves(walk_up * 4
-                                                   walk_left * 2
-                                                   walk_in_place_fast_right))
-            waitmovement(0)
-            msgbox(format("This is the main office.\nIt's where all of administration is located.\p
-                           If you have any trouble during your time here, you are free pay a visit at anytime.\p
-                           Please excuse me while I grab your Academy Badge."), MSGBOX_AUTOCLOSE)
-            delay(8)
-            applymovement(LOCALID_PRINCIPAL, moves(walk_left * 7))
-            waitmovement(0)
-            delay(300)
-            applymovement(LOCALID_PRINCIPAL, moves(walk_right * 7))
-            waitmovement(0)
+            //TODO
             giveitem(ITEM_ACADEMY_BADGE)
             call(SetHomeroomNumbers)
-            message(format("Today you'll be attending a total of 3 classes."))
-            waitmessage
-            delay(40)
-            call(BufferHomeroom3F)
-            message(format("Your first class will be held in room {COLOR RED}{SHADOW LIGHT_RED}{STR_VAR_1}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY},
-                            which is located on the {COLOR RED}{SHADOW LIGHT_RED}third floor{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}."))
-            waitmessage
-            delay(40)
-            call(BufferHomeroom2F)
-            message(format("After that you will head to room {COLOR RED}{SHADOW LIGHT_RED}{STR_VAR_1}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}
-                           on the {COLOR RED}{SHADOW LIGHT_RED}second floor{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}."))
-            waitmessage
-            delay(40)
-            call(BufferHomeroom4F)
-            message("And finally, your last class will be held\nin room {COLOR RED}{SHADOW LIGHT_RED}{STR_VAR_1}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}
-                            on the {COLOR RED}{SHADOW LIGHT_RED}fourth floor{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}.")
-            waitmessage
-            delay(40)
-            waitbuttonpress
-            msgbox(format("If at anytime you have trouble navigating the campus, you can always check your Academy Badge.\p
-                           Your Academy Badge also has your Homeroom numbers printed on the back.\p
-                           Please make your way through the corridor behind you."), MSGBOX_AUTOCLOSE)
-            setobjectxyperm(LOCALID_PRINCIPAL, 7, 34)
-            applymovement(LOCALID_PRINCIPAL, moves(walk_left * 7))
-            waitmovement(0)
-            removeobject(LOCALID_PRINCIPAL)
-            setvar(VAR_POKEMON_ACADEMY_STATE, 1)
+            setvar(VAR_POKEMON_ACADEMY_STATE, 2)
+            release
+            end
+        }
+    ]
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+        VAR_POKEMON_ACADEMY_STATE, 1 {
+            turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
             end
         }
     ]

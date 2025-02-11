@@ -238,7 +238,7 @@
       "y": 6,
       "elevation": 0,
       "var": "VAR_POKEMON_ACADEMY_STATE",
-      "var_value": "2",
+      "var_value": "3",
       "script": "DeskTrigger3F"
     },
     {
@@ -247,7 +247,7 @@
       "y": 6,
       "elevation": 0,
       "var": "VAR_POKEMON_ACADEMY_STATE",
-      "var_value": "2",
+      "var_value": "3",
       "script": "DeskTrigger3F"
     },
     {
@@ -256,7 +256,7 @@
       "y": 6,
       "elevation": 0,
       "var": "VAR_POKEMON_ACADEMY_STATE",
-      "var_value": "2",
+      "var_value": "3",
       "script": "DeskTrigger3F"
     },
     {
@@ -265,7 +265,7 @@
       "y": 6,
       "elevation": 0,
       "var": "VAR_POKEMON_ACADEMY_STATE",
-      "var_value": "2",
+      "var_value": "3",
       "script": "DeskTrigger3F"
     },
     {
@@ -274,7 +274,7 @@
       "y": 6,
       "elevation": 0,
       "var": "VAR_POKEMON_ACADEMY_STATE",
-      "var_value": "2",
+      "var_value": "3",
       "script": "DeskTrigger3F"
     },
     {
@@ -283,7 +283,7 @@
       "y": 8,
       "elevation": 0,
       "var": "VAR_POKEMON_ACADEMY_STATE",
-      "var_value": "2",
+      "var_value": "3",
       "script": "DeskTrigger3F"
     },
     {
@@ -292,7 +292,7 @@
       "y": 8,
       "elevation": 0,
       "var": "VAR_POKEMON_ACADEMY_STATE",
-      "var_value": "2",
+      "var_value": "3",
       "script": "DeskTrigger3F"
     },
     {
@@ -301,7 +301,7 @@
       "y": 10,
       "elevation": 0,
       "var": "VAR_POKEMON_ACADEMY_STATE",
-      "var_value": "2",
+      "var_value": "3",
       "script": "DeskTrigger3F"
     },
     {
@@ -310,7 +310,7 @@
       "y": 12,
       "elevation": 0,
       "var": "VAR_POKEMON_ACADEMY_STATE",
-      "var_value": "2",
+      "var_value": "3",
       "script": "DeskTrigger3F"
     },
     {
@@ -319,7 +319,7 @@
       "y": 12,
       "elevation": 0,
       "var": "VAR_POKEMON_ACADEMY_STATE",
-      "var_value": "2",
+      "var_value": "3",
       "script": "DeskTrigger3F"
     },
     {
@@ -328,7 +328,7 @@
       "y": 12,
       "elevation": 0,
       "var": "VAR_POKEMON_ACADEMY_STATE",
-      "var_value": "2",
+      "var_value": "3",
       "script": "DeskTrigger3F"
     },
     {
@@ -337,7 +337,7 @@
       "y": 12,
       "elevation": 0,
       "var": "VAR_POKEMON_ACADEMY_STATE",
-      "var_value": "2",
+      "var_value": "3",
       "script": "DeskTrigger3F"
     },
     {
@@ -346,7 +346,7 @@
       "y": 14,
       "elevation": 0,
       "var": "VAR_POKEMON_ACADEMY_STATE",
-      "var_value": "2",
+      "var_value": "3",
       "script": "DeskTrigger3F"
     },
     {
@@ -355,7 +355,7 @@
       "y": 14,
       "elevation": 0,
       "var": "VAR_POKEMON_ACADEMY_STATE",
-      "var_value": "2",
+      "var_value": "3",
       "script": "DeskTrigger3F"
     },
     {
@@ -364,7 +364,7 @@
       "y": 14,
       "elevation": 0,
       "var": "VAR_POKEMON_ACADEMY_STATE",
-      "var_value": "2",
+      "var_value": "3",
       "script": "DeskTrigger3F"
     },
     {
@@ -373,7 +373,7 @@
       "y": 14,
       "elevation": 0,
       "var": "VAR_POKEMON_ACADEMY_STATE",
-      "var_value": "2",
+      "var_value": "3",
       "script": "DeskTrigger3F"
     },
     {
@@ -382,7 +382,7 @@
       "y": 14,
       "elevation": 0,
       "var": "VAR_POKEMON_ACADEMY_STATE",
-      "var_value": "2",
+      "var_value": "3",
       "script": "DeskTrigger3F"
     },
     {
@@ -391,7 +391,7 @@
       "y": 14,
       "elevation": 0,
       "var": "VAR_POKEMON_ACADEMY_STATE",
-      "var_value": "2",
+      "var_value": "3",
       "script": "DeskTrigger3F"
     },
     {
@@ -400,7 +400,7 @@
       "y": 3,
       "elevation": 0,
       "var": "VAR_POKEMON_ACADEMY_STATE",
-      "var_value": "2",
+      "var_value": "3",
       "script": "DeskTrigger3F"
     }
   ],

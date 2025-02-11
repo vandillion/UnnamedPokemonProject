@@ -11,6 +11,7 @@ EventScript_PkmnCenterNurse_Goodbye::
 	return
 
 EventScript_PkmnCenterNurse_HealPkmn::
+	setvar VAR_TEMP_A, TRUE
 	incrementgamestat GAME_STAT_USED_POKECENTER
 	message gText_IllTakeYourPkmn
 	waitmessage

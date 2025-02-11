@@ -1048,6 +1048,11 @@ EventScript_SelectWithoutRegisteredItem::
 	msgbox gText_SelectWithoutRegisteredItem, MSGBOX_SIGN
 	end
 
+EventScript_OWHealParty::
+	playse SE_USE_ITEM
+	special HealPlayerParty
+	end
+
 	.include "data/scripts/field_poison.inc"
 
 Common_EventScript_NopReturn::
@@ -1172,3 +1177,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/CentraNE_PokemonAcademy3F/scripts.inc"
 
 	.include "data/maps/CentraNE_PokemonAcademy4F/scripts.inc"
+
+	.include "data/maps/ImperialIsland_GymB1F/scripts.inc"

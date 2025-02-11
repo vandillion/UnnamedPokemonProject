@@ -94,8 +94,8 @@ script WoodridgePlayersHouse1F_Mom {
 	lock
 	faceplayer
 	if(var(VAR_NEWGAME_START) < 4 ) {
-		msgbox(format("{PLAYER}, I saw that there were other people in this town.\p"
-					  "Let's not make ourselves look like bad neightbors. Go introduce yourself!"), MSGBOX_AUTOCLOSE)
+		msgbox(format("I saw that there were other people in this town.\p"
+					  "Don't let yourself look like a bad neightbor, {PLAYER}. Go introduce yourself!"), MSGBOX_AUTOCLOSE)
 	} elif(var(VAR_NEWGAME_START) < 6) {
 		msgbox(format("If anything happens to you let me know."), MSGBOX_AUTOCLOSE)
 	} elif(var(VAR_TEMP_1) == TRUE) {
@@ -107,6 +107,7 @@ script WoodridgePlayersHouse1F_Mom {
 		waitse
 		msgbox("There. You look all refreshed!\nTake care!", MSGBOX_AUTOCLOSE)
 		setvar(VAR_TEMP_1, TRUE)
+		incrementgamestat(GAME_STAT_RESTED_AT_HOME)
 	}
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	waitmovement(0)

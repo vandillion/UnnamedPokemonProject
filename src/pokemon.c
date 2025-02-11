@@ -123,6 +123,7 @@ static const u16 sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
     HOENN_TO_NATIONAL(BANDITOOK),
     HOENN_TO_NATIONAL(BABARK),
     HOENN_TO_NATIONAL(BELLANCO),
+    HOENN_TO_NATIONAL(SKULLIAN),
     HOENN_TO_NATIONAL(SNORUNT),
     HOENN_TO_NATIONAL(GLALIE),
     HOENN_TO_NATIONAL(FROSLASS),
@@ -5477,9 +5478,7 @@ bool32 IsSpeciesInHoennDex(u16 species)
 
 u16 GetBattleBGM(void)
 {
-    if (N_MUTE_BATTLE_BGM)
-        return MUS_NONE;
-
+#if N_MUTE_BATTLE_BGM == FALSE
     if (gBattleTypeFlags & BATTLE_TYPE_LEGENDARY)
     {
         switch (GetMonData(&gEnemyParty[0], MON_DATA_SPECIES, NULL))
@@ -5527,8 +5526,6 @@ u16 GetBattleBGM(void)
             return MUS_VS_AQUA_MAGMA;
         case TRAINER_CLASS_LEADER:
             return MUS_VS_GYM_LEADER;
-        case TRAINER_CLASS_COOLTRAINER_2:
-            return MUS_RG_VS_GYM_LEADER;
         case TRAINER_CLASS_CHAMPION:
             return MUS_VS_CHAMPION;
         case TRAINER_CLASS_RIVAL:
@@ -5547,6 +5544,8 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_PIKE_QUEEN:
         case TRAINER_CLASS_PYRAMID_KING:
             return MUS_VS_FRONTIER_BRAIN;
+        case TRAINER_CLASS_GYM_TRAINER:
+            //TODO return MUS_VS_GYM_TRAINER;
         default:
             return MUS_VS_TRAINER;
         }
@@ -5555,6 +5554,9 @@ u16 GetBattleBGM(void)
     {
         return MUS_VS_WILD;
     }
+#else
+    return MUS_NONE;
+#endif
 }
 
 void PlayBattleBGM(void)

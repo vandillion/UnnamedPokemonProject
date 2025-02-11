@@ -1646,8 +1646,8 @@
 #define SPECIES_BANDITOOK                               1538
 #define SPECIES_BABARK                                  1543
 #define SPECIES_BELLANCO                                1544
-
-#define SPECIES_EGG                                     (SPECIES_BELLANCO + 1)
+#define SPECIES_SKULLIAN                                1578
+#define SPECIES_EGG                                     (SPECIES_SKULLIAN + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 

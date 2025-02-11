@@ -9,8 +9,12 @@ mapscripts SlateportCity_PokemonCenter_1F_MapScripts {
 
 script CentraSE_PokemonCenter_1F_EventScript_Nurse {
 	setvar(VAR_0x800B, LOCALID_NURSE)
+	setvar(VAR_TEMP_A, 0)
 	call(Common_EventScript_PkmnCenterNurse)
 	waitmessage
+	if(!var(VAR_TEMP_A)) {
+		waitbuttonpress
+	}
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
 	release
 	end

@@ -294,7 +294,7 @@ gBattleAnimMove_Tailwind::
 	delay 10
 	createsprite gFlyingSandCrescentSpriteTemplate, ANIM_ATTACKER, 40, 60, 2560, 96, 0
 	waitforvisualfinish
-	stopsound
+	playsewithpan SE_M_GUST2, SOUND_PAN_ATTACKER
 	call UnsetHighSpeedBg
 	clearmonbg ANIM_ATK_PARTNER
 	blendoff

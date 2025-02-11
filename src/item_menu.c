@@ -51,6 +51,7 @@
 #include "constants/items.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "config/new.h"
 
 #define TAG_POCKET_SCROLL_ARROW 110
 #define TAG_BAG_SCROLL_ARROW    111
@@ -2066,6 +2067,9 @@ static void Task_ItemContext_GiveToPC(u8 taskId)
 
 bool8 UseRegisteredKeyItemOnField(void)
 {
+#if N_HEAL_ON_SELECT
+    ScriptContext_SetupScript(EventScript_OWHealParty);
+#else
     u8 taskId;
 
     if (InUnionRoom() == TRUE || InBattlePyramid() || InBattlePike() || InMultiPartnerRoom() == TRUE)
@@ -2091,6 +2095,7 @@ bool8 UseRegisteredKeyItemOnField(void)
         }
     }
     ScriptContext_SetupScript(EventScript_SelectWithoutRegisteredItem);
+#endif
     return TRUE;
 }
 

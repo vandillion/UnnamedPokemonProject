@@ -37,7 +37,7 @@ script Route2Liv {
 }
 
 script Route2Fred {
-	trainerbattle_single(TRAINER_RICK, "I caught my Pokemon in the Vast\nForest.\pCheck em out!", "Oh no!\nMy Bug Pokemon!")
+	trainerbattle_single(TRAINER_RICK, "I caught my Pokemon in the Vast\nWoods.\pCheck em out!", "Oh no!\nMy Bug Pokemon!")
 	msgbox(format("Oh well. I haven't had the time to train them yet, anyway."), MSGBOX_NPC)
 	end
 }
@@ -60,124 +60,117 @@ const LOCALID_MAN = 12
 
 script Route2CatchTutorial {
 	lock
-	applymovement(LOCALID_MAN, moves(face_player
+	applymovement(LOCALID_MAN, moves(face_down
 									 emote_exclamation_mark
 									 delay_16 * 2))
 	playse(SE_PIN)
 	waitmovement(0)
+	getobjectxy(OBJ_EVENT_ID_PLAYER, CURRENT_POSITION, VAR_TEMP_0, VAR_RESULT)
 	switch(var(VAR_TEMP_0))
 	{
-		case 0:
-			applymovement(LOCALID_MAN, moves(walk_up
-											 walk_right * 2
-											 walk_up
-											 walk_right))
-		case 1:
-			applymovement(LOCALID_MAN, moves(walk_right * 2
-											 walk_up
-											 walk_right))
-		case 2:
+		case 19:
+			applymovement(LOCALID_MAN, moves(walk_left * 2))
+		case 20:
+			applymovement(LOCALID_MAN, moves(walk_left))
+		case 22:
+			applymovement(LOCALID_MAN, moves(walk_right))
+		case 23:
+			applymovement(LOCALID_MAN, moves(walk_right * 2))
+		case 24:
 			applymovement(LOCALID_MAN, moves(walk_right * 3))
-		case 3:
-			applymovement(LOCALID_MAN, moves(walk_right * 2
-											 walk_down
-											 walk_right))
-		case 4:
-			applymovement(LOCALID_MAN, moves(walk_right * 2
-											 walk_down
-											 walk_right
-											 walk_down
-											 walk_in_place_fast_right))
 	}
 	waitmovement(0)
-	msgbox(format("Hello there!\nYou're a Pokemon Trainer, correct?\p"
-				  "If you want, I can show you the basics on catching a Pokemon."), MSGBOX_YESNO)
+	applymovement(LOCALID_MAN, moves(walk_down * 2))
+	waitmovement(0)
+	msgbox(format("Hello there!\nYou're an up-and-coming Pokémon Trainer, correct?\p"
+				  "If you want, I can show you the basics on catching a Pokémon."), MSGBOX_YESNO)
 	switch(var(VAR_RESULT))
 	{
 		case 1:
 			msgbox("Alright, follow me!", MSGBOX_AUTOCLOSE)
 			switch(var(VAR_TEMP_0))
-   			{
-				case 0:
-					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left * 3
-															 walk_down * 4))
-					applymovement(LOCALID_MAN, moves(walk_left * 2
-													 walk_down * 5
-													 walk_in_place_fast_up))
-				case 1:
-					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left * 3
-															 walk_down * 3))
-					applymovement(LOCALID_MAN, moves(walk_left * 2
-													 walk_down * 4
-													 walk_in_place_fast_up))
-				case 2:
-					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left * 3
-															 walk_down * 2))
-					applymovement(LOCALID_MAN, moves(walk_left * 2
-													 walk_down * 3
-													 walk_in_place_fast_up))
-				case 3:
-					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left * 3
-															 walk_down))
-					applymovement(LOCALID_MAN, moves(walk_left * 2
-													 walk_down * 2
-													 walk_in_place_fast_up))
-				case 4:
-					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left * 3
-															 walk_in_place_fast_down))
-					applymovement(LOCALID_MAN, moves(walk_left * 2
-													 walk_down
-													 walk_in_place_fast_up))
-			}
+			{
+				case 19:
+					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 4
+															 walk_right * 4
+															 walk_up))
+					applymovement(LOCALID_MAN, moves(walk_up * 3
+													 walk_right * 4
+													 walk_up * 2
+													 walk_in_place_fast_down))
+				case 20:
+					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 4
+															 walk_right * 3
+															 walk_up))
+					applymovement(LOCALID_MAN, moves(walk_up * 3
+													 walk_right * 3
+													 walk_up * 2
+													 walk_in_place_fast_down))
+				case 21:
+					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 4
+															 walk_right * 2
+															 walk_up))
+					applymovement(LOCALID_MAN, moves(walk_up * 3
+													 walk_right * 2
+													 walk_up * 2
+													 walk_in_place_fast_down))
+				case 22:
+					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 4
+															 walk_right
+															 walk_up))
+					applymovement(LOCALID_MAN, moves(walk_up * 3
+													 walk_right
+													 walk_up * 2
+													 walk_in_place_fast_down))
+				case 23:
+					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 5))
+					applymovement(LOCALID_MAN, moves(walk_up * 5
+													 walk_in_place_fast_down))
+				case 24:
+					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 4
+															 walk_left
+															 walk_up))
+					applymovement(LOCALID_MAN, moves(walk_up * 3
+													 walk_left
+													 walk_up * 2
+													 walk_in_place_fast_down))
+			}		
 			waitmovement(0)
-			msgbox(format("You can find wild Pokemon in patches of tall grass, such as this one."))
-			applymovement(LOCALID_MAN, moves(walk_in_place_fast_right))
+			msgbox(format("You can find wild Pokémon in patches of tall grass, such as this one."))
+			applymovement(LOCALID_MAN, moves(walk_in_place_fast_up))
 			waitmovement(0)
 			msgbox("Oh!\nHere comes one now!")
 			closemessage
-			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_right))
-			waitmovement(0)
 			special(SavePlayerParty)
 			special(LoadWallyZigzagoon)
 			special(StartWallyTutorialBattle)
 			waitstate
 			special(LoadPlayerParty)
-			delay(20)
-			turnobject(LOCALID_MAN, DIR_NORTH)
-			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
-			delay(8)
+			applymovement(LOCALID_MAN, moves(walk_in_place_fast_down))
+			waitmovement(0)
 			if (!checkitem(ITEM_POKE_BALL)) {
-				msgbox("Take these, too!\nI have plenty of spares.")
+				msgbox("And that's how catching a wild Pokémon is done!\pWait! before you go, take these!\nI have plenty of spares.")
 				giveitem(ITEM_POKE_BALL, 10)
 				call_if_eq(VAR_RESULT, FALSE, Common_EventScript_BagIsFull)
-				msgbox(format("These are tools used to catch wild Pokemon.\pRemember to weaken the wild Pokemon before throwing a Ball."), MSGBOX_AUTOCLOSE)
+				msgbox(format("These are tools used to catch wild Pokémon.\pRemember to weaken the wild Pokémon before throwing a Ball."), MSGBOX_AUTOCLOSE)
 			} else {
-				msgbox(format("Always remember to weaken the wild Pokemon before throwing a Ball."), MSGBOX_AUTOCLOSE)
+				msgbox(format("And that's how catching a wild Pokémon is done!\pAlways remember to weaken the wild Pokémon before throwing a Ball."), MSGBOX_AUTOCLOSE)
 			}
-			applymovement(LOCALID_MAN, moves(walk_left * 8))
+			applymovement(LOCALID_MAN, moves(walk_left * 4
+											 walk_down
+											 walk_left * 4))
 		case 0:
 			if (!checkitem(ITEM_POKE_BALL)) {
 				msgbox(format("Oh, okay.\nI still want you to have these, anyway!"))
 				giveitem(ITEM_POKE_BALL, 10)
 				call_if_eq(VAR_RESULT, FALSE, Common_EventScript_BagIsFull)
-				msgbox(format("These are tools used to catch wild Pokemon.\pJust remember to weaken the wild Pokemon before throwing a Ball."), MSGBOX_AUTOCLOSE)
+				msgbox(format("These are tools used to catch wild Pokémon.\pJust remember to weaken the wild Pokémon before throwing a Ball."), MSGBOX_AUTOCLOSE)
 			} else {
-				msgbox(format("Oh, okay.\nJust remember to weaken the wild Pokemon before throwing a Ball."), MSGBOX_AUTOCLOSE)
-			}
-			switch(var(VAR_TEMP_0)) {
-				case 0:
-					applymovement(LOCALID_MAN, moves(walk_down * 2))
-				case 1:
-					applymovement(LOCALID_MAN, moves(walk_down))
-				case 3:
-					applymovement(LOCALID_MAN, moves(walk_up))
-				case 4:
-					applymovement(LOCALID_MAN, moves(walk_up * 2))
+				msgbox(format("Oh, okay.\nJust remember to weaken the wild Pokémon before throwing a Ball."), MSGBOX_AUTOCLOSE)
 			}
 			waitmovement(0)
-			applymovement(LOCALID_MAN, moves(walk_left * 6
-											 walk_down
-											 walk_left * 2))
+			applymovement(LOCALID_MAN, moves(walk_up * 3
+											 walk_left * 8))
 	}
 	waitmovement(0)
 	removeobject(LOCALID_MAN)
@@ -185,29 +178,4 @@ script Route2CatchTutorial {
 	setvar(VAR_ROUTE2_STATE, 1)
 	release
 	end
-}
-
-script Route2CatchTutorialTrigger0 {
-	setvar(VAR_TEMP_0, 0)
-	goto(Route2CatchTutorial)
-}
-
-script Route2CatchTutorialTrigger1 {
-	setvar(VAR_TEMP_0, 1)
-	goto(Route2CatchTutorial)
-}
-
-script Route2CatchTutorialTrigger2 {
-	setvar(VAR_TEMP_0, 2)
-	goto(Route2CatchTutorial)
-}
-
-script Route2CatchTutorialTrigger3 {
-	setvar(VAR_TEMP_0, 3)
-	goto(Route2CatchTutorial)
-}
-
-script Route2CatchTutorialTrigger4 {
-	setvar(VAR_TEMP_0, 4)
-	goto(Route2CatchTutorial)
 }
