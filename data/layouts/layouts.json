@@ -105,7 +105,7 @@
       "id": "LAYOUT_OLDALE_TOWN",
       "name": "OldaleTown_Layout",
       "width": 64,
-      "height": 40,
+      "height": 41,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Dewford",
       "border_filepath": "data/layouts/OldaleTown/border.bin",
@@ -175,7 +175,7 @@
       "id": "LAYOUT_ROUTE102",
       "name": "Route102_Layout",
       "width": 64,
-      "height": 70,
+      "height": 96,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Rustboro",
       "border_filepath": "data/layouts/Route102/border.bin",
@@ -185,7 +185,7 @@
       "id": "LAYOUT_ROUTE103",
       "name": "Route103_Layout",
       "width": 64,
-      "height": 64,
+      "height": 96,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Rustboro",
       "border_filepath": "data/layouts/Route103/border.bin",
@@ -4510,6 +4510,16 @@
       "secondary_tileset": "gTileset_PokemonSchool",
       "border_filepath": "data/layouts/CentraNE_PokemonAcademy4F/border.bin",
       "blockdata_filepath": "data/layouts/CentraNE_PokemonAcademy4F/map.bin"
+    },
+    {
+      "id": "LAYOUT_IMPERIAL_ISLAND_GYM_B1F",
+      "name": "ImperialIsland_GymB1F_Layout",
+      "width": 45,
+      "height": 45,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_DewfordGym",
+      "border_filepath": "data/layouts/ImperialIsland_GymB1F/border.bin",
+      "blockdata_filepath": "data/layouts/ImperialIsland_GymB1F/map.bin"
     }
   ]
 }

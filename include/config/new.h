@@ -5,7 +5,8 @@
 #define N_TRAINERS_DONT_WALK_TO_PLAYER TRUE
 #define N_AUTORUN                      TRUE
 #define N_HEAL_ON_SELECT               TRUE
+#define N_FLEE_ON_B                    TRUE
 
 #define N_FAST_BOOT                    TRUE
 
-#endif // GUARD_CONFIG_BATTLE_H
+#endif // GUARD_CONFIG_NEW_H

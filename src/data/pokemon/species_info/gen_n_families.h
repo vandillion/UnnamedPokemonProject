@@ -3,8 +3,8 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
 {
 #endif
 
-#if P_FAMILY_SUGARGLIDE
-    [SPECIES_SUGARGLIDE] =
+#if P_FAMILY_JUNGLIDE
+    [SPECIES_JUNGLIDE] =
     {
         .baseHP        = 35,
         .baseAttack    = 40,
@@ -23,9 +23,9 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD, EGG_GROUP_GRASS),
         .abilities = { ABILITY_OVERGROW, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_GREEN,
-        .speciesName = _("Sugarglide"),
-        .cryId = CRY_BULBASAUR,
-        .natDexNum = NATIONAL_DEX_SUGARGLIDE,
+        .speciesName = _("Junglide"),
+        .cryId = CRY_NONE,
+        .natDexNum = NATIONAL_DEX_JUNGLIDE,
         .categoryName = _("Glider"),
         .height = 4,
         .weight = 41,
@@ -41,7 +41,7 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .frontPic = gMonFrontPic_Sprigatito,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
         .frontPicYOffset = 8,
-        .frontAnimFrames = sAnims_Sprigatito,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
         .frontAnimId = ANIM_RISING_WOBBLE,
         .backPic = gMonBackPic_Sprigatito,
         .backPicSize = MON_COORDS_SIZE(64, 64),
@@ -51,21 +51,12 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .shinyPalette = gMonShinyPalette_Sprigatito,
         .iconSprite = gMonIcon_Sprigatito,
         .iconPalIndex = 1,
-        FOOTPRINT(Sprigatito)
-        OVERWORLD(
-            sPicTable_Sprigatito,
-            SIZE_32x32,
-            SHADOW_SIZE_S,
-            TRACKS_FOOT,
-            gOverworldPalette_Sprigatito,
-            gShinyOverworldPalette_Sprigatito
-        )
-        .levelUpLearnset = sSugarglideLevelUpLearnset,
+        .levelUpLearnset = sJunglideLevelUpLearnset,
         .teachableLearnset = sNoneTeachableLearnset,
         .eggMoveLearnset = sNoneEggMoveLearnset,
-        //.evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_CANOKITE}),
+        //.evolutions = EVOLUTION({EVO_LEVEL, 16, SPECIES_CANOKITE}),
     },
-#endif //P_FAMILY_SUGARGLIDE
+#endif //P_FAMILY_JUNGLIDE
 
 #if P_FAMILY_PARMI
     [SPECIES_PARMI] =
@@ -88,7 +79,7 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .abilities = { ABILITY_BLAZE, ABILITY_NONE, ABILITY_OVERCOAT },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Parmi"),
-        .cryId = CRY_BULBASAUR,
+        .cryId = CRY_NONE,
         .natDexNum = NATIONAL_DEX_PARMI,
         .categoryName = _("Red Panda"),
         .height = 4,
@@ -105,7 +96,7 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .frontPic = gMonFrontPic_Fuecoco,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
         .frontPicYOffset = 8,
-        .frontAnimFrames = sAnims_Fuecoco,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
         .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
         .backPic = gMonBackPic_Fuecoco,
         .backPicSize = MON_COORDS_SIZE(64, 64),
@@ -115,19 +106,10 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .shinyPalette = gMonShinyPalette_Fuecoco,
         .iconSprite = gMonIcon_Fuecoco,
         .iconPalIndex = 2,
-        FOOTPRINT(Fuecoco)
-        OVERWORLD(
-            sPicTable_Fuecoco,
-            SIZE_32x32,
-            SHADOW_SIZE_S,
-            TRACKS_FOOT,
-            gOverworldPalette_Fuecoco,
-            gShinyOverworldPalette_Fuecoco
-        )
         .levelUpLearnset = sParmiLevelUpLearnset,
         .teachableLearnset = sNoneTeachableLearnset,
         .eggMoveLearnset = sNoneEggMoveLearnset,
-        //.evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_PANDARO}),
+        //.evolutions = EVOLUTION({EVO_LEVEL, 16, SPECIES_PANDARO}),
     },
 #endif //P_FAMILY_PARMI
 
@@ -152,7 +134,7 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .abilities = { ABILITY_TORRENT, ABILITY_NONE, ABILITY_UNAWARE },
         .bodyColor = BODY_COLOR_WHITE,
         .speciesName = _("Radpole"),
-        .cryId = CRY_BULBASAUR,
+        .cryId = CRY_NONE,
         .natDexNum = NATIONAL_DEX_RADPOLE,
         .categoryName = _("Phrog"),
         .height = 5,
@@ -169,7 +151,7 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .frontPic = gMonFrontPic_Quaxly,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
         .frontPicYOffset = 10,
-        .frontAnimFrames = sAnims_Quaxly,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
         .frontAnimId = ANIM_CIRCULAR_STRETCH_TWICE,
         .backPic = gMonBackPic_Quaxly,
         .backPicSize = MON_COORDS_SIZE(64, 64),
@@ -179,19 +161,10 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .shinyPalette = gMonShinyPalette_Quaxly,
         .iconSprite = gMonIcon_Quaxly,
         .iconPalIndex = 0,
-        FOOTPRINT(Quaxly)
-        OVERWORLD(
-            sPicTable_Quaxly,
-            SIZE_32x32,
-            SHADOW_SIZE_S,
-            TRACKS_FOOT,
-            gOverworldPalette_Quaxly,
-            gShinyOverworldPalette_Quaxly
-        )
         .levelUpLearnset = sRadpoleLevelUpLearnset,
         .teachableLearnset = sNoneTeachableLearnset,
         .eggMoveLearnset = sNoneEggMoveLearnset,
-        //.evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_FROGIDOKI}),
+        //.evolutions = EVOLUTION({EVO_LEVEL, 16, SPECIES_FROGIDOKI}),
     },
 #endif //P_FAMILY_RADPOLE
 
@@ -216,7 +189,7 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .abilities = { ABILITY_RUN_AWAY, ABILITY_QUICK_FEET, ABILITY_NONE },
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Raccat"),
-        .cryId = CRY_BULBASAUR,
+        .cryId = CRY_NONE,
         .natDexNum = NATIONAL_DEX_RACCAT,
         .categoryName = _("????????????"),
         .height = 4,
@@ -231,8 +204,8 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .trainerScale = 271,
         .trainerOffset = 0,.frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = 7,
-        .frontAnimFrames = sAnims_Quaxly,
+        .frontPicYOffset = 12,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
         .frontAnimId = ANIM_H_SLIDE,
         .backPic = gMonBackPic_CircledQuestionMark,
         .backPicSize = MON_COORDS_SIZE(40, 40),
@@ -242,15 +215,6 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .shinyPalette = gMonShinyPalette_CircledQuestionMark,
         .iconSprite = gMonIcon_QuestionMark,
         .iconPalIndex = 0,
-        FOOTPRINT(QuestionMark)
-                OVERWORLD(
-            sPicTable_Quaxly,
-            SIZE_32x32,
-            SHADOW_SIZE_S,
-            TRACKS_FOOT,
-            gOverworldPalette_Quaxly,
-            gShinyOverworldPalette_Quaxly
-        )
         .levelUpLearnset = sRaccatLevelUpLearnset,
         .teachableLearnset = sNoneTeachableLearnset,
         .eggMoveLearnset = sNoneEggMoveLearnset,
@@ -278,7 +242,7 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .abilities = { ABILITY_BIG_PECKS, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_BLACK,
         .speciesName = _("Luel"),
-        .cryId = CRY_BULBASAUR,
+        .cryId = CRY_NONE,
         .natDexNum = NATIONAL_DEX_LUEL,
         .categoryName = _("Koel"),
         .height = 7,
@@ -293,8 +257,8 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .trainerScale = 271,
         .trainerOffset = 0,.frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = 7,
-        .frontAnimFrames = sAnims_Quaxly,
+        .frontPicYOffset = 12,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
         .frontAnimId = ANIM_V_STRETCH,
         .backPic = gMonBackPic_CircledQuestionMark,
         .backPicSize = MON_COORDS_SIZE(40, 40),
@@ -304,15 +268,6 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .shinyPalette = gMonShinyPalette_CircledQuestionMark,
         .iconSprite = gMonIcon_QuestionMark,
         .iconPalIndex = 0,
-        FOOTPRINT(QuestionMark)
-                OVERWORLD(
-            sPicTable_Quaxly,
-            SIZE_32x32,
-            SHADOW_SIZE_S,
-            TRACKS_FOOT,
-            gOverworldPalette_Quaxly,
-            gShinyOverworldPalette_Quaxly
-        )
         .levelUpLearnset = sLuelLevelUpLearnset,
         .teachableLearnset = sNoneTeachableLearnset,
         .eggMoveLearnset = sNoneEggMoveLearnset,
@@ -340,7 +295,7 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .abilities = { ABILITY_PICKPOCKET, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_WHITE,
         .speciesName = _("Banditook"),
-        .cryId = CRY_BULBASAUR,
+        .cryId = CRY_NONE,
         .natDexNum = NATIONAL_DEX_BANDITOOK,
         .categoryName = _("Bandit"),
         .height = 0,
@@ -356,7 +311,7 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .trainerOffset = 0,.frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,
-        .frontAnimFrames = sAnims_Quaxly,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
         .frontAnimId = ANIM_H_SLIDE,
         .backPic = gMonBackPic_CircledQuestionMark,
         .backPicSize = MON_COORDS_SIZE(40, 40),
@@ -366,15 +321,6 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .shinyPalette = gMonShinyPalette_CircledQuestionMark,
         .iconSprite = gMonIcon_QuestionMark,
         .iconPalIndex = 0,
-        FOOTPRINT(QuestionMark)
-                OVERWORLD(
-            sPicTable_Quaxly,
-            SIZE_32x32,
-            SHADOW_SIZE_S,
-            TRACKS_FOOT,
-            gOverworldPalette_Quaxly,
-            gShinyOverworldPalette_Quaxly
-        )
         .levelUpLearnset = sBanditookLevelUpLearnset,
         .teachableLearnset = sNoneTeachableLearnset,
         .eggMoveLearnset = sNoneEggMoveLearnset,
@@ -402,7 +348,7 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .abilities = { ABILITY_CHLOROPHYLL, ABILITY_RUN_AWAY, ABILITY_LEAF_GUARD },
         .bodyColor = BODY_COLOR_WHITE,
         .speciesName = _("Babark"),
-        .cryId = CRY_BULBASAUR,
+        .cryId = CRY_NONE,
         .natDexNum = NATIONAL_DEX_BABARK,
         .categoryName = _("Bush Dog"),
         .height = 3,
@@ -417,8 +363,8 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .trainerScale = 271,
         .trainerOffset = 0,.frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
-        .frontPicYOffset = 7,
-        .frontAnimFrames = sAnims_Quaxly,
+        .frontPicYOffset = 12,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
         .frontAnimId = ANIM_V_STRETCH,
         .backPic = gMonBackPic_CircledQuestionMark,
         .backPicSize = MON_COORDS_SIZE(40, 40),
@@ -428,15 +374,6 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .shinyPalette = gMonShinyPalette_CircledQuestionMark,
         .iconSprite = gMonIcon_QuestionMark,
         .iconPalIndex = 0,
-        FOOTPRINT(QuestionMark)
-                OVERWORLD(
-            sPicTable_Quaxly,
-            SIZE_32x32,
-            SHADOW_SIZE_S,
-            TRACKS_FOOT,
-            gOverworldPalette_Quaxly,
-            gShinyOverworldPalette_Quaxly
-        )
         .levelUpLearnset = sBabarkLevelUpLearnset,
         .teachableLearnset = sNoneTeachableLearnset,
         .eggMoveLearnset = sNoneEggMoveLearnset,
@@ -465,9 +402,9 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .abilities = { ABILITY_NONE, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Bellanco"),
-        .cryId = CRY_BULBASAUR,
+        .cryId = CRY_NONE,
         .natDexNum = NATIONAL_DEX_BELLANCO,
-        .categoryName = _("Bell Bird"),
+        .categoryName = _("Brass Bird"),
         .height = 17,
         .weight = 505,
         .description = COMPOUND_STRING(
@@ -481,7 +418,7 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .trainerOffset = 0,.frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 9,
-        .frontAnimFrames = sAnims_Quaxly,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
         .frontAnimId = ANIM_GROW_VIBRATE,
         .enemyMonElevation = 12,
         .backPic = gMonBackPic_CircledQuestionMark,
@@ -492,15 +429,7 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .shinyPalette = gMonShinyPalette_CircledQuestionMark,
         .iconSprite = gMonIcon_QuestionMark,
         .iconPalIndex = 0,
-        FOOTPRINT(QuestionMark)
-                OVERWORLD(
-            sPicTable_Quaxly,
-            SIZE_32x32,
-            SHADOW_SIZE_S,
-            TRACKS_FOOT,
-            gOverworldPalette_Quaxly,
-            gShinyOverworldPalette_Quaxly
-        )
+        SHADOW(0, 12, SHADOW_SIZE_S)
         .levelUpLearnset = sBellancoLevelUpLearnset,
         .teachableLearnset = sNoneTeachableLearnset,
         .eggMoveLearnset = sNoneEggMoveLearnset,
@@ -516,7 +445,7 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .baseSpeed     = 50,
         .baseSpAttack  = 50,
         .baseSpDefense = 50,
-        .types = MON_TYPES(TYPE_DARK, TYPE_DARK),
+        .types = MON_TYPES(TYPE_DARK),
         .catchRate = 190,
         .expYield = 65,
         .evYield_Attack = 1,
@@ -528,7 +457,7 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_WHITE,
         .speciesName = _("Skullian"),
-        .cryId = CRY_BULBASAUR,
+        .cryId = CRY_NONE,
         .natDexNum = NATIONAL_DEX_SKULLIAN,
         .categoryName = _("Scalawag"),
         .height = 7,
@@ -544,7 +473,7 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .trainerOffset = 0,.frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,
-        .frontAnimFrames = sAnims_Quaxly,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
         .frontAnimId = ANIM_V_JUMPS_BIG,
         .backPic = gMonBackPic_CircledQuestionMark,
         .backPicSize = MON_COORDS_SIZE(40, 40),
@@ -554,15 +483,6 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .shinyPalette = gMonShinyPalette_CircledQuestionMark,
         .iconSprite = gMonIcon_QuestionMark,
         .iconPalIndex = 0,
-        FOOTPRINT(QuestionMark)
-                OVERWORLD(
-            sPicTable_Quaxly,
-            SIZE_32x32,
-            SHADOW_SIZE_S,
-            TRACKS_FOOT,
-            gOverworldPalette_Quaxly,
-            gShinyOverworldPalette_Quaxly
-        )
         .levelUpLearnset = sSkullianLevelUpLearnset,
         .teachableLearnset = sNoneTeachableLearnset,
         .eggMoveLearnset = sNoneEggMoveLearnset,

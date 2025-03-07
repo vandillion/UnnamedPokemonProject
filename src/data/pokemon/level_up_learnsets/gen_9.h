@@ -22314,8 +22314,8 @@ static const struct LevelUpMove sPecharuntLevelUpLearnset[] = {
 };
 #endif //P_FAMILY_PECHARUNT
 
-#if P_FAMILY_SUGARGLIDE
-static const struct LevelUpMove sSugarglideLevelUpLearnset[] = {
+#if P_FAMILY_JUNGLIDE
+static const struct LevelUpMove sJunglideLevelUpLearnset[] = {
     LEVEL_UP_MOVE(  1, MOVE_TACKLE),
     LEVEL_UP_MOVE(  1, MOVE_GROWL),
     LEVEL_UP_MOVE(  4, MOVE_LEAFAGE),
@@ -22328,7 +22328,7 @@ static const struct LevelUpMove sSugarglideLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 28, MOVE_TWISTER),
     LEVEL_UP_END
 };
-#endif //P_FAMILY_SUGARGLIDE
+#endif //P_FAMILY_JUNGLIDE
 
 #if P_FAMILY_PARMI
 static const struct LevelUpMove sParmiLevelUpLearnset[] = {
@@ -22437,7 +22437,7 @@ static const struct LevelUpMove sSkullianLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 12, MOVE_BONEMERANG),
     LEVEL_UP_MOVE( 16, MOVE_ASSURANCE),
     LEVEL_UP_MOVE( 20, MOVE_KNOCK_OFF),
-    LEVEL_UP_MOVE( 24, MOVE_SHADOW_BONE),
+    LEVEL_UP_MOVE( 32, MOVE_SHADOW_BONE),
     LEVEL_UP_END
 };
 #endif //P_FAMILY_SKULLIAN

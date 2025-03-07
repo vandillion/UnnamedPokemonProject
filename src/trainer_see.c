@@ -19,7 +19,6 @@
 #include "constants/event_object_movement.h"
 #include "constants/field_effects.h"
 #include "constants/trainer_types.h"
-#include "config/new.h"
 
 // this file's functions
 static u8 CheckTrainer(u8 objectEventId);
@@ -696,8 +695,8 @@ static bool8 TrainerMoveToPlayer(u8 taskId, struct Task *task, struct ObjectEven
 #if N_TRAINERS_DONT_WALK_TO_PLAYER == FALSE
         if (task->tTrainerRange)
         {
-                ObjectEventSetHeldMovement(trainerObj, GetWalkNormalMovementAction(trainerObj->facingDirection));
-                task->tTrainerRange--;
+            ObjectEventSetHeldMovement(trainerObj, GetWalkNormalMovementAction(trainerObj->facingDirection));
+            task->tTrainerRange--;
         }
         else
         {
@@ -705,8 +704,8 @@ static bool8 TrainerMoveToPlayer(u8 taskId, struct Task *task, struct ObjectEven
             task->tFuncId++; // TRSEE_PLAYER_FACE
         }
 #else
-    ObjectEventSetHeldMovement(trainerObj, MOVEMENT_ACTION_FACE_PLAYER);
-    task->tFuncId++; // TRSEE_PLAYER_FACE
+        ObjectEventSetHeldMovement(trainerObj, MOVEMENT_ACTION_FACE_PLAYER);
+        task->tFuncId++; // TRSEE_PLAYER_FACE
 #endif
     }
     return FALSE;

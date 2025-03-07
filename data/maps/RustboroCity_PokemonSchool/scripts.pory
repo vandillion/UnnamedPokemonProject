@@ -1,49 +1,10 @@
 const LOCALID_TEACHER = 1
-const LOCALID_IZZIE = 2
+const LOCALID_ARIA = 2
 const LOCALID_KEDLE = 15
 
 mapscripts RustboroCity_PokemonSchool_MapScripts {
-	MAP_SCRIPT_ON_TRANSITION {
-		switch(var(VAR_ACADEMY3F_HOMEROOM_NO)) {
-			default:
-				setdynamicwarp(MAP_CENTRA_NE_POKEMON_ACADEMY3F, 0)
-			case 1:
-				setdynamicwarp(MAP_CENTRA_NE_POKEMON_ACADEMY3F, 3, 2)
-			case 2:
-				setdynamicwarp(MAP_CENTRA_NE_POKEMON_ACADEMY3F, 10, 2)
-			case 3:
-				setdynamicwarp(MAP_CENTRA_NE_POKEMON_ACADEMY3F, 17, 2)
-			case 4:
-				setdynamicwarp(MAP_CENTRA_NE_POKEMON_ACADEMY3F, 24, 2)
-			case 5:
-				setdynamicwarp(MAP_CENTRA_NE_POKEMON_ACADEMY3F, 39, 2)
-			case 6:
-				setdynamicwarp(MAP_CENTRA_NE_POKEMON_ACADEMY3F, 46, 2)
-			case 7:
-				setdynamicwarp(MAP_CENTRA_NE_POKEMON_ACADEMY3F, 53, 2)
-			case 8:
-				setdynamicwarp(MAP_CENTRA_NE_POKEMON_ACADEMY3F, 60, 2)
-			case 9:
-				setdynamicwarp(MAP_CENTRA_NE_POKEMON_ACADEMY3F, 3, 21)
-			case 10:
-				setdynamicwarp(MAP_CENTRA_NE_POKEMON_ACADEMY3F, 10, 21)
-			case 11:
-				setdynamicwarp(MAP_CENTRA_NE_POKEMON_ACADEMY3F, 17, 21)
-			case 12:
-				setdynamicwarp(MAP_CENTRA_NE_POKEMON_ACADEMY3F, 24, 21)
-			case 13:
-				setdynamicwarp(MAP_CENTRA_NE_POKEMON_ACADEMY3F, 39, 21)
-			case 14:
-				setdynamicwarp(MAP_CENTRA_NE_POKEMON_ACADEMY3F, 46, 21)
-			case 15:
-				setdynamicwarp(MAP_CENTRA_NE_POKEMON_ACADEMY3F, 53, 21)
-			case 16:
-				setdynamicwarp(MAP_CENTRA_NE_POKEMON_ACADEMY3F, 60, 21)
-		}
-		end
-	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
-		VAR_POKEMON_ACADEMY_STATE, 2 { // Cuscene when the player first enters the classroom
+		VAR_CENTRA_CITY_STATE, 0 {
 			lock
 			special(SpawnCameraObject)
 			delay(30)
@@ -77,6 +38,7 @@ mapscripts RustboroCity_PokemonSchool_MapScripts {
 			applymovement(LOCALID_TEACHER, Common_Movement_WalkInPlaceDown)
 			waitmovement(0)
 			setobjectxy(OBJ_EVENT_ID_PLAYER, 8, 12)
+			msgbox(format("Ah, there's our 2nd guest!"), MSGBOX_AUTOCLOSE)
 			delay(16)
 			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 5))
 			applymovement(LOCALID_TEACHER, moves(walk_left
@@ -97,13 +59,8 @@ mapscripts RustboroCity_PokemonSchool_MapScripts {
 			applymovement(13, Common_Movement_WalkInPlaceUp)
 			applymovement(14, Common_Movement_WalkInPlaceUp)
 			waitmovement(LOCALID_TEACHER)
-			msgbox(format("May I see your Academy Badge, please?\p"
-						  "… … …\n… … …\p"
-						  "Alright. Looks like you're in the right room.\p"
+			msgbox(format("{PLAYER}, correct?{PAUSE 60}\nProf. Watson told me you were arriving shortly.\p"
 						  "Do me a favor and stand next to the young lady behind me."), MSGBOX_AUTOCLOSE)
-			delay(16)
-			applymovement(OBJ_EVENT_ID_CAMERA, moves(delay_16
-												     walk_up))
 			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 2
 													 walk_in_place_fast_down))
 			applymovement(LOCALID_TEACHER, moves(walk_left
@@ -111,177 +68,12 @@ mapscripts RustboroCity_PokemonSchool_MapScripts {
 												 walk_right
 												 walk_in_place_fast_down))
 			waitmovement(0)
-			special(RemoveCameraObject)
-			message(format("Okay, class! I'd like to introduce you to our temporary student, {PLAYER}!{PAUSE 40}"))
-			waitmessage
-			applymovement(LOCALID_TEACHER, Common_Movement_WalkInPlaceDown)
-			waitmovement(0)
-			turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
-			msgbox(("Please have a seat.\nIt doesn't matter where."), MSGBOX_AUTOCLOSE)
-			warpsilent(MAP_RUSTBORO_CITY_POKEMON_SCHOOL, 8, 5)
-			setvar(VAR_POKEMON_ACADEMY_STATE, 3)
-			setvar(VAR_BLOCK_PROGRESSION_SOUTH, 1)
+			//TODO
+			warpsilent(MAP_RUSTBORO_CITY_POKEMON_SCHOOL, 8, 5) // Delete when ready
+			setflag(FLAG_HIDE_GYM_GUIDE_CENTRA_SE) // Move when ready
+			setvar(VAR_CENTRA_CITY_STATE, 1)
+			clearflag(FLAG_HIDE_CENTRA_CITY_HARLEY) // Move when ready
 			waitstate
-			release
-			end
-		}
-		VAR_POKEMON_ACADEMY_STATE, 4 { // First lesson
-			lock
-			special(HealPlayerParty)
-			special(SpawnCameraObject)
-			delay(30)
-			getobjectxy(OBJ_EVENT_ID_PLAYER, CURRENT_POSITION, VAR_TEMP_A, VAR_TEMP_B)
-			switch(var(VAR_TEMP_B)) {
-				case 3: 
-					applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_southwest
-					                                         walk_down * 3))
-				case 6: 
-					switch(var(VAR_TEMP_A)) {
-						case 2:
-							applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_southeast
-																	 walk_right * 5))
-						case 6:
-							applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_southeast
-																	 walk_right))
-						case 11:
-							applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_southwest
-																	 walk_left * 2))
-						case 13:
-							applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_southwest
-																	 walk_left * 4))
-						case 15:
-							applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_southwest
-																	 walk_left * 6))
-					}
-				case 8:
-					if(var(VAR_TEMP_A) == 2) {
-						applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northeast * 3
-																 walk_right * 3))
-					} else {
-						applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northwest * 3
-															     walk_left * 4))
-					}
-				case 10:
-					applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northwest * 3))
-				case 12:
-					switch(var(VAR_TEMP_A)) {
-						case 2:
-							applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northeast * 5
-																	 walk_right))
-						case 6:
-							applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northeast * 2
-																	 walk_up * 3))
-						case 11:
-							applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northwest * 3
-																	 walk_up * 2))
-						case 15:
-							applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northwest * 5
-																	 walk_left * 2))
-					}
-				case 14:
-					switch(var(VAR_TEMP_A)) {
-						case 2:
-							applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northeast * 6
-																	 walk_up))
-						case 4:
-							applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northeast * 4
-																	 walk_up * 3))
-						case 6:
-							applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northeast * 2
-																	 walk_up * 5))
-						case 11:
-							applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northwest * 3 
-																	 walk_up * 4))
-						case 13:
-							applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northwest * 5
-																	 walk_up * 2))
-						case 15:
-							applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_northwest * 7))
-					}
-			}
-			waitmovement(0)
-			applymovement(LOCALID_TEACHER, Common_Movement_WalkInPlaceDown)
-			waitmovement(0)
-			msgbox(format("Alright class! We're beginning to wrap up our time with Ms. Izzie.\p"
-			              "You all can ask her a total of three more questions."), MSGBOX_AUTOCLOSE)
-			closemessage
-			call(SelectRandomClassmate)
-			applymovement(VAR_TEMP_3, moves(jump_in_place_up * 2))
-			waitmovement(0)
-			msgbox(format("Well first off, congratulations on becoming an Alumni!\p"
-			               "What was it you said you do now, again?"))
-			applymovement(LOCALID_IZZIE, Common_Movement_WalkInPlaceDown)
-			waitmovement(0)
-			msgbox(format("First, thank you!\n"
-	         			  "Second, I am now a Gym Leader at the Gym in the southeastern part of this city!\p"
-						  "When you challenge a Gym, you'll have an opportunity to receive a Gym Badge from a Leader, like me!\p"
-						  "Each earned gym badge is a step up the ladder to the Pokémon Championship!"), MSGBOX_AUTOCLOSE)
-			call(SelectRandomClassmate)
-			applymovement(VAR_TEMP_3, moves(jump_in_place_up * 2))
-			waitmovement(0)
-			msgbox(format("Do you have a partner of your own?"))
-			applymovement(LOCALID_IZZIE, Common_Movement_WalkInPlaceDown)
-			waitmovement(0)
-			msgbox(format("Actually I do!\nHer name is Kedle!"))
-			closemessage			   
-			call(SelectRandomClassmate)
-			applymovement(VAR_TEMP_3, moves(jump_in_place_up * 2))
-			waitmovement(0)
-			msgbox(format("You're a Gym Keader, right?\n{PAUSE 40}"
-			              "How about a Pokémon battle to demonstrate the might of a Gym Leader?"))
-			applymovement(LOCALID_IZZIE, Common_Movement_WalkInPlaceDown)
-			waitmovement(0)
-			msgbox(format("I think that's a great idea!\nGet ready!"), MSGBOX_AUTOCLOSE)
-			playse(SE_PIN)
-			applymovement(VAR_TEMP_3, moves(emote_exclamation_mark
-											delay_16 * 2))
-			waitmovement(0)
-			msgbox(format("Oh no, not with me! I don't have any Pokémon of my own!"))
-			applymovement(LOCALID_IZZIE, Common_Movement_WalkInPlaceDown)
-			waitmovement(0)
-			msgbox(format("Oh, alright.\nThen who am I going to battle?"), MSGBOX_AUTOCLOSE)
-			delay(40)
-			applymovement(LOCALID_TEACHER, Common_Movement_WalkInPlaceDown)
-			waitmovement(0)
-			checkplayergender
-			if (!var(VAR_RESULT)) {
-				bufferstring(STR_VAR_1, "He")
-				bufferstring(STR_VAR_2, "him")
-			} else {
-				bufferstring(STR_VAR_1, "She")
-				bufferstring(STR_VAR_2, "her")
-			}
-			message(format("How about {PLAYER}?\n{STR_VAR_1} just became a Pokémon Trainer, so any battling expericnce will be beneficial to {STR_VAR_2}!"))
-			delay(16)
-			turnobject(LOCALID_IZZIE, DIR_NORTH)
-			if(var(VAR_TEMP_B) == 3) {
-				turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
-			}
-			waitmessage
-			waitbuttonpress
-			if(var(VAR_TEMP_B) != 3) {
-				applymovement(LOCALID_IZZIE, Common_Movement_WalkInPlaceDown)
-				waitmovement(0)
-			} else {
-				turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)	
-			}
-			msgbox(format("If {PLAYER} agrees to a Pokémon battle, then so do I!\p"
-						  "Are you up for it, {PLAYER}?"), MSGBOX_YESNO)
-			switch(var(VAR_RESULT)) {	
-				case TRUE:
-					msgbox(format("Alright, don't hold back!"))
-					trainerbattle_no_intro_no_whiteout(TRAINER_ROXANNE_2, "Wow, {PLAYER}! For someone who just\nbecame a Pokémon Trainer, you're\lpretty sharp!")
-					special(HealPlayerParty)
-				case FALSE:
-					msgbox(format("Ah, I see you're holding your energy for our official Gym battle!\p"
-								  "No worries! I look forward to the day I see you again, haha!"))
-			}
-			//TODO
-			//TODO
-			setvar(VAR_POKEMON_ACADEMY_STATE, 5)
-			setvar(VAR_BLOCK_PROGRESSION_SOUTH, 2) // Delete when ready
-			setflag(FLAG_UNUSED_0x02D) // Delete when ready
-			setflag(FLAG_HIDE_GYM_GUIDE_CENTRA_SE) // Delete when ready
 			release
 			end
 		}
@@ -297,28 +89,11 @@ script SelectRandomClassmate {
 	random(12)
 	addvar(VAR_RESULT, 3)
 	goto_if_gt(VAR_RESULT, 12, SelectRandomClassmate)
+	compare_var_to_var(VAR_RESULT, VAR_TEMP_3)
+	goto_if_eq(SelectRandomClassmate)
 	copyvar(VAR_TEMP_3, VAR_RESULT)
-	delay(30)
+	delay(40)
 	return
-}
-
-script DeskTrigger3F {
-	lock
-	getobjectxy(OBJ_EVENT_ID_PLAYER, CURRENT_POSITION, VAR_TEMP_0, VAR_TEMP_1)
-	if(var(VAR_TEMP_1) == 3) {
-		applymovement(LOCALID_TEACHER, moves(walk_in_place_fast_right))
-		waitmovement(0)
-		msgbox(format("When I said “sit anywhere”, I didn't mean it literally!\p"
-					  "Oh, well. I guess that one's on me.\nYou can sit here.\p"
-					  "You're only here for a couple of minutes, anyway."), MSGBOX_AUTOCLOSE)
-		applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_down))
-	} else {
-		applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_up))
-	}
-	waitmovement(0)
-	setvar(VAR_POKEMON_ACADEMY_STATE, 4)
-	release
-	end
 }
 
 script BlockPlayerFromLeaving {

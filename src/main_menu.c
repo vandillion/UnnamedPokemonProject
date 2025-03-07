@@ -1430,14 +1430,14 @@ static void Task_NewGameBirchSpeech_StartPlayerFadeIn(u8 taskId)
         }
         else
         {
-            u8 spriteId = gTasks[taskId].tMaySpriteId;
+            u8 spriteId = gTasks[taskId].tBrendanSpriteId;
 
             gSprites[spriteId].x = 180;
             gSprites[spriteId].y = 60;
             gSprites[spriteId].invisible = FALSE;
             gSprites[spriteId].oam.objMode = ST_OAM_OBJ_BLEND;
             gTasks[taskId].tPlayerSpriteId = spriteId;
-            gTasks[taskId].tPlayerGender = FEMALE;
+            gTasks[taskId].tPlayerGender = MALE;
             NewGameBirchSpeech_StartFadeInTarget1OutTarget2(taskId, 2);
             NewGameBirchSpeech_StartFadePlatformOut(taskId, 1);
             gTasks[taskId].func = Task_NewGameBirchSpeech_WaitForPlayerFadeIn;
@@ -2066,7 +2066,7 @@ static void NewGameBirchSpeech_ShowGenderMenu(void)
     DrawMainMenuWindowBorder(&sNewGameBirchSpeechTextWindows[1], 0xF3);
     FillWindowPixelBuffer(1, PIXEL_FILL(1));
     PrintMenuTable(1, ARRAY_COUNT(sMenuActions_Gender), sMenuActions_Gender);
-    InitMenuInUpperLeftCornerNormal(1, ARRAY_COUNT(sMenuActions_Gender), 1);
+    InitMenuInUpperLeftCornerNormal(1, ARRAY_COUNT(sMenuActions_Gender), 0);
     PutWindowTilemap(1);
     CopyWindowToVram(1, COPYWIN_FULL);
 }

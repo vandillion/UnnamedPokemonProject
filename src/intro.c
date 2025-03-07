@@ -26,7 +26,6 @@
 #include "expansion_intro.h"
 #include "constants/rgb.h"
 #include "constants/battle_anim.h"
-#include "config/new.h"
 #include "overworld.h"
 
 /*

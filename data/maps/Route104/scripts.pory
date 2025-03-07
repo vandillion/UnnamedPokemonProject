@@ -1,262 +1,114 @@
+const LOCALID_KANE_R4 = 3
+const LOCALID_KANES_BOAT_R4 = 2
+const LOCALID_KANE_IMPERIAL = 5
+const LOCALID_KANES_BOAT_IMPERIAL = 4
+
+mapscripts Route104_MapScripts {
+	
+}
+
+script KanesCottageSign {
+	msgbox("Ol' Kane's Cottage", MSGBOX_SIGN)
+	end
+}
+
+script Route4Kane {
+	lock
+	faceplayer
+	if(!flag(FLAG_VISITED_IMPERIAL_ISLAND)) {
+		msgbox("Kane: Ah, {PLAYER}!\nAre you ready to set sail?", MSGBOX_YESNO)
+	} else {
+		msgbox(format("Kane: Ah, {PLAYER}! Are you ready to head back to Imperial Island?"), MSGBOX_YESNO)
+	}
+	switch(var(VAR_RESULT)) {
+		case TRUE:
+			if(flag(FLAG_VISITED_IMPERIAL_ISLAND)) {
+				msgbox(format("Great!\nLet's get goin', hoho!"), MSGBOX_AUTOCLOSE)
+			} else {
+				msgbox(format("Great! Before anything, I must inform you that we'll first be stopping at Imperial Island.\p"
+							  "It's a relatively small island, but I still have business to attend to there.\p"
+							  "And, as a Pokémon Trainer, so do you, {PLAYER}!\p"
+							  "Alright, enough dawdling. Let's get goin', hoho!"), MSGBOX_AUTOCLOSE)
+			}
+			goto(StartSailFromR4toImperial)
+		case FALSE:
+			msgbox(format("No worries!\nI'll be right here when you're ready!"), MSGBOX_NPC)
+	}
+	end
+}
+
+script StartSailFromR4toImperial {
+	applymovement(LOCALID_KANE_R4, moves(walk_left * 2
+										 set_invisible))
+	getobjectfacingdirection(OBJ_EVENT_ID_PLAYER, VAR_TEMP_3)
+	if(var(VAR_TEMP_3) == DIR_SOUTH) {
+		applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down
+												 walk_left * 2
+												 set_invisible))
+	} else {
+		applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left * 3
+												 set_invisible))
+	}
+	waitmovement(LOCALID_KANE_R4)
+	playse(SE_EXIT)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	playse(SE_EXIT)
+	waitse
+	goto(SailFromR4toImperial)
+}
+
+movement R4ToImperialSailSequence {
+	walk_slow_left * 2
+	walk_left * 3
+	walk_down * 3
+	walk_fast_down * 42
+	walk_fast_left * 53
+	walk_left * 6
+	walk_slow_left * 2
+}
+
+script SailFromR4toImperial {
+	setflag(FLAG_DONT_TRANSITION_MUSIC)
+	playbgm(MUS_SAILING, FALSE)
+	applymovement(LOCALID_KANES_BOAT_R4, R4ToImperialSailSequence)
+	applymovement(OBJ_EVENT_ID_PLAYER, R4ToImperialSailSequence)
+	waitmovement(0)
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+	clearflag(FLAG_DONT_TRANSITION_MUSIC)
+	fadedefaultbgm
+	goto(ArriveInImperial)
+}
+
+script ArriveInImperial {
+	delay(50)
+	setobjectxyperm(LOCALID_KANE_IMPERIAL, 49, 30)
+	addobject(LOCALID_KANE_IMPERIAL, MAP_OLDALE_TOWN)
+	applymovement(LOCALID_KANE_IMPERIAL, moves(walk_down
+											   walk_left * 6
+											   walk_in_place_fast_right), MAP_OLDALE_TOWN)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(delay_16
+											 set_visible
+											 walk_down
+											 walk_left * 5), MAP_OLDALE_TOWN)
+	waitmovement(LOCALID_KANE_IMPERIAL)
+	hideobjectat(LOCALID_KANES_BOAT_R4, MAP_ROUTE104)
+	clearflag(FLAG_HIDE_IMPERIAL_ISLAND_KANES_BOAT)
+	addobject(LOCALID_KANES_BOAT_IMPERIAL)
+	msgbox(format("Kane: We've made it!\nWelcome to Imperial Island!\p"
+				  "Alright, while you go and do your thing, I'm going to have a chat with and old friend of mine in the house next to the Pokémon Center.\p"
+				  "Come speak to me when you're ready for our next destination, or if you need to return to the mainland."), MSGBOX_AUTOCLOSE)
+	applymovement(LOCALID_KANE_IMPERIAL, moves(walk_left * 5
+											   walk_up * 10), MAP_OLDALE_TOWN)
+	waitmovement(0)
+	removeobject(LOCALID_KANE_IMPERIAL, MAP_OLDALE_TOWN)
+	release
+	end
+}
+
 raw `
 @ NOTE: Route 104's sail to Dewford script references local IDs from Dewford's map.
 @  These are labeled in DewfordTown/scripts.inc
 .set LOCALID_RIVAL, 34
-
-Route104_MapScripts::
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route104_OnFrame
-	map_script MAP_SCRIPT_ON_TRANSITION, Route104_OnTransition
-	.byte 0
-
-Route104_OnFrame:
-	map_script_2 VAR_BOARD_BRINEY_BOAT_STATE, 1, Route104_EventScript_StartSailToDewford
-	.2byte 0
-
-Route104_EventScript_StartSailToDewford::
-	lockall
-	goto Route104_EventScript_SailToDewford
-	end
-
-Route104_OnTransition:
-	call Common_EventScript_SetupRivalGfxId
-	call Route104_EventScript_TrySetRivalPos
-	call Route104_EventScript_ShowOrHideWhiteHerbFlorist
-	end
-
-Route104_EventScript_ShowOrHideWhiteHerbFlorist::
-	goto_if_unset FLAG_MET_PRETTY_PETAL_SHOP_OWNER, Route104_EventScript_HideWhiteHerbFlorist
-	goto_if_unset FLAG_BADGE03_GET, Route104_EventScript_HideWhiteHerbFlorist
-	clearflag FLAG_HIDE_ROUTE_104_WHITE_HERB_FLORIST
-	return
-
-Route104_EventScript_HideWhiteHerbFlorist::
-	setflag FLAG_HIDE_ROUTE_104_WHITE_HERB_FLORIST
-	return
-
-Route104_EventScript_TrySetRivalPos::
-	goto_if_ge VAR_BOARD_BRINEY_BOAT_STATE, 1, Route104_EventScript_DontSetRivalPos
-	goto_if_set FLAG_MET_RIVAL_RUSTBORO, Route104_EventScript_DontSetRivalPos
-	goto_if_unset FLAG_REGISTER_RIVAL_POKENAV, Route104_EventScript_DontSetRivalPos
-	setobjectxyperm LOCALID_RIVAL, 17, 52
-	return
-
-Route104_EventScript_DontSetRivalPos::
-	return
-
-Route104_EventScript_Rival::
-	lockall
-	setvar VAR_0x8008, 1
-	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
-	waitmovement 0
-	goto Route104_EventScript_RivalEncounter
-
-Route104_EventScript_RivalTrigger::
-	lockall
-	setflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
-	setvar VAR_RUSTBORO_CITY_STATE, 8
-	setvar VAR_ROUTE104_STATE, 2
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
-	delay 10
-	addobject LOCALID_RIVAL
-	clearflag FLAG_HIDE_ROUTE_104_RIVAL
-	applymovement OBJ_EVENT_ID_PLAYER, Route104_Movement_PlayerBackUp
-	waitmovement 0
-	applymovement LOCALID_RIVAL, Route104_Movement_RivalExitBrineysCottage
-	waitmovement 0
-	delay 20
-	setvar VAR_0x8008, 0
-	call RustboroCity_EventScript_PlayRivalMusic
-	playse SE_PIN
-	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_RIVAL, Common_Movement_Delay48
-	waitmovement 0
-	goto Route104_EventScript_RivalEncounter
-
-@ Unused, shares script with Rustboro encounter instead
-Route104_EventScript_PlayRivalMusic::
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, Route104_EventScript_PlayMayMusic
-	goto_if_eq VAR_RESULT, FEMALE, Route104_EventScript_PlayBrendanMusic
-	return
-
-Route104_EventScript_PlayMayMusic::
-	playbgm MUS_ENCOUNTER_MAY, TRUE
-	return
-
-Route104_EventScript_PlayBrendanMusic::
-	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	return
-
-Route104_EventScript_RivalEncounter::
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, Route104_EventScript_MayEncounter
-	goto_if_eq VAR_RESULT, FEMALE, Route104_EventScript_BrendanEncounter
-	end
-
-Route104_EventScript_MayEncounter::
-	goto_if_set FLAG_DEFEATED_RIVAL_ROUTE_104, Route104_EventScript_MayDefeated
-	goto_if_set FLAG_REGISTER_RIVAL_POKENAV, Route104_EventScript_MayAskToBattle
-	setflag FLAG_REGISTER_RIVAL_POKENAV
-	msgbox Route104_Text_MayWeShouldRegister, MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	playfanfare MUS_REGISTER_MATCH_CALL
-	msgbox Route104_Text_RegisteredMay, MSGBOX_DEFAULT
-	waitfanfare
-	closemessage
-	delay 30
-	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
-	applymovement OBJ_EVENT_ID_PLAYER, Route104_Movement_PlayerFaceRival
-	applymovement LOCALID_RIVAL, Route104_Movement_RivalWalkSlowLeft
-	msgbox Route104_Text_MayHowsYourPokedex, MSGBOX_DEFAULT
-	closemessage
-	waitmovement 0
-	applymovement LOCALID_RIVAL, Route104_Movement_RivalApproachPlayer
-	waitmovement 0
-	copyobjectxytoperm LOCALID_RIVAL
-	msgbox Route104_Text_MayMinesDecentLetsBattle, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, Route104_EventScript_BattleMay
-	msgbox Route104_Text_MayHaventRaisedPokemon, MSGBOX_DEFAULT
-	call Route104_EventScript_RestoreMusic
-	releaseall
-	end
-
-Route104_Movement_RivalWalkSlowLeft:
-	walk_slow_left
-	step_end
-
-Route104_Movement_RivalApproachPlayer:
-	walk_down
-	face_right
-	step_end
-
-Route104_Movement_PlayerFaceRival:
-	delay_4
-	walk_in_place_faster_left
-	step_end
-
-Route104_EventScript_MayAskToBattle::
-	msgbox Route104_Text_MayLetsBattle, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, Route104_EventScript_BattleMay
-	msgbox Route104_Text_MayHaventRaisedPokemon, MSGBOX_DEFAULT
-	releaseall
-	end
-
-Route104_EventScript_BattleMay::
-	msgbox Route104_Text_MayIntro, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, Route104_EventScript_BattleMayTreecko
-	case 1, Route104_EventScript_BattleMayTorchic
-	case 2, Route104_EventScript_BattleMayMudkip
-	end
-
-Route104_EventScript_MayDefeated::
-	msgbox Route104_Text_MayPostBattle, MSGBOX_DEFAULT
-	call_if_eq VAR_0x8008, 0, Route104_EventScript_RestoreMusic
-	releaseall
-	end
-
-Route104_EventScript_RestoreMusic::
-	savebgm MUS_DUMMY
-	fadedefaultbgm
-	return
-
-Route104_EventScript_BattleMayTreecko::
-	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_TREECKO, Route104_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_MayDefeated
-	end
-
-Route104_EventScript_BattleMayTorchic::
-	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_TORCHIC, Route104_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_MayDefeated
-	end
-
-Route104_EventScript_BattleMayMudkip::
-	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_MUDKIP, Route104_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_MayDefeated
-	end
-
-Route104_EventScript_BrendanEncounter::
-	goto_if_set FLAG_DEFEATED_RIVAL_ROUTE_104, Route104_EventScript_BrendanDefeated
-	goto_if_set FLAG_REGISTER_RIVAL_POKENAV, Route104_EventScript_BrendanAskToBattle
-	setflag FLAG_REGISTER_RIVAL_POKENAV
-	msgbox Route104_Text_BrendanWeShouldRegister, MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	playfanfare MUS_REGISTER_MATCH_CALL
-	msgbox Route104_Text_RegisteredBrendan, MSGBOX_DEFAULT
-	waitfanfare
-	closemessage
-	delay 30
-	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
-	applymovement OBJ_EVENT_ID_PLAYER, Route104_Movement_PlayerFaceRival
-	applymovement LOCALID_RIVAL, Route104_Movement_RivalWalkSlowLeft
-	msgbox Route104_Text_BrendanHowsYourPokedex, MSGBOX_DEFAULT
-	closemessage
-	waitmovement 0
-	applymovement LOCALID_RIVAL, Route104_Movement_RivalApproachPlayer
-	waitmovement 0
-	copyobjectxytoperm LOCALID_RIVAL
-	msgbox Route104_Text_BrendanDoingGreatLetsBattle, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, Route104_EventScript_BattleBrendan
-	msgbox Route104_Text_BrendanNoConfidence, MSGBOX_DEFAULT
-	call Route104_EventScript_RestoreMusic
-	releaseall
-	end
-
-Route104_EventScript_BrendanAskToBattle::
-	msgbox Route104_Text_BrendanLetsBattle, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, Route104_EventScript_BattleBrendan
-	msgbox Route104_Text_BrendanNoConfidence, MSGBOX_DEFAULT
-	releaseall
-	end
-
-Route104_EventScript_BattleBrendan::
-	msgbox Route104_Text_BrendanIntro, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, Route104_EventScript_BattleBrendanTreecko
-	case 1, Route104_EventScript_BattleBrendanTorchic
-	case 2, Route104_EventScript_BattleBrendanMudkip
-	end
-
-Route104_EventScript_BrendanDefeated::
-	msgbox Route104_Text_BrendanPostBattle, MSGBOX_DEFAULT
-	call_if_eq VAR_0x8008, 0, Route104_EventScript_RestoreMusic
-	releaseall
-	end
-
-Route104_EventScript_BattleBrendanTreecko::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_TREECKO, Route104_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_BrendanDefeated
-	end
-
-Route104_EventScript_BattleBrendanTorchic::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_TORCHIC, Route104_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_BrendanDefeated
-	end
-
-Route104_EventScript_BattleBrendanMudkip::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_MUDKIP, Route104_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
-	goto Route104_EventScript_BrendanDefeated
-	end
-
-Route104_Movement_PlayerBackUp:
-	lock_facing_direction
-	walk_down
-	unlock_facing_direction
-	step_end
-
-Route104_Movement_RivalExitBrineysCottage:
-	walk_down
-	step_end
 
 Route104_EventScript_ExpertF::
 	lock
@@ -275,32 +127,12 @@ Route104_EventScript_ReceivedBerry::
 	release
 	end
 
-Route104_EventScript_WhiteHerbFlorist::
-	lock
-	faceplayer
-	goto_if_set FLAG_RECEIVED_WHITE_HERB, Route104_EventScript_ReceivedWhiteHerb
-	msgbox Route104_Text_DontNeedThisTakeIt, MSGBOX_DEFAULT
-	giveitem ITEM_WHITE_HERB
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	setflag FLAG_RECEIVED_WHITE_HERB
-	release
-	end
-
-Route104_EventScript_ReceivedWhiteHerb::
-	msgbox Route104_Text_FlowerShopSellingSaplings, MSGBOX_DEFAULT
-	release
-	end
-
 Route104_EventScript_Girl1::
 	msgbox Route104_Text_BrineyLivesInSeasideCottage, MSGBOX_NPC
 	end
 
 Route104_EventScript_BugCatcher::
 	msgbox Route104_Text_WhatsItLikeAtBottomOfSea, MSGBOX_SIGN
-	end
-
-Route104_EventScript_BrineysCottageSign::
-	msgbox Route104_Text_MrBrineysCottage, MSGBOX_SIGN
 	end
 
 Route104_EventScript_RouteSignPetalburg::
@@ -397,7 +229,7 @@ Route104_EventScript_ArriveInDewford::
 	setobjectxyperm LOCALID_BRINEY_DEWFORD, 12, 8
 	addobject LOCALID_BRINEY_DEWFORD
 	setobjectsubpriority LOCALID_BRINEY_DEWFORD, MAP_DEWFORD_TOWN, 0
-	clearflag FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
+	clearflag FLAG_HIDE_IMPERIAL_ISLAND_MR_BRINEY
 	applymovement LOCALID_BRINEY_DEWFORD, Route104_Movement_BrineyExitBoat
 	waitmovement 0
 	addobject LOCALID_BOAT_DEWFORD

@@ -611,6 +611,13 @@
 	.2byte \decoration
 	.endm
 
+	@ Applies the exclamation mark emote to the specified (localId) object and plays the SE_PIN sfx.
+	.macro exclam localId:req
+	playse SE_PIN
+	applymovement \localId, Common_Movement_ExclamationMark2
+	waitmovement 0
+	.endm
+
 	@ Applies the movement data at movements to the specified (localId) object. If no map is specified, then the current map is used.
 	.macro applymovement localId:req, movements:req, map
 		.ifb \map
@@ -2366,20 +2373,14 @@
 	.2byte \destY
 	.endm
 
-	.macro getobjecttemplatexy localId:req, posType = TEMPLATE_POSITION, destX:req, destY:req
-	callnative ScrCmd_getobjectxy, requests_effects=1
-	.2byte \localId
-	.2byte \posType
-	.2byte \destX
-	.2byte \destY
+	@ Stores the template position of the given object in destX and destY.
+	.macro getobjecttemplatexy localId:req, destX:req, destY:req
+	getobjectxy \localId, TEMPLATE_POSITION, \destX, \destY
 	.endm
 
-	.macro getobjectcurrentxy localId:req, posType = CURRENT_POSITION, destX:req, destY:req
-	callnative ScrCmd_getobjectxy, requests_effects=1
-	.2byte \localId
-	.2byte \posType
-	.2byte \destX
-	.2byte \destY
+	@ Stores the current position of the given object in destX and destY.
+	.macro getobjectcurrentxy localId:req, destX:req, destY:req
+	getobjectxy \localId, CURRENT_POSITION, \destX, \destY
 	.endm
 
 	@ Return TRUE to dest if there is an object at the position x and y.

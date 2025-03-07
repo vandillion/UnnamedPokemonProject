@@ -1,17 +1,32 @@
-raw `
-OldaleTown_House1_MapScripts::
-	.byte 0
+mapscripts OldaleTown_House1_MapScripts {}
 
-OldaleTown_House1_EventScript_Woman::
-	msgbox OldaleTown_House1_Text_LeftPokemonGoesOutFirst, MSGBOX_NPC
+script ImperialHouse1Expert {
+	lock
+	release
 	end
+}
 
-OldaleTown_House1_Text_LeftPokemonGoesOutFirst:
-	.string "When a POKéMON battle starts, the one\n"
-	.string "at the left of the list goes out first.\p"
-	.string "So, when you get more POKéMON in your\n"
-	.string "party, try switching around the order\l"
-	.string "of your POKéMON.\p"
-	.string "It could give you an advantage.$"
-
-`
+script ImperialHouse1Kane {
+	lock
+	faceplayer
+	if(var(VAR_KANE_STATE) == 2) {
+		msgbox(format(""), MSGBOX_NPC)
+	} else {
+		msgbox(format("Ah, {PLAYER}!\nHow's it goin', youngin'?\p"
+					  "Are you lookin' to sail back to Route 4?"), MSGBOX_YESNO)
+		if(var(VAR_RESULT)) {
+			msgbox(format("Alright, let's get goin', hoho!"), MSGBOX_AUTOCLOSE)
+			fadescreen(FADE_TO_BLACK)
+			playbgm(MUS_NONE, FALSE)
+			playse(SE_SHIP)
+			waitse
+			setflag(FLAG_HIDE_IMPERIAL_ISLAND_KANES_BOAT)
+			warpnofade(MAP_ROUTE104, 54, 9)
+			waitstate
+		} else {
+			msgbox(format("Looks like you still have unfinished business to attend to!\p"
+					      "Once you're ready, come back and talk to me, hoho!"), MSGBOX_NPC)
+		}
+	}
+	end
+}

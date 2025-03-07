@@ -28,7 +28,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_BUG_CATCHER",
       "x": 60,
-      "y": 15,
+      "y": 16,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
@@ -36,19 +36,6 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route104_EventScript_BugCatcher",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_LASS",
-      "x": 62,
-      "y": 14,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "7",
-      "script": "Route104_EventScript_Haley",
       "flag": "0"
     },
     {
@@ -62,20 +49,20 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "FLAG_HIDE_ROUTE_104_MR_BRINEY_BOAT"
+      "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
+      "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
       "x": 53,
-      "y": 8,
-      "elevation": 4,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "0x0",
-      "flag": "FLAG_HIDE_ROUTE_104_MR_BRINEY"
+      "script": "Route4Kane",
+      "flag": "FLAG_HIDE_ROUTE_4_KANE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
@@ -223,7 +210,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 65,
-      "y": 17,
+      "y": 15,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -232,19 +219,6 @@
       "trainer_sight_or_berry_tree_id": "ITEM_PP_UP",
       "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ROUTE_104_PP_UP"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
-      "x": 54,
-      "y": 8,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
-      "movement_range_x": 1,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route104_EventScript_WhiteHerbFlorist",
-      "flag": "FLAG_HIDE_ROUTE_104_WHITE_HERB_FLORIST"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TWIN",
@@ -300,34 +274,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 62,
-      "y": 17,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_POKE_BALL",
-      "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE_104_POKE_BALL"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
-      "x": 63,
-      "y": 14,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_RIGHT_UP_LEFT",
-      "movement_range_x": 5,
-      "movement_range_y": 6,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "2",
-      "script": "Route104_EventScript_Billy",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 64,
-      "y": 17,
+      "y": 15,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
@@ -340,7 +288,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 63,
-      "y": 17,
+      "y": 15,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
@@ -353,7 +301,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
       "x": 60,
-      "y": 14,
+      "y": 15,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
@@ -362,19 +310,6 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route104_EventScript_Darian",
       "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_VAR_0",
-      "x": 58,
-      "y": 5,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route104_EventScript_Rival",
-      "flag": "FLAG_HIDE_ROUTE_104_RIVAL"
     }
   ],
   "warp_events": [
@@ -387,15 +322,7 @@
     }
   ],
   "coord_events": [
-    {
-      "type": "trigger",
-      "x": 58,
-      "y": 6,
-      "elevation": 3,
-      "var": "VAR_ROUTE104_STATE",
-      "var_value": "1",
-      "script": "Route104_EventScript_RivalTrigger"
-    }
+
   ],
   "bg_events": [
     {
@@ -404,28 +331,20 @@
       "y": 6,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "Route104_EventScript_BrineysCottageSign"
+      "script": "KanesCottageSign"
     },
     {
       "type": "hidden_item",
-      "x": 64,
-      "y": 16,
-      "elevation": 3,
-      "item": "ITEM_SUPER_POTION",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_104_SUPER_POTION"
-    },
-    {
-      "type": "hidden_item",
-      "x": 65,
-      "y": 16,
+      "x": 60,
+      "y": 14,
       "elevation": 3,
       "item": "ITEM_POKE_BALL",
       "flag": "FLAG_HIDDEN_ITEM_ROUTE_104_POKE_BALL"
     },
     {
       "type": "hidden_item",
-      "x": 63,
-      "y": 16,
+      "x": 64,
+      "y": 6,
       "elevation": 3,
       "item": "ITEM_POTION",
       "flag": "FLAG_HIDDEN_ITEM_ROUTE_104_POTION"

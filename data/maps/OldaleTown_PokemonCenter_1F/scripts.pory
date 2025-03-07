@@ -1,10 +1,7 @@
 const LOCALID_NURSE = 1
 
 mapscripts OldaleTown_PokemonCenter_1F_MapScripts {
-    MAP_SCRIPT_ON_RESUME {
-        call(CableClub_OnResume)
-		end
-	}
+    MAP_SCRIPT_ON_RESUME: CableClub_OnResume
 }
 
 script ImperialIsland_PokemonCenter_1F_EventScript_Nurse {
@@ -51,5 +48,12 @@ script ImperialIsland_PokemonCenter_1F_EventScript_Boy {
 script ImperialIsland_PokemonCenter_1F_EventScript_Girl {
 	msgbox(format("Our Gym Leader moved here a couple months ago.\p"
 				  "Apparently, he used to be a professional racer."), MSGBOX_NPC)
+	end
+}
+
+script ImperialIsland_PokemonCenter_1F_EventScript_Woman {
+	msgbox(format("When a Pokémon battle starts, the one at the left of the list goes out first.\p"
+	              "So, when you get more Pokémon in your party, try switching around the order of your Pokémon.\p"
+	              "It could give you an advantage."), MSGBOX_NPC)
 	end
 }

@@ -628,7 +628,6 @@ EventScript_ResetMrBriney::
 	end
 
 EventScript_MoveMrBrineyToHouse::
-	setflag FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
 	setflag FLAG_HIDE_MR_BRINEY_BOAT_DEWFORD_TOWN
 	setflag FLAG_HIDE_ROUTE_109_MR_BRINEY
 	setflag FLAG_HIDE_ROUTE_109_MR_BRINEY_BOAT
@@ -644,7 +643,6 @@ EventScript_MoveMrBrineyToDewford::
 	setflag FLAG_HIDE_ROUTE_104_MR_BRINEY_BOAT
 	setflag FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY
 	setflag FLAG_HIDE_BRINEYS_HOUSE_PEEKO
-	clearflag FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
 	clearflag FLAG_HIDE_MR_BRINEY_BOAT_DEWFORD_TOWN
 	end
 
@@ -653,7 +651,6 @@ EventScript_MoveMrBrineyToRoute109::
 	setflag FLAG_HIDE_ROUTE_104_MR_BRINEY_BOAT
 	setflag FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY
 	setflag FLAG_HIDE_BRINEYS_HOUSE_PEEKO
-	setflag FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
 	setflag FLAG_HIDE_MR_BRINEY_BOAT_DEWFORD_TOWN
 	clearflag FLAG_HIDE_ROUTE_109_MR_BRINEY
 	clearflag FLAG_HIDE_ROUTE_109_MR_BRINEY_BOAT
@@ -671,7 +668,6 @@ Common_EventScript_UpdateBrineyLocation::
 	goto_if_unset FLAG_RECEIVED_POKENAV, Common_EventScript_NopReturn
 	goto_if_set FLAG_DEFEATED_MOSTILL_GYM, Common_EventScript_NopReturn
 	goto_if_unset FLAG_HIDE_ROUTE_104_MR_BRINEY_BOAT, EventScript_SetBrineyLocation_House
-	goto_if_unset FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN, EventScript_SetBrineyLocation_Dewford
 	goto_if_unset FLAG_HIDE_ROUTE_109_MR_BRINEY, EventScript_SetBrineyLocation_Route109
 	return
 
@@ -806,7 +802,6 @@ Movement_FerryDepart:
 	step_end
 
 EventScript_HideMrBriney::
-	setflag FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
 	setflag FLAG_HIDE_MR_BRINEY_BOAT_DEWFORD_TOWN
 	setflag FLAG_HIDE_ROUTE_109_MR_BRINEY
 	setflag FLAG_HIDE_ROUTE_109_MR_BRINEY_BOAT
@@ -1053,6 +1048,193 @@ EventScript_OWHealParty::
 	playse SE_USE_ITEM
 	special HealPlayerParty
 	end
+
+EventScript_BufferTime::
+	gettime
+	goto_if_unset FLAG_SYS_USE_24HR, EventScript_BufferTime_2
+	compare VAR_0x8000, 9
+	goto_if_le EventScript_BufferTime_14
+	buffernumberstring STR_VAR_1, VAR_0x8000
+EventScript_BufferTime_1:
+	compare VAR_0x8001, 10
+	goto_if_lt EventScript_BufferTime_6
+	buffernumberstring STR_VAR_2, VAR_0x8001
+EventScript_BufferTime_5:
+	goto_if_unset FLAG_SYS_USE_24HR, EventScript_BufferTime_17
+	return
+
+EventScript_BufferTime_2:
+	copyvar VAR_TEMP_0, VAR_0x8000
+	compare VAR_TEMP_0, 13
+	goto_if_ge EventScript_BufferTime_10
+	compare VAR_TEMP_0, 0
+	goto_if_eq EventScript_BufferTime_11
+EventScript_BufferTime_9:
+	buffernumberstring STR_VAR_1, VAR_TEMP_0
+	goto EventScript_BufferTime_1
+
+EventScript_BufferTime_6:
+	switch VAR_0x8001
+	case 0, EventScript_BufferTime_20
+	case 1, EventScript_BufferTime_21
+	case 2, EventScript_BufferTime_22
+	case 3, EventScript_BufferTime_23
+	case 4, EventScript_BufferTime_24
+	case 5, EventScript_BufferTime_25
+	case 6, EventScript_BufferTime_26
+	case 7, EventScript_BufferTime_27
+	case 8, EventScript_BufferTime_28
+	case 9, EventScript_BufferTime_29
+	goto EventScript_BufferTime_5
+
+EventScript_BufferTime_10:
+	subvar VAR_TEMP_0, 12
+	goto EventScript_BufferTime_9
+
+EventScript_BufferTime_11:
+	setvar VAR_TEMP_0, 12
+	goto EventScript_BufferTime_9
+
+EventScript_BufferTime_14:
+	switch VAR_0x8000
+	case 0, EventScript_BufferTime_31
+	case 1, EventScript_BufferTime_32
+	case 2, EventScript_BufferTime_33
+	case 3, EventScript_BufferTime_34
+	case 4, EventScript_BufferTime_35
+	case 5, EventScript_BufferTime_36
+	case 6, EventScript_BufferTime_37
+	case 7, EventScript_BufferTime_38
+	case 8, EventScript_BufferTime_39
+	case 9, EventScript_BufferTime_40
+	goto EventScript_BufferTime_1
+
+EventScript_BufferTime_17:
+	compare VAR_0x8000, 12
+	goto_if_ge EventScript_BufferTime_41
+	bufferstring STR_VAR_3, EventScript_BufferTime_Text_1
+	return
+
+EventScript_BufferTime_20:
+	bufferstring STR_VAR_2, TimeString_0
+	goto EventScript_BufferTime_5
+
+EventScript_BufferTime_21:
+	bufferstring STR_VAR_2, TimeString_1
+	goto EventScript_BufferTime_5
+
+EventScript_BufferTime_22:
+	bufferstring STR_VAR_2, TimeString_2
+	goto EventScript_BufferTime_5
+
+EventScript_BufferTime_23:
+	bufferstring STR_VAR_2, TimeString_3
+	goto EventScript_BufferTime_5
+
+EventScript_BufferTime_24:
+	bufferstring STR_VAR_2, TimeString_4
+	goto EventScript_BufferTime_5
+
+EventScript_BufferTime_25:
+	bufferstring STR_VAR_2, TimeString_5
+	goto EventScript_BufferTime_5
+
+EventScript_BufferTime_26:
+	bufferstring STR_VAR_2, TimeString_6
+	goto EventScript_BufferTime_5
+
+EventScript_BufferTime_27:
+	bufferstring STR_VAR_2, TimeString_7
+	goto EventScript_BufferTime_5
+
+EventScript_BufferTime_28:
+	bufferstring STR_VAR_2, TimeString_8
+	goto EventScript_BufferTime_5
+
+EventScript_BufferTime_29:
+	bufferstring STR_VAR_2, TimeString_9
+	goto EventScript_BufferTime_5
+
+EventScript_BufferTime_31:
+	bufferstring STR_VAR_1, TimeString_0
+	goto EventScript_BufferTime_1
+
+EventScript_BufferTime_32:
+	bufferstring STR_VAR_1, TimeString_1
+	goto EventScript_BufferTime_1
+
+EventScript_BufferTime_33:
+	bufferstring STR_VAR_1, TimeString_2
+	goto EventScript_BufferTime_1
+
+EventScript_BufferTime_34:
+	bufferstring STR_VAR_1, TimeString_3
+	goto EventScript_BufferTime_1
+
+EventScript_BufferTime_35:
+	bufferstring STR_VAR_1, TimeString_4
+	goto EventScript_BufferTime_1
+
+EventScript_BufferTime_36:
+	bufferstring STR_VAR_1, TimeString_5
+	goto EventScript_BufferTime_1
+
+EventScript_BufferTime_37:
+	bufferstring STR_VAR_1, TimeString_6
+	goto EventScript_BufferTime_1
+
+EventScript_BufferTime_38:
+	bufferstring STR_VAR_1, TimeString_7
+	goto EventScript_BufferTime_1
+
+EventScript_BufferTime_39:
+	bufferstring STR_VAR_1, TimeString_8
+	goto EventScript_BufferTime_1
+
+EventScript_BufferTime_40:
+	bufferstring STR_VAR_1, TimeString_9
+	goto EventScript_BufferTime_1
+
+EventScript_BufferTime_41:
+	bufferstring STR_VAR_3, EventScript_BufferTime_Text_0
+	return
+
+
+EventScript_BufferTime_Text_0:
+	.string "PM$"
+
+EventScript_BufferTime_Text_1:
+	.string "AM$"
+
+TimeString_0::
+	.string "00$"
+
+TimeString_1::
+	.string "01$"
+
+TimeString_2::
+	.string "02$"
+
+TimeString_3::
+	.string "03$"
+
+TimeString_4::
+	.string "04$"
+
+TimeString_5::
+	.string "05$"
+
+TimeString_6::
+	.string "06$"
+
+TimeString_7::
+	.string "07$"
+
+TimeString_8::
+	.string "08$"
+
+TimeString_9::
+	.string "09$"
 
 	.include "data/scripts/field_poison.inc"
 

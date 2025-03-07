@@ -25,13 +25,13 @@ script Route2Boy {
 // Trainers
 
 script Route2Jimmy {
-	trainerbattle_single(TRAINER_CALVIN_1, format("You plus me equals a battle! Let's go!"), "Dang it.")
+	trainerbattle_single(TRAINER_CALVIN_1, "You plus me equals a battle!\nLet's go!", "Dang it.")
 	msgbox(format("I love Pokemon battles, but I always lose…"), MSGBOX_NPC)
 	end
 }
 
 script Route2Liv {
-	trainerbattle_single(TRAINER_TIANA, format("I want to be just as strong as Leader Izzie!"), "My wings will spread another day.")
+	trainerbattle_single(TRAINER_TIANA, format("I want to be just as strong as Leader Aria!"), "My wings will spread another day.")
 	msgbox(format("Speaking of, I could go for some wings right now."), MSGBOX_NPC)
 	end
 }
@@ -42,30 +42,27 @@ script Route2Fred {
 	end
 }
 
-script Route2Shawn {
+script Route2Allen {
 	trainerbattle_single(TRAINER_ALLEN, format("Ha! My Pokemon stole a random kid's Pokemon's Oran Berry!"), "Aww.")
 	msgbox(format("There was a kid that walked past here a couple minutes ago.\pHe was pretty strong!\nHave you met him yet?"), MSGBOX_NPC)
 	end
 }
 
 script Route2Luca {
-	trainerbattle_single(TRAINER_JERRY_1, format("You can't possibly beat me in a battle!\pI passed all of my exams at the Pokemon Academy!"), "Cheater!")
+	trainerbattle_single(TRAINER_JERRY_1, format("You can't possibly beat me in a battle!\pI passed all of my exams at the Trainer's School!"), "Cheater!")
 	msgbox(format("Don't make me get my buddy Kyle! He's dealt with Herobrine before!"), MSGBOX_NPC)
 	end
 }
 
-// ========================================================================================
+// Triggers
 
 const LOCALID_MAN = 12
 
 script Route2CatchTutorial {
 	lock
-	applymovement(LOCALID_MAN, moves(face_down
-									 emote_exclamation_mark
-									 delay_16 * 2))
-	playse(SE_PIN)
-	waitmovement(0)
-	getobjectxy(OBJ_EVENT_ID_PLAYER, CURRENT_POSITION, VAR_TEMP_0, VAR_RESULT)
+	turnobject(LOCALID_MAN, DIR_SOUTH)
+	exclam(LOCALID_MAN)
+	getobjectcurrentxy(OBJ_EVENT_ID_PLAYER, VAR_TEMP_0, VAR_RESULT)
 	switch(var(VAR_TEMP_0))
 	{
 		case 19:
@@ -149,7 +146,7 @@ script Route2CatchTutorial {
 			applymovement(LOCALID_MAN, moves(walk_in_place_fast_down))
 			waitmovement(0)
 			if (!checkitem(ITEM_POKE_BALL)) {
-				msgbox("And that's how catching a wild Pokémon is done!\pWait! before you go, take these!\nI have plenty of spares.")
+				msgbox("And that's how catching a wild Pokémon\nis done!\pWait! Before I leave, take these!\nI have plenty of spares.")
 				giveitem(ITEM_POKE_BALL, 10)
 				call_if_eq(VAR_RESULT, FALSE, Common_EventScript_BagIsFull)
 				msgbox(format("These are tools used to catch wild Pokémon.\pRemember to weaken the wild Pokémon before throwing a Ball."), MSGBOX_AUTOCLOSE)
@@ -158,7 +155,7 @@ script Route2CatchTutorial {
 			}
 			applymovement(LOCALID_MAN, moves(walk_left * 4
 											 walk_down
-											 walk_left * 4))
+											 walk_left * 6))
 		case 0:
 			if (!checkitem(ITEM_POKE_BALL)) {
 				msgbox(format("Oh, okay.\nI still want you to have these, anyway!"))
@@ -170,7 +167,7 @@ script Route2CatchTutorial {
 			}
 			waitmovement(0)
 			applymovement(LOCALID_MAN, moves(walk_up * 3
-											 walk_left * 8))
+											 walk_left * 10))
 	}
 	waitmovement(0)
 	removeobject(LOCALID_MAN)

@@ -30,7 +30,7 @@ mapscripts WoodridgeTown_MapScripts {
 											   walk_up
 											   face_player))
 			waitmovement(0)
-			applymovement(LOCALID_ORION, Common_Movement_ExclamationMarkDelay)
+			applymovement(LOCALID_ORION, Common_Movement_ExclamationMark2)
 			playse(SE_PIN)
 			delay(8)
 			turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
@@ -40,7 +40,7 @@ mapscripts WoodridgeTown_MapScripts {
 			delay(32)
 			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
 			waitmovement(LOCALID_ORION)
-			playbgm(MUS_ENCOUNTER_BRENDAN, TRUE)
+			playbgm(MUS_ENCOUNTER_BRENDAN, FALSE)
 			msgbox(format("Who are you?\p"
 						  "… … …\n… … …\p"
 						  "{PLAYER}, huh?\nNice to meet you! My name's Orion.\p"
@@ -63,8 +63,8 @@ mapscripts WoodridgeTown_MapScripts {
 			closedoor(18, 7)
 			waitdooranim
 			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
-			setflag(FLAG_HIDE_ORION_WOODRIDGE_TOWN)
-			clearflag(FLAG_HIDE_ORION_ORIONS_ROOM)
+			setflag(FLAG_HIDE_WOODRIDGE_TOWN_ORION)
+			clearflag(FLAG_HIDE_ORIONS_ROOM_ORION)
 			setvar(VAR_NEWGAME_START, 3)
 			release
 			end
@@ -145,11 +145,13 @@ mapscripts WoodridgeTown_MapScripts {
 			delay(16)
 			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
 			waitmovement(LOCALID_WS)
-			setflag(FLAG_HIDE_ORION_WOODRIDGE_TOWN)
-			setflag(FLAG_HIDE_POKEMON_WOODRIDGE_TOWN)
-			clearflag(FLAG_HIDE_CUTSCENE_NPCS_ORIONS_HOUSE)
+			setflag(FLAG_HIDE_WOODRIDGE_TOWN_ORION)
+			setflag(FLAG_HIDE_WOODRIDGE_TOWN_POKEMON)
+			clearflag(FLAG_HIDE_ORIONS_HOUSE_CUTSCENE_NPCS)
+			fadescreen(FADE_TO_BLACK)
 			delay(30)
-			warpsilent(MAP_WOODRIDGE_TOWN_ORIONS_HOUSE1F, 6, 5)
+			msgbox("The next day…")
+			warpnofade(MAP_WOODRIDGE_TOWN_ORIONS_HOUSE1F, 6, 5)
 			waitstate
 			release
 			end
@@ -185,7 +187,7 @@ script WoodridgeTown3rdHouseScript {
 	end
 }
 
-// BGs
+// Triggers
 
 script WoodridgeFirstBattle {
 	lock
@@ -262,19 +264,19 @@ script WoodridgeFirstBattle {
 					       See you later!"), MSGBOX_AUTOCLOSE)
 
 	}
-	applymovement(LOCALID_ORION, moves(walk_left * 8))
+	applymovement(LOCALID_ORION, moves(walk_left * 10))
 	delay(36)
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
 	waitmovement(0)
 	removeobject(LOCALID_ORION)
 	fadedefaultbgm
-	setflag(FLAG_HIDE_ORION_WOODRIDGE_TOWN)
-	setflag(FLAG_HIDE_ORION_ORIONS_ROOM)
+	savebgm(MUS_LITTLEROOT)
+	setflag(FLAG_HIDE_WOODRIDGE_TOWN_ORION)
+	setflag(FLAG_HIDE_ORIONS_ROOM_ORION)
 	clearflag(FLAG_HIDE_MAP_NAME_POPUP)
-	clearflag(FLAG_UNUSED_0x068)
-	setvar(VAR_BLOCK_PROGRESSION_WEST, 2)
 	special(HealPlayerParty)
 	release
+	end
 }
 
 text OrionDefeat {

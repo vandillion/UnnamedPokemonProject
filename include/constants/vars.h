@@ -50,7 +50,7 @@
 #define VAR_RECYCLE_GOODS                                0x4020
 #define VAR_REPEL_STEP_COUNT                             0x4021
 #define VAR_ICE_STEP_COUNT                               0x4022
-#define VAR_STARTER_MON                                  0x4023 // 0=Treecko, 1=Torchic, 2=Mudkip
+#define VAR_STARTER_MON                                  0x4023 // 0=Junglide, 1=Parmi, 2=Radpole
 #define VAR_MIRAGE_RND_H                                 0x4024
 #define VAR_MIRAGE_RND_L                                 0x4025
 #define VAR_SECRET_BASE_MAP                              0x4026
@@ -161,7 +161,7 @@
 #define VAR_LITTLEROOT_RIVAL_STATE                       0x408D
 #define VAR_BOARD_BRINEY_BOAT_STATE                      0x408E
 #define VAR_DEVON_CORP_3F_STATE                          0x408F
-#define VAR_BRINEY_HOUSE_STATE                           0x4090
+#define VAR_KANE_STATE                                   0x4090
 #define VAR_SCHOOL_LOCKED                                0x4091
 #define VAR_LITTLEROOT_INTRO_STATE                       0x4092
 #define VAR_MAUVILLE_GYM_STATE                           0x4093
@@ -185,7 +185,7 @@
 #define VAR_TRICK_HOUSE_BEING_WATCHED_STATE              0x40A5
 #define VAR_TRICK_HOUSE_FOUND_TRICK_MASTER               0x40A6
 #define VAR_TRICK_HOUSE_ENTRANCE_STATE                   0x40A7
-#define VAR_POKEMON_ACADEMY_STATE                        0x40A8
+#define VAR_UNUSED_0x40A8                               0x40A8 // Unused Var
 #define VAR_CYCLING_CHALLENGE_STATE                      0x40A9
 #define VAR_SLATEPORT_MUSEUM_1F_STATE                    0x40AA
 #define VAR_TRICK_HOUSE_PUZZLE_1_STATE                   0x40AB

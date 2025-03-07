@@ -3,7 +3,7 @@
   "name": "Route131",
   "layout": "LAYOUT_ROUTE131",
   "music": "MUS_SLATEPORT",
-  "region_map_section": "MAPSEC_ROUTE_131",
+  "region_map_section": "MAPSEC_SLATEPORT_CITY",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
   "map_type": "MAP_TYPE_CITY",
@@ -29,14 +29,9 @@
       "direction": "up"
     },
     {
-      "map": "MAP_ROUTE129",
-      "offset": 0,
+      "map": "MAP_ROUTE103",
+      "offset": 42,
       "direction": "left"
-    },
-    {
-      "map": "MAP_ROUTE128",
-      "offset": -80,
-      "direction": "up"
     }
   ],
   "object_events": [
@@ -143,13 +138,110 @@
       "trainer_sight_or_berry_tree_id": "5",
       "script": "Route131_EventScript_Talia",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BOY_1",
+      "x": 12,
+      "y": 32,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_CENTRA_SW_CLASSMATE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
+      "x": 11,
+      "y": 54,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "Route3Miguel",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
+      "x": 7,
+      "y": 54,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "Route3Marcos",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
+      "x": 11,
+      "y": 63,
+      "elevation": 1,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 6,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "Route3Isabelle",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 4,
+      "y": 58,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_POISON_BARB",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_CENTRA_SW_POISON_BARB"
     }
   ],
   "warp_events": [
-
+    {
+      "x": 3,
+      "y": 54,
+      "elevation": 0,
+      "dest_map": "MAP_ALTERING_CAVE",
+      "dest_warp_id": "0"
+    }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 11,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_CENTRA_SW_STATE",
+      "var_value": "0",
+      "script": "CentraSWClassmateTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 12,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_CENTRA_SW_STATE",
+      "var_value": "0",
+      "script": "CentraSWClassmateTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_CENTRA_SW_STATE",
+      "var_value": "0",
+      "script": "CentraSWClassmateTrigger"
+    }
   ],
   "bg_events": [
 

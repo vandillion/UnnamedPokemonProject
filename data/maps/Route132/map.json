@@ -3,7 +3,7 @@
   "name": "Route132",
   "layout": "LAYOUT_ROUTE132",
   "music": "MUS_SLATEPORT",
-  "region_map_section": "MAPSEC_ROUTE_132",
+  "region_map_section": "MAPSEC_SLATEPORT_CITY",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
   "map_type": "MAP_TYPE_CITY",
@@ -27,21 +27,6 @@
       "map": "MAP_SLATEPORT_CITY",
       "offset": 60,
       "direction": "down"
-    },
-    {
-      "map": "MAP_ROUTE133",
-      "offset": 60,
-      "direction": "up"
-    },
-    {
-      "map": "MAP_ROUTE129",
-      "offset": -60,
-      "direction": "down"
-    },
-    {
-      "map": "MAP_ROUTE128",
-      "offset": 0,
-      "direction": "left"
     }
   ],
   "object_events": [

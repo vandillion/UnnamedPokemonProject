@@ -888,7 +888,7 @@ static void CB2_StartFirstBattle(void)
 
 static bool8 BattleHasNoWhiteout()
 {
-    if (gTrainerBattleMode == TRAINER_BATTLE_NO_WHITEOUT_CONTINUE_SCRIPT || gTrainerBattleMode == TRAINER_BATTLE_NO_INTRO_NO_WHITEOUT)
+    if (TRAINER_BATTLE_PARAM.mode == TRAINER_BATTLE_NO_WHITEOUT_CONTINUE_SCRIPT || TRAINER_BATTLE_PARAM.mode == TRAINER_BATTLE_NO_INTRO_NO_WHITEOUT)
         return TRUE;
     else
         return FALSE;

@@ -1,7 +1,7 @@
 const LOCALID_MOM = 1
 
 //                                         TODO:
-// Player receives costume box from boxes in their room						NOT STARTED
+// Player receives costume box and running shoes from boxes in their room	NOT STARTED
 // Vast Woods (Trail) becomes accessible to player after the Leon encounter	NOT STARTED
 
 mapscripts WoodridgeTown_PlayersHouse1F_MapScripts {
@@ -9,10 +9,9 @@ mapscripts WoodridgeTown_PlayersHouse1F_MapScripts {
 		VAR_NEWGAME_START, 0 { // Player walks down the stairs for the first time
 			lock
 			playse(SE_PIN)
-			applymovement(LOCALID_MOM, Common_Movement_ExclamationMarkDelay)
-			waitmovement(0)
+			exclam(LOCALID_MOM)
 			msgbox(format("Mom: Oh! {PLAYER}!\n You're awake!"))
-			playbgm(MUS_RG_FOLLOW_ME, TRUE)
+			playbgm(MUS_RG_FOLLOW_ME, FALSE)
 			closemessage
 			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left * 2
 											 		 walk_down * 2
@@ -42,75 +41,44 @@ mapscripts WoodridgeTown_PlayersHouse1F_MapScripts {
 			delay(60)
 			msgbox(format("…\n…\p"
 						  "The kid next door asked to take you on a walk into the woods?\p"
-						  "Well, sound like you two will have a great time.\p"
-						  "Just be careful, please {PLAYER}!\nRemember just moved here and we aren't familiar with the environment.\p"
-						  "Oh!\nTake these, too!"))
+						  "Well, sounds like you two will have a great time.\p"
+						  "Just be careful, please {PLAYER}!\nRemember, we just moved here and we aren't familiar with the environment.\p"
+						  "Oh!\nAnd take these, too!"))
 			playfanfare(MUS_OBTAIN_ITEM)
 			message(format("{PLAYER} received the Running Shoes!"))
 			waitfanfare
 			setflag(FLAG_SYS_B_DASH)
 			setflag(FLAG_RECEIVED_RUNNING_SHOES)
-			applymovement(LOCALID_MOM, Common_Movement_WalkInPlaceRight)
-			waitmovement(0)
 			msgbox(format("If anything happens to you let me know."), MSGBOX_AUTOCLOSE)
 			setvar(VAR_NEWGAME_START, 4)
 			setvar(VAR_BLOCK_PROGRESSION_SOUTH, 2)
 			release
 			end
 		}
-		VAR_NEWGAME_START, 7 { // When the player whites out to Orion
-			lock
-			applymovement(LOCALID_MOM, Common_Movement_WalkInPlaceRight)
-			waitmovement(0)
-			msgbox("Oh, {PLAYER}.\nYou should rest.", MSGBOX_AUTOCLOSE)
-			playse(SE_USE_ITEM)
-			delay(60)
-			if(!flag(FLAG_UNUSED_0x068)) {
-				msgbox(format("There. You look all refreshed!\p"
-					          "If you plan on having any more surprise Pokemon battles, at least come prepared.\p"
-							  "Here, take this!"))
-				giveitem(ITEM_POTION)
-				msgbox("Good luck, {PLAYER}!", MSGBOX_AUTOCLOSE)
-				setflag(FLAG_UNUSED_0x068)
-			} else {
-				msgbox("There. You look all refreshed!\nGood luck, {PLAYER}!", MSGBOX_AUTOCLOSE)
-			}
-			subvar(VAR_NEWGAME_START, 1)
-			playbgm(MUS_LITTLEROOT, TRUE)
-			release
-			end
-		}
     ]
-	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
-		VAR_NEWGAME_START, 7 { // When the player whites out to Orion
-			playbgm(MUS_NONE, TRUE)
-			turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
-			end
-		}
-	]
 }
 
 script WoodridgePlayersHouse1F_Mom {
-	lock
-	faceplayer
 	if(var(VAR_NEWGAME_START) < 4 ) {
 		msgbox(format("I saw that there were other people in this town.\p"
-					  "Don't let yourself look like a bad neightbor, {PLAYER}. Go introduce yourself!"), MSGBOX_AUTOCLOSE)
+					  "Don't let yourself look like a bad neightbor, {PLAYER}. Go introduce yourself!"), MSGBOX_NPC)
 	} elif(var(VAR_NEWGAME_START) < 6) {
-		msgbox(format("If anything happens to you let me know."), MSGBOX_AUTOCLOSE)
+		msgbox(format("If anything happens to you let me know."), MSGBOX_NPC)
 	} elif(var(VAR_TEMP_1) == TRUE) {
-		msgbox("You look all refreshed!\nTake care!", MSGBOX_AUTOCLOSE)
+		msgbox("You look all refreshed!\nTake care, {PLAYER}!", MSGBOX_NPC)
 	} else {
+		lock
+		faceplayer
 		msgbox("Oh! {PLAYER}!\nYou should take a rest.", MSGBOX_AUTOCLOSE)
 		playse(SE_USE_ITEM)
 		special(HealPlayerParty)
 		waitse
-		msgbox("There. You look all refreshed!\nTake care!", MSGBOX_AUTOCLOSE)
+		msgbox("There. You look all refreshed!\nTake care!", MSGBOX_NPC)
 		setvar(VAR_TEMP_1, TRUE)
 		incrementgamestat(GAME_STAT_RESTED_AT_HOME)
+		release
 	}
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	waitmovement(0)
-	release
 	end
 }

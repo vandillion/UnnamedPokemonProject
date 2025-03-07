@@ -603,7 +603,7 @@
 #define P_FAMILY_TERAPAGOS               P_GEN_9_POKEMON
 #define P_FAMILY_PECHARUNT               P_GEN_9_POKEMON
 
-#define P_FAMILY_SUGARGLIDE              P_GEN_N_POKEMON
+#define P_FAMILY_JUNGLIDE                P_GEN_N_POKEMON
 #define P_FAMILY_PARMI                   P_GEN_N_POKEMON
 #define P_FAMILY_RADPOLE                 P_GEN_N_POKEMON
 #define P_FAMILY_RACCAT                  P_GEN_N_POKEMON

@@ -51,7 +51,6 @@
 #include "constants/items.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
-#include "config/new.h"
 
 #define TAG_POCKET_SCROLL_ARROW 110
 #define TAG_BAG_SCROLL_ARROW    111

@@ -9361,10 +9361,6 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct DamageCalculationData *
     // move effect
     switch (moveEffect)
     {
-    case EFFECT_SUCKER_PUNCH:
-        if (IS_MOVE_STATUS(gBattleMons[battlerDef].moves[gBattleStruct->chosenMovePositions[battlerAtk]]))
-            modifier = uq4_12_multiply(modifier, UQ_4_12(0.5));
-        break;
     case EFFECT_FACADE:
         if (gBattleMons[battlerAtk].status1 & (STATUS1_BURN | STATUS1_PSN_ANY | STATUS1_PARALYSIS | STATUS1_FROSTBITE))
             modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));

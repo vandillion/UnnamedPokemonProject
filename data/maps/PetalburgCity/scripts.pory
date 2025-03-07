@@ -1,101 +1,80 @@
+const LOCALID_OLD_WOMAN = 1
+
 mapscripts PetalburgCity_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setflag(FLAG_VISITED_ANIMORA_CITY)
 		setrespawn(HEAL_LOCATION_PETALBURG_CITY)
+		if(!var(VAR_ANIMORA_CITY_STATE)) {
+			setobjectxyperm(LOCALID_OLD_WOMAN, 32, 8)
+			setobjectmovementtype(LOCALID_OLD_WOMAN, MOVEMENT_TYPE_LOOK_AROUND)
+		}
 		end
 	}
 }
 
-// =========================================================================================================================================
-raw `
-.set LOCALID_GIRL, 1
-`
+// Signs
 
-script AnimoraCityHoodedGirlBattle {
-	lock
-	switch (var(VAR_TEMP_0)) {
-        case 0:
-			setobjectxy(LOCALID_GIRL, 39, 6)
-        case 1:
-			setobjectxy(LOCALID_GIRL, 39, 7)
-    }
-	playbgm(MUS_NONE, TRUE)
-	msgbox("???: YOU!", MSGBOX_AUTOCLOSE)
-	playbgm(MUS_RG_ENCOUNTER_RIVAL, FALSE)
-	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
-	delay(16)
-	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
-	playse(SE_PIN)
-	delay(8)
-	applymovement(LOCALID_GIRL, moves(walk_fast_left * 7))
-	waitmovement(0)
-	delay(30)
-	msgbox("Battle me.\nNow!")
-	if (!flag(FLAG_LOST_FIRST_BATTLE)) {
-		switch (var(VAR_STARTER_MON)) {
-        	case 0:
-				trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_103_TREECKO, HoodedGirlDefeat)
-        	case 1:
-				trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_103_TORCHIC, HoodedGirlDefeat)
-        	case 2:
-				trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_103_MUDKIP, HoodedGirlDefeat)
-	    }
-    } else {
-		switch (var(VAR_STARTER_MON)) {
-        	case 0:
-				trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_110_TREECKO, HoodedGirlDefeat)
-        	case 1:
-				trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_110_TORCHIC, HoodedGirlDefeat)
-        	case 2:
-				trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_110_MUDKIP, HoodedGirlDefeat)
-    	}
+script AnimoraCitySign {
+	msgbox("Animora City", MSGBOX_SIGN)
+	end
+}
+
+// NPCs
+
+script AnimoraOldLady {
+	if(!var(VAR_ANIMORA_CITY_STATE))
+	{
+		if(!var(VAR_TEMP_0))
+		{
+			msgbox(format("You seem to be a new face.\nHave you stopped by Professor Watson's Lab yet?\p"
+			              "Fufufu… I may be old, but my bones can still sense a rookie Pokémon Trainer!\p"
+						  "Professor Watson's Lab is the western-most building.\l"
+						  "Why not pay him a visit, young one?"), MSGBOX_NPC)
+			setvar(VAR_TEMP_0, 1)
+		}
+		else
+		{
+			msgbox(format("Professor Watson's Lab is the western-most building.\l"
+						  "Why not pay him a visit, young one?"), MSGBOX_NPC)
+		}
 	}
-	msgbox("… … …\pWe'll meet again…")
+	else
+	{
+		msgbox(format("I grew old with Animora.\nSeveral years have passed, however, and there's still not much to say about this small city."), MSGBOX_NPC)
+	}
+	end
+}
+
+//Triggers
+
+script AnimoraCityBlockPlayerFromLeaving {
+	lock
+	turnobject(LOCALID_OLD_WOMAN, DIR_NORTH)
+	exclam(LOCALID_OLD_WOMAN)
+	message("Hello!\nYou there!")
+	delay(8)
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+	waitmessage
+	waitbuttonpress
 	closemessage
-	playse(SE_FLEE)
-	switch (var(VAR_TEMP_0)) {
-        case 0:
-			applymovement(LOCALID_GIRL, moves(walk_fast_down
-											  walk_fast_left * 2
-											  walk_diag_southwest
-											  walk_fast_left
-											  walk_diag_southwest
-											  walk_fast_left * 4))
-			delay(8)
-			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
-        case 1:
-			applymovement(LOCALID_GIRL, moves(walk_fast_up
-											  walk_fast_left * 2
-											  walk_diag_southwest
-											  walk_fast_left
-											  walk_diag_southwest
-											  walk_fast_left * 4))
-			delay(8)
-			turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
-    }
-	delay(16)
-	turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+	getobjectcurrentxy(OBJ_EVENT_ID_PLAYER, VAR_TEMP_0, VAR_TEMP_1)
+	switch(var(VAR_TEMP_1))
+	{
+		case 6:
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right
+													 walk_down))
+		case 7:
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right
+													 face_down))
+	}
 	waitmovement(0)
-	fadedefaultbgm
-	removeobject(LOCALID_GIRL)
-	special(HealPlayerParty)
-	setflag(FLAG_HIDE_GIRL_ANIMORA_CITY)
-	setvar(VAR_ANIMORA_CITY_STATE, 2)
-	delay(16)
+	msgbox(format("You seem to be a new face.\nHave you stopped by Professor Watson's Lab yet?\p"
+			      "Fufufu… I may be old, but my bones can still sense a rookie Pokémon Trainer!\p"
+				  "Professor Watson's Lab is the western-most building.\l"
+				  "Why not pay him a visit, young one?"), MSGBOX_AUTOCLOSE)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right))
+	waitmovement(0)
+	setvar(VAR_TEMP_0, 1)
 	release
 	end
-	}
-
-text HoodedGirlDefeat {
-	"… … …\n… … …"
-}
-
-script AnimoraCityHoodedGirlBattleTrigger0 {
-	setvar(VAR_TEMP_0, 0)
-	goto(AnimoraCityHoodedGirlBattle)
-}
-
-script AnimoraCityHoodedGirlBattleTrigger1 {
-	setvar(VAR_TEMP_0, 1)
-	goto(AnimoraCityHoodedGirlBattle)
 }

@@ -44,13 +44,8 @@
     "Route102",
     "SlateportCity",
     "Route134",
-    "Route133",
     "Route132",
     "Route131",
-    "Route129",
-    "Route128",
-    "Route127",
-    "Route126",
     "Route103",
     "Route104",
     "OldaleTown",
@@ -88,7 +83,12 @@
     "Route123",
     "Route124",
     "Route125",
+    "Route126",
+    "Route127",
+    "Route128",
+    "Route129",
     "Route130",
+    "Route133",
     "Underwater_Route124",
     "Underwater_Route126",
     "Underwater_Route127",
@@ -105,19 +105,20 @@
     "LittlerootTown_ProfessorBirchsLab"
   ],
   "gMapGroup_IndoorOldale": [
-    "OldaleTown_House1",
-    "OldaleTown_House2",
     "OldaleTown_PokemonCenter_1F",
     "OldaleTown_PokemonCenter_2F",
+    "DewfordTown_Gym",
+    "ImperialIsland_GymB1F",
+    "OldaleTown_House1",
+    "OldaleTown_House2",
+    "DewfordTown_House1",
+    "DewfordTown_House2",
     "OldaleTown_Mart"
   ],
   "gMapGroup_IndoorDewford": [
-    "DewfordTown_House1",
     "DewfordTown_PokemonCenter_1F",
     "DewfordTown_PokemonCenter_2F",
-    "DewfordTown_Gym",
-    "DewfordTown_Hall",
-    "DewfordTown_House2"
+    "DewfordTown_Hall"
   ],
   "gMapGroup_IndoorLavaridge": [
     "LavaridgeTown_HerbShop",
@@ -167,6 +168,7 @@
     "PetalburgCity_Mart"
   ],
   "gMapGroup_IndoorSlateport": [
+    "RustboroCity_PokemonSchool",
     "CentraSE_Gym",
     "Route104_PrettyPetalFlowerShop",
     "SlateportCity_SternsShipyard_1F",
@@ -199,7 +201,6 @@
     "RustboroCity_DevonCorp_2F",
     "RustboroCity_DevonCorp_3F",
     "RustboroCity_Gym",
-    "RustboroCity_PokemonSchool",
     "RustboroCity_PokemonCenter_1F",
     "RustboroCity_PokemonCenter_2F",
     "RustboroCity_Mart",

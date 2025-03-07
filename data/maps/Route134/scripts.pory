@@ -20,7 +20,7 @@ script CentraE_MallGuard {
 
 script CentraE_MallTrigger {
 	lock
-	getobjectxy(OBJ_EVENT_ID_PLAYER, CURRENT_POSITION, VAR_TEMP_9, VAR_TEMP_1)
+	getobjectcurrentxy(OBJ_EVENT_ID_PLAYER, VAR_TEMP_9, VAR_TEMP_1)
 	switch(var(VAR_TEMP_1)) {
 		case 16:
 		case 17:
@@ -44,10 +44,10 @@ script CentraE_MallTrigger {
 			turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
 	}
 	msgbox("I'm sorry.\nThe Centra Mall is currently closed.", MSGBOX_AUTOCLOSE)
-	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left))
 	applymovement(LOCALID_MALLGUARD1, Common_Movement_FaceOriginalDirection)
 	applymovement(LOCALID_MALLGUARD2, Common_Movement_FaceOriginalDirection)
-	waitmovement(OBJ_EVENT_ID_PLAYER)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left))
+	waitmovement(0)
 	release
 	end
 }

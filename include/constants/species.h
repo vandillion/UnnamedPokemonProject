@@ -1638,15 +1638,30 @@
 #define SPECIES_MIMIKYU_BUSTED_TOTEM                    1523
 #define SPECIES_MIMIKYU_TOTEM_BUSTED                    SPECIES_MIMIKYU_BUSTED_TOTEM
 
-#define SPECIES_SUGARGLIDE                              1524
+#define SPECIES_JUNGLIDE                                1524
+
+
 #define SPECIES_PARMI                                   1527
+
+
 #define SPECIES_RADPOLE                                 1530
+
+
 #define SPECIES_RACCAT                                  1533
+
 #define SPECIES_LUEL                                    1535
+
+
 #define SPECIES_BANDITOOK                               1538
+
 #define SPECIES_BABARK                                  1543
-#define SPECIES_BELLANCO                                1544
-#define SPECIES_SKULLIAN                                1578
+
+
+#define SPECIES_BELLANCO                                1577
+
+#define SPECIES_SKULLIAN                                1611
+
+
 #define SPECIES_EGG                                     (SPECIES_SKULLIAN + 1)
 
 #define NUM_SPECIES SPECIES_EGG

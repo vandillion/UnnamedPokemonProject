@@ -489,6 +489,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
       "flag": "FLAG_HIDE_SLATEPORT_CITY_SCOTT"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LASS",
+      "x": 34,
+      "y": 38,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_CENTRA_CITY_HARLEY"
     }
   ],
   "warp_events": [
@@ -507,18 +520,18 @@
       "dest_warp_id": "0"
     },
     {
-      "x": 26,
-      "y": 38,
+      "x": 34,
+      "y": 44,
       "elevation": 0,
-      "dest_map": "MAP_SLATEPORT_CITY_STERNS_SHIPYARD_1F",
+      "dest_map": "MAP_RUSTBORO_CITY_POKEMON_SCHOOL",
       "dest_warp_id": "0"
     },
     {
-      "x": 10,
-      "y": 12,
+      "x": 35,
+      "y": 44,
       "elevation": 0,
-      "dest_map": "MAP_SLATEPORT_CITY_BATTLE_TENT_LOBBY",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_RUSTBORO_CITY_POKEMON_SCHOOL",
+      "dest_warp_id": "1"
     },
     {
       "x": 4,
@@ -685,14 +698,6 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "SlateportCity_EventScript_BerryCrushRankingsSign"
-    },
-    {
-      "type": "sign",
-      "x": 32,
-      "y": 33,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "CentraSE_GrubPubSign"
     }
   ]
 }

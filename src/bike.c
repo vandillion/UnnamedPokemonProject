@@ -9,6 +9,7 @@
 #include "sound.h"
 #include "constants/map_types.h"
 #include "constants/songs.h"
+#include "constants/layouts.h"
 
 // this file's functions
 static void MovePlayerOnMachBike(u8, u16, u16);
@@ -1076,7 +1077,7 @@ void Bike_HandleBumpySlopeJump(void)
 
 bool32 IsRunningDisallowed(u8 metatile)
 {
-    if ((OW_RUNNING_INDOORS == GEN_3 && !gMapHeader.allowRunning) || IsRunningDisallowedByMetatile(metatile) == TRUE)
+    if ((OW_RUNNING_INDOORS == GEN_3 && !gMapHeader.allowRunning) || IsRunningDisallowedByMetatile(metatile) == TRUE || gMapHeader.mapLayoutId == LAYOUT_IMPERIAL_ISLAND_GYM_B1F)
         return TRUE;
 
     return FALSE;

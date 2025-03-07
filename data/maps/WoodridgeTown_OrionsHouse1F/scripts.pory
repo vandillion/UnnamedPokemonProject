@@ -1,11 +1,11 @@
 const LOCALID_ORIONS_MOM = 1
-// const LOCALID_ORIONS_STEPDAD = 2
-const LOCALID_ORION = 3
-const LOCALID_PLAYERS_MOM = 4
-const LOCALID_GS = 5
-const LOCALID_FS = 6
-const LOCALID_WS = 7
-
+const LOCALID_ORION = 2
+const LOCALID_PLAYERS_MOM = 3
+const LOCALID_GS = 4
+const LOCALID_FS = 5
+const LOCALID_WS = 6
+ 
+// TODO: Move player's and orion's battle to frame table
 mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         if(var(VAR_NEWGAME_START) == 1) {
@@ -36,39 +36,35 @@ mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
         }
     ]
 	MAP_SCRIPT_ON_FRAME_TABLE [
-		VAR_NEWGAME_START, 1 {
-        // Player introduces themselves to Orion's mom
+		VAR_NEWGAME_START, 1 { // Player introduces themselves to Orion's mom
             lock
-            playse(SE_PIN)
-            applymovement(LOCALID_ORIONS_MOM, Common_Movement_ExclamationMarkDelay)
-	        waitmovement(0)
+            exclam(LOCALID_ORIONS_MOM)
             applymovement(LOCALID_ORIONS_MOM, moves(walk_left * 2
                                                     walk_down * 2))
             waitmovement(0)
             msgbox(format("We weren't expecting guests today.\nWho are you?"))
             closemessage
             delay(45)
-            msgbox(format("… … …\pSo you're our new neighbor?\nNice to meet you, {PLAYER}.\pIf you're looking for someone to talk to, we have a son who's about your age.\p"
-                          "I'm sure he'd like to meet you, but he's not here right now.\pHe's on one of his nature strolls in the woods south of here."), MSGBOX_AUTOCLOSE)
+            msgbox(format("… … …\n… … …\pSo you're our new neighbor?\nNice to meet you, {PLAYER}.\p"
+                          "If you're looking for someone to talk to, I have a son who's about your age.\p"
+                          "I'm sure he'd like to meet you, but he's not here right now.\p"
+                          "He's on one of his nature strolls in the woods south of here."), MSGBOX_AUTOCLOSE)
             applymovement(LOCALID_ORIONS_MOM, moves(walk_up * 2
                                                     walk_right * 6
                                                     walk_down
                                                     walk_in_place_left))
             waitmovement(0)
-            clearflag(FLAG_HIDE_ORION_WOODRIDGE_TOWN)
+            setflag(FLAG_HIDE_MAP_NAME_POPUP)
+            clearflag(FLAG_HIDE_WOODRIDGE_TOWN_ORION)
             setvar(VAR_NEWGAME_START, 2)
             release
             end
         }
-		VAR_NEWGAME_START, 5 {
-        // Cutscene in Orion's house after the Vast Woods Trail battle, dubbed "Town Meeting"
+		VAR_NEWGAME_START, 5 { // Cutscene in Orion's house after the Vast Woods Trail battle, dubbed "Town Meeting"
             lock
+            initclock(9, 0)
 	        special(SpawnCameraObject)
 	        setobjectxy(OBJ_EVENT_ID_PLAYER, 2, 8)
-            message("The next morning…")
-            waitmessage
-            delay(45)
-            closemessage
             delay(45)
             playse(SE_DOOR)
             turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
@@ -78,28 +74,23 @@ mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
             waitse
             applymovement(LOCALID_PLAYERS_MOM, moves(walk_in_place_left
                                                      emote_exclamation_mark
-                                                     delay_16 * 3))
+                                                     delay_16 * 2))
             applymovement(LOCALID_ORION, moves(walk_in_place_left
-                                               emote_exclamation_mark
-                                               delay_16 * 3))
+                                               emote_exclamation_mark))
             applymovement(LOCALID_ORIONS_MOM, moves(walk_in_place_left
-                                                    emote_exclamation_mark
-                                                    delay_16 * 3))
+                                                    emote_exclamation_mark))
             delay(16)
             playse(SE_PIN)
-            waitmovement(0)
+            waitmovement(LOCALID_PLAYERS_MOM)
             msgbox("Mom: {PLAYER}!\nAbout time you woke up!", MSGBOX_AUTOCLOSE)
             applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 3
                                                      walk_right * 4
                                                      walk_in_place_down))
             delay(96)
-            applymovement(LOCALID_PLAYERS_MOM, Common_Movement_WalkInPlaceRight)
-            turnobject(LOCALID_ORION, DIR_SOUTH)
+            turnobject(LOCALID_PLAYERS_MOM, DIR_NORTH)
+            applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
             waitmovement(OBJ_EVENT_ID_PLAYER)
             special(RemoveCameraObject)
-            applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
-            applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
-            waitmovement(0)
             msgbox(format("Sorry, {PLAYER}! You were still asleep by daybreak, so I told your mom to meet at my house myself."))
             applymovement(LOCALID_PLAYERS_MOM, Common_Movement_WalkInPlaceUp)
             waitmovement(0)
@@ -122,10 +113,10 @@ mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
                         "You can take Route 1, which is directly west of here, to get to Animora City."))
             applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            msgbox("Will do, Mrs. ???????")
+            msgbox("Will do, ma'am!")
             applymovement(LOCALID_PLAYERS_MOM, Common_Movement_WalkInPlaceRight)
             waitmovement(0)
-            msgbox(format("Mom: Alright, I'm gonna get going.\pThank you for having me over, Mrs. Fields."))
+            msgbox(format("Mom: Alright, I'm gonna get going.\pThank you for having me over, Ms. Fields."))
             applymovement(LOCALID_ORIONS_MOM, Common_Movement_WalkInPlaceLeft)
             waitmovement(0)
             msgbox("Anytime!", MSGBOX_AUTOCLOSE)
@@ -137,7 +128,7 @@ mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
             delay(96)
             playse(SE_EXIT)
             waitse
-            fadedefaultbgm
+            playbgm(MUS_LITTLEROOT, TRUE)
             applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
             applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
             waitmovement(0)
@@ -154,8 +145,7 @@ mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
                         "I looked all around the Town, but I couldn't find anything…"))
             closemessage
             delay(35)
-            bufferleadmonspeciesname(STR_VAR_1)
-            msgbox(format("Oh yeah! {PLAYER}, I want you to have this.\pYou can give it to {STR_VAR_1}!"))
+            msgbox(format("Oh yeah! {PLAYER}, I want you to have this.\pYou can give it to your Pokémon!"))
             giveitem(ITEM_ORAN_BERRY)
             call_if_eq(VAR_RESULT, FALSE, Common_EventScript_BagIsFull)
             applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
@@ -182,18 +172,18 @@ mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
             waitmovement(0)
             playse(SE_EXIT)
             waitse
-            clearflag(FLAG_DONT_TRANSITION_MUSIC)
             removeobject(LOCALID_ORION)
             removeobject(LOCALID_PLAYERS_MOM)
             removeobject(LOCALID_GS)
             removeobject(LOCALID_FS)
             removeobject(LOCALID_WS)
-            setflag(FLAG_HIDE_CUTSCENE_NPCS_ORIONS_HOUSE)
+            setflag(FLAG_SYS_POKEMON_GET)
+            setflag(FLAG_HIDE_ORIONS_HOUSE_CUTSCENE_NPCS)
             setvar(VAR_NEWGAME_START, 6)
             setvar(VAR_BLOCK_PROGRESSION_SOUTH, 1)
-            clearflag(FLAG_HIDE_ORION_WOODRIDGE_TOWN)
-            clearflag(FLAG_HIDE_ORION_ORIONS_ROOM)
             setvar(VAR_BLOCK_PROGRESSION_WEST, 0)
+            clearflag(FLAG_HIDE_WOODRIDGE_TOWN_ORION)
+            clearflag(FLAG_HIDE_ORIONS_ROOM_ORION)
             release
             end 
         }
@@ -204,12 +194,12 @@ mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
 
 script WoodridgeOrionHouse1F_OrionsMom {
     if(var(VAR_NEWGAME_START) < 3) {
-        msgbox(format("If you're looking for someone to talk to, we have a son who's about your age.\p"
+        msgbox(format("If you're looking for someone to talk to, I have a son who's about your age.\p"
                       "I'm sure he'd like to meet you, but he's not here right now.\pHe's on one of his nature strolls in the woods south of here."), MSGBOX_NPC)
     } elif(var(VAR_NEWGAME_START) < 6) {
         msgbox("Hello, {PLAYER}.", MSGBOX_NPC)
     } else {
-        msgbox(format("Orion was always the adventurous sort.\p"
+        msgbox(format("Orion was always the adventurous sort."
                       "And he seems to be rather interested in you, {PLAYER}.\p"
                       "Please watch over him for me."), MSGBOX_NPC)
     }

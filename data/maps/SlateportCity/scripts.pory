@@ -1,10 +1,17 @@
+const LOCALID_HARLEY = 36
 mapscripts SlateportCity_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setflag(FLAG_VISITED_CENTRA_CITY)
 		setrespawn(HEAL_LOCATION_SLATEPORT_CITY)
 		end
 	}
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		//TODO: After player either defeats Aria or finishes in the Pokemon School, 
+		//      harley challeneges player to a battle and flees to SW, orion shows up and both player and Orion chase down Harley
+	]
 }
+
+// NPCs
 
 script CentraSEGymGuideOutside {
 	msgbox(format("Hey, Trainer! Lookin' to challenge the Gym Leader?\p"
@@ -13,15 +20,12 @@ script CentraSEGymGuideOutside {
 
 // Signs
 
-script CentraSE_GrubPubSign {
-	msgbox("The Grub Pub", MSGBOX_SIGN)
-	end
-}
-
 script CentraSE_PrettyPetalFlowerShopSign {
 	msgbox("Pretty Petal\nFlower Shop", MSGBOX_SIGN)
 	end
 }
+
+// Triggers
 
 raw `
 .set LOCALID_FAT_MAN, 1

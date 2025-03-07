@@ -624,21 +624,19 @@ Level: 31
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAISY ===
-Name: DAISY
+Name: Daisy
 Class: Aroma Lady
 Pic: Aroma Lady
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Shroomish
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Oddish
+Level: 12
 
-Roselia
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Petilil
+Level: 13
 
 === TRAINER_ROSE_1 ===
 Name: ROSE
@@ -3163,17 +3161,16 @@ Level: 39
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 === TRAINER_TAKAO ===
-Name: TAKAO
-Class: Black Belt
-Pic: Black Belt
+Name: Derek
+Class: Gym Trainer
+Pic: Fisherman
 Gender: Male
-Music: Intense
+Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Machop
+Krabby
 Level: 13
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 
 === TRAINER_HITOSHI ===
 Name: HITOSHI
@@ -4789,7 +4786,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Crunch
 
 === TRAINER_ROXANNE_1 ===
-Name: Izzie
+Name: Aria
 Class: Leader
 Pic: Leader Roxanne
 Gender: Female
@@ -4797,53 +4794,36 @@ Music: Female
 Double Battle: No
 AI: Gym Leader
 
-Kedle (Pidove) (F) @ Eviolite
-Level: 12
+Luel (F)
+Level: 11
 
 Wattrel (F)
-Level: 13
+Level: 12
 Ability: Wind Power
 
 Bellanco (F)
-Level: 15
-Modest Nature
+Level: 14
 -Echoed Voice
 -Gust
 -Metal Sound
 
 === TRAINER_BRAWLY_1 ===
-Name: BRAWLY
+Name: Redbeard
 Class: Leader
 Pic: Leader Brawly
 Gender: Male
 Music: Male
-Items: Super Potion / Super Potion
 Double Battle: No
-AI: Basic Trainer
+AI: Gym Leader
 
-Machop
+Skullian (M)
 Level: 16
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Karate Chop
-- Low Kick
-- Seismic Toss
-- Bulk Up
 
-Meditite
+Dhelmise (M)
 Level: 16
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Focus Punch
-- Light Screen
-- Reflect
-- Bulk Up
 
-Makuhita @ Sitrus Berry
-Level: 19
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Arm Thrust
-- Vital Throw
-- Reversal
-- Bulk Up
+Finizen (M)
+Level: 18
 
 === TRAINER_WATTSON_1 ===
 Name: Wattson
@@ -5125,11 +5105,11 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Poochyena
+Skwovet
 Level: 5
 
-Babark
-Level: 7
+Raccat
+Level: 6
 
 === TRAINER_TED ===
 Name: TED
@@ -5498,17 +5478,16 @@ Level: 16
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
 === TRAINER_MIGUEL_1 ===
-Name: MIGUEL
-Class: Pokefan
-Pic: Pokefan M
+Name: Dylan
+Class: Youngster
+Pic: Youngster
 Gender: Male
-Music: Twins
+Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Skitty @ Oran Berry
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Grimer-Alola
+Level: 12
 
 === TRAINER_COLTON ===
 Name: COLTON
@@ -5947,25 +5926,26 @@ Babark
 Level: 5
 
 === TRAINER_BILLY ===
-Name: BILLY
+Name: Randy
 Class: Youngster
 Pic: Youngster
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Zigzagoon
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Rattata
+Level: 10
 
-Seedot
-Level: 7
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Rattata
+Level: 11
+
+Rattata-Alola
+Level: 11
 
 === TRAINER_JOSH ===
 Name: Darren
-Class: Cooltrainer 2
+Class: Gym Trainer
 Pic: Youngster
 Gender: Male
 Music: Male
@@ -5973,11 +5953,11 @@ Double Battle: No
 AI: Basic Trainer
 
 Starly
-Level: 10
+Level: 9
 
 === TRAINER_TOMMY ===
 Name: Emily
-Class: Cooltrainer 2
+Class: Gym Trainer
 Pic: Picnicker
 Gender: Female
 Music: Girl
@@ -5985,10 +5965,10 @@ Double Battle: No
 AI: Basic Trainer
 
 Luel
-Level: 10
+Level: 9
 
 Luel
-Level: 11
+Level: 10
 
 === TRAINER_JOEY ===
 Name: JOEY
@@ -6196,7 +6176,7 @@ Level: 16
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ALLEN ===
-Name: Shawn
+Name: Allen
 Class: Youngster
 Pic: Youngster
 Gender: Male
@@ -6287,25 +6267,16 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Toxic
 
 === TRAINER_ANDREW ===
-Name: ANDREW
+Name: Andrew
 Class: Fisherman
 Pic: Fisherman
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Magikarp
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Tentacool
-Level: 10
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Magikarp
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Arrokuda
+Level: 13
 
 === TRAINER_IVAN ===
 Name: IVAN
@@ -7819,17 +7790,24 @@ IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 - Sludge
 
 === TRAINER_JOCELYN ===
-Name: JOCELYN
-Class: Battle Girl
-Pic: Battle Girl
-Gender: Female
-Music: Intense
+Name: Tucker
+Class: Gym Trainer
+Pic: Ninja Boy
+Gender: Male
+Music: Suspicious
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Meditite
+Inkay
+Level: 12
+-Pluck
+-Tackle
+
+
+Inkay
 Level: 13
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+-Payback
+-Wrap
 
 === TRAINER_LAURA ===
 Name: LAURA
@@ -8751,21 +8729,16 @@ Level: 40
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 === TRAINER_AMY_AND_LIV_1 ===
-Name: AMY & LIV
-Class: Twins
-Pic: Twins
-Gender: Male
-Music: Twins
-Double Battle: Yes
-AI: Check Bad Move
+Name: Jade
+Class: School Kid
+Pic: School Kid F
+Gender: Female
+Music: Girl
+Double Battle: No
+AI: Basic Trainer
 
-Plusle
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Minun
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Togepi
+Level: 10
 
 === TRAINER_AMY_AND_LIV_2 ===
 Name: AMY & LIV
@@ -8928,7 +8901,7 @@ Name: HUEY
 Class: Sailor
 Pic: Sailor
 Gender: Male
-Music: Male
+Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
@@ -8945,7 +8918,7 @@ Name: EDMOND
 Class: Sailor
 Pic: Sailor
 Gender: Male
-Music: Male
+Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
@@ -8958,7 +8931,7 @@ Name: ERNEST
 Class: Sailor
 Pic: Sailor
 Gender: Male
-Music: Male
+Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
@@ -8975,7 +8948,7 @@ Name: DWAYNE
 Class: Sailor
 Pic: Sailor
 Gender: Male
-Music: Male
+Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
@@ -8996,7 +8969,7 @@ Name: PHILLIP
 Class: Sailor
 Pic: Sailor
 Gender: Male
-Music: Male
+Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
@@ -9013,7 +8986,7 @@ Name: LEONARD
 Class: Sailor
 Pic: Sailor
 Gender: Male
-Music: Male
+Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
@@ -9034,7 +9007,7 @@ Name: DUNCAN
 Class: Sailor
 Pic: Sailor
 Gender: Male
-Music: Male
+Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
@@ -9051,7 +9024,7 @@ Name: ERNEST
 Class: Sailor
 Pic: Sailor
 Gender: Male
-Music: Male
+Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
@@ -9072,7 +9045,7 @@ Name: ERNEST
 Class: Sailor
 Pic: Sailor
 Gender: Male
-Music: Male
+Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
@@ -9093,7 +9066,7 @@ Name: ERNEST
 Class: Sailor
 Pic: Sailor
 Gender: Male
-Music: Male
+Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
@@ -9114,7 +9087,7 @@ Name: ERNEST
 Class: Sailor
 Pic: Sailor
 Gender: Male
-Music: Male
+Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
@@ -9238,7 +9211,7 @@ Name: KELVIN
 Class: Sailor
 Pic: Sailor
 Gender: Male
-Music: Male
+Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
@@ -9290,7 +9263,7 @@ Name: HUDSON
 Class: Sailor
 Pic: Sailor
 Gender: Male
-Music: Male
+Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
@@ -9488,7 +9461,7 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Sugarglide (M)
+Junglide (M)
 Level: 6
 - Tackle
 - Growl
@@ -9502,7 +9475,7 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Sugarglide (M)
+Junglide (M)
 Level: 5
 - Tackle
 - Growl
@@ -9740,7 +9713,7 @@ AI: Basic Trainer
 Tandemaus (F)
 Level: 5
 
-Sugarglide (F)
+Junglide (F)
 Level: 6
 
 === TRAINER_MAY_ROUTE_110_TORCHIC ===
@@ -9755,7 +9728,7 @@ AI: Basic Trainer
 Tandemaus (F)
 Level: 5
 
-Sugarglide (F)
+Junglide (F)
 Level: 5
 
 === TRAINER_MAY_ROUTE_119_TORCHIC ===
@@ -10501,7 +10474,7 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_MARC ===
 Name: Mary
-Class: Cooltrainer 2
+Class: Gym Trainer
 Pic: Lass
 Gender: Male
 Music: Female
@@ -10509,23 +10482,22 @@ Double Battle: No
 AI: Basic Trainer
 
 Fletchling
-Level: 10
+Level: 9
 
 Pikipek
-Level: 11
+Level: 10
 
 === TRAINER_BRENDEN ===
-Name: BRENDEN
-Class: Sailor
+Name: Brenden
+Class: Gym Trainer
 Pic: Sailor
 Gender: Male
-Music: Male
+Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
-Machop
+Wingull
 Level: 13
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LILITH ===
 Name: LILITH
@@ -10629,17 +10601,25 @@ Level: 20
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_CLARENCE ===
-Name: CLARENCE
-Class: Swimmer M
-Pic: Swimmer M
+Name: Clarence
+Class: Bug Maniac
+Pic: Bug Maniac
 Gender: Male
-Music: Swimmer
+Music: Suspicious
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Sharpedo
-Level: 34
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Combee @ Honey
+Level: 11
+
+Combee @ Honey
+Level: 11
+
+Combee @ Honey
+Level: 12
+
+Combee @ Honey
+Level: 12
 
 === TRAINER_TERRY ===
 Name: TERRY
@@ -10827,7 +10807,7 @@ Level: 21
 Luel
 Level: 22
 
-Sugarglide (M)
+Junglide (M)
 Level: 24
 
 === TRAINER_PAXTON ===
@@ -11018,21 +10998,19 @@ Luel
 Level: 6
 
 === TRAINER_HALEY_1 ===
-Name: HALEY
+Name: Haley
 Class: Lass
 Pic: Lass
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Lotad
-Level: 6
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Pawmi
+Level: 11
 
-Shroomish
-Level: 6
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Skitty
+Level: 11
 
 === TRAINER_JANICE ===
 Name: JANICE
@@ -11216,8 +11194,8 @@ AI: Basic Trainer
 Weedle
 Level: 5
 
-Nymble
-Level: 6
+Tarountula
+Level: 5
 
 === TRAINER_LYLE ===
 Name: LYLE
@@ -13012,30 +12990,28 @@ Level: 15
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_MARCOS ===
-Name: MARCOS
-Class: Guitarist
-Pic: Guitarist
+Name: Ben
+Class: Youngster
+Pic: Youngster
 Gender: Male
-Music: Intense
+Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Voltorb
-Level: 15
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Trubbish
+Level: 12
 
 === TRAINER_RHETT ===
-Name: RHETT
-Class: Black Belt
-Pic: Black Belt
-Gender: Male
-Music: Intense
+Name: Rhett
+Class: Triathlete
+Pic: Running Triathlete M
+Gender: Female
+Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Makuhita
-Level: 15
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Tyrogue
+Level: 13
 
 === TRAINER_TYRON ===
 Name: TYRON
@@ -13570,7 +13546,7 @@ Name: CORY
 Class: Sailor
 Pic: Sailor
 Gender: Male
-Music: Male
+Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
@@ -14099,7 +14075,7 @@ Level: 15
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_ROXANNE_2 ===
-Name: Izzie
+Name: Aria
 Class: Pkmn Trainer 1
 Pic: Leader Roxanne
 Gender: Female
@@ -14107,8 +14083,8 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 
-Kedle (Pidove) (F)
-Level: 10
+Pidove (F)
+Level: 9
 
 === TRAINER_ROXANNE_3 ===
 Name: ROXANNE
@@ -16014,7 +15990,7 @@ Name: CORY
 Class: Sailor
 Pic: Sailor
 Gender: Male
-Music: Male
+Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
@@ -16035,7 +16011,7 @@ Name: CORY
 Class: Sailor
 Pic: Sailor
 Gender: Male
-Music: Male
+Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
@@ -16056,7 +16032,7 @@ Name: CORY
 Class: Sailor
 Pic: Sailor
 Gender: Male
-Music: Male
+Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
@@ -16077,7 +16053,7 @@ Name: CORY
 Class: Sailor
 Pic: Sailor
 Gender: Male
-Music: Male
+Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 

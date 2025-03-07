@@ -1,0 +1,367 @@
+const VAR_IMPERIAL_GYM_STATE2 = VAR_TEMP_3
+
+mapscripts ImperialIsland_GymB1F_MapScripts {
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+        VAR_IMPERIAL_GYM_STATE, 1 {
+            call(ImperialGymB1FSetPlayerFaceDir)
+            end
+        }
+        VAR_IMPERIAL_GYM_STATE, 2 {
+            call(ImperialGymB1FSetPlayerFaceDir)
+            // Wall
+            setmetatile(20, 9, 0x20D, TRUE)
+            setmetatile(20, 10, 0x215, TRUE)
+            setmetatile(24, 9, 0x20B, TRUE)
+            setmetatile(24, 10, 0x213, TRUE)
+            setmetatile(21, 6, 0x204, FALSE)
+            setmetatile(21, 7, 0x203, FALSE)
+            setmetatile(21, 8, 0x203, FALSE)
+            setmetatile(21, 9, 0x203, FALSE)
+            setmetatile(21, 10, 0x203, FALSE)
+            setmetatile(21, 11, 0x205, FALSE)
+            setmetatile(22, 6, 0x201, FALSE)
+            setmetatile(22, 7, 0x201, FALSE)
+            setmetatile(22, 8, 0x201, FALSE)
+            setmetatile(22, 9, 0x201, FALSE)
+            setmetatile(22, 10, 0x201, FALSE)
+            setmetatile(22, 11, 0x201, FALSE)
+            setmetatile(23, 6, 0x201, FALSE)
+            setmetatile(23, 7, 0x201, FALSE)
+            setmetatile(23, 8, 0x201, FALSE)
+            setmetatile(23, 9, 0x201, FALSE)
+            setmetatile(23, 10, 0x201, FALSE)
+            setmetatile(23, 11, 0x201, FALSE)
+            //Chests
+            setflag(FLAG_TEMP_1)
+            setflag(FLAG_TEMP_2)
+            setflag(FLAG_TEMP_3)
+            setflag(FLAG_TEMP_4)
+            setflag(FLAG_TEMP_5)
+            setmetatile(34, 3, 0x23E, TRUE)
+            setmetatile(10, 3, 0x23E, TRUE)
+            setmetatile(22, 24, 0x23E, TRUE)
+            setmetatile(37, 30, 0x23E, TRUE)
+            setmetatile(1, 42, 0x23E, TRUE)
+            end
+        }
+        VAR_IMPERIAL_GYM_STATE, 3 {
+            call(ImperialGymB1FSetPlayerFaceDir)
+            // Wall
+            setmetatile(20, 9, 0x20D, TRUE)
+            setmetatile(20, 10, 0x215, TRUE)
+            setmetatile(24, 9, 0x20B, TRUE)
+            setmetatile(24, 10, 0x213, TRUE)
+            setmetatile(21, 6, 0x204, FALSE)
+            setmetatile(21, 7, 0x203, FALSE)
+            setmetatile(21, 8, 0x203, FALSE)
+            setmetatile(21, 9, 0x203, FALSE)
+            setmetatile(21, 10, 0x203, FALSE)
+            setmetatile(21, 11, 0x205, FALSE)
+            setmetatile(22, 6, 0x201, FALSE)
+            setmetatile(22, 7, 0x201, FALSE)
+            setmetatile(22, 8, 0x201, FALSE)
+            setmetatile(22, 9, 0x201, FALSE)
+            setmetatile(22, 10, 0x201, FALSE)
+            setmetatile(22, 11, 0x201, FALSE)
+            setmetatile(23, 6, 0x201, FALSE)
+            setmetatile(23, 7, 0x201, FALSE)
+            setmetatile(23, 8, 0x201, FALSE)
+            setmetatile(23, 9, 0x201, FALSE)
+            setmetatile(23, 10, 0x201, FALSE)
+            setmetatile(23, 11, 0x201, FALSE)
+            //Chests
+            setflag(FLAG_TEMP_1)
+            setflag(FLAG_TEMP_2)
+            setflag(FLAG_TEMP_3)
+            setflag(FLAG_TEMP_4)
+            setflag(FLAG_TEMP_5)
+            setmetatile(34, 3, 0x23E, TRUE)
+            setmetatile(10, 3, 0x23E, TRUE)
+            setmetatile(22, 24, 0x23E, TRUE)
+            setmetatile(37, 30, 0x23E, TRUE)
+            setmetatile(1, 42, 0x23E, TRUE)
+            end
+        }
+    ]
+}
+
+script ImperialGymB1FSetPlayerFaceDir {
+    getobjectcurrentxy(OBJ_EVENT_ID_PLAYER, VAR_TEMP_0, VAR_RESULT)
+    if(var(VAR_RESULT) > 24) {
+        turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
+    }
+    return
+}
+
+script ImperialGymDerek {
+	trainerbattle_single(TRAINER_TAKAO, format("Go, my trusty crustacean!"), format("Oh no!"))
+	msgbox(format("I came to this Island to get me a Corphish.\p"
+                  "My Krabby had other plans, though."), MSGBOX_NPC)
+	end
+}
+
+script ImperialGymTucker {
+	trainerbattle_single(TRAINER_JOCELYN, format("Ha!\nGotcha where I want 'ya!\pNow it's time for my finishing move!"), format("Gyah!"))
+	msgbox(format("A Pokémon Gym with breathable water?\nWho could imagine such a thing?"), MSGBOX_NPC)
+	end
+}
+
+script ImperialGymLaura {
+	trainerbattle_single(TRAINER_LAURA, format(""), format(""))
+	msgbox(format(""), MSGBOX_NPC)
+	end
+}
+
+script ImperialGymBrenden {
+	trainerbattle_single(TRAINER_BRENDEN, format(""), format(""))
+	msgbox(format("Our Leader once snuck into a go-cart racing parlor and stayed there until he was caught 9 months later.\p"
+                  "No one understands why he did this.\nNot even his old crew."), MSGBOX_NPC)
+	end
+}
+
+script ImperialGymCristian {
+	trainerbattle_single(TRAINER_CRISTIAN, format(""), format(""))
+	msgbox(format(""), MSGBOX_NPC)
+	end
+}
+
+script ImperialGymLilith {
+	trainerbattle_single(TRAINER_LILITH, format(""), format(""))
+	msgbox(format(""), MSGBOX_NPC)
+	end
+}
+
+script ImperialGymWarp {
+    lock
+    getobjectcurrentxy(OBJ_EVENT_ID_PLAYER, VAR_TEMP_0, VAR_TEMP_1)
+    hideobjectat(OBJ_EVENT_ID_PLAYER, MAP_IMPERIAL_ISLAND_GYM_B1F)
+    playse(SE_M_DIVE)
+    fadescreen(FADE_TO_BLACK)
+    waitse
+    if(var(VAR_TEMP_1) > 24) {
+        warpnofade(MAP_DEWFORD_TOWN_GYM, 4, 11)
+        switch(var(VAR_IMPERIAL_GYM_STATE)) {
+            case 1:
+                setvar(VAR_IMPERIAL_GYM_STATE, 5)
+            case 2:
+                setvar(VAR_IMPERIAL_GYM_STATE, 6)
+            case 3:
+                setvar(VAR_IMPERIAL_GYM_STATE, 4)
+        }
+    } else {
+        warpnofade(MAP_DEWFORD_TOWN_GYM, 23, 14)
+        switch(var(VAR_IMPERIAL_GYM_STATE)) {
+            case 2:
+                setvar(VAR_IMPERIAL_GYM_STATE, 6)
+            case 3:
+                setvar(VAR_IMPERIAL_GYM_STATE, 4)
+        }
+    }
+	waitstate
+    release
+    end
+}
+
+script OpenLeaderCorridor {
+    getobjectcurrentxy(OBJ_EVENT_ID_PLAYER, VAR_TEMP_0, VAR_TEMP_1)
+    delay(15)
+    special(SpawnCameraObject)
+    switch(var(VAR_TEMP_1)) {
+        case 4:
+            if(var(VAR_TEMP_0) == 34) {
+                applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_left * 12
+                                                         walk_fast_down * 4))
+            } else {
+                applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_right * 12
+                                                         walk_fast_down * 4))
+            }
+        case 25:
+            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_up * 17))
+        case 31:
+            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_left * 15
+                                                     walk_faster_up * 23))
+        case 43:
+            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_right * 21
+                                                     walk_faster_up * 34))
+    }
+    waitmovement(0)
+    delay(8)
+    setmetatile(20, 9, 0x20D, TRUE)
+    setmetatile(20, 10, 0x215, TRUE)
+    setmetatile(24, 9, 0x20B, TRUE)
+    setmetatile(24, 10, 0x213, TRUE)
+    setmetatile(21, 6, 0x204, FALSE)
+    setmetatile(21, 7, 0x203, FALSE)
+    setmetatile(21, 8, 0x203, FALSE)
+    setmetatile(21, 9, 0x203, FALSE)
+    setmetatile(21, 10, 0x203, FALSE)
+    setmetatile(21, 11, 0x205, FALSE)
+    setmetatile(22, 6, 0x201, FALSE)
+    setmetatile(22, 7, 0x201, FALSE)
+    setmetatile(22, 8, 0x201, FALSE)
+    setmetatile(22, 9, 0x201, FALSE)
+    setmetatile(22, 10, 0x201, FALSE)
+    setmetatile(22, 11, 0x201, FALSE)
+    setmetatile(23, 6, 0x201, FALSE)
+    setmetatile(23, 7, 0x201, FALSE)
+    setmetatile(23, 8, 0x201, FALSE)
+    setmetatile(23, 9, 0x201, FALSE)
+    setmetatile(23, 10, 0x201, FALSE)
+    setmetatile(23, 11, 0x201, FALSE)
+    special(DrawWholeMapView)
+    playse(SE_UNLOCK)
+    waitse
+    switch(var(VAR_TEMP_1)) {
+        case 4:
+            if(var(VAR_TEMP_0) == 34) {
+                applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_up * 4
+                                                         walk_faster_right * 12))
+            } else {
+                applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_up * 4
+                                                         walk_faster_left * 12))
+            }
+        case 25:
+            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_down * 17))
+        case 31:
+            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_down * 23
+                                                     walk_faster_right * 15))
+        case 43:
+            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_faster_down * 34
+                                                     walk_faster_left * 21))
+    }
+    waitmovement(0)
+    setvar(VAR_IMPERIAL_GYM_STATE, 2)
+    special(RemoveCameraObject)
+    delay(8)
+    return
+}
+
+script ImperialGymChest0 {
+    lock
+    if(!flag(FLAG_TEMP_1)) {
+        setflag(FLAG_TEMP_1)
+        call(BufferChestCountMsgbox)
+        playse(SE_TRUCK_DOOR)
+        setmetatile(1, 42, 0x23E, TRUE)
+        special(DrawWholeMapView)
+        delay(30)
+        call_if_eq(VAR_IMPERIAL_GYM_STATE2, 5, OpenLeaderCorridor)
+        call(RandomNuggetChance)
+    } else {
+        msgbox(ImperialGym_Text_ChestAlreadyOpened, MSGBOX_AUTOCLOSE)
+    }
+    release
+    end
+}
+
+script ImperialGymChest1 {
+    lock
+    if(!flag(FLAG_TEMP_2)) {
+        setflag(FLAG_TEMP_2)
+        call(BufferChestCountMsgbox)
+        playse(SE_TRUCK_DOOR)
+        setmetatile(37, 30, 0x23E, TRUE)
+        special(DrawWholeMapView)
+        delay(30)
+        call_if_eq(VAR_IMPERIAL_GYM_STATE2, 5, OpenLeaderCorridor)
+        call(RandomNuggetChance)
+    } else {
+        msgbox(ImperialGym_Text_ChestAlreadyOpened, MSGBOX_AUTOCLOSE)
+    }
+    release
+    end
+}
+
+script ImperialGymChest2 {
+    lock
+    if(!flag(FLAG_TEMP_3)) {
+        setflag(FLAG_TEMP_3)
+        call(BufferChestCountMsgbox)
+        playse(SE_TRUCK_DOOR)
+        setmetatile(22, 24, 0x23E, TRUE)
+        special(DrawWholeMapView)
+        delay(30)
+        call_if_eq(VAR_IMPERIAL_GYM_STATE2, 5, OpenLeaderCorridor)
+        call(RandomNuggetChance)
+    } else {
+        msgbox(ImperialGym_Text_ChestAlreadyOpened, MSGBOX_AUTOCLOSE)
+    }
+    release
+    end
+}
+
+script ImperialGymChest3 {
+    lock
+    if(!flag(FLAG_TEMP_4)) {
+        setflag(FLAG_TEMP_4)
+        call(BufferChestCountMsgbox)
+        playse(SE_TRUCK_DOOR)
+        setmetatile(34, 3, 0x23E, TRUE)
+        special(DrawWholeMapView)
+        delay(30)
+        call_if_eq(VAR_IMPERIAL_GYM_STATE2, 5, OpenLeaderCorridor)
+        call(RandomNuggetChance)
+    } else {
+        msgbox(ImperialGym_Text_ChestAlreadyOpened, MSGBOX_AUTOCLOSE)
+    }
+    release
+    end
+}
+
+script ImperialGymChest4 {
+    lock
+    if(!flag(FLAG_TEMP_5)) {
+        setflag(FLAG_TEMP_5)
+        call(BufferChestCountMsgbox)
+        playse(SE_TRUCK_DOOR)
+        setmetatile(10, 3, 0x23E, TRUE)
+        special(DrawWholeMapView)
+        delay(30)
+        call_if_eq(VAR_IMPERIAL_GYM_STATE2, 5, OpenLeaderCorridor)
+        call(RandomNuggetChance)
+    } else {
+        msgbox(ImperialGym_Text_ChestAlreadyOpened, MSGBOX_AUTOCLOSE)
+    }
+    release
+    end
+}
+
+script BufferChestCountMsgbox {
+    addvar(VAR_IMPERIAL_GYM_STATE2, 1)
+    if(var(VAR_IMPERIAL_GYM_STATE2) == 1) {
+        msgbox("It's a treasure chest!", MSGBOX_AUTOCLOSE)
+    } else {
+        buffernumberstring(STR_VAR_1, VAR_IMPERIAL_GYM_STATE2)
+        msgbox("It's a treasure chest!\nThat makes {STR_VAR_1}!", MSGBOX_AUTOCLOSE)
+    }
+}
+
+script RandomNuggetChance {
+    random(100)
+    //buffernumberstring(STR_VAR_1, VAR_RESULT)
+    //message("ROLLED A {STR_VAR_1}{PAUSE 10}")
+    //waitmessage
+    if(var(VAR_RESULT) <= 12) {
+        msgbox(ImperialGym_Text_SomethingInChest)
+        finditem(ITEM_NUGGET)
+    } elif(var(VAR_RESULT) == 74) {
+        msgbox(ImperialGym_Text_SomethingInChest, MSGBOX_AUTOCLOSE)
+        playbgm(MUS_NONE, FALSE)
+        delay(60)
+        msgbox("… {PAUSE 40}… {PAUSE 40}…{PAUSE 40}\nSO {PAUSE 30}MUCH {PAUSE 30}TREASURE!")
+        additem(ITEM_NUGGET, 74)
+        if(var(VAR_RESULT)) {
+            playfanfare(MUS_SLOTS_JACKPOT)
+            message("Obtained 74 Nuggets!")
+            waitfanfare
+            closemessage
+        } else {
+            msgbox(gText_TooBadBagIsFull, MSGBOX_AUTOCLOSE)
+        }
+        fadedefaultbgm
+    }
+    return
+}
+
+text ImperialGym_Text_SomethingInChest {format("Hey!\nThere's something in this chest!")}
+text ImperialGym_Text_ChestAlreadyOpened {format("This chest is already open.")}

@@ -396,24 +396,21 @@ static void HandleInputChooseAction(u32 battler)
         {
             if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER))                                      // If wild battle, pressing B...
             {
-                if (gSaveBlock2Ptr->optionsWildBattleBFunction)                                 // causes the player to run from battle.
+            #if N_FLEE_ON_B == TRUE
+                PlaySE(SE_SELECT);                                                              // causes the player to run from battle.
+                TryHideLastUsedBall();
+                BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_RUN, 0);
+                PlayerBufferExecCompleted(battler);
+            #else
+                if (gActionSelectionCursor[battler] != B_ACTION_RUN)                            // moves the cursor to "Run" if it isn't already there.
                 {
                     PlaySE(SE_SELECT);
-                    TryHideLastUsedBall();
-                    BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_RUN, 0);
-                    PlayerBufferExecCompleted(battler);
+                    ActionSelectionDestroyCursorAt(gActionSelectionCursor[battler]);
+                    gActionSelectionCursor[battler] = 3;
+                    ActionSelectionCreateCursorAt(gActionSelectionCursor[battler], 0);
                 }
-                else                                                                            // moves the cursor to "Run" if it's not already there.
-                {
-                    if (gActionSelectionCursor[battler] != B_ACTION_RUN)
-                    {
-                        PlaySE(SE_SELECT);
-                        ActionSelectionDestroyCursorAt(gActionSelectionCursor[battler]);
-                        gActionSelectionCursor[battler] = 3;
-                        ActionSelectionCreateCursorAt(gActionSelectionCursor[battler], 0);
-                    }
-                }
-            }
+            #endif
+            }    
         }
     }
     else if (JOY_NEW(START_BUTTON))
@@ -2042,7 +2039,8 @@ static void PlayerHandleChooseAction(u32 battler)
     if (B_QUICK_MOVE_CURSOR_TO_RUN && !(gBattleTypeFlags & BATTLE_TYPE_TRAINER))
     {
         BattlePutTextOnWindow(gText_BattleMenu2, B_WIN_ACTION_MENU);
-    } else
+    } 
+    else
     {
         BattlePutTextOnWindow(gText_BattleMenu, B_WIN_ACTION_MENU);
     }

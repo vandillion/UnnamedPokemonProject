@@ -7,11 +7,13 @@ mapscripts LittlerootTown_ProfessorBirchsLab_MapScripts {
 		if(!var(VAR_ANIMORA_CITY_STATE)) {
 			setobjectxyperm(LOCALID_AIDE, 15, 10)
 			setobjectmovementtype(LOCALID_AIDE, MOVEMENT_TYPE_FACE_RIGHT)
+			end
 		}
 	}
 	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
 		VAR_ANIMORA_CITY_STATE, 0 {
 			playbgm(MUS_RG_OAK, TRUE)
+			end
 		}
     ]
 	MAP_SCRIPT_ON_FRAME_TABLE [
@@ -67,23 +69,22 @@ mapscripts LittlerootTown_ProfessorBirchsLab_MapScripts {
 			waitmovement(0)
 			switch (var(VAR_STARTER_MON)) {
 				case 0:
-					bufferstring(STR_VAR_1, "Sugarglide")
-					bufferstring(STR_VAR_3, "Parmi")
+					bufferspeciesname(STR_VAR_1, SPECIES_JUNGLIDE)
+					bufferspeciesname(STR_VAR_3, SPECIES_PARMI)
 				case 1:
-					bufferstring(STR_VAR_1, "Parmi")
-					bufferstring(STR_VAR_3, "Radpole")
+					bufferspeciesname(STR_VAR_1, SPECIES_PARMI)
+					bufferspeciesname(STR_VAR_3, SPECIES_RADPOLE)
 				case 2:
-					bufferstring(STR_VAR_1, "Radpole")
-					bufferstring(STR_VAR_3, "Sugarglide")
+					bufferspeciesname(STR_VAR_1, SPECIES_RADPOLE)
+					bufferspeciesname(STR_VAR_3, SPECIES_JUNGLIDE)
 			}
 			msgbox("Well then, I've got great news for both\nof you!\p"
 				   "{PLAYER} and Orion, today is the day\nyou two become Pokémon Trainers!\p"
-				   "Since you already have them, you'll\nreceive {STR_VAR_1} and {STR_VAR_3} as your\lfirst partner Pokémon!")
+				   "Since you already have them, you'll\nreceive {STR_VAR_1} and {STR_VAR_3} as your\lpartner Pokémon!")
 			playfanfare(MUS_EVOLVED)
 			message(format("{PLAYER} officialy received {STR_VAR_1} as their Pokémon!"))
 			waitfanfare
 			playbgm(MUS_BIRCH_LAB, TRUE)
-			setflag(FLAG_SYS_POKEMON_GET)
 			applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
 			waitmovement(0)
 			msgbox(format("Before you head out on your very first adventure as Pokémon Trainers, I have something rather important to give you two.\p"
@@ -127,11 +128,11 @@ mapscripts LittlerootTown_ProfessorBirchsLab_MapScripts {
 			waitmovement(0)
 			switch (var(VAR_STARTER_MON)) {
 				case 0:
-					bufferstring(STR_VAR_3, "Parmi")
+					bufferspeciesname(STR_VAR_3, SPECIES_PARMI)
 				case 1:
-					bufferstring(STR_VAR_3, "Radpole")
+					bufferspeciesname(STR_VAR_3, SPECIES_RADPOLE)
 				case 2:
-					bufferstring(STR_VAR_3, "Sugarglide")
+					bufferspeciesname(STR_VAR_3, SPECIES_JUNGLIDE)
 			}
 			msgbox(format("I think “{STR_VAR_3}” is already a pretty cool name, so I'll pass!"))
 			applymovement(LOCALID_PROF, Common_Movement_WalkInPlaceDown)
@@ -149,9 +150,9 @@ mapscripts LittlerootTown_ProfessorBirchsLab_MapScripts {
 			waitse
 			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
 			waitmovement(0)
+			special(HealPlayerParty)
 			msgbox(format("{PLAYER}, if you ever need your Pokédex evaluated, call or visit me.\pI would've told that to Orion, but he can't do that unless programmed to because he's an NPC."), MSGBOX_AUTOCLOSE)
 			setflag(FLAG_HIDE_ORION_PROF_LAB)
-			setvar(VAR_BLOCK_PROGRESSION_WEST, 0)
 			release
 			end
 		}

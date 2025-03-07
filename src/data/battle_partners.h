@@ -15,7 +15,7 @@
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 4
         .trainerPic = TRAINER_BACK_PIC_BRENDAN,
-        .encounterMusic_gender = 
+        .encounterMusic_gender =
 #line 6
             TRAINER_ENCOUNTER_MUSIC_MALE,
         .partySize = 0,
@@ -32,7 +32,7 @@
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 11
         .trainerPic = TRAINER_BACK_PIC_STEVEN,
-        .encounterMusic_gender = 
+        .encounterMusic_gender =
 #line 13
             TRAINER_ENCOUNTER_MUSIC_MALE,
         .partySize = 1,
@@ -40,7 +40,7 @@
         {
             {
 #line 15
-            .species = SPECIES_SUGARGLIDE,
+            .species = SPECIES_JUNGLIDE,
 #line 15
             .gender = TRAINER_MON_MALE,
 #line 17
@@ -58,7 +58,7 @@
         },
     },
 #line 20
-    [PARTNER_ORION_FIRE] =
+    [DIFFICULTY_NORMAL][PARTNER_ORION_FIRE] =
     {
 #line 21
         .trainerName = _("Orion"),
@@ -66,7 +66,7 @@
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 23
         .trainerPic = TRAINER_BACK_PIC_STEVEN,
-        .encounterMusic_gender = 
+        .encounterMusic_gender =
 #line 25
             TRAINER_ENCOUNTER_MUSIC_MALE,
         .partySize = 1,
@@ -92,7 +92,7 @@
         },
     },
 #line 32
-    [PARTNER_ORION_WATER] =
+    [DIFFICULTY_NORMAL][PARTNER_ORION_WATER] =
     {
 #line 33
         .trainerName = _("Orion"),
@@ -100,7 +100,7 @@
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 35
         .trainerPic = TRAINER_BACK_PIC_STEVEN,
-        .encounterMusic_gender = 
+        .encounterMusic_gender =
 #line 37
             TRAINER_ENCOUNTER_MUSIC_MALE,
         .partySize = 1,

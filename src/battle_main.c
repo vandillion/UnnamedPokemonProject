@@ -59,7 +59,6 @@
 #include "util.h"
 #include "wild_encounter.h"
 #include "window.h"
-#include "config/new.h"
 #include "constants/abilities.h"
 #include "constants/battle_ai.h"
 #include "constants/battle_move_effects.h"
@@ -5414,10 +5413,12 @@ static void HandleEndTurn_BattleWon(void)
         BattleStopLowHpSound();
         gBattlescriptCurrInstr = BattleScript_FrontierTrainerBattleWon;
 
+#if N_MUTE_BATTLE_BGM == FALSE
         if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_FRONTIER_BRAIN)
             PlayBGM(MUS_VICTORY_GYM_LEADER);
         else
             PlayBGM(MUS_VICTORY_TRAINER);
+#endif
     }
     else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && !(gBattleTypeFlags & BATTLE_TYPE_LINK))
     {
@@ -5448,8 +5449,6 @@ static void HandleEndTurn_BattleWon(void)
                 PlayBGM(MUS_VICTORY_TRAINER);
                 break;
         }
-#else
-        PlayBGM(MUS_NONE);
 #endif
     }
     else

@@ -1,7 +1,10 @@
+const LOCALID_KANE_IMPERIAL = 5
+const LOCALID_KANES_BOAT_IMPERIAL = 4
+
 mapscripts OldaleTown_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
-	setflag(FLAG_VISITED_IMPERIAL_ISLAND)
-	setrespawn(HEAL_LOCATION_OLDALE_TOWN)
+		setflag(FLAG_VISITED_IMPERIAL_ISLAND)
+		setrespawn(HEAL_LOCATION_OLDALE_TOWN)
 	end
 	}
 }
@@ -10,7 +13,7 @@ mapscripts OldaleTown_MapScripts {
 
 script ImperialIslandFootprintMan {
 	msgbox(format("I finished sketching the footprints of a rare Pokémon.\p"
-				  "But it turns out they were only my own footprints..."), MSGBOX_NPC)
+				  "But it turns out they were only my own footprints…"), MSGBOX_NPC)
 	end
 }
 
@@ -18,27 +21,27 @@ script ImperialIslandWoman {
 	msgbox(format("This island is very lucky to be geographically located here.\p"
 				  "I mean, think about it.\nHow many small islands do you know\lhave been struck by a meteor before?\p"
 				  "And how many of those collisions were able to produce a crater that looks like a planet?\p"
-				  "As far as I'm concerned, Imperial Island's the only one. Ever!"), MSGBOX_NPC)
+				  "As far as I'm concerned, Imperial Island is the only one. Ever!"), MSGBOX_NPC)
 	end
 }
 
 // Signs
 
 script ImperialIslandSign {
-	msgbox("Imperial Island\nA humble island with a blue horizon", MSGBOX_SIGN)
-	msgbox("View the Globe Crater?", MSGBOX_YESNO)
+	msgbox("Imperial Island\nA humble island with a blue horizon\p"
+		   "View the Globe Crater?", MSGBOX_YESNO)
 	closemessage
 	if(var(VAR_RESULT)) {
 		lock
 		special(SpawnCameraObject)
 		waitse
-		applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 6))
+		applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_up * 6))
 		waitmovement(0)
 		msgbox(format("{CLEAR_TO 70}Globe Crater{PAUSE 60}\n"
 					  "This crater was created thousands of years ago via impact from a relatively small meteor.\p"
 					  "Over the years, it began taking on the planet-like appearance it has today."), MSGBOX_AUTOCLOSE)
 		waitbuttonpress
-		applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 6))
+		applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_down * 6))
 		waitmovement(0)
 		special(RemoveCameraObject)
 		msgbox(format("A note from Leader Redbeard:\nYarrgh! Don't be littering in me island's mural!\pOtherwise I'll be after yer head!"), MSGBOX_SIGN)

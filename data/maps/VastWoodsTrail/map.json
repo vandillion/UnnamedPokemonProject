@@ -34,7 +34,7 @@
       "flag": "FLAG_HIDE_NPCS_VAST_WOODS_TRAIL"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SUGARGLIDE)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(JUNGLIDE)",
       "x": 43,
       "y": 26,
       "elevation": 0,
@@ -119,7 +119,7 @@
     {
       "type": "trigger",
       "x": 52,
-      "y": 17,
+      "y": 18,
       "elevation": 0,
       "var": "VAR_BLOCK_PROGRESSION_SOUTH",
       "var_value": "2",
@@ -128,7 +128,7 @@
     {
       "type": "trigger",
       "x": 53,
-      "y": 17,
+      "y": 18,
       "elevation": 0,
       "var": "VAR_BLOCK_PROGRESSION_SOUTH",
       "var_value": "2",

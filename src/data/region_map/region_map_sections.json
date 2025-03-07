@@ -66,11 +66,11 @@
     },
     {
       "map_section": "MAPSEC_SLATEPORT_CITY",
-      "name": "Centra City SE",
-      "x": 19,
-      "y": 8,
-      "width": 1,
-      "height": 1
+      "name": "Centra City",
+      "x": 18,
+      "y": 7,
+      "width": 2,
+      "height": 2
     },
     {
       "map_section": "MAPSEC_MAUVILLE_CITY",
@@ -197,7 +197,7 @@
       "name": "Route 8",
       "x": 15,
       "y": 7,
-      "width": 2,
+      "width": 3,
       "height": 1
     },
     {
@@ -330,7 +330,7 @@
     },
     {
       "map_section": "MAPSEC_ROUTE_126",
-      "name": "Centra City N",
+      "name": "ROUTE 126",
       "x": 18,
       "y": 6,
       "width": 1,
@@ -338,7 +338,7 @@
     },
     {
       "map_section": "MAPSEC_ROUTE_127",
-      "name": "Centra City NW",
+      "name": "ROUTE 127",
       "x": 17,
       "y": 6,
       "width": 1,
@@ -346,7 +346,7 @@
     },
     {
       "map_section": "MAPSEC_ROUTE_128",
-      "name": "Centra City W",
+      "name": "ROUTE 128",
       "x": 17,
       "y": 7,
       "width": 1,
@@ -354,7 +354,7 @@
     },
     {
       "map_section": "MAPSEC_ROUTE_129",
-      "name": "Centra City SW",
+      "name": "ROUTE 129",
       "x": 17,
       "y": 8,
       "width": 1,
@@ -370,7 +370,7 @@
     },
     {
       "map_section": "MAPSEC_ROUTE_131",
-      "name": "Centra City S",
+      "name": "ROUTE 131",
       "x": 18,
       "y": 8,
       "width": 1,
@@ -378,7 +378,7 @@
     },
     {
       "map_section": "MAPSEC_ROUTE_132",
-      "name": "Centra City C",
+      "name": "ROUTE 132",
       "x": 18,
       "y": 7,
       "width": 1,
@@ -386,7 +386,7 @@
     },
     {
       "map_section": "MAPSEC_ROUTE_133",
-      "name": "Centra City NE",
+      "name": "ROUTE 133",
       "x": 19,
       "y": 6,
       "width": 1,
@@ -394,7 +394,7 @@
     },
     {
       "map_section": "MAPSEC_ROUTE_134",
-      "name": "Centra City E",
+      "name": "ROUTE 134",
       "x": 19,
       "y": 7,
       "width": 1,
