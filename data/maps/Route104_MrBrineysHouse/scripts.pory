@@ -7,11 +7,9 @@ mapscripts Route104_MrBrineysHouse_MapScripts {
 	MAP_SCRIPT_ON_FRAME_TABLE [
 		VAR_KANE_STATE, 0 {
 			lock
-			playse(SE_PIN)
-			applymovement(LOCALID_KANE, moves(face_down
-											  emote_exclamation_mark
-											  delay_16 * 2))
+			applymovement(LOCALID_KANE, moves(walk_in_place_fast_down))
 			waitmovement(0)
+			exclam(LOCALID_KANE)
 			msgbox(format("Why, hello there!\nCome on in."), MSGBOX_AUTOCLOSE)
 			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 3
 													 walk_right))
@@ -20,20 +18,20 @@ mapscripts Route104_MrBrineysHouse_MapScripts {
 			waitmovement(OBJ_EVENT_ID_PLAYER)
 			msgbox(format("No need to be shy, hoho! How about an introduction?\p"
 						  "My name is Kane.\nHow about yourself, youngin'?"), MSGBOX_AUTOCLOSE)
-			delay(60)
-			msgbox(format("… … …\n… … …\p{PLAYER}, is it?\nNice to meet you, {PLAYER}!\lSo what brings you to my cottage?"), MSGBOX_AUTOCLOSE)
-			delay(60)
+			delay(40)
+			msgbox(format("{PLAYER}, is it?\nNice to meet you, {PLAYER}!\lSo what brings you to my cottage?"), MSGBOX_AUTOCLOSE)
+			delay(40)
 			msgbox(format("A Letter addressed to me?\nWhy, it must be from my nephew, Nolan!\p"
-				 		  "He didn't tell me that someone else was going to deliver it!"))
-			msgbox("{PLAYER} handed the Letter\nto Kane.")
-			removeitem(ITEM_LETTER)
+				 		  "He didn't inform me that someone else was going to deliver it!"))
+			setvar(VAR_0x8004, ITEM_LETTER)
+			call(Common_EventScript_PlayerHandedOverTheItem)
 			msgbox("Now let's see what we have here.", MSGBOX_AUTOCLOSE)
 			delay(45)
 			msgbox(format("… {PAUSE 18}… {PAUSE 13}… {PAUSE 20}Hmm… {PAUSE 11}… {PAUSE 21}…{PAUSE 24}\n"
 						  "… {PAUSE 22}Mhm… {PAUSE 19}… {PAUSE 15}… {PAUSE 10}… {PAUSE 17}Hmm!{PAUSE 14}\p"
 						  "Well {PLAYER}, thank you for bringing me this Letter!\p"
 						  "Gave me another reason to start up that ol' rusty Tugger out there, hoho!\p"
-						  "Say {PLAYER}, you're a Pokémon trainer, correct?\p"
+						  "Say {PLAYER}, you're a Pokémon Trainer, correct?\p"
 						  "I'll bet you're looking to cross the waters of Route 4!\p"
 						  "Well look no further, youngin'!\nI can hitch you a ride on my boat!\p"
 						  "When you're ready, meet me outside on my pier."), MSGBOX_AUTOCLOSE)

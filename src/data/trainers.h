@@ -24067,7 +24067,7 @@ F_TRAINER_FEMALE |
     [DIFFICULTY_NORMAL][TRAINER_MAY_ROUTE_103_MUDKIP] =
     {
 #line 9603
-        .trainerName = _("Girl"),
+        .trainerName = _("Harley"),
 #line 9604
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_2,
 #line 9605
@@ -24114,7 +24114,7 @@ F_TRAINER_FEMALE |
     [DIFFICULTY_NORMAL][TRAINER_MAY_ROUTE_110_MUDKIP] =
     {
 #line 9618
-        .trainerName = _("Girl"),
+        .trainerName = _("Harley"),
 #line 9619
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_2,
 #line 9620
@@ -24217,7 +24217,7 @@ F_TRAINER_FEMALE |
     [DIFFICULTY_NORMAL][TRAINER_MAY_ROUTE_103_TREECKO] =
     {
 #line 9654
-        .trainerName = _("Girl"),
+        .trainerName = _("Harley"),
 #line 9655
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_2,
 #line 9656
@@ -24264,7 +24264,7 @@ F_TRAINER_FEMALE |
     [DIFFICULTY_NORMAL][TRAINER_MAY_ROUTE_110_TREECKO] =
     {
 #line 9669
-        .trainerName = _("Girl"),
+        .trainerName = _("Harley"),
 #line 9670
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_2,
 #line 9671
@@ -24367,7 +24367,7 @@ F_TRAINER_FEMALE |
     [DIFFICULTY_NORMAL][TRAINER_MAY_ROUTE_103_TORCHIC] =
     {
 #line 9705
-        .trainerName = _("Girl"),
+        .trainerName = _("Harley"),
 #line 9706
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_2,
 #line 9707
@@ -24414,7 +24414,7 @@ F_TRAINER_FEMALE |
     [DIFFICULTY_NORMAL][TRAINER_MAY_ROUTE_110_TORCHIC] =
     {
 #line 9720
-        .trainerName = _("Girl"),
+        .trainerName = _("Harley"),
 #line 9721
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_2,
 #line 9722

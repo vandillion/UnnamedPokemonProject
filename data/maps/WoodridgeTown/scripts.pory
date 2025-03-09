@@ -233,18 +233,18 @@ script WoodridgeFirstBattle {
 	if (!flag(FLAG_LOST_FIRST_BATTLE)) {
 		switch (var(VAR_STARTER_MON)) {
         	case 0:
-				trainerbattle_no_intro_no_whiteout(TRAINER_BRENDAN_ROUTE_103_TREECKO, OrionDefeat)
-        	case 1:
 				trainerbattle_no_intro_no_whiteout(TRAINER_BRENDAN_ROUTE_103_TORCHIC, OrionDefeat)
+        	case 1:
+				trainerbattle_no_intro_no_whiteout(TRAINER_BRENDAN_ROUTE_103_TREECKO, OrionDefeat)
         	case 2:
 				trainerbattle_no_intro_no_whiteout(TRAINER_BRENDAN_ROUTE_103_MUDKIP, OrionDefeat)
 	    }
     } else {
 		switch (var(VAR_STARTER_MON)) {
         	case 0:
-				trainerbattle_no_intro_no_whiteout(TRAINER_BRENDAN_ROUTE_110_TREECKO, OrionDefeat)
-        	case 1:
 				trainerbattle_no_intro_no_whiteout(TRAINER_BRENDAN_ROUTE_110_TORCHIC, OrionDefeat)
+        	case 1:
+				trainerbattle_no_intro_no_whiteout(TRAINER_BRENDAN_ROUTE_110_TREECKO, OrionDefeat)
         	case 2:
 				trainerbattle_no_intro_no_whiteout(TRAINER_BRENDAN_ROUTE_110_MUDKIP, OrionDefeat)
     	}

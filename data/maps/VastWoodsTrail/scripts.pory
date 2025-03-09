@@ -11,63 +11,7 @@ mapscripts VastWoodsTrail_MapScripts {
 		VAR_VAST_WOODS_TRAIL_STATE, 0 { // Player's walk with Orion
             lock
             setflag(FLAG_HIDE_ORIONS_ROOM_ORION)
-            applymovement(LOCALID_ORION, moves(set_invisible
-                                               walk_faster_up * 12
-                                               set_visible))
-            msgbox("Hey!\n{PLAYER}!")
-            closemessage
-            waitmovement(0)
-            turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
-            applymovement(LOCALID_ORION, moves(walk_down* 3))
-            getobjectcurrentxy(OBJ_EVENT_ID_PLAYER, VAR_TEMP_0, VAR_TEMP_1)
-            waitmovement(0)
-            switch(var(VAR_TEMP_0)){
-                case 13:
-                    applymovement(LOCALID_ORION, moves(walk_left * 2
-                                                       walk_down * 3
-                                                       walk_left))
-                    delay(64)
-                    turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
-                case 14:
-                    applymovement(LOCALID_ORION, moves(walk_left * 2
-                                                       walk_down * 3
-                                                       walk_in_place_left))
-                    delay(64)
-                    turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
-                case 15:
-                    applymovement(LOCALID_ORION, moves(walk_left
-                                                       walk_down * 3
-                                                       walk_in_place_left))
-                    delay(48)
-                    turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
-                case 16:
-                    applymovement(LOCALID_ORION, moves(walk_down * 3
-                                                       walk_in_place_left))
-                    delay(32)
-                    turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
-                case 17:
-                    applymovement(LOCALID_ORION, moves(walk_down * 2))
-                case 18:
-                    applymovement(LOCALID_ORION, moves(walk_down * 3
-                                                       walk_in_place_right))
-                    delay(32)
-                    turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
-                case 19:
-                    applymovement(LOCALID_ORION, moves(walk_right
-                                                       walk_down * 3
-                                                       walk_in_place_right))
-                    delay(48)
-                    turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
-                case 20:
-                    applymovement(LOCALID_ORION, moves(walk_right * 2
-                                                       walk_down * 3
-                                                       walk_in_place_right))
-                    delay(64)
-                    turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
-            }
-            waitmovement(0)
-            msgbox(format("You ready for our walk?"), MSGBOX_AUTOCLOSE)
-            // movement sequences. Make sure Player ends up at 19 27 and orion at 19 28
+            //TODO
             turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
             turnobject(LOCALID_ORION, DIR_NORTH)
             msgbox(format("This forest is home to a plethora of Pokémon, {PLAYER}!"), MSGBOX_AUTOCLOSE)
@@ -103,15 +47,15 @@ mapscripts VastWoodsTrail_MapScripts {
                                             walk_fast_down
                                             walk_in_place_fast_right))
             waitmovement(0)
-            applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
-            applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
+            applymovement(LOCALID_ORION, moves(walk_in_place_fast_up))
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
             waitmovement(0)
-            msgbox("Huh?\nWho's this Pokémon?")
-            applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
+            msgbox("Huh?\nIs this a Pokémon?")
+            applymovement(LOCALID_ORION, moves(walk_in_place_fast_right))
             waitmovement(0)
-            msgbox(format("There's more coming from the forest!"))
+            msgbox(format("There's more coming from the Woods!"))
             closemessage
-            applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_right))
             playmoncry(SPECIES_PARMI, CRY_MODE_NORMAL)
             applymovement(LOCALID_FS, moves(walk_fast_left * 2
                                             walk_fast_down * 2
@@ -216,15 +160,15 @@ mapscripts VastWoodsTrail_MapScripts {
             waitstate
             switch (var(VAR_STARTER_MON)) {
                 case 0:
-                    setvar(VAR_TEMP_2, LOCALID_GS)
-                    setvar(VAR_TEMP_3, LOCALID_FS)
-                    setvar(VAR_TEMP_4, PARTNER_ORION_FIRE)
-                    setseenmon(SPECIES_RADPOLE)
-                case 1:
                     setseenmon(SPECIES_JUNGLIDE)
                     setvar(VAR_TEMP_2, LOCALID_FS)
                     setvar(VAR_TEMP_3, LOCALID_WS)
                     setvar(VAR_TEMP_4, PARTNER_ORION_WATER)
+                case 1:
+                    setvar(VAR_TEMP_2, LOCALID_GS)
+                    setvar(VAR_TEMP_3, LOCALID_FS)
+                    setvar(VAR_TEMP_4, PARTNER_ORION_FIRE)
+                    setseenmon(SPECIES_RADPOLE)
                 case 2:
                     setvar(VAR_TEMP_3, LOCALID_GS)
                     setvar(VAR_TEMP_4, PARTNER_ORION_GRASS)

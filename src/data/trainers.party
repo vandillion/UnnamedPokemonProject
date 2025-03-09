@@ -9600,7 +9600,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_MAY_ROUTE_103_MUDKIP ===
-Name: Girl
+Name: Harley
 Class: PkMn Trainer 2
 Pic: May
 Gender: Female
@@ -9615,7 +9615,7 @@ Parmi (F)
 Level: 6
 
 === TRAINER_MAY_ROUTE_110_MUDKIP ===
-Name: Girl
+Name: Harley
 Class: PkMn Trainer 2
 Pic: May
 Gender: Female
@@ -9651,7 +9651,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_MAY_ROUTE_103_TREECKO ===
-Name: Girl
+Name: Harley
 Class: PkMn Trainer 2
 Pic: May
 Gender: Female
@@ -9666,7 +9666,7 @@ Radpole (F)
 Level: 6
 
 === TRAINER_MAY_ROUTE_110_TREECKO ===
-Name: Girl
+Name: Harley
 Class: PkMn Trainer 2
 Pic: May
 Gender: Female
@@ -9702,7 +9702,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_MAY_ROUTE_103_TORCHIC ===
-Name: Girl
+Name: Harley
 Class: PkMn Trainer 2
 Pic: May
 Gender: Female
@@ -9717,7 +9717,7 @@ Junglide (F)
 Level: 6
 
 === TRAINER_MAY_ROUTE_110_TORCHIC ===
-Name: Girl
+Name: Harley
 Class: PkMn Trainer 2
 Pic: May
 Gender: Female

@@ -14,17 +14,17 @@ mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
         } elif(var(VAR_WOODRIDGE_TOWN_STATE) == 5) {
             switch (var(VAR_STARTER_MON)) {
                 case 0:
+			        setobjectmovementtype(LOCALID_GS, MOVEMENT_TYPE_INVISIBLE)
+                    setobjectxyperm(LOCALID_FS, 5, 2)
+                    setobjectxyperm(LOCALID_WS, 4, 2)
+                case 1:
                     setobjectxyperm(LOCALID_GS, 5, 2)
                     setobjectxyperm(LOCALID_FS, 4, 2)
 			        setobjectmovementtype(LOCALID_WS, MOVEMENT_TYPE_INVISIBLE)
-                case 1:
-                    setobjectxyperm(LOCALID_FS, 5, 2)
-                    setobjectxyperm(LOCALID_WS, 4, 2)
-			        setobjectmovementtype(LOCALID_GS, MOVEMENT_TYPE_INVISIBLE)
                 case 2:
-			        setobjectxyperm(LOCALID_WS, 5, 2)
                     setobjectxyperm(LOCALID_GS, 4, 2)
 			        setobjectmovementtype(LOCALID_FS, MOVEMENT_TYPE_INVISIBLE)
+			        setobjectxyperm(LOCALID_WS, 5, 2)
             }
         }
 		end
@@ -156,14 +156,14 @@ mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
             waitmovement(0)
             switch (var(VAR_STARTER_MON)) {
                 case 0:
-                removeobject(LOCALID_FS)
-                applymovement(LOCALID_GS, Common_Movement_EnterBall)
+                    removeobject(LOCALID_WS)
+                    applymovement(LOCALID_FS, Common_Movement_EnterBall)
                 case 1:
-                removeobject(LOCALID_WS)
-                applymovement(LOCALID_FS, Common_Movement_EnterBall)
+                    removeobject(LOCALID_FS)
+                    applymovement(LOCALID_GS, Common_Movement_EnterBall)
                 case 2:
-                removeobject(LOCALID_GS)
-                applymovement(LOCALID_WS, Common_Movement_EnterBall)
+                    removeobject(LOCALID_GS)
+                    applymovement(LOCALID_WS, Common_Movement_EnterBall)
             }
             delay(20)
             applymovement(LOCALID_ORION, moves(walk_left * 2

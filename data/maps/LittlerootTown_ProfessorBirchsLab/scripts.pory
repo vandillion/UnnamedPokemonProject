@@ -69,11 +69,11 @@ mapscripts LittlerootTown_ProfessorBirchsLab_MapScripts {
 			waitmovement(0)
 			switch (var(VAR_STARTER_MON)) {
 				case 0:
-					bufferspeciesname(STR_VAR_1, SPECIES_JUNGLIDE)
-					bufferspeciesname(STR_VAR_3, SPECIES_PARMI)
-				case 1:
 					bufferspeciesname(STR_VAR_1, SPECIES_PARMI)
 					bufferspeciesname(STR_VAR_3, SPECIES_RADPOLE)
+				case 1:
+					bufferspeciesname(STR_VAR_1, SPECIES_JUNGLIDE)
+					bufferspeciesname(STR_VAR_3, SPECIES_PARMI)
 				case 2:
 					bufferspeciesname(STR_VAR_1, SPECIES_RADPOLE)
 					bufferspeciesname(STR_VAR_3, SPECIES_JUNGLIDE)
@@ -128,9 +128,9 @@ mapscripts LittlerootTown_ProfessorBirchsLab_MapScripts {
 			waitmovement(0)
 			switch (var(VAR_STARTER_MON)) {
 				case 0:
-					bufferspeciesname(STR_VAR_3, SPECIES_PARMI)
-				case 1:
 					bufferspeciesname(STR_VAR_3, SPECIES_RADPOLE)
+				case 1:
+					bufferspeciesname(STR_VAR_3, SPECIES_PARMI)
 				case 2:
 					bufferspeciesname(STR_VAR_3, SPECIES_JUNGLIDE)
 			}
