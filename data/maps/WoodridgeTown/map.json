@@ -100,7 +100,7 @@
       "x": 1,
       "y": 12,
       "elevation": 0,
-      "var": "VAR_NEWGAME_START",
+      "var": "VAR_WOODRIDGE_TOWN_STATE",
       "var_value": "6",
       "script": "WoodridgeBattleTrigger0"
     },
@@ -109,7 +109,7 @@
       "x": 1,
       "y": 13,
       "elevation": 0,
-      "var": "VAR_NEWGAME_START",
+      "var": "VAR_WOODRIDGE_TOWN_STATE",
       "var_value": "6",
       "script": "WoodridgeBattleTrigger1"
     },
@@ -118,7 +118,7 @@
       "x": 1,
       "y": 14,
       "elevation": 0,
-      "var": "VAR_NEWGAME_START",
+      "var": "VAR_WOODRIDGE_TOWN_STATE",
       "var_value": "6",
       "script": "WoodridgeBattleTrigger2"
     },
@@ -127,7 +127,7 @@
       "x": 1,
       "y": 15,
       "elevation": 0,
-      "var": "VAR_NEWGAME_START",
+      "var": "VAR_WOODRIDGE_TOWN_STATE",
       "var_value": "6",
       "script": "WoodridgeBattleTrigger3"
     },

@@ -199,7 +199,7 @@ mapscripts VastWoodsTrail_MapScripts {
             applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
             waitmovement(0)
             msgbox(format("There's no shame in trying!\nPlus, I don't think you heard me the first time.\p"
-                          "{PLAYER} and I not going down without a fight!"))
+                          "{PLAYER} and I are not going down without a fight!"))
             applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceLeft)
             waitmovement(0)
             msgbox(format("Fine! We accept your challenge!"))
@@ -265,7 +265,7 @@ mapscripts VastWoodsTrail_MapScripts {
             waitbuttonpress
             clearflag(FLAG_HIDE_WOODRIDGE_TOWN_ORION)
             clearflag(FLAG_HIDE_WOODRIDGE_TOWN_POKEMON)
-            setvar(VAR_NEWGAME_START, 5)
+            setvar(VAR_WOODRIDGE_TOWN_STATE, 5)
             setvar(VAR_VAST_WOODS_TRAIL_STATE, 1)
             multi_fixed_2_vs_2(TRAINER_MAXIE_MOSSDEEP, format("What?\nIs that even fair?!"),
                                TRAINER_TABITHA_MOSSDEEP, format("Boss ain't gonna be happy to hear this…"),
@@ -352,7 +352,7 @@ mapscripts VastWoodsTrail_MapScripts {
                     delay(60)
                     applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceRight)
                     waitmovement(0)
-                    msgbox(format("Let's start heading back to the base.\pThe Boss is already going to be furious for us being out here."))
+                    msgbox(format("Let's start heading back to the hideout.\pThe Boss is already going to be furious for us being out here."))
                     applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceLeft)
                     delay(8)
                     applymovement(LOCALID_LEON, moves(walk_right * 2))

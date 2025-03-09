@@ -7,23 +7,23 @@ mapscripts WoodridgeTown_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setflag(FLAG_VISITED_WOODRIDGE_TOWN)
         setrespawn(HEAL_LOCATION_WOODRIDGE_TOWN)
-		if(var(VAR_NEWGAME_START) == 5) {
+		if(var(VAR_WOODRIDGE_TOWN_STATE) == 5) {
 			setobjectxyperm(LOCALID_ORION, 16, 31)
-		} elif(var(VAR_NEWGAME_START) == 6) {
+		} elif(var(VAR_WOODRIDGE_TOWN_STATE) == 6) {
 			setobjectxyperm(LOCALID_ORION, 1, 11)
 			setobjectmovementtype(LOCALID_ORION, MOVEMENT_TYPE_INVISIBLE)
 		}
 		end
 	}
 	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
-		VAR_NEWGAME_START, 5 {
+		VAR_WOODRIDGE_TOWN_STATE, 5 {
 			playbgm(MUS_NONE, TRUE)
 			hideobjectat(OBJ_EVENT_ID_PLAYER, MAP_WOODRIDGE_TOWN)
 			end
 		}
     ]
 	MAP_SCRIPT_ON_FRAME_TABLE [
-		VAR_NEWGAME_START, 2 { // Orion meets player for the first time and introduces himself, and asks the player out on a walk later that day
+		VAR_WOODRIDGE_TOWN_STATE, 2 { // Orion meets player for the first time and introduces himself, and asks the player out on a walk later that day
     		lock
 			applymovement(LOCALID_ORION, moves(walk_up * 4
 											   walk_left
@@ -65,11 +65,11 @@ mapscripts WoodridgeTown_MapScripts {
 			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
 			setflag(FLAG_HIDE_WOODRIDGE_TOWN_ORION)
 			clearflag(FLAG_HIDE_ORIONS_ROOM_ORION)
-			setvar(VAR_NEWGAME_START, 3)
+			setvar(VAR_WOODRIDGE_TOWN_STATE, 3)
 			release
 			end
 		}
-		 VAR_NEWGAME_START, 5 { // Cutscene after the Vast Woods Trail battle
+		 VAR_WOODRIDGE_TOWN_STATE, 5 { // Cutscene after the Vast Woods Trail battle
 			lock
 			special(SpawnCameraObject)
 			setobjectxy(OBJ_EVENT_ID_PLAYER, 17, 31)
@@ -179,7 +179,7 @@ script OrionsHouseSign {
 }
 
 script WoodridgeTown3rdHouseScript {
-	if (var(VAR_ANIMORA_CITY_STATE) >= 2 || var(VAR_NEWGAME_START) < 6) {
+	if (var(VAR_ANIMORA_CITY_STATE) >= 2 || var(VAR_WOODRIDGE_TOWN_STATE) < 6) {
 		msgbox(format("This door is locked."), MSGBOX_SIGN)
 	} else {
 		msgbox(format("The door feels like it's barricaded shut.\pYou can hear faint snoring coming from inside."), MSGBOX_SIGN)
@@ -191,7 +191,7 @@ script WoodridgeTown3rdHouseScript {
 
 script WoodridgeFirstBattle {
 	lock
-	addvar(VAR_NEWGAME_START, 1)
+	addvar(VAR_WOODRIDGE_TOWN_STATE, 1)
 	setobjectxy(LOCALID_ORION, 9, 13)
 	msgbox("Wait up, {PLAYER}!", MSGBOX_AUTOCLOSE)
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)

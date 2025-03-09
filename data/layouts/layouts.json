@@ -4474,20 +4474,20 @@
     {
       "id": "LAYOUT_CENTRA_NE_POKEMON_ACADEMY1F",
       "name": "CentraNE_PokemonAcademy1F_Layout",
-      "width": 52,
-      "height": 51,
+      "width": 18,
+      "height": 12,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_PokemonSchool",
+      "secondary_tileset": "gTileset_Lab",
       "border_filepath": "data/layouts/CentraNE_PokemonAcademy1F/border.bin",
       "blockdata_filepath": "data/layouts/CentraNE_PokemonAcademy1F/map.bin"
     },
     {
       "id": "LAYOUT_CENTRA_NE_POKEMON_ACADEMY2F",
       "name": "CentraNE_PokemonAcademy2F_Layout",
-      "width": 64,
-      "height": 27,
+      "width": 8,
+      "height": 8,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_PokemonSchool",
+      "secondary_tileset": "gTileset_Lab",
       "border_filepath": "data/layouts/CentraNE_PokemonAcademy2F/border.bin",
       "blockdata_filepath": "data/layouts/CentraNE_PokemonAcademy2F/map.bin"
     },

@@ -8,10 +8,10 @@ const LOCALID_WS = 6
 // TODO: Move player's and orion's battle to frame table
 mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        if(var(VAR_NEWGAME_START) == 1) {
+        if(var(VAR_WOODRIDGE_TOWN_STATE) == 1) {
 	        setobjectxyperm(LOCALID_ORIONS_MOM, 4, 5)
             setobjectmovementtype(LOCALID_ORIONS_MOM, MOVEMENT_TYPE_FACE_DOWN)
-        } elif(var(VAR_NEWGAME_START) == 5) {
+        } elif(var(VAR_WOODRIDGE_TOWN_STATE) == 5) {
             switch (var(VAR_STARTER_MON)) {
                 case 0:
                     setobjectxyperm(LOCALID_GS, 5, 2)
@@ -30,13 +30,13 @@ mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
 		end
 	}
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
-		VAR_NEWGAME_START, 5 {
+		VAR_WOODRIDGE_TOWN_STATE, 5 {
             playbgm(MUS_NONE, TRUE)
 	        hideobjectat(OBJ_EVENT_ID_PLAYER, MAP_WOODRIDGE_TOWN_ORIONS_HOUSE1F)
         }
     ]
 	MAP_SCRIPT_ON_FRAME_TABLE [
-		VAR_NEWGAME_START, 1 { // Player introduces themselves to Orion's mom
+		VAR_WOODRIDGE_TOWN_STATE, 1 { // Player introduces themselves to Orion's mom
             lock
             exclam(LOCALID_ORIONS_MOM)
             applymovement(LOCALID_ORIONS_MOM, moves(walk_left * 2
@@ -56,11 +56,11 @@ mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
             waitmovement(0)
             setflag(FLAG_HIDE_MAP_NAME_POPUP)
             clearflag(FLAG_HIDE_WOODRIDGE_TOWN_ORION)
-            setvar(VAR_NEWGAME_START, 2)
+            setvar(VAR_WOODRIDGE_TOWN_STATE, 2)
             release
             end
         }
-		VAR_NEWGAME_START, 5 { // Cutscene in Orion's house after the Vast Woods Trail battle, dubbed "Town Meeting"
+		VAR_WOODRIDGE_TOWN_STATE, 5 { // Cutscene in Orion's house after the Vast Woods Trail battle, dubbed "Town Meeting"
             lock
             initclock(9, 0)
 	        special(SpawnCameraObject)
@@ -179,7 +179,7 @@ mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
             removeobject(LOCALID_WS)
             setflag(FLAG_SYS_POKEMON_GET)
             setflag(FLAG_HIDE_ORIONS_HOUSE_CUTSCENE_NPCS)
-            setvar(VAR_NEWGAME_START, 6)
+            setvar(VAR_WOODRIDGE_TOWN_STATE, 6)
             setvar(VAR_BLOCK_PROGRESSION_SOUTH, 1)
             setvar(VAR_BLOCK_PROGRESSION_WEST, 0)
             clearflag(FLAG_HIDE_WOODRIDGE_TOWN_ORION)
@@ -193,10 +193,10 @@ mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
 // NPCs
 
 script WoodridgeOrionHouse1F_OrionsMom {
-    if(var(VAR_NEWGAME_START) < 3) {
+    if(var(VAR_WOODRIDGE_TOWN_STATE) < 3) {
         msgbox(format("If you're looking for someone to talk to, I have a son who's about your age.\p"
                       "I'm sure he'd like to meet you, but he's not here right now.\pHe's on one of his nature strolls in the woods south of here."), MSGBOX_NPC)
-    } elif(var(VAR_NEWGAME_START) < 6) {
+    } elif(var(VAR_WOODRIDGE_TOWN_STATE) < 6) {
         msgbox("Hello, {PLAYER}.", MSGBOX_NPC)
     } else {
         msgbox(format("Orion was always the adventurous sort."

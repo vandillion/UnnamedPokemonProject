@@ -115,7 +115,7 @@
 #define VAR_EVER_GRANDE_CITY_STATE                       0x405F // Unused Var
 #define VAR_ROUTE1_STATE                                 0x4060
 #define VAR_ROUTE2_STATE                                 0x4061
-#define VAR_ROUTE103_STATE                               0x4062 // Unused Var
+#define VAR_ROUTE3_STATE                                 0x4062 // Unused Var
 #define VAR_ROUTE104_STATE                               0x4063
 #define VAR_ROUTE105_STATE                               0x4064 // Unused Var
 #define VAR_ROUTE106_STATE                               0x4065 // Unused Var
@@ -148,7 +148,7 @@
 #define VAR_ROUTE133_STATE                               0x4080 // Unused Var
 #define VAR_VAST_WOODS_TRAIL_STATE                       0x4081
 #define VAR_LITTLEROOT_HOUSES_STATE_MAY                  0x4082
-#define VAR_NEWGAME_START                                0x4083
+#define VAR_VAST_WOODS_STATE                             0x4083
 #define VAR_BIRCH_LAB_STATE                              0x4084
 #define VAR_CENTRA_SE_GYM_STATE                          0x4085
 #define VAR_CONTEST_HALL_STATE                           0x4086

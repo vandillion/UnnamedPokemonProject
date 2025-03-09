@@ -43,27 +43,27 @@
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 #define NUM_TEMP_FLAGS   (TEMP_FLAGS_END - TEMP_FLAGS_START + 1)
 
-#define FLAG_HIDE_WOODRIDGE_TOWN_ORION          0x20
-#define FLAG_HIDE_ORIONS_ROOM_ORION             0x21
-#define FLAG_HIDE_WOODRIDGE_TOWN_POKEMON        0x22
-#define FLAG_HIDE_ORIONS_HOUSE_CUTSCENE_NPCS    0x23
-#define FLAG_UNUSED_0x024                       0x24 // Unused Flag
-#define FLAG_LOST_FIRST_BATTLE                  0x25
-#define FLAG_HIDE_ORION_PROF_LAB                0x26
-#define FLAG_HIDE_CENTRA_CITY_HARLEY            0x27
-#define FLAG_UNUSED_0x028                       0x28 // Unused Flag
-#define FLAG_UNUSED_0x029                       0x29 // Unused Flag
-#define FLAG_UNUSED_0x02A                       0x2A // Unused Flag
-#define FLAG_HIDE_GYM_GUIDE_CENTRA_SE           0x2B
-#define FLAG_HIDE_ROUTE_4_KANE                  0x2C
-#define FLAG_HIDE_KANES_HOUSE_KANE              0x2D
-#define FLAG_HIDE_IMPERIAL_ISLAND_KANE          0x2E
-#define FLAG_HIDE_IMPERIAL_ISLAND_HOUSE1_KANE   0x2F
-#define FLAG_HIDE_IMPERIAL_ISLAND_KANES_BOAT    0x30
-#define FLAG_HIDE_ORION_OLSTERN_CITY            0x31
-#define FLAG_HIDE_CUTSCENE_NPCS_OLSTERN_CITY_1  0x32
-#define FLAG_HIDE_CUTSCENE_NPCS_OLSTERN_CITY_2  0x33
-#define FLAG_HIDE_BOAT_GUARDS_OLSTERN_CITY      0x34
+#define FLAG_HIDE_WOODRIDGE_TOWN_ORION            0x20
+#define FLAG_HIDE_ORIONS_ROOM_ORION               0x21
+#define FLAG_HIDE_WOODRIDGE_TOWN_POKEMON          0x22
+#define FLAG_HIDE_ORIONS_HOUSE_CUTSCENE_NPCS      0x23
+#define FLAG_LOST_FIRST_BATTLE                    0x24
+#define FLAG_HIDE_ORION_PROF_LAB                  0x25
+#define FLAG_HIDE_VAST_WOODS_SUBZERO_HIDEOUT_NPCS 0x26
+#define FLAG_HIDE_VAST_WOODS_SUBZERO_HIDEOUT_LEON 0x27
+#define FLAG_HIDE_CENTRA_CITY_HARLEY              0x28
+#define FLAG_UNUSED_0x029                         0x29 // Unused Flag
+#define FLAG_UNUSED_0x02A                         0x2A // Unused Flag
+#define FLAG_HIDE_GYM_GUIDE_CENTRA_SE             0x2B
+#define FLAG_HIDE_ROUTE_4_KANE                    0x2C
+#define FLAG_HIDE_KANES_HOUSE_KANE                0x2D
+#define FLAG_HIDE_IMPERIAL_ISLAND_KANE            0x2E
+#define FLAG_HIDE_IMPERIAL_ISLAND_HOUSE1_KANE     0x2F
+#define FLAG_HIDE_IMPERIAL_ISLAND_KANES_BOAT      0x30
+#define FLAG_HIDE_ORION_OLSTERN_CITY              0x31
+#define FLAG_HIDE_CUTSCENE_NPCS_OLSTERN_CITY_1    0x32
+#define FLAG_HIDE_CUTSCENE_NPCS_OLSTERN_CITY_2    0x33
+#define FLAG_HIDE_BOAT_GUARDS_OLSTERN_CITY        0x34
 #define FLAG_UNUSED_0x035    0x35 // Unused Flag
 #define FLAG_UNUSED_0x036    0x36 // Unused Flag
 #define FLAG_UNUSED_0x037    0x37 // Unused Flag
@@ -1388,7 +1388,7 @@
 #define FLAG_SYS_NO_CATCHING                        (SYSTEM_FLAGS + 0x21)
 #define FLAG_SYS_SHINY_LOCK                         (SYSTEM_FLAGS + 0x22)
 #define FLAG_SYS_USE_24HR                           (SYSTEM_FLAGS + 0x23)
-#define FLAG_UNUSED_0x884                           (SYSTEM_FLAGS + 0x24) // Unused Flag
+#define FLAG_SYS_PAUSE_TIME                         (SYSTEM_FLAGS + 0x24)
 #define FLAG_UNUSED_0x885                           (SYSTEM_FLAGS + 0x25) // Unused Flag
 #define FLAG_UNUSED_0x886                           (SYSTEM_FLAGS + 0x26) // Unused Flag
 #define FLAG_UNUSED_0x887                           (SYSTEM_FLAGS + 0x27) // Unused Flag

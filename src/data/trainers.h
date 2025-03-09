@@ -12618,7 +12618,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 5108
-            .species = SPECIES_POOCHYENA,
+            .species = SPECIES_SKWOVET,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5110
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
@@ -12629,7 +12629,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 5111
-            .species = SPECIES_BABARK,
+            .species = SPECIES_RACCAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5113
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
@@ -15360,7 +15360,7 @@ F_TRAINER_FEMALE |
     [DIFFICULTY_NORMAL][TRAINER_ALLEN] =
     {
 #line 6179
-        .trainerName = _("Shawn"),
+        .trainerName = _("Allen"),
 #line 6180
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
 #line 6181
@@ -28317,7 +28317,7 @@ F_TRAINER_FEMALE |
 #line 11199
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 11198
-            .lvl = 6,
+            .lvl = 5,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },

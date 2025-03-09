@@ -33,7 +33,7 @@ script CentraSWClassmateTrigger {
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
 	waitmovement(0)
 	msgbox(format("Oh hey, {PLAYER}!\nHow've you been?\p"
-					"It's me, Nolan! From your 2nd homeroom at the Pokémon Academy!\p"
+					"It's me, Nolan! From the Trainer's School!\p"
 					"Looks like you're headed to Route 3, huh? Can I ask of you a huge favor?\p"
 					"I have a family member who lives on the edge of Route 3 that I need to deliver this Letter to.\p"
 					"Since you're already on your way there, would you deliver the Letter for me?"))

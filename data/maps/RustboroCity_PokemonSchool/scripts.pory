@@ -69,10 +69,12 @@ mapscripts RustboroCity_PokemonSchool_MapScripts {
 												 walk_in_place_fast_down))
 			waitmovement(0)
 			//TODO
-			warpsilent(MAP_RUSTBORO_CITY_POKEMON_SCHOOL, 8, 5) // Delete when ready
-			setflag(FLAG_HIDE_GYM_GUIDE_CENTRA_SE) // Move when ready
-			setvar(VAR_CENTRA_CITY_STATE, 1)
-			clearflag(FLAG_HIDE_CENTRA_CITY_HARLEY) // Move when ready
+			fadenewbgm(MUS_NONE)
+			fadescreen(FADE_TO_BLACK)
+			delay(75)
+			message("A few hours earlier…{PAUSE 45}\nSomewhere in the Vast Woods…{PAUSE 60}")
+			waitmessage
+			warpnofade(MAP_CENTRA_NE_POKEMON_ACADEMY1F, 9, 6)
 			waitstate
 			release
 			end

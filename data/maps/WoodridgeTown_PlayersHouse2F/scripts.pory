@@ -1,6 +1,6 @@
 mapscripts WoodridgeTown_PlayersHouse2F_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-        if(!var(VAR_NEWGAME_START))
+        if(!var(VAR_WOODRIDGE_TOWN_STATE))
         {
             initclock(16, 30)
             end

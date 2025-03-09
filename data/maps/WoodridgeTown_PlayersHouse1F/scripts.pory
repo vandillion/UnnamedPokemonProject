@@ -6,7 +6,7 @@ const LOCALID_MOM = 1
 
 mapscripts WoodridgeTown_PlayersHouse1F_MapScripts {
 	MAP_SCRIPT_ON_FRAME_TABLE [
-		VAR_NEWGAME_START, 0 { // Player walks down the stairs for the first time
+		VAR_WOODRIDGE_TOWN_STATE, 0 { // Player walks down the stairs for the first time
 			lock
 			playse(SE_PIN)
 			exclam(LOCALID_MOM)
@@ -23,13 +23,13 @@ mapscripts WoodridgeTown_PlayersHouse1F_MapScripts {
 				  		  "Just messing with you, haha!\nNow you don't want to make yourself look like a bad neighbor, do you?\p"
 						  "Of course you don't.\nSo, why don't you go introduce yourself?"), MSGBOX_AUTOCLOSE)
 			fadedefaultbgm
-			setvar(VAR_NEWGAME_START, 1)
+			setvar(VAR_WOODRIDGE_TOWN_STATE, 1)
 			setvar(VAR_BLOCK_PROGRESSION_SOUTH, 1)
 			setvar(VAR_BLOCK_PROGRESSION_WEST, 1)
 			release
 			end
 		}
-		VAR_NEWGAME_START, 3 { // Player has a chat with Mom before heading out for walk with Orion
+		VAR_WOODRIDGE_TOWN_STATE, 3 { // Player has a chat with Mom before heading out for walk with Orion
 			lock
 			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left * 3
 													 walk_up * 2
@@ -50,7 +50,7 @@ mapscripts WoodridgeTown_PlayersHouse1F_MapScripts {
 			setflag(FLAG_SYS_B_DASH)
 			setflag(FLAG_RECEIVED_RUNNING_SHOES)
 			msgbox(format("If anything happens to you let me know."), MSGBOX_AUTOCLOSE)
-			setvar(VAR_NEWGAME_START, 4)
+			setvar(VAR_WOODRIDGE_TOWN_STATE, 4)
 			setvar(VAR_BLOCK_PROGRESSION_SOUTH, 2)
 			release
 			end
@@ -59,10 +59,10 @@ mapscripts WoodridgeTown_PlayersHouse1F_MapScripts {
 }
 
 script WoodridgePlayersHouse1F_Mom {
-	if(var(VAR_NEWGAME_START) < 4 ) {
+	if(var(VAR_WOODRIDGE_TOWN_STATE) < 4 ) {
 		msgbox(format("I saw that there were other people in this town.\p"
 					  "Don't let yourself look like a bad neightbor, {PLAYER}. Go introduce yourself!"), MSGBOX_NPC)
-	} elif(var(VAR_NEWGAME_START) < 6) {
+	} elif(var(VAR_WOODRIDGE_TOWN_STATE) < 6) {
 		msgbox(format("If anything happens to you let me know."), MSGBOX_NPC)
 	} elif(var(VAR_TEMP_1) == TRUE) {
 		msgbox("You look all refreshed!\nTake care, {PLAYER}!", MSGBOX_NPC)

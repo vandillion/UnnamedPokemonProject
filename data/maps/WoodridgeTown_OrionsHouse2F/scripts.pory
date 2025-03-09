@@ -9,7 +9,7 @@ script OrionText {
 	lock
     faceplayer
     msgbox(format("Hey {PLAYER}!\nHow's it going?"))
-    call_if_eq(VAR_NEWGAME_START, 3, MessageTalkToParents)
+    call_if_eq(VAR_WOODRIDGE_TOWN_STATE, 3, MessageTalkToParents)
     closemessage
     applymovement(1, OrionWIPU)
     waitmovement(0)

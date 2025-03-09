@@ -1,1 +1,316 @@
-mapscripts CentraNE_PokemonAcademy1F_MapScripts {}
+const LOCALID_LEON = 1
+const LOCALID_GRUNT = 2
+const LOCALID_ILANNA = 3
+const LOCALID_ADMIN1 = 4
+const LOCALID_ADMIN2 = 5
+const LOCALID_SNORUNT2 = 7
+
+mapscripts CentraNE_PokemonAcademy1F_MapScripts {
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+        VAR_VAST_WOODS_STATE, 0 {
+            savebgm(MUS_NONE)
+            hideobjectat(OBJ_EVENT_ID_PLAYER, MAP_CENTRA_NE_POKEMON_ACADEMY1F)
+            hideobjectat(LOCALID_ILANNA, MAP_CENTRA_NE_POKEMON_ACADEMY1F)
+            hideobjectat(LOCALID_ADMIN1, MAP_CENTRA_NE_POKEMON_ACADEMY1F)
+            hideobjectat(LOCALID_ADMIN2, MAP_CENTRA_NE_POKEMON_ACADEMY1F)
+            end
+        }
+    ]
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_VAST_WOODS_STATE, 0 {
+            lock
+			pausefakertc
+            applymovement(LOCALID_LEON, moves(walk_left * 2
+                                              walk_right * 3
+                                              walk_left * 3
+                                              walk_right * 3
+                                              walk_left
+                                              walk_in_place_fast_down))
+            delay(80)
+            applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceUp)
+            waitmovement(LOCALID_LEON)
+            msgbox(format("Yo, any word from the Boss yet? She should've been here by now."))
+            applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceUp)
+            waitmovement(0)
+            msgbox(format("Leon, you gotta chill out!\nShe'll be here any minute."))
+            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceDown)
+            waitmovement(0)
+            msgbox(format("Yeah, I know.\nIt's just that we're short a person and 3 whole Pokémon, and I honestly don't think she'll take that kind of news lightly…"))
+            applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceUp)
+            waitmovement(0)
+            msgbox(format("Again, you gotta relax dude!\nAs long as you tell the truth like you said you would, you'll be fine.\p"
+                          "I don't think she's the type of person to trip over something slightly inconvenient, anyway."))
+            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceDown)
+            waitmovement(0)
+            msgbox(format("Huh.{PAUSE 40}\nI suppose you're right."), MSGBOX_AUTOCLOSE)
+            applymovement(LOCALID_LEON, moves(walk_left * 2
+                                              walk_right
+                                              walk_in_place_fast_down))
+            waitmovement(0)
+            msgbox(format("I'm grabing drinks.\nYou want anything?"))
+            applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceRight)
+            waitmovement(0)
+            msgbox(format("Just get me a Lemonade."))
+            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceDown)
+            waitmovement(0)
+            msgbox(format("Aight."), MSGBOX_AUTOCLOSE)
+            applymovement(LOCALID_LEON, moves(walk_down * 2
+                                              walk_right * 8))
+            delay(80)
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_diag_northwest * 3
+                                                     walk_left * 3
+                                                     delay_16))
+            waitmovement(0)
+            setobjectxy(LOCALID_LEON, 11, 7)
+            setobjectxy(LOCALID_GRUNT, 7, 9)
+            playse(SE_EXIT)
+            applymovement(LOCALID_ILANNA, moves(set_visible
+                                                walk_down))
+            waitse
+            msgbox("???: Please excuse our tardiness.", MSGBOX_AUTOCLOSE)
+            playse(SE_EXIT)
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(delay_16 * 3
+                                                     walk_down
+                                                     walk_right * 4
+                                                     walk_down))
+            applymovement(LOCALID_ILANNA, moves(walk_down
+                                                lock_facing_direction
+                                                walk_left
+                                                walk_right
+                                                unlock_facing_direction
+                                                walk_down
+                                                walk_right * 4
+                                                walk_in_place_fast_down))
+            applymovement(LOCALID_ADMIN1, moves(set_visible
+                                                walk_down * 3
+                                                walk_right * 5
+                                                walk_in_place_fast_down))
+            applymovement(LOCALID_ADMIN2, moves(delay_16 * 2
+                                                set_visible
+                                                walk_down * 3
+                                                walk_right * 3
+                                                walk_in_place_fast_down))
+            applymovement(LOCALID_LEON, moves(emote_exclamation_mark
+                                              walk_fast_left * 3
+                                              walk_fast_up))
+            applymovement(LOCALID_GRUNT, moves(emote_exclamation_mark
+                                               walk_fast_up * 2
+                                               walk_fast_left
+                                               walk_fast_up))
+            delay(32)
+            playse(SE_EXIT)
+            playbgm(MUS_AQUA_MAGMA_HIDEOUT, TRUE)
+            waitmovement(LOCALID_ADMIN2)
+            delay(30)
+            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
+            applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceUp)
+            waitmovement(0)
+            msgbox(format("Both: Boss!"))
+            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
+            waitmovement(0)
+            msgbox(format("Leon: Don't even worry about being late, ma'am. It's all cool!"), MSGBOX_AUTOCLOSE)
+            delay(60)
+            applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
+            waitmovement(0)
+            msgbox(format("You seem to be short a person.\nAny explanations?"))
+            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
+            waitmovement(0)
+            msgbox(format("Well, you see Boss, the 3 Pokémon you gave to the 3 of us suddenly ran out of the hideout and out of the Woods.\p"
+                          "We all trailed behind them, but by the time we caught up to them, there were two kids standing in the way of us and the Pokémon!\p"
+                          "They battled us with the Pokémon, and then fled to Woodridge Town.\p"
+                          "Harley, without question, decided to go AWOL and follow them into the Town.\p"
+                          "Gavin and I, however, retreated back to this hideout.\p"
+                          "Neither of us have seen Harley, the two kids, or the Pokémon since yesterday evening."))
+            applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
+            waitmovement(0)
+            msgbox(format("Interesting.{PAUSE 40}\nDid you happen to get the names of the kids?"))
+            applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceUp)
+            waitmovement(0)
+            msgbox(format("We did, ma'am. Their names were {PLAYER} and Orion."))
+            applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
+            waitmovement(0)
+            msgbox(format("H{PAUSE 8}e{PAUSE 8}h{PAUSE 8}e{PAUSE 8}h{PAUSE 8}e{PAUSE 8}h{PAUSE 8}e{PAUSE 8}h{PAUSE 8}.{PAUSE 8}.{PAUSE 8}.{PAUSE 40}\n"
+                          "Looks like the rumors were true."))
+            playse(SE_PIN)
+            applymovement(LOCALID_LEON, moves(emote_question_mark
+                                              delay_16 * 2
+                                              walk_in_place_up))
+            waitmovement(0)
+            msgbox(format("Huh?\nWhat rumors, Boss?\lWere you expecting them to interfere?"))
+            applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
+            waitmovement(0)
+            msgbox(format("Oh, no.\nNot at all.\pAre you two familiar with Prof. Oak?"))
+            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
+            applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceUp)
+            waitmovement(0)
+            msgbox(format("Leon: Of course!\nGavin: Yes ma'am!"))
+            applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
+            waitmovement(0)
+            msgbox(format("A little birdie told me a descendant of Professor Oak had recently moved to the region.\p"
+                           "I've looked through the census for last month. That descendant is {PLAYER}."))
+            applymovement(LOCALID_GRUNT, moves(delay_8
+                                               emote_exclamation_mark))
+            applymovement(LOCALID_LEON, moves(emote_exclamation_mark
+                                              delay_16 * 2
+                                              walk_in_place_up))
+            playse(SE_PIN)
+            delay(8)
+            playse(SE_PIN)
+            waitmovement(0)
+            msgbox(format("Holy Miltank!\nAre you serious?!"))
+            applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
+            waitmovement(0)
+            msgbox(format("Very."))
+            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
+            waitmovement(0)
+            msgbox(format("Wow…{PAUSE 40}\nI would've never guessed that in a million years!"))
+            applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
+            waitmovement(0)
+            msgbox(format("Unfortunately, with this information comes a threat to Subzero as a whole, epsecially now that those two know that you're apart of Subzero."))
+            exclam(LOCALID_ILANNA)
+            msgbox(format("Pardon me, it seems we've gone a bit off-track.\p"
+                          "You three had been assigned a mission here. Were you able to complete it?"))
+            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
+            applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceUp)
+            waitmovement(0)
+            msgbox(format("Both: Yes, ma'am!\p"
+                          "Leon: We were able to locate and excavate some debris from what seems to be a satellite scattered throughout the Woods!"))
+            applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
+            waitmovement(0)
+            msgbox(format("Excellent to hear.{PAUSE 60}\nLeon, your continued loyalty to Subzero has rightfully landed you a promotion to General.\pCongratulations."))
+            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
+            waitmovement(0)
+            msgbox(format("It is an honor, Boss."))
+            applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
+            waitmovement(0)
+            msgbox(format("As for Harley, she's wanted for treason."))
+            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
+            waitmovement(0)
+            msgbox(format("I see…"))
+            applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
+            waitmovement(0)
+            msgbox(format("I'm not sending a specialized group to look for her however.\p"
+                          "I'm leaving that solely in the hands of you, Leon, as your first mission as General.\p"
+                          "Find Harley.{PAUSE 40}\nI want her alive."))
+            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
+            waitmovement(0)
+            msgbox(format("Yes, ma'am!"))
+            applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
+            waitmovement(0)
+            msgbox(format("This is also a reminder to the both of you that we'll be holding a mandatory meeting at the main HQ a week from now.\p"
+                          "Until then, Leon, I order you to stay put in this hideout. Gavin's coming back to HQ with me."))
+            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
+            applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceUp)
+            waitmovement(0)
+            msgbox(format("Both: Yes, Boss!"))
+            applymovement(LOCALID_ILANNA, moves(walk_in_place_fast_right))
+            waitmovement(0)
+            message(format("You two.{PAUSE 48}\nGrab the scrap they found and meet me outside."))
+            delay(20)
+            applymovement(LOCALID_ADMIN1, moves(walk_in_place_fast_left))
+            applymovement(LOCALID_ADMIN2, moves(walk_in_place_fast_right))
+            delay(20)
+            applymovement(LOCALID_ILANNA, moves(walk_in_place_fast_left))
+            waitmessage
+            waitbuttonpress
+            closemessage
+            applymovement(LOCALID_ADMIN1, moves(walk_down
+                                                walk_left
+                                                walk_down * 2
+                                                walk_right * 9))
+            applymovement(LOCALID_ADMIN2, moves(delay_16
+                                                walk_down
+                                                walk_right
+                                                walk_down * 2
+                                                walk_right * 8))
+            applymovement(LOCALID_ILANNA, moves(walk_in_place_fast_down))
+            waitmovement(LOCALID_ADMIN2)
+            msgbox(format("Let's go, Gavin."))
+            applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceUp)
+            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceLeft)
+            waitmovement(0)
+            msgbox(format("Yes, Boss!"))
+            applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceDown)
+            waitmovement(0)
+            msgbox(format("Snorunt, Let's go!"), MSGBOX_AUTOCLOSE)
+            applymovement(LOCALID_SNORUNT2, moves(walk_left * 3
+                                                  walk_up * 7
+                                                  walk_left * 3
+                                                  walk_up * 3
+                                                  set_invisible))
+            delay(112)
+            applymovement(LOCALID_ILANNA, moves(walk_left * 4
+                                                walk_up * 3
+                                                set_invisible))
+            applymovement(LOCALID_GRUNT, moves(walk_up * 2
+                                               walk_left * 3 
+                                               walk_up * 3
+                                               set_invisible))
+            delay(16)
+            applymovement(LOCALID_LEON, moves(walk_in_place_fast_up))
+            waitmovement(LOCALID_ILANNA)
+            playse(SE_EXIT)
+            waitmovement(LOCALID_GRUNT)
+            playse(SE_EXIT)
+            waitmovement(LOCALID_SNORUNT2)
+            playse(SE_EXIT)
+            waitse
+            applymovement(LOCALID_ADMIN2, moves(face_right
+                                                lock_facing_direction
+                                                walk_left * 9
+                                                unlock_facing_direction
+                                                face_down
+                                                lock_facing_direction
+                                                walk_up * 3
+                                                unlock_facing_direction
+                                                face_right
+                                                lock_facing_direction
+                                                walk_left * 3
+                                                unlock_facing_direction
+                                                face_down
+                                                lock_facing_direction
+                                                walk_up * 3
+                                                set_invisible))
+            applymovement(LOCALID_ADMIN1, moves(walk_left * 9
+                                                face_up
+                                                lock_facing_direction
+                                                walk_left
+                                                walk_up * 2
+                                                unlock_facing_direction
+                                                face_left
+                                                lock_facing_direction
+                                                walk_up
+                                                walk_left * 2
+                                                unlock_facing_direction
+                                                face_up
+                                                lock_facing_direction
+                                                walk_left
+                                                walk_up * 3
+                                                set_invisible))
+            delay(80)
+            applymovement(LOCALID_LEON, moves(walk_in_place_fast_down))
+            delay(48)
+            applymovement(LOCALID_LEON, moves(walk_in_place_fast_left))
+            delay(48)
+            applymovement(LOCALID_LEON, moves(walk_in_place_fast_up))
+            waitmovement(LOCALID_ADMIN2)
+            playse(SE_EXIT)
+            waitmovement(LOCALID_ADMIN1)
+            playse(SE_EXIT)
+            waitse
+            fadenewbgm(MUS_NONE)
+            fadescreen(FADE_TO_BLACK)
+            resumefakertc
+			setflag(FLAG_HIDE_VAST_WOODS_SUBZERO_HIDEOUT_NPCS)
+            setvar(VAR_VAST_WOODS_STATE, 1)
+			setflag(FLAG_HIDE_GYM_GUIDE_CENTRA_SE)
+			clearflag(FLAG_HIDE_CENTRA_CITY_HARLEY)
+            setvar(VAR_CENTRA_CITY_STATE, 1)
+            delay(75)
+            warpnofade(MAP_RUSTBORO_CITY_POKEMON_SCHOOL, 8, 5)
+            waitstate
+            release
+            end
+        }
+    ]
+}
