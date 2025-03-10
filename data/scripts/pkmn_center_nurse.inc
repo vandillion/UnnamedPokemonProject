@@ -71,8 +71,11 @@ EventScript_PkmnCenterNurse_CheckPokerus::
 	end
 
 EventScript_PkmnCenterNurse_ExplainPokerus::
-	message gText_PokerusExplanation
 	setflag FLAG_POKERUS_EXPLAINED
+	msgbox gText_PokerusExplanation, MSGBOX_DEFAULT
+	message gText_WeHopeToSeeYouAgain
+	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Bow
+	waitmovement 0
 	return
 
 EventScript_PkmnCenterNurse_GoldCard::

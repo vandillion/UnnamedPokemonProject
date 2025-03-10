@@ -19,7 +19,6 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_VAST_WOODS_STATE, 0 {
             lock
-			pausefakertc
             applymovement(LOCALID_LEON, moves(walk_left * 2
                                               walk_right * 3
                                               walk_left * 3
@@ -139,15 +138,25 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
             msgbox(format("Huh?\nWhat rumors, Boss?\lWere you expecting them to interfere?"))
             applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            msgbox(format("Oh, no.\nNot at all.\pAre you two familiar with Prof. Oak?"))
+            msgbox(format("Oh, no.\nNot at all.\pLet me ask you two something.\nAre you familiar with Prof. Oak?"))
             applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
             applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceUp)
             waitmovement(0)
             msgbox(format("Leon: Of course!\nGavin: Yes ma'am!"))
             applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            msgbox(format("A little birdie told me a descendant of Professor Oak had recently moved to the region.\p"
-                           "I've looked through the census for last month. That descendant is {PLAYER}."))
+            checkplayergender
+            if(!var(VAR_RESULT)){
+                bufferstring(STR_VAR_1, "son")
+            } else {
+                bufferstring(STR_VAR_1, "daughter")
+            }
+            msgbox("A little birdie informed me that two\n"
+                   "descendants of Prof. Oak had recently\l"
+                   "moved to this region.\p"
+                   "I've done my research. Those\n"
+                   "descendants are his granddaughter\l"
+                   "Daisy, and her {STR_VAR_1}, {PLAYER}.$")
             applymovement(LOCALID_GRUNT, moves(delay_8
                                                emote_exclamation_mark))
             applymovement(LOCALID_LEON, moves(emote_exclamation_mark
@@ -166,7 +175,7 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
             msgbox(format("Wow…{PAUSE 40}\nI would've never guessed that in a million years!"))
             applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            msgbox(format("Unfortunately, with this information comes a threat to Subzero as a whole, epsecially now that those two know that you're apart of Subzero."))
+            msgbox(format("Now that {PLAYER} and Orion know about Subzero's existence, and considering {PLAYER}'s uncle's past, unfortunately, with this information comes a threat to Subzero as a whole."))
             exclam(LOCALID_ILANNA)
             msgbox(format("Pardon me, it seems we've gone a bit off-track.\p"
                           "You three had been assigned a mission here. Were you able to complete it?"))
@@ -189,7 +198,7 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
             msgbox(format("I see…"))
             applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            msgbox(format("I'm not sending a specialized group to look for her however.\p"
+            msgbox(format("I'm not sending a specialized group to look for her, however.\p"
                           "I'm leaving that solely in the hands of you, Leon, as your first mission as General.\p"
                           "Find Harley.{PAUSE 40}\nI want her alive."))
             applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
@@ -197,7 +206,7 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
             msgbox(format("Yes, ma'am!"))
             applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            msgbox(format("This is also a reminder to the both of you that we'll be holding a mandatory meeting at the main HQ a week from now.\p"
+            msgbox(format("This is also a reminder to the both of you that we'll be holding a mandatory meeting at the main HQ 3 days from now.\p"
                           "Until then, Leon, I order you to stay put in this hideout. Gavin's coming back to HQ with me."))
             applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
             applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceUp)
@@ -205,7 +214,7 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
             msgbox(format("Both: Yes, Boss!"))
             applymovement(LOCALID_ILANNA, moves(walk_in_place_fast_right))
             waitmovement(0)
-            message(format("You two.{PAUSE 48}\nGrab the scrap they found and meet me outside."))
+            message(format("You two. {PAUSE 48}Grab the scrap they found and meet me outside."))
             delay(20)
             applymovement(LOCALID_ADMIN1, moves(walk_in_place_fast_left))
             applymovement(LOCALID_ADMIN2, moves(walk_in_place_fast_right))
@@ -213,7 +222,6 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
             applymovement(LOCALID_ILANNA, moves(walk_in_place_fast_left))
             waitmessage
             waitbuttonpress
-            closemessage
             applymovement(LOCALID_ADMIN1, moves(walk_down
                                                 walk_left
                                                 walk_down * 2
@@ -224,15 +232,21 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
                                                 walk_down * 2
                                                 walk_right * 8))
             applymovement(LOCALID_ILANNA, moves(walk_in_place_fast_down))
-            waitmovement(LOCALID_ADMIN2)
-            msgbox(format("Let's go, Gavin."))
+            delay(48)
+            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
+            waitmovement(0)
+            msgbox(format("Wait! Boss, what exactly do you plan on doing about Orion and {PLAYER}?"))
+            applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
+            waitmovement(0)
+            msgbox(format("Those two…{PAUSE 40}\nI'll just simply leave them in the hands of a good friend of mine.\p"
+                          "Alright.\nLet's get going, Gavin."))
             applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceUp)
             applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceLeft)
             waitmovement(0)
             msgbox(format("Yes, Boss!"))
             applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            msgbox(format("Snorunt, Let's go!"), MSGBOX_AUTOCLOSE)
+            msgbox(format("Let's go, Snorunt!"), MSGBOX_AUTOCLOSE)
             applymovement(LOCALID_SNORUNT2, moves(walk_left * 3
                                                   walk_up * 7
                                                   walk_left * 3
@@ -246,15 +260,6 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
                                                walk_left * 3 
                                                walk_up * 3
                                                set_invisible))
-            delay(16)
-            applymovement(LOCALID_LEON, moves(walk_in_place_fast_up))
-            waitmovement(LOCALID_ILANNA)
-            playse(SE_EXIT)
-            waitmovement(LOCALID_GRUNT)
-            playse(SE_EXIT)
-            waitmovement(LOCALID_SNORUNT2)
-            playse(SE_EXIT)
-            waitse
             applymovement(LOCALID_ADMIN2, moves(face_right
                                                 lock_facing_direction
                                                 walk_left * 9
@@ -287,11 +292,17 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
                                                 walk_left
                                                 walk_up * 3
                                                 set_invisible))
-            delay(80)
+            delay(16)
+            applymovement(LOCALID_LEON, moves(walk_in_place_fast_up))
+            waitmovement(LOCALID_ILANNA)
+            playse(SE_EXIT)
             applymovement(LOCALID_LEON, moves(walk_in_place_fast_down))
-            delay(48)
+            waitmovement(LOCALID_GRUNT)
+            playse(SE_EXIT)
+            waitmovement(LOCALID_SNORUNT2)
+            playse(SE_EXIT)
             applymovement(LOCALID_LEON, moves(walk_in_place_fast_left))
-            delay(48)
+            delay(32)
             applymovement(LOCALID_LEON, moves(walk_in_place_fast_up))
             waitmovement(LOCALID_ADMIN2)
             playse(SE_EXIT)
@@ -300,13 +311,13 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
             waitse
             fadenewbgm(MUS_NONE)
             fadescreen(FADE_TO_BLACK)
-            resumefakertc
 			setflag(FLAG_HIDE_VAST_WOODS_SUBZERO_HIDEOUT_NPCS)
             setvar(VAR_VAST_WOODS_STATE, 1)
 			setflag(FLAG_HIDE_GYM_GUIDE_CENTRA_SE)
 			clearflag(FLAG_HIDE_CENTRA_CITY_HARLEY)
             setvar(VAR_CENTRA_CITY_STATE, 1)
             delay(75)
+            resumefakertc
             warpnofade(MAP_RUSTBORO_CITY_POKEMON_SCHOOL, 8, 5)
             waitstate
             release
