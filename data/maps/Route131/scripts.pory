@@ -6,6 +6,20 @@ mapscripts Route131_MapScripts {
 		//setrespawn(HEAL_LOCATION_ROUTE131)
 		end
 	}
+	MAP_SCRIPT_ON_RESUME {
+		if(flag(FLAG_SYS_CTRL_OBJ_DELETE)) {
+			specialvar(VAR_RESULT, GetBattleOutcome)
+			if(var(VAR_RESULT) == B_OUTCOME_WON
+		    || var(VAR_RESULT) == B_OUTCOME_RAN
+		    || var(VAR_RESULT) == B_OUTCOME_PLAYER_TELEPORTED
+		    || var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
+				removeobject(VAR_LAST_TALKED)
+			} else {
+				nop
+			}
+			end
+		}
+	}
 }
 
 script CentraSWClassmateTrigger {
@@ -45,6 +59,51 @@ script CentraSWClassmateTrigger {
 	removeobject(LOCALID_CLASSMATE)
 	setflag(FLAG_HIDE_CENTRA_SW_CLASSMATE)
 	setvar(VAR_CENTRA_SW_STATE, 1)
+	release
+	end
+}
+
+script CentraSW_Wingull {
+	lock
+	faceplayer
+	if(flag(FLAG_BADGE08_GET)) {
+		setwildbattle(SPECIES_WINGULL, 60)
+	} elif(flag(FLAG_BADGE07_GET)) {
+		setwildbattle(SPECIES_WINGULL, 60)
+	} elif(flag(FLAG_BADGE06_GET)) {
+		setwildbattle(SPECIES_WINGULL, 60)
+	} elif(flag(FLAG_BADGE05_GET)) {
+		setwildbattle(SPECIES_WINGULL, 60)
+	} elif(flag(FLAG_BADGE04_GET)) {
+		setwildbattle(SPECIES_WINGULL, 60)
+	} elif(flag(FLAG_BADGE03_GET)) {
+		setwildbattle(SPECIES_WINGULL, 60)
+	} elif(flag(FLAG_BADGE02_GET)) {
+		setwildbattle(SPECIES_WINGULL, 13)
+	} elif(flag(FLAG_BADGE01_GET)) {
+		setwildbattle(SPECIES_WINGULL, 9)
+	} else {
+		setwildbattle(SPECIES_WINGULL, 7)
+	}
+	waitse
+	playmoncry(SPECIES_WINGULL, CRY_MODE_NORMAL)
+	waitmoncry
+	setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+	dowildbattle
+	clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
+	random(100)
+	if(var(VAR_RESULT) >= 75) {
+		additem(ITEM_PRETTY_FEATHER, 5)
+		if(var(VAR_RESULT)) {
+			buffernumberstring(STR_VAR_1, 5)
+			bufferitemnameplural(STR_VAR_2, ITEM_PRETTY_FEATHER, 5)
+			bufferstring(STR_VAR_3, "ITEMS")
+			playfanfare(MUS_OBTAIN_ITEM)
+			message("The Pokémon dropped\n{STR_VAR_1} {STR_VAR_2}!")
+			waitfanfare
+			msgbox(gText_PutItemInPocket, MSGBOX_AUTOCLOSE)
+		}
+	}
 	release
 	end
 }

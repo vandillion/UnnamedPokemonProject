@@ -156,8 +156,10 @@ mapscripts VastWoodsTrail_MapScripts {
             applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
             delay(8)
             fadescreen(FADE_TO_BLACK)
+            additem(ITEM_POKE_BALL)
             special(ChooseStarter)
             waitstate
+            removeitem(ITEM_POKE_BALL)
             switch (var(VAR_STARTER_MON)) {
                 case 0:
                     setseenmon(SPECIES_JUNGLIDE)

@@ -11,7 +11,6 @@ mapscripts WoodridgeTown_PlayersHouse2F_MapScripts {
 script PlayersHouseClock {
     incrementgamestat(GAME_STAT_CHECKED_CLOCK)
     call(EventScript_BufferTime)
-    pausefakertc
     if(!flag(FLAG_SYS_USE_24HR))
     {
         msgbox("{PLAYER} checked the clock…\pIt's {STR_VAR_1}:{STR_VAR_2} {STR_VAR_3}!", MSGBOX_SIGN)
@@ -20,7 +19,6 @@ script PlayersHouseClock {
     {
         msgbox("{PLAYER} checked the clock…\pIt's {STR_VAR_1}:{STR_VAR_2}!", MSGBOX_SIGN)
     }
-    resumefakertc
 	release
 	end
 }

@@ -2467,7 +2467,7 @@ static void Task_ShinyStars(u8 taskId)
     s16 starIdx;
     u8 pan;
 
-    if (gTasks[taskId].tTimer < 60)
+    if (gTasks[taskId].tTimer < N_SHINY_STARS_TIMER)
     {
         gTasks[taskId].tTimer++;
         return;

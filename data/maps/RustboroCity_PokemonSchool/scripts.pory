@@ -59,7 +59,7 @@ mapscripts RustboroCity_PokemonSchool_MapScripts {
 			applymovement(13, Common_Movement_WalkInPlaceUp)
 			applymovement(14, Common_Movement_WalkInPlaceUp)
 			waitmovement(LOCALID_TEACHER)
-			msgbox(format("{PLAYER}, correct?{PAUSE 60}\nProf. Watson told me you were arriving shortly.\p"
+			msgbox(format("{PLAYER}, correct?{PAUSE 40}\nProf. Watson told me you were arriving shortly.\p"
 						  "Do me a favor and stand next to the young lady behind me."), MSGBOX_AUTOCLOSE)
 			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 2
 													 walk_in_place_fast_down))
@@ -73,7 +73,7 @@ mapscripts RustboroCity_PokemonSchool_MapScripts {
 			fadenewbgm(MUS_NONE)
 			fadescreen(FADE_TO_BLACK)
 			delay(75)
-			message("A few hours earlier…{PAUSE 45}\nSomewhere in the Vast Woods…{PAUSE 60}")
+			message("A few hours earlier…{PAUSE 45}\nSomewhere in the Vast Woods…{PAUSE 45}")
 			waitmessage
 			delay(20)
 			warpnofade(MAP_CENTRA_NE_POKEMON_ACADEMY1F, 9, 6)
