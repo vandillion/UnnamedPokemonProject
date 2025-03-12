@@ -3170,7 +3170,17 @@ Double Battle: No
 AI: Basic Trainer
 
 Krabby
-Level: 13
+Level: 15
+
+Corphish
+Level: 15
+
+Krabby
+Level: 16
+-Protect
+-Mud Shot
+-Harden
+-Water Gun
 
 === TRAINER_HITOSHI ===
 Name: HITOSHI
@@ -4817,13 +4827,13 @@ Double Battle: No
 AI: Gym Leader
 
 Skullian (M)
-Level: 16
+Level: 17
 
 Dhelmise (M)
-Level: 16
+Level: 17
 
 Finizen (M)
-Level: 18
+Level: 19
 
 === TRAINER_WATTSON_1 ===
 Name: Wattson
@@ -7799,15 +7809,10 @@ Double Battle: No
 AI: Basic Trainer
 
 Inkay
-Level: 12
--Pluck
--Tackle
-
+Level: 14
 
 Inkay
-Level: 13
--Payback
--Wrap
+Level: 15
 
 === TRAINER_LAURA ===
 Name: LAURA
@@ -10497,7 +10502,7 @@ Double Battle: No
 AI: Check Bad Move
 
 Wingull
-Level: 13
+Level: 16
 
 === TRAINER_LILITH ===
 Name: LILITH
