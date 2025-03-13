@@ -564,6 +564,7 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .categoryName = _("Brass Bird"),
         .height = 17,
         .weight = 505,
+        .frontPicYOffset = 9,
         .frontAnimFrames = sAnims_SingleFramePlaceHolder,
         .frontAnimId = ANIM_GROW_VIBRATE,
         .enemyMonElevation = 12,
