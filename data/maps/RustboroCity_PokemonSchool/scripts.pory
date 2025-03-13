@@ -76,7 +76,7 @@ mapscripts RustboroCity_PokemonSchool_MapScripts {
 			message("A few hours earlier…{PAUSE 45}\nSomewhere in the Vast Woods…{PAUSE 45}")
 			waitmessage
 			delay(20)
-			warpnofade(MAP_CENTRA_NE_POKEMON_ACADEMY1F, 9, 6)
+			warpnofade(MAP_CENTRA_NE_POKEMON_ACADEMY1F, 9, 8)
 			waitstate
 			release
 			end

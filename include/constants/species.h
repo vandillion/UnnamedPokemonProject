@@ -1639,30 +1639,47 @@
 #define SPECIES_MIMIKYU_TOTEM_BUSTED                    SPECIES_MIMIKYU_BUSTED_TOTEM
 
 #define SPECIES_JUNGLIDE                                1524
-
+#define SPECIES_CANOKITE                                1525
 
 #define SPECIES_PARMI                                   1527
-
+#define SPECIES_PANDARO                                 1528
 
 #define SPECIES_RADPOLE                                 1530
+#define SPECIES_FROGIDOKI                               1531
 
 
 #define SPECIES_RACCAT                                  1533
 
 #define SPECIES_LUEL                                    1535
-
+#define SPECIES_LUCROW                                  1536
 
 #define SPECIES_BANDITOOK                               1538
 
 #define SPECIES_BABARK                                  1543
 
 
+#define SPECIES_STAGMITE                                SPECIES_STAGMITE_STANDARD
+#define SPECIES_STAGMITE_STANDARD                       1546
+
+
+#define SPECIES_HUFFLUFF                                1556
+
+#define SPECIES_POLLULANT                               1558
+
+
+#define SPECIES_MIPHISH                                 1563
+
+#define SPECIES_PURRBIRD                                1565
+
 #define SPECIES_BELLANCO                                1577
 
 #define SPECIES_SKULLIAN                                1611
 
 
-#define SPECIES_EGG                                     (SPECIES_SKULLIAN + 1)
+#define SPECIES_SINEASTER                               1697
+
+
+#define SPECIES_EGG                                     (SPECIES_SINEASTER + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 

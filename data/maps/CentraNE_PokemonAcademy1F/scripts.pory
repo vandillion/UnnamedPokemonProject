@@ -43,21 +43,23 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
             waitmovement(0)
             msgbox(format("Huh.{PAUSE 40}\nI suppose you're right."), MSGBOX_AUTOCLOSE)
             applymovement(LOCALID_LEON, moves(walk_left * 2
-                                              walk_right
+                                              walk_right * 3
+                                              walk_left * 2
                                               walk_in_place_fast_down))
             waitmovement(0)
-            msgbox(format("I'm grabing drinks.\nYou want anything?"))
+            msgbox(format("I'm gonna grab a drink.\nYou want anything?"))
             applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceRight)
             waitmovement(0)
             msgbox(format("Just get me a Lemonade."))
             applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
             msgbox(format("Aight."), MSGBOX_AUTOCLOSE)
+            delay(8)
             applymovement(LOCALID_LEON, moves(walk_down * 2
                                               walk_right * 8))
             delay(80)
-            applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_diag_northwest * 3
-                                                     walk_left * 3
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_diag_northwest * 5
+                                                     walk_left
                                                      delay_16))
             waitmovement(0)
             setobjectxy(LOCALID_LEON, 11, 7)
@@ -91,11 +93,13 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
                                                 walk_in_place_fast_down))
             applymovement(LOCALID_LEON, moves(emote_exclamation_mark
                                               walk_fast_left * 3
-                                              walk_fast_up))
+                                              walk_fast_up
+                                              walk_in_place_fast_up))
             applymovement(LOCALID_GRUNT, moves(emote_exclamation_mark
                                                walk_fast_up * 2
                                                walk_fast_left
-                                               walk_fast_up))
+                                               walk_fast_up
+                                               walk_in_place_fast_up))
             delay(32)
             playse(SE_EXIT)
             playbgm(MUS_AQUA_MAGMA_HIDEOUT, TRUE)
@@ -128,7 +132,7 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
             msgbox(format("We did, ma'am. Their names were {PLAYER} and Orion."))
             applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            msgbox(format("H{PAUSE 8}e{PAUSE 8}h{PAUSE 8}e{PAUSE 8}h{PAUSE 8}e{PAUSE 8}h{PAUSE 8}e{PAUSE 8}h{PAUSE 8}.{PAUSE 8}.{PAUSE 8}.{PAUSE 40}\n"
+            msgbox(format("H{PAUSE 8}m{PAUSE 8}h{PAUSE 8}m{PAUSE 8}h{PAUSE 8}m{PAUSE 8}h{PAUSE 8}m{PAUSE 8}h{PAUSE 8}m{PAUSE 8}.{PAUSE 8}.{PAUSE 8}.{PAUSE 40}\n"
                           "Looks like the rumors were true."))
             playse(SE_PIN)
             applymovement(LOCALID_LEON, moves(emote_question_mark
@@ -173,9 +177,9 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
             applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
             waitmovement(0)
             msgbox(format("Wow…{PAUSE 40}\nI would've never guessed that in a million years!"))
-            applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
-            waitmovement(0)
-            msgbox(format("Now that {PLAYER} and Orion know about Subzero's existence, and considering {PLAYER}'s uncle's past, unfortunately, with this information comes a threat to Subzero as a whole."))
+            //applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
+            //waitmovement(0)
+            //msgbox(format("Now that {PLAYER} and Orion know about Subzero's existence, and considering {PLAYER}'s uncle's past, unfortunately, with this information comes a threat to Subzero as a whole."))
             exclam(LOCALID_ILANNA)
             msgbox(format("Pardon me, it seems we've gone a bit off-track.\p"
                           "You three had been assigned a mission here. Were you able to complete it?"))
@@ -186,10 +190,10 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
                           "Leon: We were able to locate and excavate some debris from what seems to be a satellite scattered throughout the Woods!"))
             applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            msgbox(format("Excellent to hear.{PAUSE 60}\nLeon, your continued loyalty to Subzero has rightfully landed you a promotion to General.\pCongratulations."))
+            msgbox(format("Excellent to hear.{PAUSE 40}\nLeon, your continued loyalty to Subzero has rightfully landed you a promotion to General.\pCongratulations."))
             applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
             waitmovement(0)
-            msgbox(format("It is an honor, Boss."))
+            msgbox(format("It is an honor, Boss!"))
             applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
             msgbox(format("As for Harley, she's wanted for treason."))
@@ -214,7 +218,7 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
             msgbox(format("Both: Yes, Boss!"))
             applymovement(LOCALID_ILANNA, moves(walk_in_place_fast_right))
             waitmovement(0)
-            message(format("You two. {PAUSE 48}Grab the scrap they found and meet me outside."))
+            message(format("You two. {PAUSE 48}Grab the scrap they found and meet us outside."))
             delay(20)
             applymovement(LOCALID_ADMIN1, moves(walk_in_place_fast_left))
             applymovement(LOCALID_ADMIN2, moves(walk_in_place_fast_right))

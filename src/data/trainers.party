@@ -4804,12 +4804,19 @@ Music: Female
 Double Battle: No
 AI: Gym Leader
 
-Luel (F)
-Level: 11
-
 Wattrel (F)
-Level: 12
+Level: 11
 Ability: Wind Power
+-Thunder Shock
+-Aerial Ace
+-Quick Attack
+
+Luel (F)
+Level: 12
+-Supersonic
+-Wing Attack
+-Aerial Ace
+-Leer
 
 Bellanco (F)
 Level: 14
@@ -10782,16 +10789,16 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer / HP Aware / Smart Switching
 
-Wooloo
+Huffluff
 Level: 21
 
 Lombre
 Level: 21
 
-Luel
+Lucrow
 Level: 22
 
-Parmi (M)
+Pandaro (M)
 Level: 24
 
 === TRAINER_BRENDAN_RUSTBORO_MUDKIP ===
@@ -10803,16 +10810,16 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer / HP Aware / Smart Switching
 
-Wooloo
+Huffluff
 Level: 21
 
 Lombre
 Level: 21
 
-Luel
+Lucrow
 Level: 22
 
-Junglide (M)
+Canokite (M)
 Level: 24
 
 === TRAINER_PAXTON ===
@@ -10914,16 +10921,16 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer / HP Aware / Smart Switching
 
-Wooloo
+Huffluff
 Level: 21
 
 Lombre
 Level: 21
 
-Luel
+Lucrow
 Level: 22
 
-Radpole (M)
+Frogidoki (M)
 Level: 24
 
 === TRAINER_MAY_RUSTBORO_MUDKIP ===
@@ -14080,16 +14087,46 @@ Level: 15
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_ROXANNE_2 ===
-Name: Aria
-Class: Pkmn Trainer 1
+Name: ROXANNE
+Class: Leader
 Pic: Leader Roxanne
 Gender: Female
 Music: Female
-Double Battle: No
+Items: Full Restore / Full Restore / Full Restore
+Double Battle: Yes
 AI: Basic Trainer
 
-Pidove (F)
-Level: 9
+Golem
+Level: 32
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Protect
+- Rollout
+- Magnitude
+- Explosion
+
+Kabuto @ Sitrus Berry
+Level: 35
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Swords Dance
+- Ice Beam
+- Surf
+- Rock Slide
+
+Onix
+Level: 35
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Iron Tail
+- Explosion
+- Roar
+- Rock Slide
+
+Nosepass @ Sitrus Berry
+Level: 37
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Double Team
+- Explosion
+- Protect
+- Rock Slide
 
 === TRAINER_ROXANNE_3 ===
 Name: ROXANNE

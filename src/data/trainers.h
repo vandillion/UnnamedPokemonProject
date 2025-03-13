@@ -27193,7 +27193,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 10785
-            .species = SPECIES_WOOLOO,
+            .species = SPECIES_HUFFLUFF,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10787
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
@@ -27215,7 +27215,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 10791
-            .species = SPECIES_LUEL,
+            .species = SPECIES_LUCROW,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10793
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
@@ -27226,7 +27226,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 10794
-            .species = SPECIES_PARMI,
+            .species = SPECIES_PANDARO,
 #line 10794
             .gender = TRAINER_MON_MALE,
 #line 10796
@@ -27259,7 +27259,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 10806
-            .species = SPECIES_WOOLOO,
+            .species = SPECIES_HUFFLUFF,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10808
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
@@ -27281,7 +27281,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 10812
-            .species = SPECIES_LUEL,
+            .species = SPECIES_LUCROW,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10814
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
@@ -27292,7 +27292,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 10815
-            .species = SPECIES_JUNGLIDE,
+            .species = SPECIES_CANOKITE,
 #line 10815
             .gender = TRAINER_MON_MALE,
 #line 10817
@@ -27557,7 +27557,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 10917
-            .species = SPECIES_WOOLOO,
+            .species = SPECIES_HUFFLUFF,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10919
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
@@ -27579,7 +27579,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 10923
-            .species = SPECIES_LUEL,
+            .species = SPECIES_LUCROW,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10925
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
@@ -27590,7 +27590,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 10926
-            .species = SPECIES_RADPOLE,
+            .species = SPECIES_FROGIDOKI,
 #line 10926
             .gender = TRAINER_MON_MALE,
 #line 10928
