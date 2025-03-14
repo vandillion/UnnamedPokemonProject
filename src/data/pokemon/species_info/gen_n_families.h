@@ -165,7 +165,6 @@ const struct SpeciesInfo gSpeciesInfoGenN[] =
         .weight = 61,
         .frontAnimFrames = sAnims_SingleFramePlaceHolder,
         .frontAnimId = ANIM_CIRCULAR_STRETCH_TWICE,
-        .backPic = gMonBackPic_Quaxly,
         .backAnimId = BACK_ANIM_DIP_RIGHT_SIDE,
         .levelUpLearnset = sRadpoleLevelUpLearnset,
         .teachableLearnset = sNoneTeachableLearnset,
