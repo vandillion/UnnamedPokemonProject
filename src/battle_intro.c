@@ -371,7 +371,7 @@ static void BattleIntroSlide2(u8 taskId)
             gBattle_WIN0V -= 0x3FC;
 
         if (gTasks[taskId].data[2])
-            gTasks[taskId].data[2] -= 2;
+            gTasks[taskId].data[2] -= N_BATTLE_START_SPEED;
 
         // Scanline settings have already been set in CB2_InitBattleInternal()
         for (i = 0; i < DISPLAY_HEIGHT / 2; i++)
@@ -461,7 +461,7 @@ static void BattleIntroSlide3(u8 taskId)
             gBattle_WIN0V -= 0x3FC;
 
         if (gTasks[taskId].data[2])
-            gTasks[taskId].data[2] -= 2;
+            gTasks[taskId].data[2] -= N_BATTLE_START_SPEED;
 
         // Scanline settings have already been set in CB2_InitBattleInternal()
         for (i = 0; i < DISPLAY_HEIGHT / 2; i++)
@@ -543,7 +543,7 @@ static void BattleIntroSlideLink(u8 taskId)
             gBattle_WIN0V -= 0x3FC;
 
         if (gTasks[taskId].data[2])
-            gTasks[taskId].data[2] -= 2;
+            gTasks[taskId].data[2] -= N_BATTLE_START_SPEED;
 
         // Scanline settings have already been set in CB2_InitBattleInternal()
         for (i = 0; i < DISPLAY_HEIGHT / 2; i++)
