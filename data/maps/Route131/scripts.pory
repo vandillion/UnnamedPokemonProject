@@ -3,23 +3,10 @@ const LOCALID_CLASSMATE = 9
 mapscripts Route131_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setflag(FLAG_VISITED_CENTRA_CITY)
-		//setrespawn(HEAL_LOCATION_ROUTE131)
+		setrespawn(HEAL_LOCATION_ROUTE131)
 		end
 	}
-	MAP_SCRIPT_ON_RESUME {
-		if(flag(FLAG_SYS_CTRL_OBJ_DELETE)) {
-			specialvar(VAR_RESULT, GetBattleOutcome)
-			if(var(VAR_RESULT) == B_OUTCOME_WON
-		    || var(VAR_RESULT) == B_OUTCOME_RAN
-		    || var(VAR_RESULT) == B_OUTCOME_PLAYER_TELEPORTED
-		    || var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
-				removeobject(VAR_LAST_TALKED)
-			} else {
-				nop
-			}
-			end
-		}
-	}
+	MAP_SCRIPT_ON_RESUME: Common_EventScript_RemoveStaticEncounter
 }
 
 script CentraSWClassmateTrigger {
@@ -91,17 +78,23 @@ script CentraSW_Wingull {
 	setflag(FLAG_SYS_CTRL_OBJ_DELETE)
 	dowildbattle
 	clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
-	random(100)
-	if(var(VAR_RESULT) >= 75) {
-		additem(ITEM_PRETTY_FEATHER, 5)
-		if(var(VAR_RESULT)) {
-			buffernumberstring(STR_VAR_1, 5)
-			bufferitemnameplural(STR_VAR_2, ITEM_PRETTY_FEATHER, 5)
-			bufferstring(STR_VAR_3, "ITEMS")
-			playfanfare(MUS_OBTAIN_ITEM)
-			message("The Pokémon dropped\n{STR_VAR_1} {STR_VAR_2}!")
-			waitfanfare
-			msgbox(gText_PutItemInPocket, MSGBOX_AUTOCLOSE)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if(var(VAR_RESULT) == B_OUTCOME_WON
+	|| var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
+		random(100)
+		if(var(VAR_RESULT) >= 75) {
+			random(5)
+			addvar(VAR_RESULT, 1)
+			additem(ITEM_PRETTY_FEATHER, VAR_RESULT)
+			if(var(VAR_RESULT)) {
+				buffernumberstring(STR_VAR_1, 5)
+				bufferitemnameplural(STR_VAR_2, ITEM_PRETTY_FEATHER, 5)
+				bufferstring(STR_VAR_3, "ITEMS")
+				playfanfare(MUS_OBTAIN_ITEM)
+				message("The Pokémon dropped\n{STR_VAR_1} {STR_VAR_2}!")
+				waitfanfare
+				msgbox(gText_PutItemInPocket, MSGBOX_AUTOCLOSE)
+			}
 		}
 	}
 	release

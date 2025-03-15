@@ -4,7 +4,7 @@ gText_WouldYouLikeToRestYourPkmn::
 
 
 gText_IllTakeYourPkmn::
-	.string "Okay, I'll take your POKéMON\n"
+	.string "Okay, I'll take your Pokémon\n"
 	.string "for a few seconds.$"
 
 gText_RestoredPkmnToFullHealth::
@@ -27,14 +27,14 @@ gText_NoticesGoldCard::
 	.string "you're the first TRAINER I've ever\l"
 	.string "seen with a GOLD CARD!\p"
 	.string "Okay, {PLAYER}, please allow me\n"
-	.string "the honor of resting your POKéMON!$"
+	.string "the honor of resting your Pokémon!$"
 
 gText_YouWantTheUsual::
 	.string "I'm delighted to see you, {PLAYER}!\n"
 	.string "You want the usual, am I right?$"
 
 gText_IllTakeYourPkmn2::
-	.string "Okay, I'll take your POKéMON\n"
+	.string "Okay, I'll take your Pokémon\n"
 	.string "for a few seconds.$"
 
 gText_ThankYouForWaiting::

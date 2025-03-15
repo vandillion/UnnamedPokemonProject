@@ -1,7 +1,7 @@
 mapscripts Route132_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setflag(FLAG_VISITED_CENTRA_CITY)
-		//setrespawn(HEAL_LOCATION_ROUTE132)
+		setrespawn(HEAL_LOCATION_ROUTE132)
 		end
 	}
 }

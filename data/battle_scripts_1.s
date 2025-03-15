@@ -5394,7 +5394,11 @@ BattleScript_FaintAttacker::
 	tryillusionoff BS_ATTACKER
 	tryactivategulpmissile
 	playfaintcry BS_ATTACKER
+	.if N_FAINT_WAITMONCRY == TRUE
 	waitcry BS_ATTACKER
+	.else
+	pause B_WAIT_TIME_LONG
+	.endif
 	dofaintanimation BS_ATTACKER
 	printstring STRINGID_ATTACKERFAINTED
 	cleareffectsonfaint BS_ATTACKER
@@ -5408,7 +5412,11 @@ BattleScript_FaintTarget::
 	tryactivategulpmissile
 	tryupdateleaderscresttracker
 	playfaintcry BS_TARGET
+	.if N_FAINT_WAITMONCRY == TRUE
 	waitcry BS_TARGET
+	.else
+	pause B_WAIT_TIME_LONG
+	.endif
 	dofaintanimation BS_TARGET
 	printstring STRINGID_TARGETFAINTED
 	cleareffectsonfaint BS_TARGET

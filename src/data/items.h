@@ -11341,8 +11341,8 @@ const struct Item gItemsInfo[] =
         .name = _("TM65"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "Power doubles\n"
-            "if last move failed."),
+            "Power doubles if\n"
+            "last move failed."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,

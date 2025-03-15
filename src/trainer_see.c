@@ -700,12 +700,11 @@ static bool8 TrainerMoveToPlayer(u8 taskId, struct Task *task, struct ObjectEven
         }
         else
         {
+#endif
             ObjectEventSetHeldMovement(trainerObj, MOVEMENT_ACTION_FACE_PLAYER);
             task->tFuncId++; // TRSEE_PLAYER_FACE
+#if N_TRAINERS_DONT_WALK_TO_PLAYER == FALSE
         }
-#else
-        ObjectEventSetHeldMovement(trainerObj, MOVEMENT_ACTION_FACE_PLAYER);
-        task->tFuncId++; // TRSEE_PLAYER_FACE
 #endif
     }
     return FALSE;

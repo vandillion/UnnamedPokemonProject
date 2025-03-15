@@ -394,22 +394,26 @@ static void HandleInputChooseAction(u32 battler)
         }
         else if (B_QUICK_MOVE_CURSOR_TO_RUN)
         {
-            if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER))                                      // If wild battle, pressing B...
+            if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER))
             {
-            #if N_FLEE_ON_B == TRUE
-                PlaySE(SE_SELECT);                                                              // causes the player to run from battle.
-                TryHideLastUsedBall();
-                BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_RUN, 0);
-                PlayerBufferExecCompleted(battler);
-            #else
-                if (gActionSelectionCursor[battler] != B_ACTION_RUN)                            // moves the cursor to "Run" if it isn't already there.
+                #if N_FLEE_ON_B == FALSE
+                if (gActionSelectionCursor[battler] != B_ACTION_RUN)
                 {
                     PlaySE(SE_SELECT);
                     ActionSelectionDestroyCursorAt(gActionSelectionCursor[battler]);
                     gActionSelectionCursor[battler] = 3;
                     ActionSelectionCreateCursorAt(gActionSelectionCursor[battler], 0);
                 }
-            #endif
+                else
+                {
+                #endif
+                    PlaySE(SE_SELECT);
+                    TryHideLastUsedBall();
+                    BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_RUN, 0);
+                    PlayerBufferExecCompleted(battler);
+                #if N_FLEE_ON_B == FALSE
+                }
+                #endif
             }    
         }
     }

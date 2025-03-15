@@ -1,10 +1,4 @@
-mapscripts Route133_MapScripts {
-	MAP_SCRIPT_ON_TRANSITION {
-		setflag(FLAG_VISITED_CENTRA_CITY)
-		setrespawn(HEAL_LOCATION_ROUTE133)
-		end
-	}
-}
+mapscripts Route133_MapScripts {}
 
 raw `
 Route133_EventScript_Franklin::

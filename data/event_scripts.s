@@ -1049,6 +1049,23 @@ EventScript_OWHealParty::
 	special HealPlayerParty
 	end
 
+Common_EventScript_RemoveStaticEncounter::
+	goto_if_set FLAG_SYS_CTRL_OBJ_DELETE, Common_EventScript_RemoveStaticEncounter_1
+	end
+
+Common_EventScript_RemoveStaticEncounter_1:
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT,               B_OUTCOME_WON, Common_EventScript_RemoveStaticEncounter_2
+	goto_if_eq VAR_RESULT,               B_OUTCOME_RAN, Common_EventScript_RemoveStaticEncounter_2
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, Common_EventScript_RemoveStaticEncounter_2
+	goto_if_eq VAR_RESULT,            B_OUTCOME_CAUGHT, Common_EventScript_RemoveStaticEncounter_2
+Common_EventScript_RemoveStaticEncounter_3:
+	end
+
+Common_EventScript_RemoveStaticEncounter_2:
+	removeobject VAR_LAST_TALKED
+	goto Common_EventScript_RemoveStaticEncounter_3
+
 EventScript_BufferTime::
 	gettime
 	goto_if_unset FLAG_SYS_USE_24HR, EventScript_BufferTime_2
