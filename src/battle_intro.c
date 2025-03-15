@@ -260,7 +260,7 @@ static void BattleIntroSlide1(u8 taskId)
             gBattle_WIN0V -= 0x3FC;
 
         if (gTasks[taskId].data[2])
-            gTasks[taskId].data[2] -= 2;
+            gTasks[taskId].data[2] -= N_BATTLE_START_SPEED;
 
         // Scanline settings have already been set in CB2_InitBattleInternal()
         for (i = 0; i < DISPLAY_HEIGHT / 2; i++)
