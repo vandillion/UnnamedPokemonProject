@@ -1,67 +1,202 @@
-raw `
-.set LOCALID_OWNER, 1
+mapscripts Route104_PrettyPetalFlowerShop_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		setflag(FLAG_LANDMARK_FLOWER_SHOP)
+		if(!flag(FLAG_BADGE02_GET)) {
+			setflag(FLAG_TEMP_1)
+		}
+		end
+	}
+}
 
-Route104_PrettyPetalFlowerShop_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, Route104_PrettyPetalFlowerShop_OnTransition
-	.byte 0
+text CentraBerryShopIntro {
+	"Welcome to the Centra Berry Shop!\n"
+	"What can I do for you?"
+}
 
-Route104_PrettyPetalFlowerShop_OnTransition:
-	setflag FLAG_LANDMARK_FLOWER_SHOP
-	goto_if_unset FLAG_MET_PRETTY_PETAL_SHOP_OWNER, Route104_PrettyPetalFlowerShop_EventScript_MoveShopOwner
-	goto_if_unset FLAG_BADGE03_GET, Route104_PrettyPetalFlowerShop_EventScript_MoveShopOwner
-	setflag FLAG_TEMP_1
-	end
-
-Route104_PrettyPetalFlowerShop_EventScript_MoveShopOwner::
-	setobjectxyperm LOCALID_OWNER, 4, 6
-	end
-
-Route104_PrettyPetalFlowerShop_EventScript_ShopOwner::
+script CentraBerryShop_Clerk1 {
 	lock
 	faceplayer
-	goto_if_set FLAG_TEMP_1, Route104_PrettyPetalFlowerShop_EventScript_SellDecorations
-	msgbox Route104_PrettyPetalFlowerShop_Text_ThisIsPrettyPetalFlowerShop, MSGBOX_DEFAULT
-	goto_if_set FLAG_MET_PRETTY_PETAL_SHOP_OWNER, Route104_PrettyPetalFlowerShop_EventScript_AlreadyMet
-	setflag FLAG_MET_PRETTY_PETAL_SHOP_OWNER
-	msgbox Route104_PrettyPetalFlowerShop_Text_IntroLearnAboutBerries, MSGBOX_YESNO
-	call_if_eq VAR_RESULT, YES, Route104_PrettyPetalFlowerShop_EventScript_ExplainBerries
-	call_if_eq VAR_RESULT, NO, Route104_PrettyPetalFlowerShop_EventScript_DontExplainBerries
-	release
-	end
-
-Route104_PrettyPetalFlowerShop_EventScript_AlreadyMet::
-	msgbox Route104_PrettyPetalFlowerShop_Text_LearnAboutBerries, MSGBOX_YESNO
-	call_if_eq VAR_RESULT, YES, Route104_PrettyPetalFlowerShop_EventScript_ExplainBerries
-	call_if_eq VAR_RESULT, NO, Route104_PrettyPetalFlowerShop_EventScript_DontExplainBerries
-	release
-	end
-
-Route104_PrettyPetalFlowerShop_EventScript_ExplainBerries::
-	msgbox Route104_PrettyPetalFlowerShop_Text_BerriesExplanation, MSGBOX_DEFAULT
-	return
-
-Route104_PrettyPetalFlowerShop_EventScript_DontExplainBerries::
-	msgbox Route104_PrettyPetalFlowerShop_Text_FlowersBringHappiness, MSGBOX_DEFAULT
-	return
-
-Route104_PrettyPetalFlowerShop_EventScript_SellDecorations::
-	message gText_PlayerWhatCanIDoForYou
+	message(CentraBerryShopIntro)
 	waitmessage
-	pokemartdecoration2 Route104_PrettyPetalFlowerShop_Pokemart_Plants
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
-	release
+	if(flag(FLAG_BADGE06_GET)) {
+		pokemart(CentraBerryShop_6Badges)
+	} elif(flag(FLAG_BADGE04_GET)) {
+		pokemart(CentraBerryShop_4Badges)
+	} elif(flag(FLAG_BADGE02_GET)) {
+		pokemart(CentraBerryShop_2Badges)
+	} elif(flag(FLAG_BADGE01_GET)) {
+		pokemart(CentraBerryShop_1Badge)
+	} else {
+		pokemart(CentraBerryShop_NoBadges)
+	}
+	msgbox(gText_PleaseComeAgain, MSGBOX_NPC)
 	end
+}
 
-	.align 2
-Route104_PrettyPetalFlowerShop_Pokemart_Plants:
-	.2byte DECOR_RED_PLANT
-	.2byte DECOR_TROPICAL_PLANT
-	.2byte DECOR_PRETTY_FLOWERS
-	.2byte DECOR_COLORFUL_PLANT
-	.2byte DECOR_BIG_PLANT
-	.2byte DECOR_GORGEOUS_PLANT
-	pokemartlistend
+script CentraBerryShop_Clerk2 {
+	lock
+	faceplayer
+	message(CentraBerryShopIntro)
+	waitmessage
+	if(flag(FLAG_BADGE05_GET)) {
+		pokemart(CentraBerryShop2_2)
+	} else {
+		pokemart(CentraBerryShop2_1)
+	}
+	msgbox(gText_PleaseComeAgain, MSGBOX_NPC)
+	end
+}
 
+mart CentraBerryShop_NoBadges {
+	ITEM_CHERI_BERRY
+	ITEM_CHESTO_BERRY
+	ITEM_PECHA_BERRY
+	ITEM_RAWST_BERRY
+	ITEM_ASPEAR_BERRY
+	ITEM_LEPPA_BERRY
+	ITEM_ORAN_BERRY
+	ITEM_PERSIM_BERRY
+}
+
+mart CentraBerryShop_1Badge {
+	ITEM_CHERI_BERRY
+	ITEM_CHESTO_BERRY
+	ITEM_PECHA_BERRY
+	ITEM_RAWST_BERRY
+	ITEM_ASPEAR_BERRY
+	ITEM_LEPPA_BERRY
+	ITEM_ORAN_BERRY
+	ITEM_PERSIM_BERRY
+	ITEM_LUM_BERRY
+	ITEM_SITRUS_BERRY
+}
+
+mart CentraBerryShop_2Badges {
+	ITEM_CHERI_BERRY
+	ITEM_CHESTO_BERRY
+	ITEM_PECHA_BERRY
+	ITEM_RAWST_BERRY
+	ITEM_ASPEAR_BERRY
+	ITEM_LEPPA_BERRY
+	ITEM_ORAN_BERRY
+	ITEM_PERSIM_BERRY
+	ITEM_LUM_BERRY
+	ITEM_SITRUS_BERRY
+	ITEM_FIGY_BERRY
+	ITEM_WIKI_BERRY
+	ITEM_MAGO_BERRY
+	ITEM_AGUAV_BERRY
+	ITEM_IAPAPA_BERRY
+}
+
+mart CentraBerryShop_4Badges {
+	ITEM_CHERI_BERRY
+	ITEM_CHESTO_BERRY
+	ITEM_PECHA_BERRY
+	ITEM_RAWST_BERRY
+	ITEM_ASPEAR_BERRY
+	ITEM_LEPPA_BERRY
+	ITEM_ORAN_BERRY
+	ITEM_PERSIM_BERRY
+	ITEM_LUM_BERRY
+	ITEM_SITRUS_BERRY
+	ITEM_FIGY_BERRY
+	ITEM_WIKI_BERRY
+	ITEM_MAGO_BERRY
+	ITEM_AGUAV_BERRY
+	ITEM_IAPAPA_BERRY
+	ITEM_LIECHI_BERRY
+	ITEM_GANLON_BERRY
+	ITEM_SALAC_BERRY
+	ITEM_PETAYA_BERRY
+	ITEM_APICOT_BERRY
+	ITEM_KEE_BERRY
+	ITEM_MARANGA_BERRY
+	ITEM_LANSAT_BERRY
+}
+
+mart CentraBerryShop_6Badges {
+	ITEM_CHERI_BERRY
+	ITEM_CHESTO_BERRY
+	ITEM_PECHA_BERRY
+	ITEM_RAWST_BERRY
+	ITEM_ASPEAR_BERRY
+	ITEM_LEPPA_BERRY
+	ITEM_ORAN_BERRY
+	ITEM_PERSIM_BERRY
+	ITEM_LUM_BERRY
+	ITEM_SITRUS_BERRY
+	ITEM_FIGY_BERRY
+	ITEM_WIKI_BERRY
+	ITEM_MAGO_BERRY
+	ITEM_AGUAV_BERRY
+	ITEM_IAPAPA_BERRY
+	ITEM_LIECHI_BERRY
+	ITEM_GANLON_BERRY
+	ITEM_SALAC_BERRY
+	ITEM_PETAYA_BERRY
+	ITEM_APICOT_BERRY
+	ITEM_KEE_BERRY
+	ITEM_MARANGA_BERRY
+	ITEM_LANSAT_BERRY
+	ITEM_ENIGMA_BERRY
+	ITEM_MICLE_BERRY
+	ITEM_CUSTAP_BERRY
+	ITEM_JABOCA_BERRY
+	ITEM_ROWAP_BERRY
+	ITEM_STARF_BERRY
+}
+
+mart CentraBerryShop2_1 {
+	ITEM_CHILAN_BERRY
+	ITEM_OCCA_BERRY
+	ITEM_PASSHO_BERRY
+	ITEM_WACAN_BERRY
+	ITEM_RINDO_BERRY
+	ITEM_YACHE_BERRY
+	ITEM_CHOPLE_BERRY
+	ITEM_KEBIA_BERRY
+	ITEM_SHUCA_BERRY
+	ITEM_COBA_BERRY
+	ITEM_PAYAPA_BERRY
+	ITEM_TANGA_BERRY
+	ITEM_CHARTI_BERRY
+	ITEM_KASIB_BERRY
+	ITEM_HABAN_BERRY
+	ITEM_COLBUR_BERRY
+	ITEM_BABIRI_BERRY
+	ITEM_ROSELI_BERRY
+}
+
+mart CentraBerryShop2_2 {
+	ITEM_POMEG_BERRY
+	ITEM_KELPSY_BERRY
+	ITEM_QUALOT_BERRY
+	ITEM_HONDEW_BERRY
+	ITEM_HONDEW_BERRY
+	ITEM_GREPA_BERRY
+	ITEM_TAMATO_BERRY
+	ITEM_CHILAN_BERRY
+	ITEM_OCCA_BERRY
+	ITEM_PASSHO_BERRY
+	ITEM_WACAN_BERRY
+	ITEM_RINDO_BERRY
+	ITEM_YACHE_BERRY
+	ITEM_CHOPLE_BERRY
+	ITEM_KEBIA_BERRY
+	ITEM_SHUCA_BERRY
+	ITEM_COBA_BERRY
+	ITEM_PAYAPA_BERRY
+	ITEM_TANGA_BERRY
+	ITEM_CHARTI_BERRY
+	ITEM_KASIB_BERRY
+	ITEM_HABAN_BERRY
+	ITEM_COLBUR_BERRY
+	ITEM_BABIRI_BERRY
+	ITEM_ROSELI_BERRY
+}
+
+raw `
 Route104_PrettyPetalFlowerShop_EventScript_WailmerPailGirl::
 	lock
 	faceplayer

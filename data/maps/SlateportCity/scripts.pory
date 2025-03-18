@@ -20,8 +20,8 @@ script CentraSEGymGuideOutside {
 
 // Signs
 
-script CentraSE_PrettyPetalFlowerShopSign {
-	msgbox("Pretty Petal\nFlower Shop", MSGBOX_SIGN)
+script CentraSE_BerryShopSign {
+	msgbox("Centra City Berry Shop", MSGBOX_SIGN)
 	end
 }
 

@@ -9,6 +9,7 @@
 #define N_SHINY_STARS_TIMER            30 // Default 60
 #define N_FAINT_WAITMONCRY             TRUE
 #define N_BATTLE_START_SPEED           3  // Default 2
+#define N_NEW_BERRY_PRICES             TRUE
 
 #define N_FAST_BOOT                    TRUE
 
