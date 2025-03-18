@@ -2497,10 +2497,10 @@ gBattleAnimMove_Discharge::
 	createvisualtask AnimTask_HorizontalShake, 5, ANIM_TARGET, 5, 14
 	createvisualtask AnimTask_HorizontalShake, 5, ANIM_DEF_PARTNER, 5, 14
 	createvisualtask AnimTask_HorizontalShake, 5, ANIM_ATK_PARTNER, 5, 14
+	call DischargeElectrify
 	waitforvisualfinish
 	clearmonbg ANIM_ATTACKER
 	blendoff
-	call DischargeElectrify
 	waitforvisualfinish
 	end
 DischargeElectrify:
