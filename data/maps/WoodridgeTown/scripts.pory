@@ -42,7 +42,7 @@ mapscripts WoodridgeTown_MapScripts {
 			waitmovement(LOCALID_ORION)
 			playbgm(MUS_ENCOUNTER_BRENDAN, FALSE)
 			msgbox(format("Who are you?\p"
-						  "… … …\n… … …\p"
+						  "… … … … …\n… … … … …\p"
 						  "{PLAYER}, huh?\nNice to meet you! My name's Orion.\p"
 						  "Your family just moved to this region, correct?\p"
 						  "If you're not yet familiar with this area, how about a take you on a walk?\p"

@@ -42,10 +42,9 @@ mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
             applymovement(LOCALID_ORIONS_MOM, moves(walk_left * 2
                                                     walk_down * 2))
             waitmovement(0)
-            msgbox(format("We weren't expecting guests today.\nWho are you?"))
-            closemessage
-            delay(45)
-            msgbox(format("… … …\n… … …\pSo you're our new neighbor?\nNice to meet you, {PLAYER}.\p"
+            msgbox(format("We weren't expecting guests today.\nWho are you?\p"
+                          "… … … … …\n… … … … …\p"
+                          "So you're our new neighbor?\nNice to meet you, {PLAYER}.\p"
                           "If you're looking for someone to talk to, I have a son who's about your age.\p"
                           "I'm sure he'd like to meet you, but he's not here right now.\p"
                           "He's on one of his nature strolls in the woods south of here."), MSGBOX_AUTOCLOSE)

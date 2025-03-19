@@ -305,29 +305,51 @@ script BufferChestCountMsgbox {
 script RandomNuggetChance {
     random(100)
     //buffernumberstring(STR_VAR_1, VAR_RESULT)
-    //message("ROLLED A {STR_VAR_1}{PAUSE 10}")
+    //message("ROLLED A {STR_VAR_1}{PAUSE 15}")
     //waitmessage
-    if(var(VAR_RESULT) <= 12) {
+    if(var(VAR_RESULT) <= 16) {
         msgbox(ImperialGym_Text_SomethingInChest)
-        finditem(ITEM_NUGGET)
-    } elif(var(VAR_RESULT) == 74) {
-        msgbox(ImperialGym_Text_SomethingInChest, MSGBOX_AUTOCLOSE)
-        playbgm(MUS_NONE, FALSE)
-        delay(60)
-        msgbox("… {PAUSE 40}… {PAUSE 40}…{PAUSE 40}\nSO {PAUSE 30}MUCH {PAUSE 30}TREASURE!")
-        additem(ITEM_NUGGET, 74)
-        if(var(VAR_RESULT)) {
-            playfanfare(MUS_SLOTS_JACKPOT)
-            message("Obtained 74 Nuggets!")
-            waitfanfare
-            closemessage
-        } else {
-            msgbox(gText_TooBadBagIsFull, MSGBOX_AUTOCLOSE)
+        random(5)
+        addvar(VAR_RESULT, 1)
+        copyvar(VAR_TEMP_A, VAR_RESULT)
+        random(5)
+        switch(var(VAR_RESULT)) {
+            case 0:
+                finditem(ITEM_NUGGET, VAR_TEMP_A)
+            case 1:
+                finditem(ITEM_PEARL, VAR_TEMP_A)
+            case 2:
+                finditem(ITEM_RARE_BONE, VAR_TEMP_A)
+            case 3:
+                finditem(ITEM_RELIC_COPPER, VAR_TEMP_A)
+            case 4:
+                finditem(ITEM_RELIC_SILVER, VAR_TEMP_A)
         }
-        fadedefaultbgm
     }
     return
 }
 
 text ImperialGym_Text_SomethingInChest {format("Hey!\nThere's something in this chest!")}
 text ImperialGym_Text_ChestAlreadyOpened {format("This chest is already open.")}
+
+//elif(var(VAR_RESULT) == 74) {
+//       msgbox(ImperialGym_Text_SomethingInChest, MSGBOX_AUTOCLOSE)
+//       playbgm(MUS_NONE, FALSE)
+//       delay(60)
+//       msgbox("… {PAUSE 40}… {PAUSE 40}…{PAUSE 40}\nSO {PAUSE 30}MUCH {PAUSE 30}TREASURE!")
+//       additem(ITEM_NUGGET, 74)
+//       if(var(VAR_RESULT)) {
+//           setvar(VAR_0x8006, ITEM_NUGGET)
+//           playfanfare(MUS_SLOTS_JACKPOT)
+//           message("{PLAYER} found 74 Nuggets!")
+//            delay(10)
+//            showitemdescription
+//            waitfanfare
+//            msgbox("{PLAYER} put away the Nuggets\n"
+//	               "in the ITEMS POCKET.", MSGBOX_AUTOCLOSE)
+//            hideitemdescription
+//        } else {
+//            msgbox(gText_TooBadBagIsFull, MSGBOX_AUTOCLOSE)
+//        }
+//        fadedefaultbgm
+//    }

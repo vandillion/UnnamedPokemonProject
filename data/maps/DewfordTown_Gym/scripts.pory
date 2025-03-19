@@ -89,11 +89,24 @@ script(local) ImperialGymHidePlayer{
 script ImperialGymRedbeard {
 	trainerbattle_single(TRAINER_BRAWLY_1,
 	format("Arrrrgh… Another challenger approaches!\p"
-	       "Avast! On the high seas or on land, ye are no match for the great Redbeard!\p"
+	       "Avast! On the high seas or on land, ye be no match for the great Redbeard!\p"
 	       "So give it up, matey!"), 
-	format("Yaaaargh! Ye've sunken me ship!\nA fine battle that was, matey!"),
+	format("Yaaaargh! Ye've sunken me ship!\nA fine battle that be, matey!"),
 	ImperialGymRedbeard_Continue, NO_MUSIC)
-	msgbox(format(""), MSGBOX_NPC)
+	if(!flag(FLAG_RECEIVED_TM_AQUA_CUTTER)) {
+		msgbox(format("Aye, {PLAYER}!\nYe've returned for me TM!"))
+		giveitem(ITEM_TM81)
+		if(var(VAR_RESULT)) {
+			setflag(FLAG_RECEIVED_TM_AQUA_CUTTER)
+			msgbox(format("I forged that TM with me own hook!\nHar har!\p"
+						  "Anyway, that there be the move Aqua Cutter, a sharp Water move with a high critical-hit ratio!\p"
+						  "Use it on a Pokémon with a divine cutlass! Har har har!"), MSGBOX_NPC)
+		} else {
+			call(Common_EventScript_BagIsFull)
+		}
+	} else {
+		msgbox(format(""), MSGBOX_NPC)
+	}
 	end
 }
 
@@ -105,13 +118,22 @@ script ImperialGymRedbeard_Continue {
 	setflag(FLAG_BADGE02_GET)
 	setvar(VAR_0x8008, 2)
 	call(Common_EventScript_SetGymTrainers)
-	//msgbox("Take this too!")
-	//giveitem(ITEM_TM81) //Aqua cutter
-	//if(var(VAR_RESULT)) {
-	//	setflag(FLAG_RECEIVED_TM_AQUA_CUTTER)
-	//} else {
-	//	call(Common_EventScript_BagIsFull)
-	//}
+	checkplayergender
+	if(!var(VAR_RESULT)) {
+		bufferstring(STR_VAR_1, "lad")
+	} else {
+		bufferstring(STR_VAR_1, "lass")
+	}
+	msgbox("Take this with ye, {STR_VAR_1}!")
+	giveitem(ITEM_TM81) //Aqua cutter
+	if(var(VAR_RESULT)) {
+		setflag(FLAG_RECEIVED_TM_AQUA_CUTTER)
+		msgbox(format("I forged that TM with me own hook!\nHar har!\p"
+					  "Anyway, that there be the move Aqua Cutter, a sharp Water move with a high critical-hit ratio!\p"
+					  "Use it on a Pokémon with a divine cutlass! Har har har!"), MSGBOX_NPC)
+	} else {
+		call(Common_EventScript_BagIsFull)
+	}
 	setvar(VAR_IMPERIAL_GYM_STATE, 3)
 	setvar(VAR_KANE_STATE, 2)
 	setflag(FLAG_HIDE_IMPERIAL_ISLAND_HOUSE1_KANE) // DO NOT DELETE UNTIL STORY UP TO GYM 2 IS COMPLETE!

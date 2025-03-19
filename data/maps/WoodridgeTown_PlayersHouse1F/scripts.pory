@@ -37,9 +37,8 @@ mapscripts WoodridgeTown_PlayersHouse1F_MapScripts {
 			waitmovement(0)
 			applymovement(LOCALID_MOM, Common_Movement_WalkInPlaceRight)
 			waitmovement(0)
-			msgbox(format("Did you introduce yourself to the neighbors, {PLAYER}?"), MSGBOX_AUTOCLOSE)
-			delay(60)
-			msgbox(format("…\n…\p"
+			msgbox(format("Did you introduce yourself to the neighbors, {PLAYER}?\p"
+						  "… … … … …\n… … … … …\p"
 						  "The kid next door asked to take you on a walk into the woods?\p"
 						  "Well, sounds like you two will have a great time.\p"
 						  "Just be careful, please {PLAYER}!\nRemember, we just moved here and we aren't familiar with the environment.\p"
@@ -69,7 +68,7 @@ script WoodridgePlayersHouse1F_Mom {
 	} else {
 		lock
 		faceplayer
-		msgbox("Oh! {PLAYER}!\nYou should take a rest.", MSGBOX_AUTOCLOSE)
+		msgbox("Oh! Welcome home, {PLAYER}!\nYou should take a rest.", MSGBOX_AUTOCLOSE)
 		playse(SE_USE_ITEM)
 		special(HealPlayerParty)
 		waitse

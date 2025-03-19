@@ -35,10 +35,10 @@ mapscripts CentraSE_Gym_MapScripts{
 }
 
 script CentraSEGymAria {
-	trainerbattle_single(TRAINER_ROXANNE_1, format("Aria Intro Text"), format("Aria Defeat Text"), AriaContinue, NO_MUSIC)
+	trainerbattle_single(TRAINER_ROXANNE_1, format("Aria Intro Text"), format("Aria Defeat Text"), CentraSEGymAria_Continue, NO_MUSIC)
 }
 
-script AriaContinue {
+script CentraSEGymAria_Continue {
 	setflag(FLAG_DEFEATED_CENTRA_SE_GYM)
 	playfanfare(MUS_OBTAIN_BADGE)
 	message(format("{PLAYER} received the ??? Badge from Aria!"))
@@ -50,13 +50,13 @@ script AriaContinue {
 	giveitem(ITEM_TM_AERIAL_ACE)
 	if(var(VAR_RESULT)) {
 		setflag(FLAG_RECEIVED_TM_AERIAL_ACE)
+		msgbox(format("This is a Techincal Machine, or “TM” for short.\p"
+					  "They can be used to teach your Pokémon neat moves, and can be used any number of times!\p"
+					  "The TM I gave you contains the move Aerial Ace.\p"
+					  "It's a pretty swift Flying-type move that never misses!"), MSGBOX_NPC)
 	} else {
 		call(Common_EventScript_BagIsFull)
 	}
-	msgbox(format("This is a Techincal Machine, or “TM” for short.\p"
-				  "They can be used to teach your Pokémon neat moves, and can be used any number of times!\p"
-				  "The TM I gave you contains the move Aerial Ace.\p"
-				  "It's a pretty swift Flying-type move that never misses!"), MSGBOX_NPC)
 	setvar(VAR_CENTRA_SE_GYM_STATE, 2)
 	end
 }
@@ -67,7 +67,6 @@ script CentraSEGymGuide {
 		       	      "Flying-type Pokémon tend to excel in Speed, but they're weak to Rock- and Electric-type moves.\p"
 				      "Aria, however, has a trick up her sleeve for this!\p"
 			          "That's all I can tell you now.\nGo get 'em!"), MSGBOX_NPC)
-
 	} else {
 		msgbox(format("Whoa! What a breathtaking victory!\nMy cheering must've worked!\p"
 				      "Great! Check your Trainer Card.\nThe ??? Badge you receieved should be properly recorded on it.\p"
