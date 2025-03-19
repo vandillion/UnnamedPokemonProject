@@ -9477,11 +9477,11 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Basic Trainer
+AI: Check Bad Move
 
 Junglide (M)
 Level: 6
-- Tackle
+- Pound
 - Growl
 
 === TRAINER_BRENDAN_ROUTE_110_MUDKIP ===
@@ -9491,11 +9491,11 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Basic Trainer
+AI: Check Bad Move
 
 Junglide (M)
 Level: 5
-- Tackle
+- Pound
 - Growl
 
 === TRAINER_BRENDAN_ROUTE_119_MUDKIP ===
@@ -9526,7 +9526,7 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Basic Trainer
+AI: Check Bad Move
 
 Parmi (M)
 Level: 6
@@ -9540,7 +9540,7 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move
 
 Parmi (M)
 Level: 5
@@ -9575,12 +9575,12 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Basic Trainer
+AI: Check Bad Move
 
 Radpole (M)
 Level: 6
-- Pound
-- Leer
+-Tackle
+-Growl
 
 === TRAINER_BRENDAN_ROUTE_110_TORCHIC ===
 Name: Orion
@@ -9589,12 +9589,12 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Basic Trainer
+AI: Check Bad Move
 
 Radpole (M)
 Level: 5
-- Pound
-- Leer
+-Tackle
+-Growl
 
 === TRAINER_BRENDAN_ROUTE_119_TORCHIC ===
 Name: BRENDAN

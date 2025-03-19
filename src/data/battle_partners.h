@@ -49,79 +49,64 @@
             .lvl = 5,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 17
-                MOVE_TACKLE,
-                MOVE_GROWL,
-            },
             },
         },
     },
-#line 20
+#line 18
     [DIFFICULTY_NORMAL][PARTNER_ORION_FIRE] =
     {
-#line 21
+#line 19
         .trainerName = _("Orion"),
-#line 22
+#line 20
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 23
+#line 21
         .trainerPic = TRAINER_BACK_PIC_STEVEN,
         .encounterMusic_gender =
-#line 25
+#line 23
             TRAINER_ENCOUNTER_MUSIC_MALE,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 27
+#line 25
             .species = SPECIES_PARMI,
-#line 27
+#line 25
             .gender = TRAINER_MON_MALE,
-#line 29
+#line 27
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 28
+#line 26
             .lvl = 5,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 29
-                MOVE_SCRATCH,
-                MOVE_TAIL_WHIP,
-            },
             },
         },
     },
-#line 32
+#line 28
     [DIFFICULTY_NORMAL][PARTNER_ORION_WATER] =
     {
-#line 33
+#line 29
         .trainerName = _("Orion"),
-#line 34
+#line 30
         .trainerClass = TRAINER_CLASS_RIVAL,
-#line 35
+#line 31
         .trainerPic = TRAINER_BACK_PIC_STEVEN,
         .encounterMusic_gender =
-#line 37
+#line 33
             TRAINER_ENCOUNTER_MUSIC_MALE,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
             {
-#line 39
+#line 35
             .species = SPECIES_RADPOLE,
-#line 39
+#line 35
             .gender = TRAINER_MON_MALE,
-#line 41
+#line 37
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 40
+#line 36
             .lvl = 5,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 41
-                MOVE_POUND,
-                MOVE_LEER,
-            },
             },
         },
     },

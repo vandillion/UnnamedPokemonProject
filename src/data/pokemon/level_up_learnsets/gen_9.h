@@ -22316,7 +22316,7 @@ static const struct LevelUpMove sPecharuntLevelUpLearnset[] = {
 
 #if P_FAMILY_JUNGLIDE
 static const struct LevelUpMove sJunglideLevelUpLearnset[] = {
-    LEVEL_UP_MOVE(  1, MOVE_TACKLE),
+    LEVEL_UP_MOVE(  1, MOVE_POUND),
     LEVEL_UP_MOVE(  1, MOVE_GROWL),
     LEVEL_UP_MOVE(  4, MOVE_LEAFAGE),
     LEVEL_UP_MOVE(  7, MOVE_GUST),
@@ -22348,7 +22348,7 @@ static const struct LevelUpMove sParmiLevelUpLearnset[] = {
 
 #if P_FAMILY_RADPOLE
 static const struct LevelUpMove sRadpoleLevelUpLearnset[] = {
-    LEVEL_UP_MOVE(  1, MOVE_POUND),
+    LEVEL_UP_MOVE(  1, MOVE_TACKLE),
     LEVEL_UP_MOVE(  1, MOVE_GROWL),
     LEVEL_UP_MOVE(  4, MOVE_WATER_GUN),
     LEVEL_UP_MOVE(  7, MOVE_CONFUSION),

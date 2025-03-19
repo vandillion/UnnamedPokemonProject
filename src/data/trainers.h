@@ -23732,7 +23732,7 @@ F_TRAINER_FEMALE |
 #line 9479
         .doubleBattle = FALSE,
 #line 9480
-        .aiFlags = AI_FLAG_BASIC_TRAINER,
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -23749,7 +23749,7 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 9484
-                MOVE_TACKLE,
+                MOVE_POUND,
                 MOVE_GROWL,
             },
             },
@@ -23770,7 +23770,7 @@ F_TRAINER_FEMALE |
 #line 9493
         .doubleBattle = FALSE,
 #line 9494
-        .aiFlags = AI_FLAG_BASIC_TRAINER,
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -23787,7 +23787,7 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 9498
-                MOVE_TACKLE,
+                MOVE_POUND,
                 MOVE_GROWL,
             },
             },
@@ -23862,7 +23862,7 @@ F_TRAINER_FEMALE |
 #line 9528
         .doubleBattle = FALSE,
 #line 9529
-        .aiFlags = AI_FLAG_BASIC_TRAINER,
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -23900,7 +23900,7 @@ F_TRAINER_FEMALE |
 #line 9542
         .doubleBattle = FALSE,
 #line 9543
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -23992,7 +23992,7 @@ F_TRAINER_FEMALE |
 #line 9577
         .doubleBattle = FALSE,
 #line 9578
-        .aiFlags = AI_FLAG_BASIC_TRAINER,
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -24009,8 +24009,8 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 9582
-                MOVE_POUND,
-                MOVE_LEER,
+                MOVE_TACKLE,
+                MOVE_GROWL,
             },
             },
         },
@@ -24030,7 +24030,7 @@ F_TRAINER_FEMALE |
 #line 9591
         .doubleBattle = FALSE,
 #line 9592
-        .aiFlags = AI_FLAG_BASIC_TRAINER,
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
         .partySize = 1,
         .party = (const struct TrainerMon[])
         {
@@ -24047,8 +24047,8 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 9596
-                MOVE_POUND,
-                MOVE_LEER,
+                MOVE_TACKLE,
+                MOVE_GROWL,
             },
             },
         },

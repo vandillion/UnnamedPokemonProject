@@ -2956,7 +2956,7 @@ void TryHideBattleTowerReporter(void)
     }
 }
 
-#define STEVEN_OTID 61226
+#define ORION_OTID 62824
 
 static void FillPartnerParty(u16 trainerId)
 {
@@ -2998,8 +2998,10 @@ static void FillPartnerParty(u16 trainerId)
                     thirdIdPart = partnerName[k];
                 }
             }
-            if (trainerId == TRAINER_PARTNER(PARTNER_NONE))
-                otID = STEVEN_OTID;
+            if (trainerId == TRAINER_PARTNER(PARTNER_ORION_GRASS)
+            || trainerId == TRAINER_PARTNER(PARTNER_ORION_FIRE)
+            || trainerId == TRAINER_PARTNER(PARTNER_ORION_WATER))
+                otID = ORION_OTID;
             else
                 otID = ((firstIdPart % 72) * 1000) + ((secondIdPart % 23) * 10) + (thirdIdPart % 37) % 65536;
 
