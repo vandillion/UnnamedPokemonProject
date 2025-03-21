@@ -5398,6 +5398,7 @@ BattleScript_FaintAttacker::
 	waitcry BS_ATTACKER
 	.else
 	pause B_WAIT_TIME_LONG
+	pause B_WAIT_TIME_LONG
 	.endif
 	dofaintanimation BS_ATTACKER
 	printstring STRINGID_ATTACKERFAINTED
@@ -5415,6 +5416,7 @@ BattleScript_FaintTarget::
 	.if N_FAINT_WAITMONCRY == TRUE
 	waitcry BS_TARGET
 	.else
+	pause B_WAIT_TIME_LONG
 	pause B_WAIT_TIME_LONG
 	.endif
 	dofaintanimation BS_TARGET

@@ -91,9 +91,10 @@ script CentraSW_Wingull {
 				bufferitemnameplural(STR_VAR_2, ITEM_PRETTY_FEATHER, 5)
 				bufferstring(STR_VAR_3, "ITEMS")
 				setvar(VAR_0x8006, ITEM_PRETTY_FEATHER)
-				showitemdescription
 				playfanfare(MUS_OBTAIN_ITEM)
 				message("The Pokémon dropped\n{STR_VAR_1} {STR_VAR_2}!")
+				delay(10)
+				showitemdescription
 				waitfanfare
 				msgbox(gText_PutItemInPocket, MSGBOX_AUTOCLOSE)
 				hideitemdescription

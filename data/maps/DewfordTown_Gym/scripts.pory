@@ -24,8 +24,9 @@ mapscripts DewfordTown_Gym_MapScripts {
 			call_if_eq(VAR_RESULT, FALSE, Common_EventScript_BagIsFull)
 			msgbox(format("I doubt you'll need it here though, because you'll be navigating though a water-submerged Gym!\p"
 						  "Yep, that's right!\nBut before any of that, you'll need these!"))
-			//giveitem(ITEM_IRON_BOOTS)
-			call_if_eq(VAR_RESULT, FALSE, Common_EventScript_BagIsFull)
+			playfanfare(MUS_OBTAIN_ITEM)
+			message(format("{PLAYER} received the Iron Boots!"))
+			waitfanfare
 			msgbox(format("As I was just saying, majority of this gym is in fact underwater.\p"
 						  "Using those fancy boots I just gave you, you will navigate through the gym to find and open 5 treasure chests.\p"
 						  "But be careful! If you leave the area before finishing the challenge, any opened chests will close back and your progress will be lost.\p"
@@ -161,6 +162,7 @@ script ImperialGymStatue {
 }
 
 script ImperialGym_EnterPool {
+	goto_if_eq(VAR_IMPERIAL_GYM_STATE, 0, Common_EventScript_BlockProgression)
 	lock
 	delay(2)
 	playse(SE_FU_ZAKU)

@@ -65,7 +65,7 @@ script ImperialGymDerek {
 }
 
 script ImperialGymTucker {
-	trainerbattle_single(TRAINER_JOCELYN, format("Ha!\nGotcha where I want 'ya!\pNow it's time for my finishing move!"), format("Gyah!"))
+	trainerbattle_single(TRAINER_JOCELYN, format("Ha!\nGotcha where I want 'ya!\lNow it's time for my finishing move!"), format("Gyah!"))
 	msgbox(format("A Pokémon Gym with breathable water?\nWho could imagine such a thing?"), MSGBOX_NPC)
 	end
 }
@@ -212,7 +212,7 @@ script ImperialGymChest0 {
         special(DrawWholeMapView)
         delay(30)
         call_if_eq(VAR_IMPERIAL_GYM_STATE2, 5, OpenLeaderCorridor)
-        call(RandomNuggetChance)
+        call(RandomTreasureChance)
     } else {
         msgbox(ImperialGym_Text_ChestAlreadyOpened, MSGBOX_AUTOCLOSE)
     }
@@ -230,7 +230,7 @@ script ImperialGymChest1 {
         special(DrawWholeMapView)
         delay(30)
         call_if_eq(VAR_IMPERIAL_GYM_STATE2, 5, OpenLeaderCorridor)
-        call(RandomNuggetChance)
+        call(RandomTreasureChance)
     } else {
         msgbox(ImperialGym_Text_ChestAlreadyOpened, MSGBOX_AUTOCLOSE)
     }
@@ -248,7 +248,7 @@ script ImperialGymChest2 {
         special(DrawWholeMapView)
         delay(30)
         call_if_eq(VAR_IMPERIAL_GYM_STATE2, 5, OpenLeaderCorridor)
-        call(RandomNuggetChance)
+        call(RandomTreasureChance)
     } else {
         msgbox(ImperialGym_Text_ChestAlreadyOpened, MSGBOX_AUTOCLOSE)
     }
@@ -266,7 +266,7 @@ script ImperialGymChest3 {
         special(DrawWholeMapView)
         delay(30)
         call_if_eq(VAR_IMPERIAL_GYM_STATE2, 5, OpenLeaderCorridor)
-        call(RandomNuggetChance)
+        call(RandomTreasureChance)
     } else {
         msgbox(ImperialGym_Text_ChestAlreadyOpened, MSGBOX_AUTOCLOSE)
     }
@@ -284,7 +284,7 @@ script ImperialGymChest4 {
         special(DrawWholeMapView)
         delay(30)
         call_if_eq(VAR_IMPERIAL_GYM_STATE2, 5, OpenLeaderCorridor)
-        call(RandomNuggetChance)
+        call(RandomTreasureChance)
     } else {
         msgbox(ImperialGym_Text_ChestAlreadyOpened, MSGBOX_AUTOCLOSE)
     }
@@ -302,7 +302,7 @@ script BufferChestCountMsgbox {
     }
 }
 
-script RandomNuggetChance {
+script RandomTreasureChance {
     random(100)
     //buffernumberstring(STR_VAR_1, VAR_RESULT)
     //message("ROLLED A {STR_VAR_1}{PAUSE 15}")
@@ -329,7 +329,7 @@ script RandomNuggetChance {
     return
 }
 
-text ImperialGym_Text_SomethingInChest {format("Hey!\nThere's something in this chest!")}
+text ImperialGym_Text_SomethingInChest {format("Hey, there's something in this chest!")}
 text ImperialGym_Text_ChestAlreadyOpened {format("This chest is already open.")}
 
 //elif(var(VAR_RESULT) == 74) {

@@ -31,7 +31,7 @@ script Route2Jimmy {
 }
 
 script Route2Liv {
-	trainerbattle_single(TRAINER_TIANA, format("I want to be just as strong as Leader Aria!"), "My wings will spread another day.")
+	trainerbattle_single(TRAINER_TIANA, format("I'm training to become as strong as Leader Aria!\lWill you help me out?"), "My wings will spread another day.")
 	msgbox(format("Speaking of, I could go for some wings right now."), MSGBOX_NPC)
 	end
 }
