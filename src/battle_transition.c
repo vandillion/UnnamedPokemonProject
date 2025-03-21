@@ -1084,7 +1084,7 @@ static void Task_Intro(u8 taskId)
     if (gTasks[taskId].tState == 0)
     {
         gTasks[taskId].tState++;
-        CreateIntroTask(0, 0, 3, 2, 2);
+        CreateIntroTask(0, 0, (N_BATTLE_START_SPEED <= 2 ? 3 : 2), 2, 2);
     }
     else if (IsIntroTaskDone())
     {
