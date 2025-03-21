@@ -14769,7 +14769,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 5948
-            .species = SPECIES_BABARK,
+            .species = SPECIES_RACCAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5950
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
@@ -14784,7 +14784,7 @@ F_TRAINER_FEMALE |
     [DIFFICULTY_NORMAL][TRAINER_BILLY] =
     {
 #line 5952
-        .trainerName = _("Randy"),
+        .trainerName = _("Billy"),
 #line 5953
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
 #line 5954
