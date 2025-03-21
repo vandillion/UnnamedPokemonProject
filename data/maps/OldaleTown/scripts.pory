@@ -44,13 +44,13 @@ script ImperialIslandSign {
 	if(var(VAR_RESULT)) {
 		special(SpawnCameraObject)
 		waitse
-		applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_up * 6))
+		applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_up * 7))
 		waitmovement(0)
 		msgbox(format("{CLEAR_TO 70}Globe Crater{PAUSE 60}\n"
 					  "This crater was created thousands of years ago via impact from a relatively small meteor.\p"
 					  "Over the years, it began taking on the planet-like appearance it has today."), MSGBOX_AUTOCLOSE)
 		waitbuttonpress
-		applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_down * 6))
+		applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_down * 7))
 		waitmovement(0)
 		special(RemoveCameraObject)
 		msgbox(format("A note from Leader Redbeard:\nYarrgh! Don't be littering in me island's mural!\pOtherwise I'll be after yer head!"), MSGBOX_SIGN)
