@@ -9528,7 +9528,7 @@ const struct Item gItemsInfo[] =
     {
         .name = _("Pomeg Berry"),
         .pluralName = _("Pomeg Berries"),
-        .price = (N_NEW_BERRY_PRICES == TRUE) ? 500 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
+        .price = (N_NEW_BERRY_PRICES == TRUE) ? 700 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
         .description = COMPOUND_STRING(
             "Makes a Pokémon\n"
             "friendly but lowers\n"
@@ -9546,7 +9546,7 @@ const struct Item gItemsInfo[] =
     {
         .name = _("Kelpsy Berry"),
         .pluralName = _("Kelpsy Berries"),
-        .price = (N_NEW_BERRY_PRICES == TRUE) ? 500 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
+        .price = (N_NEW_BERRY_PRICES == TRUE) ? 700 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
         .description = COMPOUND_STRING(
             "Makes a Pokémon\n"
             "friendly but lowers\n"
@@ -9564,7 +9564,7 @@ const struct Item gItemsInfo[] =
     {
         .name = _("Qualot Berry"),
         .pluralName = _("Qualot Berries"),
-        .price = (N_NEW_BERRY_PRICES == TRUE) ? 500 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
+        .price = (N_NEW_BERRY_PRICES == TRUE) ? 700 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
         .description = COMPOUND_STRING(
             "Makes a Pokémon\n"
             "friendly but lowers\n"
@@ -9582,7 +9582,7 @@ const struct Item gItemsInfo[] =
     {
         .name = _("Hondew Berry"),
         .pluralName = _("Hondew Berries"),
-        .price = (N_NEW_BERRY_PRICES == TRUE) ? 500 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
+        .price = (N_NEW_BERRY_PRICES == TRUE) ? 700 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
         .description = COMPOUND_STRING(
             "Makes a Pokémon\n"
             "friendly but lowers\n"
@@ -9600,7 +9600,7 @@ const struct Item gItemsInfo[] =
     {
         .name = _("Grepa Berry"),
         .pluralName = _("Grepa Berries"),
-        .price = (N_NEW_BERRY_PRICES == TRUE) ? 500 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
+        .price = (N_NEW_BERRY_PRICES == TRUE) ? 700 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
         .description = COMPOUND_STRING(
             "Makes a Pokémon\n"
             "friendly but lowers\n"
@@ -9618,7 +9618,7 @@ const struct Item gItemsInfo[] =
     {
         .name = _("Tamato Berry"),
         .pluralName = _("Tamato Berries"),
-        .price = (N_NEW_BERRY_PRICES == TRUE) ? 500 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
+        .price = (N_NEW_BERRY_PRICES == TRUE) ? 700 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
         .description = COMPOUND_STRING(
             "Makes a Pokémon\n"
             "friendly but lowers\n"
@@ -10131,7 +10131,7 @@ const struct Item gItemsInfo[] =
     {
         .name = _("Liechi Berry"),
         .pluralName = _("Liechi Berries"),
-        .price = (N_NEW_BERRY_PRICES == TRUE) ? 700 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
+        .price = (N_NEW_BERRY_PRICES == TRUE) ? 500 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
         .holdEffect = HOLD_EFFECT_ATTACK_UP,
         .holdEffectParam = 4,
         .description = COMPOUND_STRING(
@@ -10150,7 +10150,7 @@ const struct Item gItemsInfo[] =
     {
         .name = _("Ganlon Berry"),
         .pluralName = _("Ganlon Berries"),
-        .price = (N_NEW_BERRY_PRICES == TRUE) ? 700 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
+        .price = (N_NEW_BERRY_PRICES == TRUE) ? 500 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
         .holdEffect = HOLD_EFFECT_DEFENSE_UP,
         .holdEffectParam = 4,
         .description = COMPOUND_STRING(
@@ -10169,7 +10169,7 @@ const struct Item gItemsInfo[] =
     {
         .name = _("Salac Berry"),
         .pluralName = _("Salac Berries"),
-        .price = (N_NEW_BERRY_PRICES == TRUE) ? 700 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
+        .price = (N_NEW_BERRY_PRICES == TRUE) ? 500 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
         .holdEffect = HOLD_EFFECT_SPEED_UP,
         .holdEffectParam = 4,
         .description = COMPOUND_STRING(
@@ -10188,7 +10188,7 @@ const struct Item gItemsInfo[] =
     {
         .name = _("Petaya Berry"),
         .pluralName = _("Petaya Berries"),
-        .price = (N_NEW_BERRY_PRICES == TRUE) ? 700 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
+        .price = (N_NEW_BERRY_PRICES == TRUE) ? 500 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
         .holdEffect = HOLD_EFFECT_SP_ATTACK_UP,
         .holdEffectParam = 4,
         .description = COMPOUND_STRING(
@@ -10207,7 +10207,7 @@ const struct Item gItemsInfo[] =
     {
         .name = _("Apicot Berry"),
         .pluralName = _("Apicot Berries"),
-        .price = (N_NEW_BERRY_PRICES == TRUE) ? 700 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
+        .price = (N_NEW_BERRY_PRICES == TRUE) ? 500 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
         .holdEffect = HOLD_EFFECT_SP_DEFENSE_UP,
         .holdEffectParam = 4,
         .description = COMPOUND_STRING(
@@ -10226,7 +10226,7 @@ const struct Item gItemsInfo[] =
     {
         .name = _("Lansat Berry"),
         .pluralName = _("Lansat Berries"),
-        .price = (N_NEW_BERRY_PRICES == TRUE) ? 700 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
+        .price = (N_NEW_BERRY_PRICES == TRUE) ? 500 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
         .holdEffect = HOLD_EFFECT_CRITICAL_UP,
         .holdEffectParam = 4,
         .description = COMPOUND_STRING(
@@ -10356,7 +10356,7 @@ const struct Item gItemsInfo[] =
     {
         .name = _("Kee Berry"),
         .pluralName = _("Kee Berries"),
-        .price = (N_NEW_BERRY_PRICES == TRUE) ? 700 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
+        .price = (N_NEW_BERRY_PRICES == TRUE) ? 500 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
         .holdEffect = HOLD_EFFECT_KEE_BERRY,
         .description = COMPOUND_STRING(
             "If hit by a physical\n"
@@ -10374,7 +10374,7 @@ const struct Item gItemsInfo[] =
     {
         .name = _("Maranga Berry"),
         .pluralName = _("Maranga Berries"),
-        .price = (N_NEW_BERRY_PRICES == TRUE) ? 700 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
+        .price = (N_NEW_BERRY_PRICES == TRUE) ? 500 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
         .holdEffect = HOLD_EFFECT_MARANGA_BERRY,
         .description = COMPOUND_STRING(
             "If hit by a special\n"
