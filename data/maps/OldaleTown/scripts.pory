@@ -53,7 +53,7 @@ script ImperialIslandSign {
 		applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_down * 7))
 		waitmovement(0)
 		special(RemoveCameraObject)
-		msgbox(format("A note from Leader Redbeard:\nYarrgh! Don't be littering in me island's mural!\pOtherwise I'll be after yer head!"), MSGBOX_SIGN)
+		msgbox(format("A note from Leader Redbeard:\nYarrgh! Don't be littering in me island's mural!\p'Er else I'll be after yer head!"), MSGBOX_SIGN)
 	}
 	end
 }

@@ -134,7 +134,7 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
             waitmovement(0)
             msgbox(format("H{PAUSE 8}m{PAUSE 8}h{PAUSE 8}m{PAUSE 8}h{PAUSE 8}m{PAUSE 8}h{PAUSE 8}m{PAUSE 8}h{PAUSE 8}m{PAUSE 8}.{PAUSE 8}.{PAUSE 8}.{PAUSE 40}\n"
                           "Looks like the rumors were true."))
-            playse(SE_PIN)
+            playse(SE_M_METRONOME)
             applymovement(LOCALID_LEON, moves(emote_question_mark
                                               delay_16 * 2
                                               walk_in_place_up))

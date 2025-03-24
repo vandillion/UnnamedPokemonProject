@@ -20,7 +20,7 @@ mapscripts Route104_MrBrineysHouse_MapScripts {
 						  "My name is Kane.\nHow about yourself, youngin'?"), MSGBOX_AUTOCLOSE)
 			delay(40)
 			msgbox(format("{PLAYER}, is it?\nNice to meet you, {PLAYER}!\lSo what brings you to my cottage?"), MSGBOX_AUTOCLOSE)
-			delay(40)
+			delay(60)
 			msgbox(format("A Letter addressed to me?\nWhy, it must be from my nephew, Nolan!\p"
 				 		  "He didn't inform me that someone else was going to deliver it!"))
 			setvar(VAR_0x8004, ITEM_LETTER)
@@ -39,7 +39,9 @@ mapscripts Route104_MrBrineysHouse_MapScripts {
 											  walk_down
 											  walk_left * 4
 											  walk_down * 2))
-			waitmovement(0)
+			delay(80)
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_down))
+			waitmovement(LOCALID_KANE)
 			playse(SE_EXIT)
 			removeobject(LOCALID_KANE)
 			waitse

@@ -13,11 +13,11 @@ script PlayersHouseClock {
     call(EventScript_BufferTime)
     if(!flag(FLAG_SYS_USE_24HR))
     {
-        msgbox("{PLAYER} checked the clock…\pIt's {STR_VAR_1}:{STR_VAR_2} {STR_VAR_3}!", MSGBOX_SIGN)
+        msgbox("It's {STR_VAR_1}:{STR_VAR_2} {STR_VAR_3}.", MSGBOX_SIGN)
     }
     else
     {
-        msgbox("{PLAYER} checked the clock…\pIt's {STR_VAR_1}:{STR_VAR_2}!", MSGBOX_SIGN)
+        msgbox("It's {STR_VAR_1}:{STR_VAR_2}.", MSGBOX_SIGN)
     }
 	release
 	end

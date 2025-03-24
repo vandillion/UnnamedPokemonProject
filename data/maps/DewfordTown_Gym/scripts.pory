@@ -146,7 +146,7 @@ script ImperialGymGuide {
 	if(!defeated(TRAINER_BRAWLY_1)) {
 		msgbox(format("This Gym's puzzle is primarily underwater.\p"
 					  "Using those fancy boots I gave you, you will navigate through the Gym to find and open 5 treasure chests.\p"
-					  "But be careful! If you happen to leave the area before finishing the challenge, any opened chests will close and your progress will be lost.\p"
+					  "But be careful! If you leave the area before finishing the challenge, any opened chests will close back and your progress will be lost.\p"
 					  "Alright, Go get 'em!\nAnd try not to drown, haha!"), MSGBOX_NPC)
 	} else {
 		msgbox(format("Another solid victory for a Champion-\nbound Trainer! Congrats, {PLAYER}!\p"
