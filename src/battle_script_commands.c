@@ -5219,9 +5219,20 @@ static void Cmd_getexp(void)
                     PREPARE_STRING_BUFFER(gBattleTextBuff2, i);
                     PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff3, 6, gBattleStruct->battlerExpReward);
 
+                    #if N_SKIP_EXP_MESSAGES == FALSE
+                    if (wasSentOut || holdEffect == HOLD_EFFECT_EXP_SHARE)
+                    {
+                        PrepareStringBattle(STRINGID_PKMNGAINEDEXP, gBattleStruct->expGetterBattlerId);
+                    }
+                    else if (IsGen6ExpShareEnabled() && !gBattleStruct->teamGotExpMsgPrinted)
+                    #else
                     if (IsGen6ExpShareEnabled() && !gBattleStruct->teamGotExpMsgPrinted)
+                    #endif
                     {
                         gLastUsedItem = ITEM_EXP_SHARE;
+                        #if N_SKIP_EXP_MESSAGES == FALSE
+                        PrepareStringBattle(STRINGID_TEAMGAINEDEXP, gBattleStruct->expGetterBattlerId);
+                        #endif
                         gBattleStruct->teamGotExpMsgPrinted = TRUE;
                     }
 

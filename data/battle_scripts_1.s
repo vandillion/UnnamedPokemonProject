@@ -5807,8 +5807,10 @@ BattleScript_LearnMoveReturn::
 	return
 
 BattleScript_WeatherContinues::
-	@printfromtable gWeatherTurnStringIds
-	@waitmessage B_WAIT_TIME_LONG
+.if N_SKIP_WEATHER_MESSAGES == FALSE
+	printfromtable gWeatherTurnStringIds
+	waitmessage B_WAIT_TIME_LONG
+.endif
 	playanimation_var BS_ATTACKER, sB_ANIM_ARG1
 	setbyte gBattleCommunication, 0
 	call BattleScript_ActivateWeatherAbilities
@@ -7738,7 +7740,6 @@ BattleScript_IntimidateActivates::
 .if B_ABILITY_POP_UP == TRUE
 	showabilitypopup BS_ATTACKER
 	pause B_WAIT_TIME_LONG
-	destroyabilitypopup
 .endif
 	setbyte gBattlerTarget, 0
 BattleScript_IntimidateLoop:
@@ -7812,7 +7813,6 @@ BattleScript_SupersweetSyrupActivates::
 .if B_ABILITY_POP_UP == TRUE
 	showabilitypopup BS_ATTACKER
 	pause B_WAIT_TIME_LONG
-	destroyabilitypopup
 .endif
 	printstring STRINGID_SUPERSWEETAROMAWAFTS
 	waitmessage B_WAIT_TIME_LONG
