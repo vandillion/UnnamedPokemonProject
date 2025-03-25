@@ -9,6 +9,7 @@
 #include "menu.h"
 #include "palette.h"
 #include "pokedex.h"
+#include "pokenav.h"
 #include "pokemon.h"
 #include "scanline_effect.h"
 #include "sound.h"
@@ -485,43 +486,46 @@ static void Task_HandleStarterChooseInput(u8 taskId)
 {
     u8 selection = gTasks[taskId].tStarterSelection;
 
-    if (JOY_NEW(A_BUTTON))
+    if (!IsPaletteFadeActive())
     {
-        u8 spriteId;
+        if (JOY_NEW(A_BUTTON))
+        {
+            u8 spriteId;
 
-        ClearStarterLabel();
+            ClearStarterLabel();
 
-        // Create white circle background
-        spriteId = CreateSprite(&sSpriteTemplate_StarterCircle, sPokeballCoords[selection][0], sPokeballCoords[selection][1], 1);
-        gTasks[taskId].tCircleSpriteId = spriteId;
+            // Create white circle background
+            spriteId = CreateSprite(&sSpriteTemplate_StarterCircle, sPokeballCoords[selection][0], sPokeballCoords[selection][1], 1);
+            gTasks[taskId].tCircleSpriteId = spriteId;
 
-        // Create Pokémon sprite
-        spriteId = CreatePokemonFrontSprite(GetStarterPokemon(gTasks[taskId].tStarterSelection), sPokeballCoords[selection][0], sPokeballCoords[selection][1]);
-        gSprites[spriteId].affineAnims = &sAffineAnims_StarterPokemon;
-        gSprites[spriteId].callback = SpriteCB_StarterPokemon;
+            // Create Pokémon sprite
+            spriteId = CreatePokemonFrontSprite(GetStarterPokemon(gTasks[taskId].tStarterSelection), sPokeballCoords[selection][0], sPokeballCoords[selection][1]);
+            gSprites[spriteId].affineAnims = &sAffineAnims_StarterPokemon;
+            gSprites[spriteId].callback = SpriteCB_StarterPokemon;
 
-        gTasks[taskId].tPkmnSpriteId = spriteId;
-        gTasks[taskId].func = Task_WaitForStarterSprite;
-    }
-    else if (JOY_NEW(DPAD_LEFT) && selection > 0)
-    {
-        gTasks[taskId].tStarterSelection--;
-        gTasks[taskId].func = Task_MoveStarterChooseCursor;
-    }
-    else if (JOY_NEW(DPAD_RIGHT) && selection < STARTER_MON_COUNT - 1)
-    {
-        gTasks[taskId].tStarterSelection++;
-        gTasks[taskId].func = Task_MoveStarterChooseCursor;
-    }
-    else if (JOY_NEW(DPAD_LEFT) && selection == 0)
-    {
-        gTasks[taskId].tStarterSelection = 2;
-        gTasks[taskId].func = Task_MoveStarterChooseCursor;
-    }
-    else if (JOY_NEW(DPAD_RIGHT) && selection == STARTER_MON_COUNT - 1)
-    {
-        gTasks[taskId].tStarterSelection = 0;
-        gTasks[taskId].func = Task_MoveStarterChooseCursor;
+            gTasks[taskId].tPkmnSpriteId = spriteId;
+            gTasks[taskId].func = Task_WaitForStarterSprite;
+        }
+        else if (JOY_NEW(DPAD_LEFT) && selection > 0)
+        {
+            gTasks[taskId].tStarterSelection--;
+            gTasks[taskId].func = Task_MoveStarterChooseCursor;
+        }
+        else if (JOY_NEW(DPAD_RIGHT) && selection < STARTER_MON_COUNT - 1)
+        {
+            gTasks[taskId].tStarterSelection++;
+            gTasks[taskId].func = Task_MoveStarterChooseCursor;
+        }
+        else if (JOY_NEW(DPAD_LEFT) && selection == 0)
+        {
+            gTasks[taskId].tStarterSelection = 2;
+            gTasks[taskId].func = Task_MoveStarterChooseCursor;
+        }
+        else if (JOY_NEW(DPAD_RIGHT) && selection == STARTER_MON_COUNT - 1)
+        {
+            gTasks[taskId].tStarterSelection = 0;
+            gTasks[taskId].func = Task_MoveStarterChooseCursor;
+        }
     }
 }
 
