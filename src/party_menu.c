@@ -7606,7 +7606,7 @@ static void Task_WaitAfterMultiPartnerPartySlideIn(u8 taskId)
     }
 
     // data[0] used as a timer afterwards rather than the x pos
-    if (++data[0] == ((i - MULTI_PARTY_SIZE) * 60))
+    if (++data[0] == ((i - MULTI_PARTY_SIZE) * (i > 4 ? 45 : 60)))
         Task_ClosePartyMenu(taskId);
 }
 
