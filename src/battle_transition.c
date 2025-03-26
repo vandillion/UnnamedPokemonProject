@@ -492,7 +492,7 @@ static const TransitionStateFunc sPokeballsTrail_Funcs[] =
 
 #define NUM_POKEBALL_TRAILS 5
 static const s16 sPokeballsTrail_StartXCoords[2] = { -16, DISPLAY_WIDTH + 16 };
-static const s16 sPokeballsTrail_Delays[NUM_POKEBALL_TRAILS] = {0, 32, 64, 18, 48};
+static const s16 sPokeballsTrail_Delays[NUM_POKEBALL_TRAILS] = {0, N_BATTLE_START_SPEED > 2 ? 16 : 32, N_BATTLE_START_SPEED > 2 ? 32 : 64, N_BATTLE_START_SPEED > 2 ? 9 : 18, N_BATTLE_START_SPEED > 2 ? 24 : 48};
 static const s16 sPokeballsTrail_Speeds[2] = {8, -8};
 
 static const TransitionStateFunc sClockwiseWipe_Funcs[] =
@@ -1366,7 +1366,7 @@ static bool8 Aqua_Init(struct Task *task)
 {
     u16 *tilemap, *tileset;
 
-    task->tEndDelay = 60;
+    task->tEndDelay = 10;
     InitPatternWeaveTransition(task);
     GetBg0TilesDst(&tilemap, &tileset);
     CpuFill16(0, tilemap, BG_SCREEN_SIZE);
@@ -1381,7 +1381,7 @@ static bool8 Magma_Init(struct Task *task)
 {
     u16 *tilemap, *tileset;
 
-    task->tEndDelay = 60;
+    task->tEndDelay = 10;
     InitPatternWeaveTransition(task);
     GetBg0TilesDst(&tilemap, &tileset);
     CpuFill16(0, tilemap, BG_SCREEN_SIZE);
@@ -1396,7 +1396,7 @@ static bool8 Regi_Init(struct Task *task)
 {
     u16 *tilemap, *tileset;
 
-    task->tEndDelay = 60;
+    task->tEndDelay = 10;
     InitPatternWeaveTransition(task);
     GetBg0TilesDst(&tilemap, &tileset);
     CpuFill16(0, tilemap, BG_SCREEN_SIZE);
