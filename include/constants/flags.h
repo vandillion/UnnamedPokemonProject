@@ -298,7 +298,7 @@
 #define FLAG_RECEIVED_EXP_SHARE              0x110
 #define FLAG_POKERUS_EXPLAINED               0x111
 #define FLAG_RECEIVED_RUNNING_SHOES          0x112
-#define FLAG_UNUSED_0x113                    0x113 // Previously FLAG_RECEIVED_QUICK_CLAW
+#define FLAG_RECEIVED_LEFTOVERS_CENTRA_SE    0x113
 #define FLAG_RECEIVED_KINGS_ROCK             0x114
 #define FLAG_RECEIVED_MACHO_BRACE            0x115
 #define FLAG_RECEIVED_SOOTHE_BELL            0x116

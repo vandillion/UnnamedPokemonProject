@@ -1,20 +1,14 @@
-raw `
-RustboroCity_Flat1_1F_MapScripts::
-	.byte 0
+mapscripts RustboroCity_Flat1_1F_MapScripts {}
 
-RustboroCity_Flat1_1F_EventScript_Man::
-	msgbox RustboroCity_Flat1_1F_Text_EveryPokemonHasAbility, MSGBOX_NPC
+script RustboroCity_Flat1_1F_EventScript_Woman {
+	msgbox(format("I was on vacation in another region last month, and a butterfly Pokémon flew up to me and told me possibly the funniest joke I've heard all year.\p"
+				  "Pokémon are such strange creatures."), MSGBOX_NPC)
 	end
+}
 
-RustboroCity_Flat1_1F_EventScript_Woman::
-	msgbox RustboroCity_Flat1_1F_Text_PokemonStrange, MSGBOX_NPC
+script RustboroCity_Flat1_1F_EventScript_Man {
+	msgbox(format("Have you visited the Centra Berry Shop lately?\p"
+				  "I think it's pretty neat.\n"
+				  "But, in my opinion, they should sell more stuff, like nature Mints and medicinal herbs."), MSGBOX_NPC)
 	end
-
-RustboroCity_Flat1_1F_Text_EveryPokemonHasAbility:
-	.string "Every POKéMON has a special ability\n"
-	.string "that it can use.$"
-
-RustboroCity_Flat1_1F_Text_PokemonStrange:
-	.string "POKéMON are such strange creatures.$"
-
-`
+}

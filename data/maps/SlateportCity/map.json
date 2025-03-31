@@ -534,18 +534,18 @@
       "dest_warp_id": "1"
     },
     {
-      "x": 4,
-      "y": 26,
+      "x": 23,
+      "y": 55,
       "elevation": 0,
-      "dest_map": "MAP_SLATEPORT_CITY_POKEMON_FAN_CLUB",
+      "dest_map": "MAP_RUSTBORO_CITY_FLAT1_1F",
       "dest_warp_id": "0"
     },
     {
-      "x": 30,
-      "y": 26,
+      "x": 13,
+      "y": 7,
       "elevation": 0,
-      "dest_map": "MAP_SLATEPORT_CITY_OCEANIC_MUSEUM_1F",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_RUSTBORO_CITY_FLAT1_1F",
+      "dest_warp_id": "1"
     },
     {
       "x": 5,

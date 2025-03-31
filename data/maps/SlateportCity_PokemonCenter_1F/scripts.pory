@@ -25,8 +25,8 @@ script CentraSE_PokemonCenter_1F_EventScript_Sailor {
 }
 
 script CentraSE_PokemonCenter_1F_EventScript_Woman {
-	msgbox(format("I trade Pokémon with my friends.\p"
-				  "If a traded Pokémon is holding an item, it makes me twice as happy!"), MSGBOX_NPC)
+	msgbox(format("Every Pokémon has a special ability that it can use.\p"
+				  "For example, Pikachu usually has the ability Static, which may leave its attacker paralyzed if it makes contact."), MSGBOX_NPC)
 	end
 }
 
