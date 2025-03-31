@@ -15,7 +15,7 @@ script DewfordTown_House1_EventScript_Linoone {
 	faceplayer
 	waitse
 	playmoncry(SPECIES_LINOONE, CRY_MODE_NORMAL)
-	message("Linoone: Nunuuh!")
+	message("Nunuuh!")
 	waitmessage
 	waitmoncry
 	release
