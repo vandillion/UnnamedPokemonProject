@@ -6,9 +6,7 @@ mapscripts SlateportCity_MapScripts {
 		end
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
-		//TODO: After player either defeats Aria or finishes in the Pokemon School, 
-		//      harley challeneges player to a battle and flees to SW, orion shows up and both player and Orion chase down Harley
-		VAR_CENTRA_CITY_STATE, 1 {
+		VAR_CENTRA_CITY_STATE, 1 { // Player actually meets Harley and she explains she's not part of subzero
 			lock
 			getobjectcurrentxy(OBJ_EVENT_ID_PLAYER, VAR_TEMP_A, VAR_TEMP_1)
 			switch(var(VAR_TEMP_A)) {
@@ -16,7 +14,7 @@ mapscripts SlateportCity_MapScripts {
 					setobjectxy(LOCALID_HARLEY, 29, 51)
 					applymovement(LOCALID_HARLEY, moves(walk_up * 5
 														walk_in_place_fast_right
-														delay_16 * 3))
+														delay_16))
 					delay(64)
 					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
 					waitmovement(LOCALID_HARLEY)
@@ -27,7 +25,7 @@ mapscripts SlateportCity_MapScripts {
 					setobjectxy(LOCALID_HARLEY, 40, 51)
 					applymovement(LOCALID_HARLEY, moves(walk_up * 5
 														walk_in_place_fast_left
-														delay_16 * 3))
+														delay_16))
 					delay(64)
 					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_right))
 					waitmovement(LOCALID_HARLEY)
@@ -38,7 +36,7 @@ mapscripts SlateportCity_MapScripts {
 			delay(64)
 			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_down))
 			waitmovement(LOCALID_HARLEY)
-			msgbox(format("It's you, again.\n{PAUSE 30}{PLAYER}, was it?\p"
+			msgbox(format("Oh hey, it's you.\n{PAUSE 30}{PLAYER}, was it?\p"
 						  "Sorry, we haven't had a proper introduction yet.\p"
 						  "My name's Harley. We met on Vast Woods Trail.\p"
 						  "Yeah, I was that Subzero girl that didn't want to fight you and your friend back there.\p"
@@ -57,6 +55,15 @@ mapscripts SlateportCity_MapScripts {
 			}
 		}
 	]
+}
+
+script CentraSE_HarleyCutscene_No {
+	msgbox(format("What? Really?\nWould you please reconsider?"), MSGBOX_YESNO)
+	if(var(VAR_RESULT)) {
+		goto(CentraSE_HarleyCutscene_Yes)
+	} else {
+		goto(CentraSE_HarleyCutscene_No)
+	}
 }
 
 script CentraSE_HarleyCutscene_Yes {
@@ -92,6 +99,10 @@ script CentraSE_HarleyCutscene_Yes {
 	goto(CentraSE_HarleyCutscene_Continue)
 }
 
+text HarleyDefeat1 {
+	format("Wow, you really are a natural!")
+}
+
 script CentraSE_HarleyCutscene_Continue {
 	msgbox(format("Alright {PLAYER}, I'll be on my way.\n"
 				  "Next time we meet, I'll let you know if I have a plan or not.\p"
@@ -112,19 +123,6 @@ script CentraSE_HarleyCutscene_Continue {
 	setvar(VAR_CENTRA_CITY_STATE, 2)
 	release
 	end
-}
-
-text HarleyDefeat1 {
-	format("Wow. You really are a natural!")
-}
-
-script CentraSE_HarleyCutscene_No {
-	msgbox(format("What? Really?\nWould you please reconsider?"), MSGBOX_YESNO)
-	if(var(VAR_RESULT)) {
-		goto(CentraSE_HarleyCutscene_Yes)
-	} else {
-		goto(CentraSE_HarleyCutscene_No)
-	}
 }
 
 // NPCs

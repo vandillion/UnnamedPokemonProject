@@ -18,7 +18,7 @@ script UnnamedCaveSignWest {
 // NPCs
 
 script Route2Boy {
-	msgbox(format("I was walking along this route the other day, and a rodent-like Pokemon took my Pokemon's Berry!\pAnd I never got it back…"), MSGBOX_NPC)
+	msgbox(format("I was walking along this route the other day, and a rodent-like Pokémon took my Pokémon's Berry!\pAnd I never got it back…"), MSGBOX_NPC)
 	end	
 }
 
@@ -26,24 +26,24 @@ script Route2Boy {
 
 script Route2Jimmy {
 	trainerbattle_single(TRAINER_CALVIN_1, "You plus me equals a battle!\nLet's go!", "Dang it.")
-	msgbox(format("I love Pokemon battles, but I always lose…"), MSGBOX_NPC)
+	msgbox(format("I love Pokémon battles, but I always lose…"), MSGBOX_NPC)
 	end
 }
 
 script Route2Liv {
-	trainerbattle_single(TRAINER_TIANA, format("I'm training to become as strong as Leader Aria!\lWill you help me out?"), "My wings will spread another day.")
+	trainerbattle_single(TRAINER_TIANA, format("I'm training to become as strong as Leader Aria! Will you help me out?"), "My wings will spread another day.")
 	msgbox(format("Speaking of, I could go for some wings right now."), MSGBOX_NPC)
 	end
 }
 
 script Route2Fred {
-	trainerbattle_single(TRAINER_RICK, "I caught my Pokemon in the Vast\nWoods.\pCheck em out!", "Oh no!\nMy Bug Pokemon!")
+	trainerbattle_single(TRAINER_RICK, "I caught my Pokémon in the Vast\nWoods. Check em out!", "Oh no!\nMy precious bugs!")
 	msgbox(format("Oh well. I haven't had the time to train them yet, anyway."), MSGBOX_NPC)
 	end
 }
 
 script Route2Allen {
-	trainerbattle_single(TRAINER_ALLEN, format("Ha! My Pokemon stole a random kid's Pokemon's Oran Berry!"), "Aww.")
+	trainerbattle_single(TRAINER_ALLEN, format("Ha! My Pokémon stole a random kid's Pokémon's Oran Berry!"), "Drat!")
 	msgbox(format("There was a kid that walked past here a couple minutes ago.\pHe was pretty strong!\nHave you met him yet?"), MSGBOX_NPC)
 	end
 }

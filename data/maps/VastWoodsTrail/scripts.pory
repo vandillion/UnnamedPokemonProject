@@ -83,7 +83,7 @@ mapscripts VastWoodsTrail_MapScripts {
             delay(90)
             message("???: You two!\nDon't move!{PAUSE 10}")
             waitmessage
-            playbgm(MUS_HELP, TRUE)
+            playbgm(MUS_ENCOUNTER_MAGMA, TRUE)
             applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
             applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
             delay(16)
@@ -203,8 +203,8 @@ mapscripts VastWoodsTrail_MapScripts {
             msgbox("Absolutely not!")
             applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceRight)
             waitmovement(0)
-            message("Fine!{PAUSE 48}\nUs two will take you down!")
-            delay(32)
+            message("Fine!{PAUSE 40}\nUs two will take you down!")
+            delay(24)
             applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceLeft)
             applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceLeft)
             waitmessage
@@ -221,7 +221,6 @@ mapscripts VastWoodsTrail_MapScripts {
                 case TRUE: //wonFirstBattle
                     settrainerflag(TRAINER_MAXIE_MOSSDEEP)
                     settrainerflag(TRAINER_TABITHA_MOSSDEEP)
-                    playbgm(MUS_HELP, FALSE)
                     applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
                     applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
                     waitmovement(0)
@@ -350,7 +349,12 @@ mapscripts VastWoodsTrail_MapScripts {
     ]
     MAP_SCRIPT_ON_RESUME {
         if(var(VAR_VAST_WOODS_TRAIL_STATE) == 1){
-            playbgm(MUS_NONE, TRUE)
+            switch(var(VAR_RESULT)) {
+                case TRUE:
+                    savebgm(MUS_ENCOUNTER_MAGMA)
+                default:
+                    savebgm(MUS_NONE)
+            }
 	        showobjectat(VAR_TEMP_2, MAP_VAST_WOODS_TRAIL)
             showobjectat(VAR_TEMP_3, MAP_VAST_WOODS_TRAIL)
         }

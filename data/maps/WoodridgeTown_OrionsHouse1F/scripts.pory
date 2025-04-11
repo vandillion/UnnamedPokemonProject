@@ -83,10 +83,10 @@ mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
             waitmovement(LOCALID_PLAYERS_MOM)
             msgbox("Mom: {PLAYER}!\nAbout time you woke up!", MSGBOX_AUTOCLOSE)
             applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 3
-                                                     walk_right * 4
-                                                     walk_in_place_down))
-            delay(96)
+                                                     walk_right * 4))
+            delay(84)
             turnobject(LOCALID_PLAYERS_MOM, DIR_NORTH)
+            delay(16)
             applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
             waitmovement(OBJ_EVENT_ID_PLAYER)
             special(RemoveCameraObject)
