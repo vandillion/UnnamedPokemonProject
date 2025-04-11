@@ -4,12 +4,15 @@
     Use as guide: Powers up Grass moves when
 */
 
+#define ABILITY_NONE_DESC COMPOUND_STRING("No special ability.")
+
 const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
 {
     [ABILITY_NONE] =
     {
         .name = _("-------"),
-        .description = COMPOUND_STRING("No special ability."),
+        .description = ABILITY_NONE_DESC,
+        .shortDesc = ABILITY_NONE_DESC,
         .aiRating = 0,
         .cantBeSwapped = TRUE,
         .cantBeTraced = TRUE,
@@ -18,28 +21,32 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_STENCH] =
     {
         .name = _("Stench"),
-        .description = COMPOUND_STRING("May cause a foe to flinch."),
+        .description = COMPOUND_STRING("The Pokémon may cause the\ntarget to flinch."),
+        .shortDesc = COMPOUND_STRING("May cause a foe to flinch."),
         .aiRating = 1,
     },
 
     [ABILITY_DRIZZLE] =
     {
         .name = _("Drizzle"),
-        .description = COMPOUND_STRING("Summons rain in battle."),
+        .description = COMPOUND_STRING("The Pokémon makes it rain\nwhen it enters a battle."),
+        .shortDesc = COMPOUND_STRING("Summons rain in battle."),
         .aiRating = 9,
     },
 
     [ABILITY_SPEED_BOOST] =
     {
         .name = _("Speed Boost"),
-        .description = COMPOUND_STRING("Gradually boosts Speed."),
+        .description = COMPOUND_STRING("The Pokémon's Speed stat\nis boosted every turn."),
+        .shortDesc = COMPOUND_STRING("Gradually boosts Speed."),
         .aiRating = 9,
     },
 
     [ABILITY_BATTLE_ARMOR] =
     {
         .name = _("Battle Armor"),
-        .description = COMPOUND_STRING("Blocks critical hits."),
+        .description = COMPOUND_STRING("Hard armor protects the\nPokémon from critical hits."),
+        .shortDesc = COMPOUND_STRING("Blocks critical hits."),
         .aiRating = 2,
         .breakable = TRUE,
     },
@@ -47,7 +54,8 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_STURDY] =
     {
         .name = _("Sturdy"),
-        .description = COMPOUND_STRING("Negates 1-hit KO attacks."),
+        .description = COMPOUND_STRING("The Pokémon cannot be\nknocked out with one hit."),
+        .shortDesc = COMPOUND_STRING("Negates 1-hit KO attacks."),
         .aiRating = 6,
         .breakable = TRUE,
     },
@@ -55,7 +63,8 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_DAMP] =
     {
         .name = _("Damp"),
-        .description = COMPOUND_STRING("Prevents self-destruction."),
+        .description = COMPOUND_STRING("Prevents the use of\nself-destructing moves."),
+        .shortDesc = COMPOUND_STRING("Prevents self-destruction."),
         .aiRating = 2,
         .breakable = TRUE,
     },
@@ -63,7 +72,8 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_LIMBER] =
     {
         .name = _("Limber"),
-        .description = COMPOUND_STRING("Prevents paralysis."),
+        .description = COMPOUND_STRING("Its limber body protects\nthe Pokémon from paralysis."),
+        .shortDesc = COMPOUND_STRING("Prevents paralysis."),
         .aiRating = 3,
         .breakable = TRUE,
     },
@@ -71,7 +81,8 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_SAND_VEIL] =
     {
         .name = _("Sand Veil"),
-        .description = COMPOUND_STRING("Ups evasion in a sandstorm."),
+        .description = COMPOUND_STRING("Boosts the Pokémon's\nevasiveness in a sandstorm."),
+        .shortDesc = COMPOUND_STRING("Ups evasion in a sandstorm."),
         .aiRating = 3,
         .breakable = TRUE,
     },
@@ -270,6 +281,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Chlorophyll"),
         .description = COMPOUND_STRING("Boosts the Pokémon's Speed\nstat in harsh sunlight."),
+        .shortDesc = COMPOUND_STRING("Raises Speed in sunshine."),
         .aiRating = 6,
     },
 
@@ -413,6 +425,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Pickup"),
         .description = COMPOUND_STRING("May pick up an item another\nPokémon's used in battle."),
+        .shortDesc = COMPOUND_STRING("May pick up items."),
         .aiRating = 1,
     },
 
@@ -502,6 +515,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Overgrow"),
         .description = COMPOUND_STRING("Powers up Grass moves when\nthe Pokémon's HP is low."),
+        .shortDesc = COMPOUND_STRING("Ups Grass moves in a pinch."),
         .aiRating = 5,
     },
 
@@ -509,6 +523,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Blaze"),
         .description = COMPOUND_STRING("Powers up Fire moves when\nthe Pokémon's HP is low."),
+        .shortDesc = COMPOUND_STRING("Ups Fire moves in a pinch."),
         .aiRating = 5,
     },
 
@@ -516,6 +531,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Torrent"),
         .description = COMPOUND_STRING("Powers up Water moves when\nthe Pokémon's HP is low."),
+        .shortDesc = COMPOUND_STRING("Ups Water moves in a pinch."),
         .aiRating = 5,
     },
 
@@ -523,6 +539,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Swarm"),
         .description = COMPOUND_STRING("Powers up Bug moves when\nthe Pokémon's HP is low."),
+        .shortDesc = COMPOUND_STRING("Ups Bug moves in a pinch."),
         .aiRating = 5,
     },
 
@@ -941,6 +958,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Pickpocket"),
         .description = COMPOUND_STRING("Steals an item from a foe\nthat made direct contact."),
+        .shortDesc = COMPOUND_STRING("Steals the foe's held item."),
         .aiRating = 3,
     },
 
@@ -1095,6 +1113,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Big Pecks"),
         .description = COMPOUND_STRING("Prevents the Pokémon from\nhaving its Defense lowered."),
+        .shortDesc = COMPOUND_STRING("Prevents Defense loss."),
         .aiRating = 1,
         .breakable = TRUE,
     },
@@ -2061,6 +2080,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Seed Sower"),
         .description = COMPOUND_STRING("Turns the ground to Grassy\nTerrain when attacked."),
+        .shortDesc = COMPOUND_STRING("Affects terrain when hit."),
         .aiRating = 5,
     },
 
