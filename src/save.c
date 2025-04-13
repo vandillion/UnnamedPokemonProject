@@ -162,11 +162,8 @@ static u8 WriteSaveSectorOrSlot(u16 sectorId, const struct SaveSectorLocation *l
         gSaveCounter++;
         status = SAVE_STATUS_OK;
 
-        for (i = 0; i < NUM_SECTORS_PER_SLOT / 2; i++)
-        {
+        for (i = 0; i < NUM_SECTORS_PER_SLOT; i++)
             HandleWriteSector(i, locations);
-            HandleWriteSector(i + (NUM_SECTORS_PER_SLOT / 2), locations);
-        }
 
         if (gDamagedSaveSectors)
         {
