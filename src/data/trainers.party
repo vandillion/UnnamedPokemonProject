@@ -4837,7 +4837,7 @@ Mugshot: Blue
 
 Skullian (M)
 Level: 17
--Assurance
+-Pursuit
 -Bonemerang
 -Thief
 -Aqua Cutter
@@ -7840,17 +7840,19 @@ Inkay
 Level: 15
 
 === TRAINER_LAURA ===
-Name: LAURA
-Class: Battle Girl
-Pic: Battle Girl
+Name: Laura
+Class: Gym Trainer
+Pic: Aqua Grunt F
 Gender: Female
-Music: Intense
+Music: Suspicious
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Meditite
-Level: 13
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Krabby
+Level: 15
+
+Bruxish
+Level: 16
 
 === TRAINER_CYNDY_1 ===
 Name: CYNDY
@@ -10543,17 +10545,19 @@ Level: 13
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_CRISTIAN ===
-Name: CRISTIAN
-Class: Black Belt
-Pic: Black Belt
+Name: Lance
+Class: Gym Trainer
+Pic: Aqua Grunt M
 Gender: Male
-Music: Intense
+Music: Suspicious
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Makuhita
-Level: 13
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Shellder
+Level: 16
+
+Clauncher
+Level: 16
 
 === TRAINER_SYLVIA ===
 Name: SYLVIA
@@ -12930,17 +12934,19 @@ Level: 8
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DARIAN ===
-Name: DARIAN
-Class: Fisherman
-Pic: Fisherman
+Name: Irvin
+Class: Gym Trainer
+Pic: Aqua Grunt M
 Gender: Male
-Music: Hiker
+Music: Suspicious
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Magikarp
-Level: 9
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Arrokuda
+Level: 16
+
+Arrokuda
+Level: 16
 
 === TRAINER_HAILEY ===
 Name: HAILEY

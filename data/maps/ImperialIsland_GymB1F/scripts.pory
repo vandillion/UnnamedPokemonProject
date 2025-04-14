@@ -78,13 +78,19 @@ script ImperialGymBrenden {
 }
 
 script ImperialGymLaura {
-	trainerbattle_single(TRAINER_LAURA, format(""), format(""))
-	msgbox(format(""), MSGBOX_NPC)
+	trainerbattle_single(TRAINER_LAURA, format("Yarrgh!\nBe ye eyeing me booty!?"), format("Okay, you may touch it.\nBut only once!"))
+	msgbox("I didn't choose the scalawag life.\nThe scalawag life chose me.", MSGBOX_NPC)
 	end
 }
 
-script ImperialGymCristian {
-	trainerbattle_single(TRAINER_CRISTIAN, format(""), format(""))
+script ImperialGymLance {
+	trainerbattle_single(TRAINER_CRISTIAN, format("This be our treasure! Keep your landlubberin' hands off of it!"), format("Blast!"))
+	msgbox(format("If you're lucky enough, you might actually find some treasure in one of these chests."), MSGBOX_NPC)
+	end
+}
+
+script ImperialGymIrvin {
+	trainerbattle_single(TRAINER_DARIAN, format("I just downed 3 bottles o' rum. Show me yer worse!"), format("Y'er off the hook, mate."))
 	msgbox(format(""), MSGBOX_NPC)
 	end
 }
@@ -312,18 +318,25 @@ script RandomTreasureChance {
         random(5)
         addvar(VAR_RESULT, 1)
         copyvar(VAR_TEMP_A, VAR_RESULT)
-        random(5)
+        random(10)
         switch(var(VAR_RESULT)) {
             case 0:
+            case 5:
                 finditem(ITEM_NUGGET, VAR_TEMP_A)
             case 1:
                 finditem(ITEM_PEARL, VAR_TEMP_A)
             case 2:
+            case 6:
                 finditem(ITEM_RARE_BONE, VAR_TEMP_A)
             case 3:
+            case 7:
                 finditem(ITEM_RELIC_COPPER, VAR_TEMP_A)
             case 4:
+            case 8:
                 finditem(ITEM_RELIC_SILVER, VAR_TEMP_A)
+            case 9:
+                setvar(VAR_TEMP_A, 1)
+                finditem(ITEM_BIG_PEARL, VAR_TEMP_A)
         }
     }
     return

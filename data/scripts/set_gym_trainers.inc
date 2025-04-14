@@ -23,6 +23,7 @@ SetGymTrainersImperial::
 	settrainerflag TRAINER_BRENDEN
 	settrainerflag TRAINER_CRISTIAN
 	settrainerflag TRAINER_LILITH
+	settrainerflag TRAINER_DARIAN
 	return
 
 MauvilleCity_Gym_SetGymTrainers::
