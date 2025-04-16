@@ -78,7 +78,7 @@ script ImperialGymBrenden {
 }
 
 script ImperialGymLaura {
-	trainerbattle_single(TRAINER_LAURA, format("Yarrgh!\nBe ye eyeing me booty!?"), format("Okay, you may touch it.\nBut only once!"))
+	trainerbattle_single(TRAINER_LAURA, format("Are ye eyeing me booty!?"), format("Okay, you may touch it.\nBut only once!"))
 	msgbox("I didn't choose the scalawag life.\nThe scalawag life chose me.", MSGBOX_NPC)
 	end
 }

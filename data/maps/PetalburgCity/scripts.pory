@@ -19,6 +19,11 @@ script AnimoraCitySign {
 	end
 }
 
+script BoutiqueSign {
+	msgbox("Closed for renovations.\nSorry in advance!\p-Boutique Mgnt", MSGBOX_SIGN)
+	end
+}
+
 // NPCs
 
 script AnimoraOldLady {
