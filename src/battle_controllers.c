@@ -2280,9 +2280,11 @@ void Controller_WaitForString(u32 battler)
         BattleControllerComplete(battler);
 }
 
+#define PARTY_STATUS_DELAY_TIMER 34
+
 static void Controller_WaitForPartyStatusSummary(u32 battler)
 {
-    if (gBattleSpritesDataPtr->healthBoxesData[battler].partyStatusDelayTimer++ > 92)
+    if (gBattleSpritesDataPtr->healthBoxesData[battler].partyStatusDelayTimer++ > PARTY_STATUS_DELAY_TIMER)
     {
         gBattleSpritesDataPtr->healthBoxesData[battler].partyStatusDelayTimer = 0;
         BattleControllerComplete(battler);
@@ -2984,7 +2986,7 @@ void BtlController_HandleDrawPartyStatusSummary(u32 battler, u32 side, bool32 co
 
         // If intro, skip the delay after drawing
         if (considerDelay && gBattleResources->bufferA[battler][2] != 0)
-            gBattleSpritesDataPtr->healthBoxesData[battler].partyStatusDelayTimer = 93;
+            gBattleSpritesDataPtr->healthBoxesData[battler].partyStatusDelayTimer = PARTY_STATUS_DELAY_TIMER + 1;
 
         gBattlerControllerFuncs[battler] = Controller_WaitForPartyStatusSummary;
     }
