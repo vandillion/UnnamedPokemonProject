@@ -48,81 +48,64 @@ mapscripts SlateportCity_MapScripts {
 						  "Anyways, {PLAYER}, bottom line is Subzero is planning something big and presumably dangerous.\p"
 						  "I was watching the way you were battling back on Vast Woods Trail, and for a rookie, you were pretty sharp.\p"
 						  "{PLAYER}, would you and your friend be willing to help me take down Subzero?"), MSGBOX_YESNO)
-			if(var(VAR_RESULT)) {
-				goto(CentraSE_HarleyCutscene_Yes)
-			} else {
-				goto(CentraSE_HarleyCutscene_No)
+			while(var(VAR_RESULT) != TRUE) {
+				msgbox(format("What? Would you please reconsider?"), MSGBOX_YESNO)
 			}
+			msgbox(format("Really?\nThanks a ton, {PLAYER}!\p"
+				          "If you happen to run into your friend before I do, let him know what's going on.\p"
+				          "He seemed pretty passive-aggressive, and I don't want him feeling some type of way about me.\p"
+				          "Oh, and {PLAYER}!\nYou're not busy right now are you?\p"
+				          "Would you like to have a quick battle before I go?"), MSGBOX_YESNO)
+			if(var(VAR_RESULT)) {
+				msgbox("Alright. Give it all you got!")
+				if (!flag(FLAG_LOST_FIRST_BATTLE)) {
+					switch (var(VAR_STARTER_MON)) {
+						case 0:
+							trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_103_TORCHIC, HarleyDefeat1)
+						case 1:
+							trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_103_TREECKO, HarleyDefeat1)
+						case 2:
+							trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_103_MUDKIP, HarleyDefeat1)
+					}
+				} else {
+					switch (var(VAR_STARTER_MON)) {
+						case 0:
+							trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_110_TORCHIC, HarleyDefeat1)
+						case 1:
+							trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_110_TREECKO, HarleyDefeat1)
+						case 2:
+							trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_110_MUDKIP, HarleyDefeat1)
+					}
+				}
+			} else {
+				msgbox(format("Oh, no worries. We can always have a battle in the future."))
+			}
+			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+			msgbox(format("Alright {PLAYER}, I'll be on my way.\n"
+				         "Next time we meet, I'll let you know if I have a plan or not.\p"
+				         "'Till then, keep a low profile, and try not to talk to the general public about Subzero.\pCatch ya later."), MSGBOX_NPC)
+			if(var(VAR_TEMP_A) == 35) {
+				applymovement(LOCALID_HARLEY, moves(walk_left))
+				waitmovement(0)
+			}
+			applymovement(LOCALID_HARLEY, moves(walk_left * 5
+												walk_up * 10))
+			if(var(VAR_TEMP_A) == 34) {
+				delay(16)
+			}
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
+			waitmovement(LOCALID_HARLEY)
+			removeobject(LOCALID_HARLEY)
+			setflag(FLAG_HIDE_CENTRA_CITY_HARLEY)
+			setvar(VAR_CENTRA_CITY_STATE, 2)
+			release
+			end
 		}
 	]
 }
 
-script CentraSE_HarleyCutscene_No {
-	msgbox(format("What? Really?\nWould you please reconsider?"), MSGBOX_YESNO)
-	if(var(VAR_RESULT)) {
-		goto(CentraSE_HarleyCutscene_Yes)
-	} else {
-		goto(CentraSE_HarleyCutscene_No)
-	}
-}
-
-script CentraSE_HarleyCutscene_Yes {
-	msgbox(format("Really?\nThanks a ton, {PLAYER}!\p"
-				  "If you happen to run into your friend before I do, let him know what's going on.\p"
-				  "He seemed pretty passive-aggressive, and I don't want him feeling some type of way about me.\p"
-				  "Oh, and {PLAYER}!\nYou're not busy right now are you?\p"
-				  "Would you like to have a quick battle before I go?"), MSGBOX_YESNO)
-	if(var(VAR_RESULT)) {
-		msgbox("Alright. Give it all you got!")
-		if (!flag(FLAG_LOST_FIRST_BATTLE)) {
-			switch (var(VAR_STARTER_MON)) {
-				case 0:
-					trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_103_TORCHIC, HarleyDefeat1)
-				case 1:
-					trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_103_TREECKO, HarleyDefeat1)
-				case 2:
-					trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_103_MUDKIP, HarleyDefeat1)
-			}
-		} else {
-			switch (var(VAR_STARTER_MON)) {
-				case 0:
-					trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_110_TORCHIC, HarleyDefeat1)
-				case 1:
-					trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_110_TREECKO, HarleyDefeat1)
-				case 2:
-					trainerbattle_no_intro_no_whiteout(TRAINER_MAY_ROUTE_110_MUDKIP, HarleyDefeat1)
-			}
-		}
-	} else {
-		msgbox(format("Oh, no worries.\nWe can always have a battle in the future."))
-	}
-	goto(CentraSE_HarleyCutscene_Continue)
-}
-
 text HarleyDefeat1 {
 	format("Wow, you really are a natural!")
-}
-
-script CentraSE_HarleyCutscene_Continue {
-	msgbox(format("Alright {PLAYER}, I'll be on my way.\n"
-				  "Next time we meet, I'll let you know if I have a plan or not.\p"
-				  "'Till then, keep a low profile, and try not to talk to the general public about Subzero.\pCatch ya later."), MSGBOX_NPC)
-	if(var(VAR_TEMP_A) == 35) {
-		applymovement(LOCALID_HARLEY, moves(walk_left))
-		waitmovement(0)
-	}
-	applymovement(LOCALID_HARLEY, moves(walk_left * 5
-										walk_up * 10))
-	if(var(VAR_TEMP_A) == 34) {
-		delay(16)
-	}
-	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
-	waitmovement(LOCALID_HARLEY)
-	removeobject(LOCALID_HARLEY)
-	setflag(FLAG_HIDE_CENTRA_CITY_HARLEY)
-	setvar(VAR_CENTRA_CITY_STATE, 2)
-	release
-	end
 }
 
 // NPCs

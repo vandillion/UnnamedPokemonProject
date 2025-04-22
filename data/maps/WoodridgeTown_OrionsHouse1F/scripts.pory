@@ -144,11 +144,6 @@ mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
                         "I looked all around the Town, but I couldn't find anything…"))
             closemessage
             delay(35)
-            msgbox(format("Oh yeah! {PLAYER}, I want you to have this.\pYou can give it to your Pokémon!"))
-            giveitem(ITEM_ORAN_BERRY)
-            call_if_eq(VAR_RESULT, FALSE, Common_EventScript_BagIsFull)
-            applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
-            waitmovement(0)
             msgbox(format("k see ya later"), MSGBOX_AUTOCLOSE)
             applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
             applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
