@@ -862,7 +862,11 @@ static void CB2_GiveStarter(void)
 
     *GetVarPointer(VAR_STARTER_MON) = gSpecialVar_Result;
     starterMon = GetStarterPokemon(gSpecialVar_Result);
-    ScriptGiveMon(starterMon, 5, ITEM_NONE);
+    ZeroPlayerPartyMons(); // debating keeping this but keeping it for the time being
+    ScriptGiveMon(starterMon, 1, ITEM_NONE);                                                  // Dummy mon
+    CreateMon(&gPlayerParty[0], starterMon, 5, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0); // Actual starter & to prevent shiny-locking
+    starterMon = TRUE;
+    SetMonData(&gPlayerParty[0], MON_DATA_IS_STARTER, &starterMon);
     ResetTasks();
     //PlayBattleBGM();
     SetMainCallback2(CB2_StartFirstBattle);

@@ -2716,6 +2716,9 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
         case MON_DATA_CHECKSUM:
             retVal = boxMon->checksum;
             break;
+        case MON_DATA_IS_STARTER:
+            retVal = boxMon->isStarter;
+            break;
         case MON_DATA_IS_SHINY:
         {
             u32 shinyValue = GET_SHINY_VALUE(boxMon->otId, boxMon->personality);
@@ -3139,6 +3142,9 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
             break;
         case MON_DATA_CHECKSUM:
             SET16(boxMon->checksum);
+            break;
+        case MON_DATA_IS_STARTER:
+            SET16(boxMon->isStarter);
             break;
         case MON_DATA_IS_SHINY:
         {

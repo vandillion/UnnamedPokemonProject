@@ -1473,11 +1473,10 @@ void LoadWallyZigzagoon(void)
 bool8 IsStarterInParty(void)
 {
     u8 i;
-    u16 starter = GetStarterPokemon(VarGet(VAR_STARTER_MON));
     u8 partyCount = CalculatePlayerPartyCount();
     for (i = 0; i < partyCount; i++)
     {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) == starter)
+        if (GetMonData(&gPlayerParty[i], MON_DATA_IS_STARTER, NULL) == TRUE)
             return TRUE;
     }
     return FALSE;
