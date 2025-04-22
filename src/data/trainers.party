@@ -10533,12 +10533,12 @@ Level: 16
 
 === TRAINER_LILITH ===
 Name: LILITH
-Class: Battle Girl
-Pic: Battle Girl
+Class: Gym Trainer
+Pic: Aqua Grunt F
 Gender: Female
-Music: Intense
+Music: Suspicious
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
 Meditite
 Level: 13
