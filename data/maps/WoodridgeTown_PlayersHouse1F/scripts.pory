@@ -42,13 +42,7 @@ mapscripts WoodridgeTown_PlayersHouse1F_MapScripts {
 						  "The kid next door asked to take you on a walk into the woods?\p"
 						  "Well, sounds like you two will have a great time.\p"
 						  "Just be careful, please {PLAYER}!\nRemember, we just moved here and we aren't familiar with the environment.\p"
-						  "Oh!\nAnd take these, too!"))
-			playfanfare(MUS_OBTAIN_ITEM)
-			message(format("{PLAYER} received the Running Shoes!"))
-			waitfanfare
-			setflag(FLAG_SYS_B_DASH)
-			setflag(FLAG_RECEIVED_RUNNING_SHOES)
-			msgbox(format("If anything happens to you let me know."), MSGBOX_AUTOCLOSE)
+						  "If anything happens to you let me know."), MSGBOX_AUTOCLOSE)
 			setvar(VAR_WOODRIDGE_TOWN_STATE, 4)
 			setvar(VAR_BLOCK_PROGRESSION_SOUTH, 2)
 			release

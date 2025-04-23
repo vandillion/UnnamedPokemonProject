@@ -114,6 +114,7 @@ EventScript_ResetAllBerries::
 
 EventScript_ResetAllMapFlags::
 
+	setflag FLAG_SYS_B_DASH
 	setflag FLAG_SYS_EXP_SHARE
 	setflag FLAG_HIDE_WOODRIDGE_TOWN_ORION
 	setflag FLAG_HIDE_ORIONS_ROOM_ORION

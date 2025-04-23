@@ -9,7 +9,6 @@
 #define N_BATTLE_START_SPEED            3  // Default 2
 #define N_SHINY_STARS_TIMER             30 // Default 60
 
-#define N_AUTORUN                       TRUE
 #define N_FAST_BOOT                     TRUE
 #define N_FLEE_ON_B                     FALSE
 #define N_HEAL_ON_SELECT                FALSE

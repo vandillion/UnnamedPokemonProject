@@ -1389,19 +1389,18 @@
 #define FLAG_SYS_SHINY_LOCK                         (SYSTEM_FLAGS + 0x22)
 #define FLAG_SYS_USE_24HR                           (SYSTEM_FLAGS + 0x23)
 #define FLAG_SYS_PAUSE_TIME                         (SYSTEM_FLAGS + 0x24)
-#define FLAG_UNUSED_0x885                           (SYSTEM_FLAGS + 0x25) // Unused Flag
+#define FLAG_SYS_AUTORUN                            (SYSTEM_FLAGS + 0x25)
 #define FLAG_UNUSED_0x886                           (SYSTEM_FLAGS + 0x26) // Unused Flag
 #define FLAG_UNUSED_0x887                           (SYSTEM_FLAGS + 0x27) // Unused Flag
+#define FLAG_UNUSED_0x88E                           (SYSTEM_FLAGS + 0x28) // Unused Flag
+#define FLAG_UNUSED_0x88F                           (SYSTEM_FLAGS + 0x29) // Unused Flag
 
-#define FLAG_SYS_USE_FLASH                          (SYSTEM_FLAGS + 0x28)
-#define FLAG_SYS_USE_STRENGTH                       (SYSTEM_FLAGS + 0x29)
-#define FLAG_SYS_WEATHER_CTRL                       (SYSTEM_FLAGS + 0x2A)
-#define FLAG_SYS_CYCLING_ROAD                       (SYSTEM_FLAGS + 0x2B)
-#define FLAG_SYS_SAFARI_MODE                        (SYSTEM_FLAGS + 0x2C)
-#define FLAG_SYS_CRUISE_MODE                        (SYSTEM_FLAGS + 0x2D)
-
-#define FLAG_UNUSED_0x88E                           (SYSTEM_FLAGS + 0x2E) // Unused Flag
-#define FLAG_UNUSED_0x88F                           (SYSTEM_FLAGS + 0x2F) // Unused Flag
+#define FLAG_SYS_USE_FLASH                          (SYSTEM_FLAGS + 0x2A)
+#define FLAG_SYS_USE_STRENGTH                       (SYSTEM_FLAGS + 0x2B)
+#define FLAG_SYS_WEATHER_CTRL                       (SYSTEM_FLAGS + 0x2C)
+#define FLAG_SYS_CYCLING_ROAD                       (SYSTEM_FLAGS + 0x2D)
+#define FLAG_SYS_SAFARI_MODE                        (SYSTEM_FLAGS + 0x2E)
+#define FLAG_SYS_CRUISE_MODE                        (SYSTEM_FLAGS + 0x2F)
 
 #define FLAG_SYS_TV_HOME                            (SYSTEM_FLAGS + 0x30)
 #define FLAG_SYS_TV_WATCH                           (SYSTEM_FLAGS + 0x31)
