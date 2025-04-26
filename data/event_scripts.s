@@ -1049,6 +1049,18 @@ EventScript_OWHealParty::
 	special HealPlayerParty
 	end
 
+EventScript_ToggleAutorun::
+	goto_if_set FLAG_SYS_AUTORUN, EventScript_ToggleAutorun_2
+	setflag FLAG_SYS_AUTORUN
+	playse SE_PC_LOGIN
+EventScript_ToggleAutorun_1:
+	end
+
+EventScript_ToggleAutorun_2:
+	clearflag FLAG_SYS_AUTORUN
+	playse SE_PC_OFF
+	goto EventScript_ToggleAutorun_1
+
 Common_EventScript_RemoveStaticEncounter::
 	goto_if_set FLAG_SYS_CTRL_OBJ_DELETE, Common_EventScript_RemoveStaticEncounter_1
 	end

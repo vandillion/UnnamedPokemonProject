@@ -619,6 +619,7 @@ extern const u8 BattleFrontier_OutsideEast_EventScript_WaterSudowoodo[];
 
 extern const u8 EventScript_SelectWithoutRegisteredItem[];
 extern const u8 EventScript_OWHealParty[];
+extern const u8 EventScript_ToggleAutorun[];
 
 // overworld
 extern const u8 EventScript_WhiteOut[];

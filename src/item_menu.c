@@ -2080,35 +2080,43 @@ static void Task_ItemContext_GiveToPC(u8 taskId)
 
 bool8 UseRegisteredKeyItemOnField(void)
 {
-#if N_HEAL_ON_SELECT
-    ScriptContext_SetupScript(EventScript_OWHealParty);
-#else
-    u8 taskId;
-
-    if (InUnionRoom() == TRUE || InBattlePyramid() || InBattlePike() || InMultiPartnerRoom() == TRUE)
-        return FALSE;
-    HideMapNamePopUpWindow();
-    ChangeBgY_ScreenOff(0, 0, BG_COORD_SET);
-    if (gSaveBlock1Ptr->registeredItem != ITEM_NONE)
+    switch (N_OW_SELECT_FUNC)
     {
-        if (CheckBagHasItem(gSaveBlock1Ptr->registeredItem, 1) == TRUE)
-        {
-            LockPlayerFieldControls();
-            FreezeObjectEvents();
-            PlayerFreeze();
-            StopPlayerAvatar();
-            gSpecialVar_ItemId = gSaveBlock1Ptr->registeredItem;
-            taskId = CreateTask(ItemId_GetFieldFunc(gSaveBlock1Ptr->registeredItem), 8);
-            gTasks[taskId].tUsingRegisteredKeyItem = TRUE;
-            return TRUE;
-        }
-        else
-        {
-            gSaveBlock1Ptr->registeredItem = ITEM_NONE;
-        }
+        case SELECT_FUNC_TOGGLE_AUTORUN:
+            ScriptContext_SetupScript(EventScript_ToggleAutorun);
+            break;
+        case SELECT_FUNC_HEAL_ON_SEL:
+            ScriptContext_SetupScript(EventScript_OWHealParty);
+            break;
+        case SELECT_FUNC_KEY_ITEM:
+        default:
+            u8 taskId;
+        
+            if (InUnionRoom() == TRUE || InBattlePyramid() || InBattlePike() || InMultiPartnerRoom() == TRUE)
+                return FALSE;
+            HideMapNamePopUpWindow();
+            ChangeBgY_ScreenOff(0, 0, BG_COORD_SET);
+            if (gSaveBlock1Ptr->registeredItem != ITEM_NONE)
+            {
+                if (CheckBagHasItem(gSaveBlock1Ptr->registeredItem, 1) == TRUE)
+                {
+                    LockPlayerFieldControls();
+                    FreezeObjectEvents();
+                    PlayerFreeze();
+                    StopPlayerAvatar();
+                    gSpecialVar_ItemId = gSaveBlock1Ptr->registeredItem;
+                    taskId = CreateTask(ItemId_GetFieldFunc(gSaveBlock1Ptr->registeredItem), 8);
+                    gTasks[taskId].tUsingRegisteredKeyItem = TRUE;
+                    return TRUE;
+                }
+                else
+                {
+                    gSaveBlock1Ptr->registeredItem = ITEM_NONE;
+                }
+            }
+            ScriptContext_SetupScript(EventScript_SelectWithoutRegisteredItem);
+            break;
     }
-    ScriptContext_SetupScript(EventScript_SelectWithoutRegisteredItem);
-#endif
     return TRUE;
 }
 
