@@ -1348,7 +1348,7 @@
 #define FLAG_SYS_POKEMON_GET                         (SYSTEM_FLAGS + 0x0) // FLAG_0x860
 #define FLAG_SYS_POKEDEX_GET                         (SYSTEM_FLAGS + 0x1)
 #define FLAG_SYS_POKENAV_GET                         (SYSTEM_FLAGS + 0x2)
-#define FLAG_SYS_EXP_SHARE                           (SYSTEM_FLAGS + 0x3)
+#define FLAG_SYS_QUEST_MENU_GET                      (SYSTEM_FLAGS + 0x3)
 #define FLAG_SYS_GAME_CLEAR                          (SYSTEM_FLAGS + 0x4)
 #define FLAG_SYS_CHAT_USED                           (SYSTEM_FLAGS + 0x5)
 #define FLAG_UNLOCKED_TRENDY_SAYINGS                 (SYSTEM_FLAGS + 0x6)
@@ -1385,12 +1385,12 @@
 #define FLAG_IS_CHAMPION                            (SYSTEM_FLAGS + 0x1F) // Seems to be related to linking.
 #define FLAG_NURSE_UNION_ROOM_REMINDER              (SYSTEM_FLAGS + 0x20)
 
+#define FLAG_SYS_EXP_SHARE                          (SYSTEM_FLAGS + 0x20)
 #define FLAG_SYS_NO_CATCHING                        (SYSTEM_FLAGS + 0x21)
 #define FLAG_SYS_SHINY_LOCK                         (SYSTEM_FLAGS + 0x22)
 #define FLAG_SYS_USE_24HR                           (SYSTEM_FLAGS + 0x23)
 #define FLAG_SYS_PAUSE_TIME                         (SYSTEM_FLAGS + 0x24)
 #define FLAG_SYS_AUTORUN                            (SYSTEM_FLAGS + 0x25)
-#define FLAG_UNUSED_0x886                           (SYSTEM_FLAGS + 0x26) // Unused Flag
 #define FLAG_UNUSED_0x887                           (SYSTEM_FLAGS + 0x27) // Unused Flag
 #define FLAG_UNUSED_0x88E                           (SYSTEM_FLAGS + 0x28) // Unused Flag
 #define FLAG_UNUSED_0x88F                           (SYSTEM_FLAGS + 0x29) // Unused Flag
