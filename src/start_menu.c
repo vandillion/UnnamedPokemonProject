@@ -211,7 +211,7 @@ static const struct MenuAction sStartMenuItems[] =
     [MENU_ACTION_DEBUG]           = {sText_MenuDebug,   {.u8_void = StartMenuDebugCallback}},
     [MENU_ACTION_DEXNAV]          = {gText_MenuDexNav,  {.u8_void = StartMenuDexNavCallback}},
     [MENU_ACTION_QUEST_MENU]      = {sText_QuestMenu,   {.u8_void = QuestMenuCallback}},
-}
+};
 
 static const struct BgTemplate sBgTemplates_LinkBattleSave[] =
 {
@@ -371,6 +371,8 @@ static void BuildDebugStartMenu(void)
     if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKENAV);
     AddStartMenuAction(MENU_ACTION_PLAYER);
+    if (FlagGet(FLAG_SYS_QUEST_MENU_GET))
+        AddStartMenuAction(MENU_ACTION_QUEST_MENU);
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
 }

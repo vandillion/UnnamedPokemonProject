@@ -575,7 +575,7 @@ struct SaveBlock2
 
     u8 questData[QUEST_FLAGS_COUNT * QUEST_STATES];
     u8 subQuests[SUB_FLAGS_COUNT];
-}; 
+}; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
 
